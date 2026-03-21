@@ -26,7 +26,7 @@ Rihards Balodis a Inara Opmane (2012) definují datové centrum jako specializov
 
 Modernější definice datových center obsahují i samotná výpočetní zařízení. Například podle odborného článku v časopise Facilities (2020) je datové centrum definováno jako významná infrastruktura obsahující vysoké množství serverů a počítačů, které poskytují internetové služby globálním společnostem~\cite{fadaeefath_abadi_data_2020}. Tato definice vnímá datové centrum nejen jako budovu, ale jako soubor vybavení pro zpracování (servery), ukládání (úložiště) a přeposílání (síťové prvky) informací. Oba texty se však shodují v tom, že datová centra vyžadují speciální systémy pro napájení, regulaci okolní teploty a vlhkosti a komunikační nástroje~\cite{tatnall_reflections_2012, fadaeefath_abadi_data_2020}.
 
-Výše uvedené klíčové subsystémy (napájení, chlazení a konektivita) ovlivňují výslednou dostupnost služeb pro koncové uživatele. Pro sjednocení těchto požadavků navrhla organizace Uptime Institute (2006) čtyři třídy datových center v rámci celosvětově uznávané klasifikace Tier~\cite{turner_iv_tier_2006}. Tato certifikace definuje úrovně, které se od sebe liší zejména mírou redundance komponent a konfigurací distribučních cest pro provoz výpočetní techniky.
+Výše uvedené klíčové subsystémy (napájení, chlazení a konektivita) ovlivňují výslednou dostupnost služeb pro koncové uživatele. Pro sjednocení těchto požadavků navrhla organizace Uptime Institute (2006) čtyři třídy datových center v rámci celosvětově uznávané klasifikace Tier~\cite{turner_iv_tier_2006}. Tato certifikace definuje úrovně, které se od sebe liší zejména mírou redundance komponent a konfiguracemi distribučních cest pro provoz výpočetní techniky.
 
 \begin{description}
     \item[Tier I: Základní infrastruktura] Představuje nejnižší úroveň, která disponuje pouze jednou cestou pro napájení a chlazení bez jakýchkoliv redundantních komponent. Tato třída je náchylná k přerušením způsobeným jak plánovanou údržbou, tak neplánovanými poruchami, přičemž očekávaná roční dostupnost dosahuje 99,671~\%~\cite{turner_iv_tier_2006}. Infrastruktura tohoto typu je vhodná pro úlohy, u nichž není kritická kontinuita provozu.
@@ -78,7 +78,7 @@ Velikost a maximální výpočetní výkon však nejsou jediné charakteristiky,
 
 Technologický vývoj v těchto letech (2004 až 2008) se soustředil také na optimalizaci provozu. Mezi nejdůležitější inovace tohoto období patří zavedení metriky \textit{Power Usage Effectiveness} (PUE), která umožňuje sledovat poměr mezi celkovou energií spotřebovanou datovým centrem a energií dodanou přímo do IT vybavení. Společně s tím byl kladen důraz na energetickou proporcionalitu systémů -- schopnost hardwaru měnit svou spotřebu v závislosti na aktuálním zatížení~\cite{ranganathan_twenty_2024}.
 
-Z hlediska budoucího vývoje je zásadní období let 2009--2013, kdy se začínají objevovat první specializované úlohy zaměřené na hluboké učení (např. projekt Google Brain)~\cite{ranganathan_twenty_2024}. Tento moment předznamenal přerod univerzálních WSC v úzce specializované AI továrny, které dominují současnému trhu.
+Z hlediska budoucího vývoje je zásadní období mezi lety 2009 a 2013, kdy se začínají objevovat první specializované úlohy zaměřené na hluboké učení (např. projekt Google Brain)~\cite{ranganathan_twenty_2024}. Tento moment předznamenal přerod univerzálních WSC v úzce specializované AI továrny, které dominují současnému trhu.
 
 \subsection{Architektura moderních AI továren}
 \label{subsec:ai_factory}
@@ -129,7 +129,8 @@ Mezi používané komponenty patří především grafické procesory (GPU), kte
 % Obsah: Rozlišení White Space (IT) a Gray Space (zázemí). 
 % Měřítko budov (Hyperscale). Servisní přístup a bezpečnost.
 
-Vnitřní dispozice datového centra se člení na dvě hlavní oblasti: \textit{White Space} a \textit{Gray Space}. White Space představuje čistou plochu počítačového sálu vyhrazenou pro IT vybavení (racky, síťové prvky a úložná pole). \textit{Gray Space} naopak zahrnuje veškerou podpůrnou infrastrukturu (transformátory, UPS a systémy chlazení) \cite[s. 300]{geng_data_2014}. U tradičních infrastruktur tvořilo technické zázemí obvykle menší část celkové dispozice, přičemž poměr mezi Gray a White Space byl u větších datových center až 1:3 \cite{butler_unlocking_2025}.
+Vnitřní dispozice datového centra se člení na dvě hlavní oblasti: \textit{White Space} a \textit{Gray Space}. White Space představuje čistou plochu počítačového sálu vyhrazenou pro IT vybavení (racky, síťové prvky a úložná pole). \textit{Gray Space} naopak zahrnuje veškerou podpůrnou infrastrukturu (transformátory, UPS %byla zkratka předtím definována?
+a systémy chlazení) \cite[s. 300]{geng_data_2014}. U tradičních infrastruktur tvořilo technické zázemí obvykle menší část celkové dispozice, přičemž poměr mezi Gray a White Space byl u větších datových center až 1:3 \cite{butler_unlocking_2025}.
 
 Extrémní výkonová hustota AI racků však tento poměr mění: Jednak zmenšuje nároky na podlahovou plochu v rámci počítačového sálu, jednak vyžaduje větší napájecí a chladicí systémy, které fyzicky zabírají stále více prostoru. Jejich vzájemný poměr se tak může posunout až nad hranici 1:1 \cite{butler_unlocking_2025}.
 
@@ -174,7 +175,7 @@ Důležitou roli hraje také využití energie v datovém centru. Účelem je po
 \begin{itemize}
     \item \textbf{IT vybavení} (servery, disková pole, sítě): zhruba 40--50 \% spotřeby.
 
-    \item \textbf{Chladicí infrastruktura}: tradičně spotřebuje 30--40 \% dodané energie.
+    \item \textbf{Chladicí infrastruktura}: tradičně spotřebovává 30--40 \% dodané energie.
 
     \item \textbf{Podpůrná zařízení} (napájení, osvětlení, zabezpečení): zbylých 10--30 \%.
 \end{itemize}
@@ -204,7 +205,7 @@ Z důvodu přetížení veřejných sítí, zdlouhavých povolovacích procesů 
 % Vliv termálního managementu na celkovou efektivitu provozu.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Prudký nárůst výkonu a způsobil, že chlazení vzduchem přestalo kvůli jeho fyzikálním vlastnostem stačit. Kvůli tomu byli designéři datových cetner v podstatě nuceni přejít na kapalinové chlazení, protože kapaliny disponují mnohem vyšší tepelnou kapacitou a vodivostí. Dokáže tak odvést více tepla za kratší čas. To však způsobilo nový problém -- datová centra se stala závislá na dalším sdíleném zdroji, který je potřeba odněkud čerpat. 
+Prudký nárůst výkonu způsobil, že chlazení vzduchem přestalo kvůli jeho fyzikálním vlastnostem stačit. Kvůli tomu byli designéři datových center v podstatě nuceni přejít na kapalinové chlazení, protože kapaliny disponují mnohem vyšší tepelnou kapacitou a vodivostí. Dokáže tak odvést více tepla za kratší čas. To však způsobilo nový problém -- datová centra se stala závislá na dalším sdíleném zdroji, který je potřeba odněkud čerpat. 
 
 \subsection{Thermal Design Power}
 \label{sec:tdp}
@@ -237,26 +238,26 @@ Tato nevyhnutelná fyzická blízkost vede k prostorové koncentraci tepla, kvů
 Tradiční vzduchové chlazení historicky dominovalo díky své jednoduchosti a nízké ceně. Spolehlivě funguje pro běžné serverové racky s hustotou výkonu zhruba do 20 kW \cite[s. 10]{avelar_ai_2023}. S příchodem AI akcelerátorů, kde spotřeba jednoho racku stoupá na 30 až 100 kW, však vzduch narazil na své fyzikální limity a kapalinové chlazení se stalo absolutní nutností, protože odvádí teplo efektivněji než vzduch. \cite[s. 4]{chen_electricity_2025} To přináší několik faktorů, které je při návrhu datových center potřeba zvážit:
 
 \begin{description}
-    \item[Výhody vodního chlazení] Systémy chlazení, kde je kapalina přiváděna pří\-mo k čipu (tzv. Direct-to-Chip nebo D2C architektura), umožňují snížit spotřebu energie na chlazení snížit až o 90 \%. Kapalinové chlazení je tedy velmi efektivní – jak již bylo zmíněno, nejnovější datová centra používající tuto technologii dosahují PUE nižší než 1,1 \cite{chen_electricity_2025, sheng_power_2026}. Nejnovější systémy jako immersion cooling (servery jsou plně ponořené v kapalině) dosahují ještě vyšší efektivity (PUE < 1,03) a oproti vzducohvému chlazení mají o 95 \% nižší spotřebu energie. \cite[s. 17--19]{cruzes_data_2025}
+    \item[Výhody vodního chlazení] Systémy chlazení, kde je kapalina přiváděna pří\-mo k čipu (tzv. Direct-to-Chip neboli D2C architektura), umožňují snížit spotřebu energie na chlazení až o 90 \%. Kapalinové chlazení je tedy velmi efektivní – jak již bylo zmíněno, nejnovější datová centra používající tuto technologii dosahují PUE nižší než 1,1 \cite{chen_electricity_2025, sheng_power_2026}. Nejnovější systémy, jako je immersion cooling (servery jsou plně ponořené v kapalině), dosahují ještě vyšší efektivity (PUE < 1,03) a oproti vzduchovému chlazení mají o 95 \% nižší spotřebu energie. \cite[s. 17--19]{cruzes_data_2025}
     \item[Nevýhody vodního chlazení] Vyšší účinnost je však vykoupena vysokými počátečními investicemi (CAPEX) a vyšší technologickou náročností. Pokročilé systémy jako D2C vyžadují specializované chladicí desky na procesorech, utěsněná potrubí uvnitř racků a jednotky pro distribuci chladivé kapaliny \cite[s. 18]{cruzes_data_2025}. Navíc je velmi obtížné přestavět vzduchem chlazená DC na vodní chlazení, neboť často nemají dostatečně vyztužené podlahy (kapalina přináší dodatečnou zátěž) \cite[s. 11]{avelar_ai_2023}.
 \end{description}
 
-Ačkoliv je tedy konstrukce vodního chlazení mnohem nákladnější, z dlouhodobého horizontu se tato investice vrátí v nižších nákladech na elektřinu. Především se ale jedná o technologickou nutnost, která je vynucená zvyšující hustotou výkonu na jeden rack. Nabízí se ale otázka, kde datová centra berou vodu na chlazení a zda tento odběr nepřináší další náklady.
+Ačkoliv je tedy konstrukce vodního chlazení mnohem nákladnější, z dlouhodobého horizontu se tato investice vrátí v nižších nákladech na elektřinu. Především se ale jedná o technologickou nutnost, která je vynucena zvyšující se hustotou výkonu na jeden rack. Nabízí se ale otázka, kde datová centra berou vodu na chlazení a zda tento odběr nepřináší další náklady.
 
 \subsection{Odběr a spotřeba vody moderních datových center}
 \label{subsec:voda}
 
-Přechod od vzduchového chlazení k pokročilým kapalinovým systémům dramaticky snížil spotřebu elektrické energie nutné pro chlazení. Tento zisk v energetické efektivitě je však často vykoupen novým, velmi závažným problémem: zvýšenými nároky na spotřebu vody. Při hodnocení vlivu datových center na vodní zdroje je nutné rozlišovat mezi dvěma pojmy:
+Přechod od vzduchového chlazení k pokročilým kapalinovým systémům dramaticky snížil spotřebu elektrické energie nutnou pro chlazení. Tento zisk v energetické efektivitě je však často vykoupen novým, velmi závažným problémem: zvýšenými nároky na spotřebu vody. Při hodnocení vlivu datových center na vodní zdroje je nutné rozlišovat mezi dvěma pojmy:
 
 \begin{itemize}
     \item odběrem vody (water withdrawal), který představuje celkový objem sladké vody odčerpané z podzemních nebo povrchových zdrojů;
-    \item a spotřebou vody (water consumption), která označuje tu část odebrané vody, která je pro místní prostředí nenávratně ztracena (nejčastěji se odpaří do atmosféry); \cite{li_making_2025}
+    \item a spotřebou vody (water consumption), která označuje nenávratně ztracenou část odebrané vody (nejčastěji se odpařuje do atmosféry); \cite{li_making_2025}
     \item platí tedy vztah $\text{Water consumption} \le \text{Water withdrawal}.$
 \end{itemize}
 
-Datová centra odebírají vodu primárně pro své chladicí systémy. Teplo ze serverů se přenese do vodního okruhu a v chladicí věži se část této vody cíleně odpaří, čímž se teplo uvolní do okolí. Protože se však při odpařování čisté vody v okruhu koncentrují minerály, soli a bakterie, musí se část zbylé vody pravidelně vypouštět a neustále doplňovat novou, čistou sladkou vodou. Z toho důvodu vyžadují tyto systémy neustálý přítok vody, často v kvalitě běžné pitné vody z vodovodu. \cite{li_making_2025} Tomuto se procesu se říká přímý odběr vody (Scope 1).
+Datová centra odebírají vodu primárně pro své chladicí systémy. Teplo ze serverů se přenáší do vodního okruhu a v chladicí věži se část této vody cíleně odpaří, čímž se teplo uvolní do okolí. Protože se však při odpařování čisté vody v okruhu koncentrují minerály, soli a bakterie, musí se část zbylé vody pravidelně vypouštět a neustále doplňovat novou, čistou sladkou vodou. Z toho důvodu tyto systémy vyžadují neustálý přítok vody, často v kvalitě běžné pitné vody z vodovodu. \cite{li_making_2025} Tomuto procesu se říká přímý odběr vody (Scope 1).
 
-Mnohem větší zátěž na vodní zdroje často představuje tzv. nepřímý odběr (Scope 2). Jde o vodu odebíranou v elektrárnách, které energetickou spotřebu datových center pokrývají – zejména tepelné či jaderné elektrárny potřebují k výrobě elektřiny masivní chlazení a vodní elektrárny ztrácejí vodu odparem z nádrží \cite{li_making_2025, LBNL-2001637}. V prostředí USA je průměrný nepřímý odběr vody pro výrobu elektřiny odhadován na 43,8 litrů na každou spotřebovanou kilowatthodinu (kWh) \cite{li_making_2025}.
+Mnohem větší zátěž na vodní zdroje často představuje tzv. nepřímý odběr (Scope 2). Jde o vodu odebíranou v elektrárnách, které pokrývají energetickou spotřebu datových center – zejména tepelné či jaderné elektrárny potřebují k výrobě elektřiny masivní chlazení a vodní elektrárny ztrácejí vodu odparem z nádrží \cite{li_making_2025, LBNL-2001637}. V prostředí USA je průměrný nepřímý odběr vody pro výrobu elektřiny odhadován na 43,8 litrů na každou spotřebovanou kilowatthodinu (kWh) \cite{li_making_2025}.
 
 Pro představu, typické 100MW hyperscale datové centrum může spotřebovat kolem 2 milionů litrů vody denně, což odpovídá spotřebě zhruba 6 500 domácností. 60 \% z této spotřeby je nepřímá. \cite{li_making_2025} Vzhledem k tomu, že mnoho nových datových center vzniká v oblastech, které již dnes trpí nedostatkem vody (např. v Texasu nebo Arizoně), stává se tento masivní odběr sladké vody zdrojem konfliktů.
 
@@ -265,7 +266,7 @@ Pro představu, typické 100MW hyperscale datové centrum může spotřebovat ko
 
 Dalším skrytým odběrem (Scope 3) je voda používaná v dodavatelském řetězci k výrobě samotného hardwaru. Ten je měřitelný jen velmi složitě, ale pravděpodobně je významný. Například společnost Apple uvádí, že 99 \% jeho vodní stopy pochází právě od dodavatelů hardwaru \cite{li_making_2025}.
 
-K měření efektivity hospodaření s vodou se dnes používá metrika WUE (Water Usage Effectiveness), která udává spotřebu vody v litrech na 1 kWh energie spotřebované samotným IT vybavením \cite{jegham_how_2025}. Není však definována tak jasně jako její protějšek PUE, neboť v literatuře může být zahrnuta pouze Scope 1 spotřeba, nebo i součet spotřeby přes Scope 1 až po Scope 3. Dále je možné namísto spotřeby použít odběr vody, kvůli čemuž je s touto metrikou obtížné pracovat a v této práci je uvedena pouze pro kontext. 
+K měření efektivity hospodaření s vodou se dnes používá metrika WUE (Water Usage Effectiveness), která udává spotřebu vody v litrech na 1 kWh energie spotřebované samotným IT vybavením \cite{jegham_how_2025}. Není však definována tak jasně jako její protějšek PUE, neboť v literatuře může být zahrnuta pouze spotřeba Scope 1, nebo i součet spotřeby přes Scope 1 až po Scope 3. Dále je možné namísto spotřeby použít odběr vody, kvůli čemuž je s touto metrikou obtížné pracovat a v této práci je uvedena pouze pro kontext. 
 
 Celosvětový roční odběr vody spojený s provozem datových center se odhaduje na stovky miliard litrů a do roku 2030 by mohl přesáhnout 1 200 miliard litrů \cite[s. 242]{iea_energy_2025}. Spotřeba na úrovní USA a celého světa bude dále analyzována v druhé kapitole.
 
@@ -283,9 +284,9 @@ Výběr lokality pro stavbu datového centra je komplexní proces, který funguj
 \subsection{Politické faktory}
 \label{subsec:pestle_po}
 
-Při mezinárodní expanzi podniky zohledňují zákony o ochraně soukromí, cenzuru a geopolitická rizika spojená s tím, kde jsou citlivá data fyzicky uložena \cite[s. 96]{geng_data_2014}. Důležitá jsou také možonsti vlastnické struktury v daném státě, protože datová centra vyžadují obrovské investice.
+Při mezinárodní expanzi podniky zohledňují zákony o ochraně soukromí, cenzuru a geopolitická rizika spojená s tím, kde jsou citlivá data fyzicky uložena \cite[s. 96]{geng_data_2014}. Důležitá jsou také možností vlastnické struktury v daném státě, protože datová centra vyžadují obrovské investice.
 
-Tyto faktory je zajímavé zvážit také z pohledu vlád: Protože se AI postupně stává záležitostí státní bezpečnosti, jednotlivé sáty se mohou snažit snížit jejich závislost na zahraničních datových centrech, což může způsobit jejich širší distribuci po celém světě \cite[s. 25]{pilz_compute_2023}. 
+Tyto faktory je zajímavé zvážit také z pohledu vlád: Protože se AI postupně stává záležitostí státní bezpečnosti, jednotlivé státy se mohou snažit snížit svou závislost na zahraničních datových centrech, což může způsobit jejich širší distribuci po celém světě \cite[s. 25]{pilz_compute_2023}. 
 
 \subsection{Ekonomické faktory}
 \label{subsec:pestle_ec}
@@ -294,7 +295,7 @@ Náklady na výstavbu a provoz datového centra drasticky ovlivňují místní v
 
 Moderní datová centra se stále častěji stavějí dále od velkých metropolí nejen kvůli jejich vysoké spotřebě energie, ale také možnosti postavit novou infrastrukturu, což je v zastavených oblastech téměř nemožné. Dalším faktorem je, že v odlehlých oblastech je jednodušší a rychlejší sehnat stavební povolení. \cite[s. 25]{pilz_compute_2023}
 
-Příkladem je Severní Virginie a její Data Center Alley, která má díky masivním úlevám a levné energii největší koncentraci datových center na světě. Dalšími významnámi lokalitami jsou okolí Dallasu, Los Angeles, Chicaga nebo New Yorku. \cite{pilz_compute_2023}
+Příkladem je Severní Virginie a její Data Center Alley, která má díky masivním úlevám a levné energii největší koncentraci datových center na světě. Dalšími významnými lokalitami jsou okolí Dallasu, Los Angeles, Chicaga nebo New Yorku. \cite{pilz_compute_2023}
 
 \subsection{Sociální faktory}
 \label{subsec:pestle_so}
@@ -302,12 +303,12 @@ Příkladem je Severní Virginie a její Data Center Alley, která má díky mas
 Přestože jsou datová centra silně automatizovaná, ke své stavbě a provozu vyžadují vysoce kvalifikovaný personál (stavbaře, IT inženýry, bezpečnostní techniky). Výhodou je blízkost velkých technických univerzit a výzkumných center \cite{geng_data_2014}. Problém se stavaři v dnešní době nicméně vyřešen dočasnou relokací stávajících pracovníků stavebních firem, kteří cestují klidně přes celé Spojené státy na místo výstavby datového centra.
 
 % TODO: Na tohle je potřeba najít lepší zdroje než youtube videa
-Mnohem důležitějším aspektem jsou iniciativy obvyvatel měst, ve kterých má být datové centrum postaveno -- výstvba se čím dál častěji setkává s nevolí obyvatel, kteří by žili v bezprostředním okolí datového centra. Lidé, kteří již v okolí DC žijí, si stěžují na neustálé hučení, které je způsobeno chladicími systémy. Datová centra mají také dopady na cenu elektřiny ve svém okolí, o čemž pojednává kapitola 2.
+Mnohem důležitějším aspektem jsou iniciativy obyvatel měst, ve kterých má být datové centrum postaveno -- výstavba se čím dál častěji setkává s nevolí obyvatel, kteří by žili v bezprostředním okolí datového centra. Lidé, kteří již v okolí DC žijí, si stěžují na neustálé hučení, které je způsobeno chladicími systémy. Datová centra mají také dopady na cenu elektřiny ve svém okolí, o čemž pojednává kapitola 2.
 
 \subsection{Technologické faktory}
 \label{subsec:pestle_te}
 
-Dostupnost obrovského množství spolehlivé a levné elektrické energie je dnes hlavním limitem. Protože výstavba nových přenosových soustav trvá 4 až 10 let, datová centra narážejí na přetížené sítě a dlouhé pořadníky pro připojení (fronty mohou trvat i roky). \cite{ginzburg-ganz_technical_2025, iea_energy_2025} Z tohoto důvodu se nová DC často umisťují k jaderným elektrárnám a malým modulárním reaktorům. Ty jim mohou poskytnout stabilní energii, která je zapotřebí kvůli nepřetržitému trénování nových AI modeůl. \cite{chen_electricity_2025, cruzes_data_2025}
+Dostupnost obrovského množství spolehlivé a levné elektrické energie je dnes hlavním limitem. Protože výstavba nových přenosových soustav trvá 4 až 10 let, datová centra narážejí na přetížené sítě a dlouhé pořadníky pro připojení (fronty mohou trvat i roky). \cite{ginzburg-ganz_technical_2025, iea_energy_2025} Z tohoto důvodu se nová DC často umisťují k jaderným elektrárnám a malým modulárním reaktorům. Ty jim mohou poskytnout stabilní energii, která je zapotřebí kvůli nepřetržitému trénování nových AI modelů. \cite{chen_electricity_2025, cruzes_data_2025}
 
 Důležitou roli hrají také konektivita a latence. Zde dochází k dělení podle typu zátěže: 
 
@@ -319,7 +320,7 @@ Důležitou roli hrají také konektivita a latence. Zde dochází k dělení po
 \subsection{Legislativní faktory}
 \label{subsec:pestle_le}
 
-Legislativní faktory byly z větší části umístěny do jiných oblastí, například způsob získání stavebního povolení spadá do ekonomických faktorů, stejně jako daňové úlevy a jiné iniciativy. Dále by sem mohla být zařazena zmíněná datová suverenita, která je však spíše politickým než legislativním problémem. Z pohledu legislativy je však důležitá otázka, zda a jakým způsobem budou datová centra regulována. V současnosti se již objevují specifické zákony, které se týkají výstavby a provozu datových center. Například v Oregonu byl prosazen zákon, kteráý datová centra zavazuje k alespoň 10letému provozu a zakazuje socializaci nákladů na infrastukturu (vizte kapitolu 2). \cite[s. 19]{ginzburg-ganz_technical_2025}
+Legislativní faktory byly z větší části umístěny do jiných oblastí, například způsob získání stavebního povolení spadá do ekonomických faktorů, stejně jako daňové úlevy a jiné iniciativy. Dále by sem mohla být zařazena zmíněná datová suverenita, která je však spíše politickým než legislativním problémem. Z pohledu legislativy je však důležitá otázka, zda a jakým způsobem budou datová centra regulována. V současnosti se již objevují specifické zákony, které se týkají výstavby a provozu datových center. Například v Oregonu byl prosazen zákon, který datová centra zavazuje k alespoň 10letému provozu a zakazuje socializaci nákladů na infrastrukturu (vizte kapitolu 2). \cite[s. 19]{ginzburg-ganz_technical_2025}
 
 \subsection{Environmentální faktory}
 \label{subsec:pestle_en}
@@ -337,13 +338,13 @@ Druhým environmentálním faktorem je stabilita a bezpečnost prostředí. Zaji
 % Obsah: Rekapitulace technologické transformace. Syntéza 
 % poznatků o dopadu AI na moderní infrastrukturu.
 
-Datová centra prošla za posledních 30 let radikální proměnou. Od sálových počítačů (mainframů) a nezávislých firemních serveroven v 90. letech se průmysl na počátku tisíciletí přesunul k tzv. WSC (Warehouse-Scale Computers). Tyto obří komplexy (zpopularizované společnostmi jako Google) propojily statisíce levných CPU serverů do jednoho fungujícího celku, aby obsloužily globální cloudové služby a vyhledávání. Dnešní nástup umělé inteligence však odstartoval novou éru – WSC se mění na AI Factories, což jsou vysoce specializované superpočítače navržené nikoliv pro běh mnoha nezávislých úloh, ale pro masivně paralelní trénink obřích modelů. \cite{barroso_data_2026,geng_data_2014,barroso_brief_2021}
+Datová centra prošla za posledních 30 let radikální proměnou. Od sálových počítačů a nezávislých firemních serveroven v 90. letech se průmysl na počátku tisíciletí přesunul k tzv. WSC (Warehouse Scale Computers). Tyto obří komplexy (zpopularizované společnostmi jako Google) propojily statisíce levných CPU serverů do jednoho fungujícího celku, aby obsloužily globální cloudové služby a vyhledávání. Dnešní nástup umělé inteligence však odstartoval novou éru – WSC se mění na AI Factories, což jsou vysoce specializované superpočítače navržené nikoliv pro běh mnoha nezávislých úloh, ale pro masivně paralelní trénink obřích modelů. \cite{barroso_data_2026,geng_data_2014,barroso_brief_2021}
 
 Tradiční servery postavené na univerzálních procesorech (CPU) přestaly pro AI stačit. Výpočetní zátěž převzaly specializované akcelerátory, jako jsou GPU a TPU, které jsou extrémně efektivní pro maticové operace. S tím však raketově vzrostla spotřeba samotných čipů (TDP) a nutnost umisťovat tyto čipy fyzicky co nejblíže k sobě kvůli zkrácení komunikační latence. To vedlo k extrémní koncentraci výkonu a obrovskému nárůstu hustoty racků (z tradičních 5–10 kW na 30–100+ kW). \cite{chen_electricity_2025, barroso_data_2026, sheng_power_2026}
 
-Kvůli tomu spotřeba energie datových center dramaticky roste. AI datová centra vstupují do gigawattové éry a zvedají se nároky na metriku PUE (Power Usage Effectiveness). Zásadním problémem pro elektrickou síť ale není jen celkový objem, nýbrž pulzní chování AI zátěže – synchronizované výpočty tisíců GPU generují obrovské výkyvy spotřeby v řádech desítek megawattů během milisekund, což ohrožuje frekvenční stabilitu sítě a zhoršuje kvalitu dodávek (harmonické zkreslení, problikávání). Jedno 200MW datové centrum může ročně spotřebovat přibližně 1,4 TWh elektřiny, což je podobně jako Karlovarský kraj. \cite{chen_electricity_2025, sheng_power_2026, energeticky_regulacni_urad_spotreba_2024}
+Kvůli tomu spotřeba energie datových center dramaticky roste. AI datová centra vstupují do gigawattové éry a zvyšují nároky na metriku PUE (Power Usage Effectiveness). Zásadním problémem pro elektrickou síť ale není jen celkový objem, nýbrž pulzní chování AI zátěže – synchronizované výpočty tisíců GPU generují obrovské výkyvy spotřeby v řádech desítek megawattů během milisekund, což ohrožuje frekvenční stabilitu sítě a zhoršuje kvalitu dodávek (harmonické zkreslení, problikávání). Jedno 200MW datové centrum může ročně spotřebovat přibližně 1,4 TWh elektřiny, což je podobně jako Karlovarský kraj. \cite{chen_electricity_2025, sheng_power_2026, energeticky_regulacni_urad_spotreba_2024}
 
-Výkonovou hustotu nad 30 kW na rack už nelze spolehlivě uchladit vzduchem. Nastupuje proto kapalinové chlazení (D2C nebo imerzní), které je nákladnější, ale energeticky mnohem efektivnější. Na druhou stranu vyžaduje obrovské množství vody, která se odpařuje v chladicích věžích. Datová centra navíc nepřímo odebírají vodu při výrobě jimi spotřebované elektřiny v elektrárnách. Průměrné hyperscale centrum může denně spotřebovat až 2 miliony litrů vody, což je podobně jako 6 500 amerických domácností. \cite{li_making_2025,shah_four_2026,jegham_how_2025,cruzes_data_2025}
+Výkonovou hustotu nad 30 kW na rack už nelze spolehlivě uchladit vzduchem. Nastupuje proto kapalinové chlazení (D2C nebo imerzivní), které je nákladnější, ale energeticky mnohem efektivnější. Na druhou stranu vyžaduje obrovské množství vody, která se odpařuje v chladicích věžích. Datová centra navíc nepřímo odebírají vodu při výrobě jimi spotřebované elektřiny v elektrárnách. Průměrné hyperscale centrum může denně spotřebovat až 2 miliony litrů vody, což je podobně jako 6 500 amerických domácností. \cite{li_making_2025,shah_four_2026,jegham_how_2025,cruzes_data_2025}
 
 % TODO: Pořádně zjistit, co je to propustnost sítě
 Při vybírání lokality pro výstavbu AI datového centra je absolutní prioritou kapacita a propustnost elektrické sítě (často se čeká roky na připojení). Hledají se místa s levnou a stabilní bezuhlíkovou energií (blízkost větrných, solárních či jaderných elektráren), dostatečným zdrojem vody pro chlazení, páteřní optickou sítí a příznivým legislativním i daňovým prostředím. \cite{lin_exploding_2024,chen_electricity_2025,pilz_compute_2023,geng_data_2014}
