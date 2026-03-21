@@ -5,6 +5,13 @@
 - Seřadit zkratky podle abecedy
 - Vyřešit přetékání v bibliografii
 
+
+### Checklist pro každou kapitolu
+-  \cite[s. x] -> ~cite[s.~x]
+-  \ref -> ~\ref
+-  nbsp za čísla s jednotkou
+-  nbsp před procenta
+
 ---
 
 ## Přehled o projektu
