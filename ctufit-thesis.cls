@@ -238,7 +238,7 @@
 \renewcommand{\maketitle}{\begin{titlepage}%
 \newgeometry{left=67mm,top=80mm,right=40mm}%\thispagestyle{empty}%
 \noindent
-\includegraphics[width=3cm]{images/logoCVUT.pdf}
+\includegraphics[width=3cm]{assets/images/logoCVUT.pdf}
 
 \noindent{\noindent\huge\bfseries\color{black}\begin{flushleft}\begin{onehalfspace}\MakeUppercase{\thectufittitle}\end{onehalfspace}\end{flushleft}}
 \noindent{\large  \bfseries \thectufitauthorfull}

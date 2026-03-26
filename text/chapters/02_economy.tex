@@ -1,17 +1,5 @@
-Historický vývoj spotřeby datových center představuje zajímavý paradox. Mezi lety 2010 a 2018 zažíval digitální svět masivní boom -- výpočetní zátěž datových center vzrostla o 550~\% a globální úložná kapacita se znásobila 26krát~\cite[s.~10]{de_roucy-rochegonde_ai_2025}. Navzdory tomuto růstu zůstávala celosvětová spotřeba elektřiny datovými centry téměř konstantní (zhruba 200~TWH ročně). Tohoto nevídaného úspěchu bylo dosaženo díky masivnímu přesunu IT infrastruktury do efektivních cloudových (hyperscale) center a drastickým inovacím v systémech chlazení.~\cite[s.~255]{barroso_data_2026}
-
-Kolem roku 2018 však efektivita narazila na své technologické limity a křivka energetické náročnosti začala prudce stoupat. V roce 2022 dosáhla celosvětová spotřeba datových center zhruba 460~TWH, což představuje asi 2~\% celosvětové poptávky po elektřině~\cite{de_roucy-rochegonde_ai_2025, sheng_power_2026}. Mezinárodní energetická agentura (IEA) odhaduje, že do roku 2030 by se tato hodnota mohla více než zdvojnásobit a přesáhnout 945~TWH~\cite[s.~14]{iea_energy_2025}, přičemž hlavním tahounem tohoto růstu je právě umělá inteligence. 
-
------
-
-% TODO: Přidat referenci kapitoly
-Celosvětový roční odběr vody spojený s provozem DC se odhaduje na stovky miliard litrů a do roku 2030 by mohl přesáhnout 1 200 miliard litrů~\cite[s.~242]{iea_energy_2025}. Spotřeba na úrovní USA a celého světa bude analyzována v druhé kapitole.
-
---------
-
-Příkladem je Severní Virginie a její Data Center Alley, která má díky úlevám a levné elektřině největší koncentraci datových center na světě. Dalšími významnými lokalitami jsou okolí Dallasu, Chicaga nebo New Yorku.~\cite{pilz_compute_2023}
-
-\chapter{Dopady výstavby AI datových center v USA}
+\chapter{Dopady výstavby AI datových center na území USA}
+\label{chap:energie_dopady}
 % Vymezit se jen na nekolik oblasti, hlavne ta Virginie kde jsou dopady nejlip pozorovatelne
 
 \section{Energetická zátěž a rezervace kapacity}
@@ -20,14 +8,100 @@ Příkladem je Severní Virginie a její Data Center Alley, která má díky úl
 % Prodleva mezi žádostí a připojením
 % Získat koeficienty (náklady na posílení sítě)
 
-\section{Dopady na vodu}
+Historický vývoj spotřeby datových center představuje zajímavý paradox. Mezi lety 2010 a 2018 zažíval digitální svět masivní boom -- výpočetní zátěž datových center vzrostla o 550~\% a globální úložná kapacita se znásobila 26krát~\cite[s.~10]{de_roucy-rochegonde_ai_2025}. Navzdory tomuto růstu zůstávala celosvětová spotřeba elektřiny datovými centry téměř konstantní (zhruba 200~TWH ročně). Za tímto úspěchem stojí přesun IT infrastruktury do efektivních hyperscale center a drastické inovace v systémech chlazení.~\cite[s.~255]{barroso_data_2026}
+
+Kolem roku 2018 však efektivita narazila na své technologické limity a křivka energetické náročnosti začala prudce stoupat. V roce 2022 dosáhla celosvětová spotřeba datových center zhruba 460~TWh, což představuje asi 2~\% světové poptávky po elektřině~\cite{de_roucy-rochegonde_ai_2025, sheng_power_2026}. Mezinárodní energetická agentura (IEA) odhaduje, že do roku 2030 by se tato hodnota mohla více než zdvojnásobit a přesáhnout 945~TWh~\cite[s.~14]{iea_energy_2025}. Jaké to má dopady na lokální ekonomiky, popisuje následující sekce. 
+
+
+\subsection{Přímé dopady připojení AI centra do sítě}
+\label{subsec:energie_dopady_prime}
+
+Připojit moderní datové centrum pro umělou inteligenci do sítě znamená integrovat zdroj obrovské a dynamické průmyslové zátěže, která zásadně mění fyzikální chování celé elektrické sítě. Dopady jednoho takového zařízení na elektrizační soustavu lze rozdělit do čtyř stěžejních oblastí.
+
+Prvním a nejviditelnějším dopadem je extrémní nárok na kapacitu sítě. Moderní AI kampusy vyžadují připojení v řádech stovek megawattů (MW), přičemž v budoucnu se plánují stavět centra s připojením až 1 gigawatt (GW) \cite[s. 5]{chen_electricity_2025}. Existující infrastruktura však na takovou zátěž zpravidla není připravená, kvůli čemuž vzniká časový nesoulad: Zatímco postavit samotné datové centrum trvá obvykle 1 až 2 roky, plánování, povolovací procesy a výstavba nové vysokonapěťové přenosové infrastruktury (nová vedení a rozvodny) trvají 5 až 10 let
+\cites[s. 11]{ginzburg-ganz_technical_2025}[s. 13]{sheng_power_2026}. Tento časový nesoulad vede k masivnímu přetěžování existujících sítí, dlouhým frontám na připojení a v extrémních případech (jako je Dublin v Irsku) i k plošným moratoriím na připojování nových datových center, aby nedošlo ke kolapsu dodávek \cite[s. 14]{sheng_power_2026}.
+
+Druhý problém představuje nestabilita odběru. Klasická datová centra mají relativně stabilní a předvídatelný odběr elektřiny, zatímco AI datová centra se vyznačují obrovskou volatilitou \cite[s. 8--9]{sheng_power_2026}. Zátěž takového centra dokáže během několika sekund klesnout nebo stoupnout o stovky megawattů kvůli střídání fáze intenzivního trénování a méně intenzivního zálohování (byl zaznamenán například skok o 400 MW za 36 sekund). Tyto extrémní a rychlé skoky vyčerpávají rezervy sítě pro primární regulaci frekvence, způsobují lokální kolísání napětí a prudce zvyšují náklady provozovatelů sítě na udržování rychlých záloh. \cite[s. 13]{ginzburg-ganz_technical_2025}
+
+Mnohem nebezpečnější scénář však představuje tzv. sympathetic tripping. Systémy UPS a měniče v DC jsou navrženy tak, aby při nebezpečném poklesu napětí v síti centrum okamžitě odpojily a přešly na vlastní záložní generátory, čímž chrání drahý hardware před poškozením. Pokud však dojde k běžnému (drobnějšímu) zkratu na přenosové soustavě a v reakci na něj se odpojí celé gigawattové AI centrum, zmizí ze sítě ve zlomku vteřiny obrovská zátěž. Kvůli tomu může frekvence a napětí v síti vzrůst, což se stane podnětem pro odpojení dalších datových center a nastane řetězová reakce. \cite[s. 11]{sheng_power_2026}
+
+Reálný příklad se odehrál v červenci 2024, kdy drobný pokles napětí v síti vyvolal ochranné odpojení 60 datových center najednou, čímž síť okamžitě ztratila 1 500 MW zátěže a frekvence sítě vyletěla na kritickou úroveň. Jeden jediný objekt o této velikosti tak může v případě odpojení destabilizovat síť v celém státě. Tato řetězová reakce navíc nemusí nastat pouze při chybě v systému -- podobný scénář by mohl nastat i při neočekávaném zahájení trénování velkého modelu. \cite[s. 13]{ginzburg-ganz_technical_2025}.
+
+\subsection{Socializace nákladů na výstavbu infrastruktury}
+\label{subsec:energie_socializace}
+
+Ekonomické dopady obrovské zátěže, kterou datová centra představují pro elektrickou síť, se rychle promítají do peněženek běžných spotřebitelů. Výstavba nutné infrastruktury a zvýšená poptávka po energii mění tržní dynamiku s následujícími konkrétními důsledky pro místní ekonomiku.
+
+K pokrytí budoucí spotřeby datových center bude nutné masivně investovat do nových elektráren, rozvoden a přenosových soustav – jen v USA se tyto náklady do roku 2030 odhadují na zhruba 720 miliard dolarů. Historicky bylo standardem, že se náklady na rozvoj sítě tzv. „socializovaly“, což znamená, že je provozovatel sítě jednoduše rozpočítal do účtů za elektřinu všem svým zákazníkům v dané oblasti. \cite[s. 18--19]{ginzburg-ganz_technical_2025}
+
+V praxi tato socializace znamená, že běžní občané a místní podniky dotují průmysl datových center. Ve Spojených státech bylo například v roce 2024 v síti PJM přeneseno 4,4 miliardy dolarů v poplatcích za upgrady sítě, které přímo vyvolala nová datová centra, na běžné a komerční zákazníky v sedmi státech \cite[s. 19]{ginzburg-ganz_technical_2025}.
+
+Pro vyvážení tohoto nesouladu mezi náklady a reálným využitím napříč všemi spotřebiteli se dnes v USA používá jiný přístup: Datová centra si mohou zažádat o rezervaci určité kapacity, která jim bude po schválení přidělena. Ponesou tak větší část nákladů na modernizaci infrastruktury, ale na druhou stranu tím omezí možnost vzniku nových projektů. Kapacita je totiž smluvně vyhrazena pouze pro jejich použití, i když je zrovna nenaplněna. \cite[s. 106--107]{iea_energy_2025}
+
+\subsection{Zdražování velkoobchodní ceny elektřiny}
+\label{subsec:energie_zdrazovani}
+
+Charakter odběru DC ovlivňuje i samotné trhy s elektřinou. Aby bylo možné pokrýt špičky ve spotřebě AI datových center, operátoři sítí musí častěji spouštět dražší elektrárny pro pokrytí kolísavé poptávky, což plošně zvedá mezní náklady na výrobu energie. Vysoký nárůst lze pozorovat také v kapacitních aukcích, kde si síť zajišťuje zálohy do budoucna. V regionu PJM pro období 2026–2027 stoupla cena více než desetinásobně z cca 28,9 USD/MW na 329,17 USD/MW, a to primárně kvůli očekávanému růstu datových center. \cite[s. 9]{chen_electricity_2025}
+
+V Nebrasce se očekává, že náklady na výrobu elektřiny pro centra společností Google a Meta přinesou místním obyvatelům nárůst cen elektřiny o 2,5 až 3 \% ročně \cite[s. 23]{de_roucy-rochegonde_ai_2025}. Celonárodní odhady pro USA hovoří o tom, že by kvůli datovým centrům mohly účty za elektřinu stoupnout v průměru o 8 \% do roku 2030 \cite[s. 19]{ginzburg-ganz_technical_2025}. Tento trend je viditelný i v Evropě -- například v Irsku, kde více než pětinu elektřiny odebírají datová centra, byly velkoobchodní ceny elektřiny v průměru o třetinu vyšší než ve zbytku kontinentu \cite[s. 23]{de_roucy-rochegonde_ai_2025}.
+
+\section{Odběr a spotřeba vody z okolí}
+\label{sec:voda_dopady}
 % Stejné jako elektřina 
 % Korelace mezi venkovní teplotou a potřebou vody
 
-\section{Finanční dopady}
+Výstavba a provoz datových center představují pro lokální vodní zdroje vysokou zátěž. Stejně jako v případě elektrické sítě i zde platí, že obrovské objemy odebírané a spotřebovávané vody si vynucují nákladné investice do místní infrastruktury a v obdobích sucha ohrožují vodní bezpečnost okolních komunit. Celosvětový roční odběr vody spojený s provozem DC se odhaduje na stovky miliard litrů a do roku 2030 by mohl přesáhnout 1 200 miliard litrů~\cite[s.~242]{iea_energy_2025}.
+
+\subsection{Přímé dopady AI center na vodní zdroje}
+\label{subsec:voda_dopady_prime}
+
+Přítomnost datového centra dokáže radikálně změnit hydrologickou bilanci celých měst. Typické 100MW hyperscale datové centrum může spotřebovat kolem 2 milionů litrů vody denně (Scope 2), což odpovídá spotřebě zhruba 6 500 domácností. 60~\% z této spotřeby je nepřímá, čili plynoucí z výroby elektřiny \cite{iea_energy_2025}. Prakticky to znamená, že většina vody může být odpařena v jiné oblasti než je datové centrum postaveno, nicméně zbylých 40 \% je nenávratně odebráno z jeho okolí.
+
+Reálné dopady v konkrétních amerických městech jsou ilustrativním případem vodní spotřeby datových center. Například ve městě The Dalles (Oregon) tvořil v roce 2024 odběr vody pro datová centra společnosti Google 461,1 milionu galonů ročně (cca 1,74 miliardy litrů), což představovalo 30 \% denního odběru celého města. Od roku 2012 zde spotřeba datových center vzrostla o 342 \%. V Newton County (Georgia) využívají datová centra firmy Meta v současnosti kolem 71,5 milionu galonů ročně (asi 268 milionů litrů), ale do roku 2030 se očekává nárůst tohoto odběru na až na 365 milionů galonů ročně. Pokud nedojde ke zvýšení kapacity infrastruktury, obě města budou do roku 2035 čelit deficitu vodních zásob. \cite[s. 4--5]{shah_four_2026}
+
+\subsection{Srovnání charakteru spotřeby vody a elektřiny}
+\label{sec:voda_elektrina_srovnani}
+
+Přestože jsou problémy s odběrem elektřiny a vody docela podobné, je důležité ilustrovat několik rozdílů. Elektřinu je možné (leč za cenu ztrát a nákladů na vedení) přenášet na dlouhé vzdálenosti, takže náklady se rozprostřou do širšího regionu. Voda je naopak lokalizovaný zdroj a její nedostatek v jednom regionu se obtížně kompenzuje. Příkladem může být období sucha v roce 2021, kdy byl Taipeiským výrobcům čipů omezen přístup k vodě \cite[s. 243]{iea_energy_2025}. Ve Spojených státech ale existují obavy, že kvůli smluvním závazkům by v případech nedostatku vody šla spotřeba na úkor obyvatel, nikoli datových center \cite{shah_four_2026}.
+
+Dalším aspektem je možnost reagovat na krizi v infrastruktuře. Pokud hrozí blackout z nedostatku elektřiny, lze u datových center v kritickou chvíli dočasně odložit výpočetní zátěž do jiné oblasti nebo omezit výkon, aby se síti odlehčilo \cite[s. 586]{geng_data_2014}. U vody toto neplatí. Pokud nastane vlna veder, odpařovací systémy datacenter spotřebovávají vody ještě mnohem více, aby servery ochladily \cite[s. 3]{li_making_2025}. A protože spotřebu vody v chladicí věži nelze jen tak snížit (jako spotřebu elektřiny), datová centra by z lokálního systému vodu neustále odčerpávala a plošné omezování by nesli místní obyvatelé \cite{shah_four_2026}.
+
+\section{Dopady na ekonomiku}
 % Investice na 1 MW výkonu
 % Kolik daní se vybere na 1 MW výkonu
 % Pocet trvalych pracovnich mist na 1 MW výkonu
+
+\subsection{Provozní a kapitálové výdaje DC}
+
+Výstavba moderního hyperscale datového centra vyžaduje obrovské počáteční investice (CAPEX), které se v oboru standardně přepočítávají na megawatty (MW) kapacity. Průměrné náklady na vybudování 1 MW výkonu se pohybují kolem 10 až 11 milionů dolarů \cites[s. 7]{to_albertas_2025}[s. 25]{gargano_subsidizing_2025}. Pokud vezmeme jako modelový příklad typické 100MW datové centrum, jeho výstavba (trvající průměrně 18 až 24 měsíců) vyžaduje kapitálovou investici ve výši přibližně 1 miliardy dolarů. Tyto náklady lze rozdělit do tří hlavních kategorií \cite[s. 9]{pham_data_2017}:
+
+\begin{itemize}
+    \item \textbf{Pozemky (cca 6,2 \%):} Jde zpravidla o nejmenší položku (cca 13,4 milionu USD u středně velkého projektu), ale ceny pozemků se mohou lišit podle lokality.
+    
+    \item \textbf{Hrubá stavba a budova (cca 20,9 \%):} Výstavba samotné budovy, příjezdových cest a inženýrských sítí spotřebuje přibližně pětinu rozpočtu.
+    
+    \item \textbf{Vybavení (cca 72,9 \%):} Nejdražší složkou jsou servery, chladicí věže, generátory, UPS systémy a optické sítě.
+\end{itemize}
+
+Je však nutné poznamenat, že část dat použitých pro určení výše uvedených podílů pro kapitálové výdaje pochází z roku 2016, a proto nemusí být přesné pro moderní AI centra. To naznačuje také Ginzburg \cite[s. 18]{ginzburg-ganz_technical_2025}, podle něhož se náklady na hardware použitý k trénování modelu GPT-4 odhadují na 800 milionů USD. To znamená, že v moderním DC by IT vybavení tvořilo větší část nákladů než uvedených 72,9 \%.
+
+Jakmile je datové centrum spuštěno, jeho provozní rozpočet (OPEX) typicky představuje zhruba 8,6 \% původních kapitálových výdajů \cite[s. 9]{pham_data_2017}. U modelového 100MW centra by se tedy roční provozní náklady odhadovaly  na 86 milionů dolarů. Podobnou částku ve své práci uvádí také Serena Thi To \cite[s. 9]{to_albertas_2025}. Rozdělení nákladů je následující \cite[s. 9]{pham_data_2017}:
+
+\begin{itemize}
+    \item \textbf{Elektřina (40 \% -- 80 \%):} Jednoznačně největší položkou je spotřeba energie. Při průměrném konzervativním využití kapacity (60 \%) zaplatí 100MW centrum jen za elektřinu přes 50 milionů dolarů ročně.
+
+    \item \textbf{Personál (cca 15 \%):} Zajištění ostrahy, údržby a IT podpory v absolutních číslech tvoří jen menší část rozpočtu.
+    
+    \item \textbf{Údržba, daně a pojištění (zbylých 5 až 40 \%):} Údržba chlazení, softwarové licence, lokální daně z nemovitosti a hardwaru.
+\end{itemize}
+
+Přestože Pham \cite{pham_data_2017} používá vzorek dat obsahující především klasická datová centra, podobný podíl nákladů na elektřinu ve své práci uvádí také Patel \cite[s. 955]{pratikkumar_dilipkumar_patel_artificial_2025}, který popisuje právě moderní AI datová centra.
+
+\subsection{Daně a daňové pobídky}
+
+
+
+\subsection{Tvorba pracovních míst}
 
 \section{Dopady na infrastrukturu}
 % Jak velké je potřeba místo
@@ -36,7 +110,10 @@ Příkladem je Severní Virginie a její Data Center Alley, která má díky úl
 
 \section{Sociální dopady}
 % Not in my backyard
-% Hluk, teplota
+% Hluk, teplota 
 
+\section{Real estate market}
 
+\section{Shrnutí dat důležitých pro model}
+% Uvést velkou tabulku dat, které budou použity v modelu, a jejich zdrojů
 
