@@ -1,4 +1,3 @@
-% !TeX root = ../../ctufit-thesis.tex
 %---------------------------------------------------------------
 % CHAPTER 1: History of data centers
 \chapter{Historie datových center a nároky moderní infrastruktury}
@@ -231,7 +230,7 @@ Ze získané literatury plyne, že za posledních 10 let došlo u IT komponent k
 
     \caption[Přehled vývoje TDP]{Přehled vývoje TDP grafických procesorů NVIDIA. Tabulka převzata od Schneider Electric~\cite{avelar_ai_2023} a doplněna o nové údaje z dokumentace NVIDIA~\cite{noauthor_nvidia_2025, noauthor_nvidia_2025-1}. Srovnání: CPU servery měly v roce 2010 TDP kolem 120~W, dnes mají asi 400~W~\cite{bizo_silicon_2022}.}
     \label{tab:gpu_tdp}
-    
+
 \end{table}
 
 Mnohem větší problém než růst TDP však představuje fyzická blízkost čipů, která je vynucena požadavky na rychlou synchronizaci při trénování modelů. Na větší vzdálenosti se totiž musí použít velmi drahá~\cite[s.~4]{avelar_ai_2023} a energeticky náročná~\cite[s.~36]{cruzes_data_2025} optická vlákna, která synchronizaci i tak zpomalují. Návrháři komponent se proto snaží umístit co nejvíce čipů do jednoho serveru, což vede k prostorové koncentraci tepla. Nejnovější AI racky dosahují hustoty výkonu přes 100~kW (běžně 30 až 80~kW), která z fyzikálních důvodů přesahuje možnosti vzduchového chlazení a vynucuje si přechod na chlazení kapalinové.~\cite[s.~23]{cruzes_data_2025}
