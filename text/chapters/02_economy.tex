@@ -75,7 +75,7 @@ Rozvoj infrastruktury pro AI DC s sebou nese specifickou ekonomickou dynamiku, k
 \subsection{Provozní a kapitálové výdaje DC}
 \label{subsec:vydaje}
 
-Výstavba moderního datového centra vyžaduje vysoké počáteční investice (CAPEX), které se standardně přepočítávají na kapacitu (v MW). Průměrné náklady na vybudování 1~MW výkonu se pohybují kolem 10 až 11 milionů dolarů~\cites[s. 7]{to_albertas_2025}[s. 25]{gargano_subsidizing_2025}. Pokud vezmeme jako modelový příklad 100MW datové centrum, jeho výstavba (trvající typicky 18 až 24 měsíců) vyžaduje kapitálovou investici ve výši přibližně 1 miliardy dolarů. Tyto náklady lze rozdělit do tří hlavních kategorií~\cite[s.~9]{pham_data_2017}:
+Výstavba moderního datového centra vyžaduje vysoké počáteční investice (CAPEX), které se standardně přepočítávají na kapacitu (v MW). Průměrné náklady na vybudování 1~MW výkonu se pohybují kolem 10 až 11 milionů dolarů~\cites[s. 7]{to_albertas_2025}[s. 25]{gargano_subsidizing_2025} (bez IT vybavení). Pokud vezmeme jako modelový příklad 100MW datové centrum, jeho výstavba (trvající typicky 18 až 24 měsíců) vyžaduje kapitálovou investici ve výši přibližně 1 miliardy dolarů. Tyto náklady lze rozdělit do tří hlavních kategorií~\cite[s.~9]{pham_data_2017}:
 
 \begin{itemize}
     \item \textbf{Pozemky (cca 6,2~\%):} Jde zpravidla o nejmenší položku (cca 13,4 milionu USD), ale ceny pozemků se mohou lišit podle lokality.
@@ -151,6 +151,7 @@ Některé údaje jsou pro modelování dopadů v ČR přesto relevantní, neboť
         \midrule
         \addlinespace
 
+        % TODO: Cena nezahrnuje IT vybavení! Nutno přidat další složku CAPEXu
         Kapitálové výdaje (CAPEX) & 1,0 až 1,1 mld. USD &~\cite{to_albertas_2025,gargano_subsidizing_2025} \\
         \quad CAPEX: pozemky (6,2~\%) & 62 až 68,2 mil. USD &~\cite{pham_data_2017} \\
         \quad CAPEX: hrubá stavba a budova (20,9~\%) & 209 až 229,9 mil. USD &~\cite{pham_data_2017} \\
@@ -182,7 +183,7 @@ Některé údaje jsou pro modelování dopadů v ČR přesto relevantní, neboť
         \midrule
         \addlinespace
 
-        Typická výměra pozemku & 4,6 ha &~\cite{to_albertas_2025} \\
+        Typická výměra pozemku & 4,6 až 9,2 ha &~\cite{to_albertas_2025, roychoudhury_economic_2025} \\
         Spotřeba vody za den & 2 mil. l &~\cite{iea_energy_2025} \\
         Náklady na vybudování kapacity sítě & 66 mil. USD &~\cite{diao_economic_2025,davenport_ai_2024} \\
         % Výpočet z davenporta: 5 miliard investic na rozšíření kapacity o 7,5~GW, což dává 66 mil. USD na 100~MW.
