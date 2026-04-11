@@ -28,3 +28,4 @@ text/chapters/*.aux
 *.blg-SAVE-ERROR
 
 .vscode
+.DS_Store
