@@ -1,5 +1,105 @@
 % Podivat se, jak jsou na tom jine zeme, ktere uz zacaly DC stavet poradne, napr
-https://theconversation.com/the-economic-pros-and-cons-of-building-more-and-more-data-centres-in-the-uk-263302
+% https://theconversation.com/the-economic-pros-and-cons-of-building-more-and-more-data-centres-in-the-uk-263302
 
-\chapter{CZ}
+\chapter{Výstavba AI datových center v ČR: Limity a příležitosti}
 \label{chap:cz}
+
+Třetí kapitola této práce se věnuje specifickým podmínkám pro výstavbu a provoz AI datových center v České republice. Důraz je v ní kladen na identifikaci hlavních limitů a příležitostí, které ovlivňují realizaci takových projektů v českém kontextu. Vychází se přitom z údajů, které byly v kapitole \ref{chap:dopady_usa} idenfitikovány jako klíčové pro úspěšnou výstavbu (např. dostupnost elektřiny a vodních zdrojů), ale také jako potenciální limitující faktory (nedostatek kapacit přenosové sítě, investiční pobídky, \dots).
+
+\section{Trh datových center v ČR}
+\label{sec:cz_trh}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SEKCE 1: STAV TRHU
+% - Analýza stávajících hráčů (CETIN, Seznam, O2, Casablanca, ...)
+% - Geografické soustředění a rozdíl oproti 100MW benchmarku
+% - Aktuální projekty ve výstavbě a výhled do budoucna
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Obecná charakteristika českého trhu s DC}
+\label{subsec:cz_trh_prehled}
+
+V České republice jsou momentálně provozovány desítky datových center. Nejnovější oficiálně publikované údaje dostupné na portálu Statista (z ledna 2026) \cite{} ukazují, že v roce 2025 bylo na území České republiky v provozu přibližně 43 DC. Tato data pocházejí od srovnávací služby Data Center Map, která na svých stránkách nabízí aktualizované informace – k březnu 2026 eviduje na území ČR 55 datových center \cite{}. Je však nutno dodat, že tato čísla zahrnují i zařízení, která jsou momentálně ve výstavbě nebo plánována. Konkrétním příkladem je nedávno oznámený projket Prague Gateway DC, který se má spustit v roce 2027, ale na Data Center Map je evidován k předrezervaci kapacit. To stejné platí pro plánované AI datové centrum v Kanicích, které se bude nacházet poblíž Brna.
+
+Existují také konkrétní studie, které se zaměřují na datová centra v České republice z celostátního pohledu a poskytují detailnější pohled na jejich kapacity. Podle Mordor Intelligence \cite{} byla instalovaná kapacita českých datových center 152 MW, přičemž největší koncentrace těchto inrastukturních budov byla v Praze. Mordor Intelligence uvádí, že v Praze a Středočeském kraji se nachází přibližně 75 \% datových center. Podle dat z Data Center Map tento podíl vychází na asi 50 \%. Celkově lze tedy konstatovat, že většina datových center v ČR se nachází v okolí Prahy.
+
+Podle stejné studie Mordor Intelligence 44 \% kapacit datových center v České republice je tvořeno relativně velkými kampusy s instalovanou kapacitou 5--15 MW \cite{}. Podobnou statistiku ukazují i data z Data Center Map, která ji doplňují o informaci, že zbylá část datových center má kapacitu menší než 5 MW. K březnu 2026 nejsou k dispozici informace o tom, že by v České republice přesahovalo některé z aktivních datových center hranici instalovaného příkonu 20 MW.
+
+Mordor Intelligence pak uvádí, že přibližně 48 \% kapacit je nabízeno kokolačními datovými centry, zatímco zbylých 52 \% je tvořeno datovými centry vlastněnými a provozovanými samotnými organizacemi (tzv. enterprise DC). Malou část by mohla tvořit také datová centra prodávající čistý GPU výkon, což zajišťují např. společnosti WRDatacentrum a ZonerCloud. V celkovém měřítku se ale jedná o skutečně marginální podíl – společnost WRDatacentrum vlastní jedno DC v Hodoníně a neuvádí jeho kapacitu, kvůli čemuž větší požadavky na výpočetní výkon nejspíš outsourcuje do zahraničí. ZonerCLoud pak garantuje výpočetní výkon v České republice, ale na svých stránkách uvádí instalovaný příkon provozovaných datových center asi 0,1 MW. \cite{zoner, wrdatacentrum}
+
+\subsection{Aktuální výstavba a budoucí projekty}
+\label{subsec:cz_trh_budoucnost}
+
+K březnu 2026 jsou v České republice ve výstavbě dva velké projekty, které mají kapacitu datových center výrazně navýšit. Mezi nejvýznamnější patří již zmíněný projekt Prague Gateway DC, který by měl mít instalovaný příkon 26 MW a měl by být dokončen na konci roku 2027. V této fázi by měl být schopen hostit přes 2 000 racků na celkové white-space ploše 4~000 m$^2$. Projekt je realizován společností České Radiokomunikace, která se zaměřuje na poskytování telekomunikačních služeb. Tento projekt má zároveň ambice stát se součástí evropského projektu AI Gigafactory, který by měl být realizován v několika zemích EU a jehož cílem je vytvořit infrastrukturu pro vývoj a provoz AI systémů. \cite{govRadio}
+
+Aby se však mohlo Prague Gateway DC do projektu AI Gigafactory zapojit, musí splňovat požadavky na minimální příkon. Náměstek ministra průmyslu a obchodu Jan Kavalírek uvádí, že v další fázi výstavby by se měl příkon DC navýšit na 77 MW. Ve stejném rozhovoru pro Seznam Zprávy doda, že celková investce by se měla pohybovat kolem 90 miliard korun (včetně výpočetního vybavení), z čehož dvě třetiny by měly být financovány z evropských fondů a českého státního rozpočtu. Výpočetní výkon pak budou využívat jak soukromí investoři, tak evropské a české insituce. \cite{seznamRadio, prochazka_2026}
+
+Dalším významným projektem je plánované AI datové centrum v Kanicích, které má být provozováno společnosti MasterDC. Na pozemku o celkové velikosti 26 000 m$^2$ bude postaveno několik hal. V první fázi má být postavena hala s instalovaným příkonem 4 MW a white-space plochou 1~000 m$^2$ uchovávající až 100 racků. V dalších fázích by se měl příkon navýšit na 25 MW a celkové očekávané PUE bude 1,2. Tento projekt by měl být dokončen na podzim roku 2026, kdy plánuje zahájit svůj provoz. \cite{masterdc}
+
+Přestože se tyto projekty mohou zdát jako relativně nevýznamené oproti 100megawattovým až gigawattovým AI továrnám plánovaným na území Spojených států amerických, je potřeba myslet na to, že český trh je pořád v rané fázi vývoje. Relevantní srovnání by tedy mělo být spíše s Irskem, jehož podíl ndatových center na celkové spotřebě roste exponenciálně. Podle dat Centrálního statistického úřadu Irska \cite{statista} byl v roce 2015 tento podíl 5 \%, zatímco v roce 2023 tvořil již 23 \%. Tento růst představuje CAGR asi 21 \%. Jak uvádí Mordor Intelligence \cite{mordor}, v České republice mají datová centra instalovanou kapacitu asu 150 MW, což při předpokládaném 50\% využití představuje asi 1 \% z celkové spotřeby elektřiny v zemi. Uvážíme-li podobné CAGR, do 10 let by tento podíl mohl dosáhnout 7 \%. Jedná se však o optimistický scénář, který předpokládá překonání všech limitů uvedených v této kapitole a vytvoření vhodných podmínek pro rozvoj hyperscale DC.
+
+\section{Energetika: Hlavní limity}
+\label{sec:cz_energie}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SEKCE 2: ENERGETIKA
+% - Kapacita a stabilita sítě (ČEPS)
+% - Energetický mix a role jaderných zdrojů
+% - Dopady na ceny a socializace nákladů
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Role ČEPS: Kapacita a stabilita sítě}
+\label{subsec:cz_energie_ceps}
+% Analýza volné kapacity v klíčových uzlech a časová náročnost posílení soustavy.
+
+\subsection{Energetický mix v ČR}
+\label{subsec:cz_energie_mix}
+% Význam stabilního jaderného zdroje a plány na SMR v kontextu napájení DC.
+
+\section{Vodní zdroje v ČR}
+\label{sec:cz_voda}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SEKCE 3: VODNÍ ZDROJE
+% - Dostupnost vody pro chlazení a vodní zákon
+% - Možnosti synergie s teplárenstvím (využití odpadního tepla)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Dostupnost vody pro chlazení}
+\label{subsec:cz_voda_dostupnost}
+% Data o srážkách a průtocích v lokalitách vhodných pro DC (např. u velkých toků).
+
+\subsection{Legislativa a vodní zákon}
+\label{subsec:cz_voda_legislativa}
+% Analýza přísnosti českých norem pro vypouštění oteplené vody zpět do přírody.
+
+\section{Legislativní a ekonomické prostředí}
+\label{sec:cz_legislativa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SEKCE 4: LEGISLATIVA A EKONOMIKA
+% - Povolovací procesy a stavební zákon
+% - Pobídky a role CzechInvestu
+% - Daňový rámec (DPFO, DPPO, DPH, nemovitost, ekologické daně)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Povolovací procesy v ČR}
+\label{subsec:cz_legislativa_povoleni}
+% Srovnání s USA (1-2 roky) vs. česká realita a nový stavební zákon.
+
+\subsection{Pobídky, dotace a role CzechInvestu}
+\label{subsec:cz_legislativa_pobidky}
+% Analýza stávajících pobídek a jejich (ne)vhodnosti pro kapitálově náročná DC.
+
+\subsection{Daně a ekonomické dopady}
+\label{subsec:cz_dane}
+% Rozbor fiskálních toků: DPH, DPPO, odvody a specifické energetické daně.
+
+\section{Syntéza: Připravenost ČR na výstavbu DC}
+\label{sec:cz_syntéza}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SEKCE 5: SYNTÉZA PRO MODEL
+% - Přehled nasbíraných dat jako vstupů do matematického modelu
+% - Limity přenositelnosti dat z USA na české prostředí
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
