@@ -29,3 +29,4 @@ text/chapters/*.aux
 
 .vscode
 .DS_Store
+*venv
