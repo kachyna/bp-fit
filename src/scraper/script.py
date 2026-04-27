@@ -1,18 +1,60 @@
+import argparse
 from core.scrape import scrape
 from core.enrich_building_size import enrich_building_size as enrich
+from core.transform import transform_data
 
-TEST_MODE = True
-OUTPUT_FILE = "cz-datacenters.csv" if not TEST_MODE else "test-cz-datacenters.csv"
+DEFAULT_PATH    = "cz-datacenters.csv"
+TEST_PATH       = "test-cz-datacenters.csv"
 
-def run_pipeline(file_path):
+def run_pipeline(file_path, run_scrape=False, run_enrich=False, run_transform=False, test_mode=False, limit=None):
+    if run_scrape:
+        print(f"\n--- Starting scraping phase ({file_path}) ---")
+        scrape_limit = limit if limit else (5 if test_mode else None)
+        scrape(file_path, limit=scrape_limit)
+    
+    if run_enrich:
+        print(f"\n--- Starting enrichment phase ({file_path}) ---")
+        enrich(file_path)
+    
+    if run_transform:
+        print(f"\n--- Starting transformation phase ({file_path}) ---")
+        transform_data(file_path)
 
-    print("\nStarting scraping phase...")
-    # scrape(file_path, limit=5 if TEST_MODE else None)
-    print("\nScraping completed. Starting enrichment phase...")
-    enrich(file_path)
-    print("\nEnrichment completed. Starting transformation phase...")
+def main():
+    parser = argparse.ArgumentParser(description="Data Center Map Scraper & Transformer")
+    
+    # Flags for phases
+    parser.add_argument("--scrape", action="store_true", help="Run the scraping phase")
+    parser.add_argument("--enrich", action="store_true", help="Run the katastr enrichment phase. After this phase, the file can be manually enriched (by editing the CSV file) before the transformation phase.")
+    parser.add_argument("--transform", action="store_true", help="Run the data transformation phase")
+    parser.add_argument("--all", action="store_true", help="Run all phases in sequence")
+    
+    # Configuration
+    parser.add_argument("--test", action="store_true", help="Use test mode (limited records and test output file)")
+    parser.add_argument("--path", type=str, help="Custom path for the CSV file")
+    parser.add_argument("--limit", type=int, help="Limit the number of records to scrape. This only affect the scraping phase, and is useful for testing.")
+
+    args = parser.parse_args()
+
+    # Determine file path
+    default_file = TEST_PATH if args.test else DEFAULT_PATH
+    file_path = args.path if args.path else default_file
+
+    # Logic for running phases
+    if not (args.scrape or args.enrich or args.transform or args.all):
+        parser.print_help()
+        return
+
+    run_pipeline(
+        file_path, 
+        run_scrape=(args.scrape or args.all),
+        run_enrich=(args.enrich or args.all),
+        run_transform=(args.transform or args.all),
+        test_mode=args.test,
+        limit=args.limit
+    )
+    
+    print(f"\nPipeline finished. Working file: {file_path}")
 
 if __name__ == "__main__":
-    print("Starting the data pipeline...")
-    run_pipeline(OUTPUT_FILE)
-    print("\nPipeline completed successfully. Output saved to current directory as", OUTPUT_FILE)
+    main()
