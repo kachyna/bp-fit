@@ -2,11 +2,12 @@ import argparse
 from core.scrape import scrape
 from core.enrich_building_size import enrich_building_size as enrich
 from core.transform import transform_data
+from core.analyze_data import analyze
 
 DEFAULT_PATH    = "cz-datacenters.csv"
 TEST_PATH       = "test-cz-datacenters.csv"
 
-def run_pipeline(file_path, run_scrape=False, run_enrich=False, run_transform=False, test_mode=False, limit=None):
+def run_pipeline(file_path, run_scrape=False, run_enrich=False, run_transform=False, run_analyze=False, test_mode=False, limit=None):
     if run_scrape:
         print(f"\n--- Starting scraping phase ({file_path}) ---")
         scrape_limit = limit if limit else (5 if test_mode else None)
@@ -20,6 +21,11 @@ def run_pipeline(file_path, run_scrape=False, run_enrich=False, run_transform=Fa
         print(f"\n--- Starting transformation phase ({file_path}) ---")
         transform_data(file_path)
 
+    if run_analyze:
+        print(f"\n--- Starting analysis phase ({file_path}) ---")
+        analyze(file_path, file_path.replace(".csv", "-analyzed.csv"))
+    
+
 def main():
     parser = argparse.ArgumentParser(description="Data Center Map Scraper & Transformer")
     
@@ -27,6 +33,7 @@ def main():
     parser.add_argument("--scrape", action="store_true", help="Run the scraping phase")
     parser.add_argument("--enrich", action="store_true", help="Run the katastr enrichment phase. After this phase, the file can be manually enriched (by editing the CSV file) before the transformation phase.")
     parser.add_argument("--transform", action="store_true", help="Run the data transformation phase")
+    parser.add_argument("--analyze", action="store_true", help="Run the data analysis phase")
     parser.add_argument("--all", action="store_true", help="Run all phases in sequence")
     
     # Configuration
@@ -41,7 +48,7 @@ def main():
     file_path = args.path if args.path else default_file
 
     # Logic for running phases
-    if not (args.scrape or args.enrich or args.transform or args.all):
+    if not (args.scrape or args.enrich or args.transform or args.analyze or args.all):
         parser.print_help()
         return
 
@@ -50,6 +57,7 @@ def main():
         run_scrape=(args.scrape or args.all),
         run_enrich=(args.enrich or args.all),
         run_transform=(args.transform or args.all),
+        run_analyze=(args.analyze or args.all),
         test_mode=args.test,
         limit=args.limit
     )
