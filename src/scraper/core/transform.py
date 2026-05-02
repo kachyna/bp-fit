@@ -59,6 +59,8 @@ def transform_data(output_file):
         mw_val = parse_value(row.get("Spec: Fully Built-Out Power"))
         white_val = parse_value(row.get("Spec: Fully Built-Out Whitespace"))
         build_val = parse_value(row.get("Spec: Total Building Size"))
+        max_rack_kw_val = parse_value(row.get("Spec: Max power/rack"))
+        max_racks_val = parse_value(row.get("max_racks"))
         
         # Plot size from Katastr or Spec
         plot_val = parse_value(row.get("land_size_katastr")) or parse_value(row.get("Spec: Total Plot Size"))
@@ -75,7 +77,11 @@ def transform_data(output_file):
             row["Spec: Fully Built-Out Whitespace"] = f"{white_val:.2f} sq.m. (est)"
 
         # - if mw missing: mw = white * mw_white_ratio
-        if not mw_val and white_val:
+        if not mw_val and max_rack_kw_val and max_racks_val:
+            mw_val = (max_rack_kw_val * max_racks_val)
+            row["Spec: Fully Built-Out Power"] = f"{mw_val:.3f} MW (est)"
+
+        elif not mw_val and white_val:
             mw_val = white_val * avg_mw_white
             row["Spec: Fully Built-Out Power"] = f"{mw_val:.3f} MW (est)"
 
