@@ -137,6 +137,7 @@ Souhrnný přehled daňových sazeb a relevantní legislativy pro modelování d
         DPH (standardní) & 21~\% & Cena plnění & 235/2004 Sb. \\
         DPPO & 21~\% & Zisk PO & 586/1992 Sb. \\
         DPFO (základní) & 15~\% & Hrubá mzda & 586/1992 Sb. \\
+        Sleva na popl. & 30 840 Kč/rok & -- & 586/1992 Sb. \\
         DPFO (zvýšená) & 23~\% & Mzda nad limit & 586/1992 Sb. \\
         
         \addlinespace
@@ -209,49 +210,51 @@ Parametry důležité pro model jsou shrnuty v tabulce~\ref{tab:parametry_modelu
         \addlinespace
         \textbf{Parametr} & \textbf{Hodnota} & \textbf{Zdroj} \\
 
-        Výroba elektřiny    &   &    \\
-        Spotřeba elektřiny    &   &    \\
-        Max. transformační výkon    &   &    \\
-        \quad Nízké zatížení sítě    &   &    \\
-        \quad Běžné zatížení sítě    &   &    \\
-        \quad Vysoké zatížení sítě    &   &    \\
+        Výroba elektřiny (2024, brutto)    & 73,9~TWh &~\cite{energeticky_regulacni_urad_rocni_2025} \\
+        Spotřeba elektřiny (2024)    & 67,2~TWh &~\cite{energeticky_regulacni_urad_rocni_2025} \\
+        Max. transformační výkon přenosové soustavy    & 24~500~MVA &~\cite[s.~127]{bartos_energetika_2025} \\
+        \quad Minimální zatížení sítě    & 6~000~MW & \\ \cite{energeticky_regulacni_urad_rocni_2025}
+        \quad Běžné zatížení sítě    & 8~000~MW & \\ (střed minima a maxima)
+        \quad Maximální zatížení sítě    & 12~250~MW &~\cite{bartos_energetika_2025} \\
         
         \addlinespace
         \midrule
         \addlinespace
 
-        Roční úhrn srážek v ČR    &   &    \\
-        Emisní faktor z výroby elektřiny    &   &    \\
+        Spotřeba vody jednoho obyvatele    & 88 m$^3$ & \cite{horackova}  \\
+        Emisní faktor z výroby elektřiny (brutto)    & 0,33~t CO$_2$/MWh &~\cite{energeticky_regulacni_urad_rocni_2025} \\
 
         \addlinespace
         \midrule
         \addlinespace
 
-        Průměrná mzda v ČR    &   &    \\
-        Koeficient pro IT specialisty    &   &    \\
+        Průměrná mzda v ČR    & 52~283~Kč & \cite{csu} \\
+        Koeficient pro IT specialisty    & 2,5 & odhad \\
+        Koeficient pro ostrahu    & 0,8 & odhad \\
 
         \addlinespace
         \midrule
         \addlinespace
 
-        Daňové zatížení práce    &   &    \\
-        \quad Stand. sazba DFPO     &   &    \\
-        \quad Odvody (zaměstnanec)    &   &    \\
-        \quad Odvody (zaměstnavatel)    &   &    \\
+        Daňové zatížení práce    & 15 \% + 45,4 \% & tab.~\ref{tab:cz_dane_sazby} \\
+        \quad Stand. sazba DPFO     & 15~\% & tab.~\ref{tab:cz_dane_sazby} \\
+        \quad Sleva na poplatníka    & 30~840 Kč/rok & tab.~\ref{tab:cz_dane_sazby} \\
+        \quad Odvody (zaměstnanec)    & 7,1~\% (soc.) + 4,5~\% (zdrav.) & tab.~\ref{tab:cz_dane_sazby} \\
+        \quad Odvody (zaměstnavatel)    & 24,8~\% (soc.) + 9,0~\% (zdrav.) & tab.~\ref{tab:cz_dane_sazby} \\
 
         \addlinespace
         \midrule
         \addlinespace
         
-        Sazba ekologické daně    &   &    \\
-        Sazba daně z pozemku (kat. Y)    &   &    \\
-        Sazba daně z budovy (kat. Y)    &   &    \\
+        Sazba ekologické daně    & 28,30~Kč/MWh & tab.~\ref{tab:cz_dane_sazby} \\
+        Sazba daně z pozemku    & 9,00 Kč/m$^2$ & 338/1992 Sb., §6 2b \\
+        Sazba daně z budovy    & 18,00 Kč/m$^2$ & 338/1992 Sb., §11 1h \\
 
         \addlinespace
         \bottomrule
     \end{tabular}
     
-    \caption{Shrnutí kvantifikovatelných specifick ČR}
+    \caption{Shrnutí kvantifikovatelných specifik ČR}
     \label{tab:parametry_modelu_cz}
 
 \end{table} \end{landscape}
