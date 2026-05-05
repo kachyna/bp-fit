@@ -27,4 +27,4 @@ _minted/
 .DS_Store
 *venv
 
-text
+/out
