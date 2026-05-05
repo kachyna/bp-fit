@@ -4,7 +4,7 @@
 \chapter{Výstavba AI datových center v ČR: Limity a příležitosti}
 \label{chap:cz}
 
-Třetí kapitola této práce se věnuje specifickým podmínkám pro výstavbu a provoz AI datových center v České republice. Důraz je v ní kladen na identifikaci hlavních limitů a příležitostí, které ovlivňují realizaci takových projektů v českém kontextu. Vychází se přitom z údajů, které byly v kapitole \ref{chap:dopady_usa} idenfitikovány jako klíčové pro úspěšnou výstavbu (např. dostupnost elektřiny a vodních zdrojů), ale také jako potenciální limitující faktory (nedostatek kapacit přenosové sítě, investiční pobídky, \dots).
+Třetí kapitola se věnuje specifickým podmínkám pro výstavbu a provoz AI datových center v ČR. Důraz klade na identifikaci limitů a příležitostí, které by realizaci takových DC v českém kontextu ovlivnily. Posuzovaná kritéria vycházejí z oblastí identifikovaných v kapitole~\ref{chap:dopady_usa} jako klíčové pro úspěšnou výstavbu a provoz DC (dostupnost elektřiny, vody, kapacity sítě, \dots{}).
 
 \section{Trh datových center v ČR}
 \label{sec:cz_trh}
@@ -16,29 +16,27 @@ Třetí kapitola této práce se věnuje specifickým podmínkám pro výstavbu 
 % - Aktuální projekty ve výstavbě a výhled do budoucna
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-V České republice je momentálně provozu okolo 55 datových center, které mají kombinovaný příkon asi 150 MW. Téměř polovina z nich funguje na principu kolokace (datová centra poskytují racky a chlazení, výpočetní vybavení si pořizují sami klienti). Zbytek tvoří enterprise DC (firma si spravuje datové centrum i výpočetní techniku pro vlastní potřeby) a pouze malou část také cloud computing DC (provozovatel DC vlastní prostor i techniku, kterou pronajímá ostatním firmám). Momentálně jsou ve výstavbě dvě AI datová centra, která budou mít v počáteční fázi dohromady příkon 30 MW, ale jsou připravena rozšířit svou kapacitu až na 100 MW. Česká republika se tak dostává do rané fáze rozvoje trhu s výkonnými datovými centry připravenými na trénování a provoz modelů umělé inteligence.
+Podle dostupných analýz je na území ČR v provozu 55 datových center s kombinovaným příkonem cca 150~MW. Téměř polovina z nich jsou kolokační, zbytek tvoří enterprise DC a malou část cloud computing DC. Momentálně jsou ve výstavbě dvě AI datová centra, která mají během následujících let přidat dalších 100~MW. ČR se tak dostává do rané fáze rozvoje trhu s výkonnými datovými centry připravenými na trénování a provoz modelů umělé inteligence.
 
 \subsection{Obecná charakteristika českého trhu s DC}
 \label{subsec:cz_trh_prehled}
 
-V České republice jsou momentálně provozovány desítky datových center. Nejnovější oficiálně publikované údaje dostupné na portálu Statista (z ledna 2026) \cite{data_center_map_number_2025} ukazují, že v roce 2025 bylo na území České republiky v provozu přibližně 43 DC. Tato data pocházejí od srovnávací služby Data Center Map, která na svých stránkách nabízí aktualizované informace – k březnu 2026 eviduje na území ČR 55 datových center \cite{data_center_map_czech_2026}. Je však nutno dodat, že tato čísla zahrnují i zařízení, která jsou momentálně ve výstavbě nebo plánována. Konkrétním příkladem je nedávno oznámený projekt Prague Gateway DC, který se má spustit v roce 2027, ale na Data Center Map je evidován k předrezervaci kapacit. To stejné platí pro plánované AI datové centrum v Kanicích, které se bude nacházet poblíž Brna.
+V ČR jsou dnes provozovány desítky datových center. Údaje dostupné ze Statista (leden 2026)~\cite{data_center_map_number_2025} ukazují, že v roce 2025 bylo na území ČR v provozu přibližně 43 DC. Tato data pocházejí od srovnávací služby Data Center Map, která na svých stránkách nabízí aktualizované informace -- k březnu 2026 eviduje na území ČR 55 datových center~\cite{data_center_map_czech_2026}. Tato čísla však zahrnují i zařízení, která jsou momentálně ve výstavbě (Prague Gateway DC a DC v Kanicích u Brna).
 
-Existují také konkrétní studie, které se zaměřují na datová centra v České republice z celostátního pohledu a poskytují detailnější pohled na jejich kapacity. Podle Mordor Intelligence \cite{mordor_intelligence_czechia_2025} byla instalovaná kapacita českých datových center 152 MW, přičemž největší koncentrace těchto infrastrukturních budov byla v Praze. Mordor Intelligence uvádí, že v Praze a Středočeském kraji se nachází přibližně 75 \% instalovaného výkonu datových center. Co se týče konkrétního počtu datových center, podle údajů z Data Center Map je jich v Praze asi poloviny. Z toho lze konstatovat, že datová centra v okolí Prahy jsou řádově výkonnější než v ostatních regionech.
+Existují také konkrétní studie, které na DC v ČR dodávají detailnější pohled. Podle Mordor Intelligence~\cite{mordor_intelligence_czechia_2025} byla instalovaná kapacita českých datových center 152~MW. Studie dále uvádí, že v Praze a Středočeském kraji se nachází přibližně 75~\% instalovaného výkonu, nicméně podle údajů z Data Center Map je ve stejných regionech pouze polovina konkrétních subjektů. Z toho lze konstatovat, že datová centra v okolí Prahy jsou řádově výkonnější než v ostatních regionech.
 
-Podle stejné studie Mordor Intelligence 44 \% kapacit datových center v České republice je tvořeno relativně velkými kampusy s instalovanou kapacitou 5--15 MW \cite{mordor_intelligence_czechia_2025}. Podobnou statistiku ukazují i data z Data Center Map, která ji doplňují o informaci, že zbylá část datových center má kapacitu menší než 5 MW. K březnu 2026 nejsou k dispozici informace o tom, že by v České republice přesahovalo některé z aktivních datových center hranici instalovaného příkonu 20 MW.
-
-Mordor Intelligence pak uvádí, že přibližně 48 \% kapacit je nabízeno kolokačními datovými centry, zatímco zbylých 52 \% je tvořeno datovými centry vlastněnými a provozovanými samotnými organizacemi (tzv. enterprise DC). Malou část by mohla tvořit také datová centra prodávající čistý GPU výkon, což zajišťují např. společnosti WRDatacentrum a ZonerCloud. V celkovém měřítku se ale jedná o skutečně marginální podíl – společnost WRDatacentrum vlastní jedno DC v Hodoníně a neuvádí jeho kapacitu, kvůli čemuž větší požadavky na výpočetní výkon nejspíš outsourcuje do zahraničí. ZonerCloud pak garantuje výpočetní výkon v České republice, ale na svých stránkách uvádí instalovaný příkon provozovaných datových center asi 0,1 MW. \cite{zonercloud_zonercloud_2026}
+Podle stejné studie Mordor Intelligence tvoří 44~\% kapacit v České republice relativně velké kampusy s instalovanou kapacitou 5--15~MW~\cite{mordor_intelligence_czechia_2025}. Podobnou statistiku ukazují i data z Data Center Map, která ji doplňují o informaci, že zbylá část DC má kapacitu menší než 5~MW. Dále je asi 48~\% kapacit nabízeno kolokačními DC, zatímco zbylých 52~\% je tvořeno enterprise DC. Marginální podíl tvoří také cloud computing DC (např. společnost ZonerCloud).
 
 \subsection{Aktuální výstavba a budoucí projekty}
 \label{subsec:cz_trh_budoucnost}
 
-K březnu 2026 jsou v České republice ve výstavbě dva velké projekty, které mají kapacitu datových center výrazně navýšit. Mezi nejvýznamnější patří již zmíněný projekt Prague Gateway DC, který by měl mít instalovaný příkon 26 MW a měl by být dokončen na konci roku 2027. V této fázi by měl být schopen hostit přes 2 000 racků na celkové white-space ploše 4~000 m$^2$. Projekt je realizován společností České Radiokomunikace, která se zaměřuje na poskytování telekomunikačních služeb. Tento projekt má zároveň ambice stát se součástí evropského projektu AI Gigafactory, který by měl být realizován v několika zemích EU a jehož cílem je vytvořit infrastrukturu pro vývoj a provoz AI systémů. \cite{cra_ceske_2025, prochazka_sef_2026}
+K březnu 2026 jsou na území ČR ve výstavbě dva velké projekty. Konkrétně jde o již zmíněné Prague Gateway DC, které by mělo mít na konci roku 2027 instalovaný příkon 26~MW a white-space plochu 4~000~m$^2$ s více než 2~000 racky. Toto DC má ambice stát se součástí projektu AI Gigafactory, jehož cílem je vytvořit evropskou infrastrukturu pro vývoj AI systémů.~\cite{cra_ceske_2025, prochazka_sef_2026}
 
-Aby se však mohlo Prague Gateway DC do projektu AI Gigafactory zapojit, musí splňovat požadavky na minimální příkon. Náměstek ministra průmyslu a obchodu Jan Kavalírek uvádí, že v další fázi výstavby by se měl příkon DC navýšit na 77 MW. Ve stejném rozhovoru pro Seznam Zprávy dodal, že celková investice by se měla pohybovat kolem 90 miliard korun (včetně výpočetního vybavení), z čehož dvě třetiny by měly být financovány z evropských fondů a českého státního rozpočtu. Výpočetní výkon pak budou využívat jak soukromí investoři, tak evropské a české instituce. \cite{cra_ceske_2025, prochazka_sef_2026} Tato částka je v souladu se získanými údaji z USA, podle nichž by budova na 77 MW příkonu stála postavit asi 770 milionů USD a samotné vybavení asi 2,7 miliardy USD. Celkově tedy přibližně 70 miliard korun bez započtení nutných úprav na modernizaci elektrizační soustavy.
+Aby se však mohlo Prague Gateway DC do AI Gigafactory zapojit, musí splňovat požadavky na minimální příkon. Náměstek ministra průmyslu a obchodu Jan Kavalírek~\cite{richter_gigatovarna_2025} uvádí, že v další fázi výstavby by se měl příkon DC navýšit na 77~MW a celková investice bude okolo 90 miliard korun (včetně výpočetního vybavení), z čehož jedna třetina bude financována z evropských fondů a českého státního rozpočtu. Výpočetní výkon pak budou využívat jak soukromí investoři, tak evropské a české instituce. Uvedená částka odpovídá datům z USA, podle nichž by budova DC stála 770 mil. USD a vybavení 2,7~mld. USD -- celkem 80~mld. korun (bez nákladů na úpravy elektrizační soustavy).
 
-Dalším významným projektem je plánované AI datové centrum v Kanicích, které má být provozováno společnosti MasterDC. Na pozemku o celkové velikosti 26 000 m$^2$ bude postaveno několik hal. V první fázi má být postavena hala s instalovaným příkonem 4 MW a white-space plochou 1~000 m$^2$ uchovávající až 100 racků. V dalších fázích by se měl příkon navýšit na 25 MW a celkové očekávané PUE bude 1,2. Tento projekt by měl být dokončen na podzim roku 2026, kdy plánuje zahájit svůj provoz. \cite{rabasova_u_2025}
+Dalším významným projektem je AI datové centrum v Kanicích, které má být provozováno společností MasterDC. Na pozemku o velikosti 26~000~m$^2$ bude postaveno několik hal -- první již na konci roku 2026 s instalovaným příkonem 4~MW a white-space plochou 1~000~m$^2$ pro 100 racků. V dalších fázích by se měl příkon navýšit na 25~MW a celkové PUE bude 1,2.~\cite{rabasova_u_2025}
 
-Přestože se tyto projekty mohou zdát jako relativně nevýznamné oproti stomegawattovým až gigawattovým AI továrnám plánovaným na území Spojených států amerických, je potřeba myslet na to, že český trh je pořád v rané fázi vývoje. Relevantní srovnání by tedy mělo být spíše s Irskem, jehož podíl datových center na celkové spotřebě roste exponenciálně. Podle dat Centrálního statistického úřadu Irska \cite{central_statistics_office_ireland_share_2024} byl v roce 2015 tento podíl 5 \%, zatímco v roce 2023 tvořil již 23 \%. Tento růst představuje CAGR asi 21 \%. Jak uvádí Mordor Intelligence \cite{mordor_intelligence_czechia_2025}, v České republice mají datová centra instalovanou kapacitu asi 150 MW, což při předpokládaném 50\% využití představuje asi 1 \% z celkové spotřeby elektřiny v zemi. Uvážíme-li podobné CAGR, do 10 let by tento podíl mohl dosáhnout 7 \%. Jedná se však o optimistický scénář, který předpokládá překonání všech limitů uvedených v této kapitole a vytvoření vhodných podmínek pro rozvoj hyperscale DC.
+Přestože se tyto projekty mohou zdát oproti plánům na gigawattové kampusy v USA jako relativně nevýznamné, český trh je pořád v rané fázi vývoje. Vhodné srovnání se nabízí s Irskem, které svou ranou fázi zažilo teprve nedávno. Podle dat Centrálního statistického úřadu Irska~\cite{central_statistics_office_ireland_share_2024} byl v roce 2015 podíl DC na celkové spotřebě 5~\%, zatímco v roce 2023 tvořil již 23~\% (CAGR 21~\%). V ČR je instal. příkon DC 150~MW~\cite{mordor_intelligence_czechia_2025}, což při předpokládaném 50\% využití představuje asi 1~\% z celkové spotřeby elektřiny v zemi. Uvážíme-li stejné CAGR, do 10 let by tento podíl mohl dosáhnout 7~\%. To však předpokládá vytvoření vhodných podmínek pro rozvoj hyperscale DC.
 
 \section{Energetika a vodní zdroje v ČR}
 \label{sec:cz_energie}
@@ -50,87 +48,83 @@ Přestože se tyto projekty mohou zdát jako relativně nevýznamné oproti stom
 % - Voda a její dostupnost pro chlazení datových center
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+Česká republika má dostačující kapacitu přenosové sítě zvláště vysokého napětí, nicméně v některých lokalitách kapacity chybí. Při zvolení vhodného místa by se DC mohlo připojit relativně rychle. Kvůli postupnému vypínání uhelných elektráren se ČR stane v roce 2027 dovozcem elektřiny, a to i bez vlivu nových datových center. Díky propojení s evropským trhem to však (při postupném zvyšování spotřeby) nepředstavuje problém. Na druhou stranu ČR dlouhodobě trpí suchem a do roku 2060 má mít zápornou vodní bilanci. To by mohlo být bariérou pro provozovatele zejm. hyperscale DC citlivých na náklady.
+
 \subsection{Role ČEPS: Kapacita a stabilita sítě}
 \label{subsec:cz_energie_ceps}
 % Analýza volné kapacity v klíčových uzlech a časová náročnost posílení soustavy.
 
-Společnost ČEPS, a.s., působí jako výhradní provozovatel přenosové soustavy v České republice a ze zákona zodpovídá za její bezpečný, spolehlivý provoz a rozvoj. Její klíčovou úlohou je udržovat rovnováhu mezi výrobou a spotřebou elektřiny (resp. udržování frekvence 50 Hz) a řídit toky výkonu v síti \cite{bartos_energetika_2025}. Výstavba větších datových center však v České republice naráží na fyzické limity sítě. Nejkritičtější je situace v metropolitní oblasti Prahy a ve středních Čechách, kde se koncentruje největší zájem developerů (tyto regiony tvoří 75 \% kapacity trhu) \cite{mordor_intelligence_czechia_2025}.
+Společnost ČEPS, a. s. působí jako výhradní provozovatel přenosové soustavy v České republice a ze zákona zodpovídá za její bezpečný, spolehlivý provoz a rozvoj. Její klíčovou úlohou je udržovat rovnováhu mezi výrobou a spotřebou elektřiny (resp. udržování frekvence 50 Hz) a řídit toky výkonu v síti. Z hlediska celkového transformačního výkonu disponuje přenosová soustava kapacitou 24~500~MVA
+\cite[s.~127]{bartos_energetika_2025} -- dvonjásobkem historicky maximálního zatížení (12 133~MW)~\cite[s.~148]{bartos_energetika_2025}. Tyto zdánlivě volné kapacity však představují bezpečnostní rezervu dle kritéria N-1, které garantuje ochranu proti výpadku jakéhokoli prvku sítě. V praxi jsou proto klíčové transformační uzly dimenzovány tak, aby pracovaly pouze na 50~\% svého instalovaného výkonu. Druhá polovina slouží jako záloha pro případ nečekané poruchy.~\cite{bartos_energetika_2025}
 
-Přestože ČEPS plánuje do roku 2034 masivní investice do rozvoje a posílení sítí ve výši přes 80 miliard korun \cite{klimova_grid_2025}, rychlému řešení kapacitních problémů brání extrémní časová náročnost výstavby. Samotný proces vybudování nového nebo modernizace stávajícího vedení zvláště vysokého napětí trvá standardně 7 až 10,5 let \cite{vlcek_energeticky_2012}. Podle magazínu vydáveného společností ČEPS se může horizont v extrémních případech protáhnout až na 15 let \cite[s. 23]{klimova_grid_2025}.
-
-Největší brzdou přitom není technická realizace (samotná stavba zabere obvykle jen 12 až 24 měsíců), ale zdlouhavé přípravné a povolovací procesy. Složitá legislativa, proces posuzování vlivů na životní prostředí (EIA) a komplikovaná majetkoprávní vypořádání se stovkami vlastníků pozemků u těchto liniových staveb vedou k takto dlouhým horizontům. Tento rigidní a dlouhodobý proces budování přenosové infrastruktury tak ostře kontrastuje s dynamickým rozvojem datových center a brání rychlému uspokojení jejich energetických potřeb. \cite{klimova_grid_2025, vlcek_energeticky_2012}
+Pro developery jsou však omezující hlavně lokální limity sítě. Podle Mordor Intelligence~\cite{mordor_intelligence_czechia_2025} je situace nejkritičtější v metropolitní oblasti Prahy a ve středních Čechách, kde se koncentruje největší zájem developerů. Přestože ČEPS plánuje s proinvestováním 80 miliard korun do roku 2034 na rozvoj a posílení sítí, rychlému řešení kapacitních problémů brání časová náročnost výstavby. Samotný proces vybudování nového (nebo modernizace stávajícího) vedení zvláště vysokého napětí trvá standardně 7 až 10,5 let~\cite{vlcek_energeticky_2012}, v extrémních případech až 15 let. Největší brzdou přitom není technická realizace (stavba zabere jeden až dva roky), ale zdlouhavé přípravné a povolovací procesy. Konkrétně jde o složitou legislativu, proces posuzování vlivů na životní prostředí a majetkové vypořádání s vlastníky pozemků.~\cite{klimova_grid_2025, vlcek_energeticky_2012}
 
 
-\subsection{Energetický mix v ČR}
+\subsection{Energetický mix ČR a propojení s Evropou}
 \label{subsec:cz_energie_mix}
 % Význam stabilního jaderného zdroje a plány na SMR v kontextu napájení DC.
 
-Celková výroba elektřiny brutto v ČR pro rok 2024 dosáhla 73,9 TWh a spotřeba 67,2 TWh, tudíž bylo vývozcem. V současnosti stojí na dvou historicky dominantních pilířích: jaderné energii a uhlí. Podle dat za rok 2024 tvoří produkce z jaderných elektráren přibližně 40 \% celkové hrubé výroby elektřiny, zatímco hnědé uhlí pokrývá zhruba 34 \%. Třetí nejvýznamnější složkou jsou obnovitelné zdroje energie (OZE), jejichž podíl na výrobě v posledních letech roste a v roce 2024 dosáhl téměř 17 \%. V rámci zelené energie se uplatňuje především fotovoltaika (kolem 5 \%), následovaná vodními elektrárnami, biomasou a bioplynem, přičemž podíl větrných elektráren zůstává velmi nízký, kolem 1 \%. Menší, avšak důležitou roli v mixu hraje zemní plyn (zhruba 5 \%) a černé uhlí, jehož využití trvale klesá a pohybuje se kolem 2 \%. \cite{energeticky_regulacni_urad_rocni_2025}
+%TODO: DOPLNIT CITACI
 
-Tento tradiční mix však čeká v nejbližších letech radikální proměna, jejímž hlavním hnacím motorem je dekarbonizace a decentralizace energetiky. Podle platných scénářů se předpokládá postupný útlum uhelných elektráren s očekávaným koncem kolem roku 2033. Výpadek produkce z uhlí bude nutné kompenzovat masivním rozvojem obnovitelných zdrojů, zejména solárních a větrných elektráren. Jelikož je ale výkon těchto zdrojů závislý na aktuálním počasí, bude nutné vybudovat flexibilní plynové zdroje, které poslouží jako záloha pro vyrovnávání výkyvů v síti. Stabilitou dekarbonizovaného mixu se pak má stát rozšířená jaderná energetika, jejíž vliv se ale kvůli časové náročnosti výstavby projeví až ve druhé polovině 30. let. Změna složení zdrojů si také vyžádá vybudování masivních bateriových úložišť a rozsáhlé investice do posílení přenosových i distribučních sítí. \cite{bartos_energetika_2025}
+Celková výroba elektřiny brutto v ČR pro rok 2024 dosáhla 73,9~TWh a spotřeba činila 67,2~TWh. Výroba stála na dvou dominantních pilířích: jaderné energii (40~\% vyrobené elektřiny) a uhlí (34~\%). Třetí složkou jsou obnovitelné zdroje energie (OZE) s celkovým podílem téměř 17~\% (biomasa a bioplyn 7~\%, fotovoltaika 5~\%, vodní 4~\%, větrné elektrárny 1~\%). Důležitou roli v mixu hrají také zemní plyn (5~\%) a černé uhlí (2~\%, dlouhodobě klesající). Podle MPO je emisní faktor 0,33 tun CO$_2$ na 1~MWh vyrobené elektřiny (brutto).~\cite{energeticky_regulacni_urad_rocni_2025, doplnit}
 
-K této změně má přispět i plánované vypnutí tepelných elektráren Chvaletice, Počerady a tepláren Kladno, které má proběhnout na konci roku 2026. Tyto elektrárny dohromady vytvářely asi 8 TWh elektřiny, přičemž exportní saldo bylo 6,4 TWh \cite{chlubna_vypnuti_2025}. Po jejich vypnutí by se tak Česká republika definitivně stala importérem. Vyčerpání domácí přebytkové kapacity však neznamená absolutní překážku pro výstavbu nových datových center. Bartoš \cite{bartos_energetika_2025} popisuje , že česká soustava je plně synchronně propojena s celoevropskou sítí kontinentální Evropy a tvoří nedílnou součást jednotného vnitřního trhu s elektřinou. Účastníci trhu plynule nakupovat chybějící elektřinu napříč celou Evropskou unií, takže pokud by masivní spotřeba nových datových center překročila domácí výrobu, Česká republika by se pouze překlopila z pozice exportéra do pozice čistého dovozce elektřiny. Hlavním fyzickým limitem pro obsloužení takové spotřeby je propustnost přeshraničních přenosových vedení (interkonektorů), jejichž bezpečnou kapacitu provozovatel soustavy ve spolupráci se sousedními státy neustále propočítává a dlouhodobě posiluje \cite{bartos_energetika_2025}.
+Podle předpokládaných scénářů se očekává proměna energetického mixu, zejm. postupný útlum uhelných elektráren s očekávaným koncem kolem roku 2033. Výpadek produkce z uhlí bude nutné kompenzovat rozvojem OZE (plánuje se podíl 30~\%), především solárních a větrných elektráren. Závislost těchto zdrojů na aktuálním počasí však vyžaduje výstavbu flexibilních plynových zdrojů, které poslouží jako záloha pro vyrovnávání výkyvů v síti. Stabilitou dekarbonizovaného mixu se pak má stát rozšířená jaderná energetika s plánovaným uvedením do provozu ve druhé polovině 30. let.~\cite[kap. 2 a 6]{bartos_energetika_2025}
+
+První kroky této změny už lze pozorovat -- ke konci roku 2026 se mají vypnout uhelné elektrárny Chvaletice, Počerady a teplárny Kladno. Tyto elektrárny dohromady vytvářely asi 8~TWh elektřiny, přičemž exportní saldo bylo v roce 2024 6,4~TWh~\cite{chlubna_vypnuti_2025}. ČR se tak definitivně stane importérem elektřiny.
+
+Vyčerpání domácí přebytkové kapacity ovšem není překážkou pro výstavbu nových datových center. Bartoš~\cite{bartos_energetika_2025} popisuje, že česká soustava je synchronně propojena se sítí kontinentální Evropy a tvoří nedílnou součást jednotného vnitřního trhu, díky čemuž lze chybějící elektřinu -- kvůli vypínání elektráren, budování datových center nebo obojí -- dodat ze zahraničí. Hlavním fyzickým limitem pro obsloužení takové spotřeby je především propustnost přeshraničních přenosových vedení (interkonektorů), jejichž bezpečnou kapacitu ČEPS ve spolupráci se sousedními státy neustále kontroluje a dlouhodobě posiluje~\cite{bartos_energetika_2025}.
 
 
 \subsection{Dostupnost vody pro chlazení}
 \label{subsec:cz_voda_dostupnost}
 % Data o srážkách a průtocích v lokalitách vhodných pro DC (např. u velkých toků).
 
-Česká republika leží na hlavním evropském rozvodí. Většina velkých řek (Vltava, Labe, Morava, Odra) zde pramení a voda z území pouze odtéká. Země je tak extrémně závislá na atmosférických srážkách a akumulaci vody v nádržích \cite{hornicek_water_2026}. Od roku 2014 ČR však čelí opakovaným a vleklým suchům. Klimatické modely predikují pro období let 2040 až 2060 velmi dramatické zhoršení situace a nedostatek vody, protože čerpání bude převyšovat přirozenou obnovu zdrojů \cite{mullerova_water_2024}.
+Česká republika leží na hlavním evropském rozvodí, přičemž většina velkých řek (Vltava, Labe, Morava, Odra) zde pramení a voda z území pouze odtéká. Země je tak extrémně závislá na atmosférických srážkách a akumulaci vody v nádržích~\cite{hornicek_water_2026}, kvůli čemuž od roku 2014 čelí opakovaným a vleklým suchům. Klimatické modely do roku 2060 predikují zhoršení situace a nedostatek vody, protože její čerpání převýší přirozenou obnovu zdrojů~\cite{mullerova_water_2024}.
 
-Pro datová centra, která by spoléhala na odpařovací chlazení (s vysokým ukazatelem WUE), představuje největší hrozbu Vodní zákon č. 254/2001 Sb., který určuje následující \cite{mullerova_water_2024}: 
-
-\begin{itemize}
-
-\item Pokud to vyžaduje veřejný zájem (např. dočasný nedostatek vody), vodoprávní úřady mohou omezit nebo zcela zakázat odběr povrchových vod, a to bez jakékoliv finanční náhrady. Právní výklad veřejného zájmu je však komplikovaný.
-
-\item Úřady mohou v případě nedostatku omezit nebo zakázat užívání pitné vody z kohoutku pro určité účely až na dobu 3 měsíců.
-
-\end{itemize}
-
-Extrémní nároky datového centra na vodu (pokud by nemělo uzavřený okruh) by s velkou pravděpodobností dále narazily na tvrdý odpor veřejnosti. Nedostatek pitné vody totiž považují Češi za absolutně nejzávažnější globální environmentální problém (v roce 2018 ho jako velmi vážný označilo 63,7 \% obyvatel, čímž předstihl i hromadění odpadů či globální oteplování). Lidé s vyššími obavami jsou navíc silně motivováni vodou šetřit. \cite{hejdukova_water_2020}
+Extrémní nároky datového centra na vodu (pokud by nemělo uzavřený okruh) by s velkou pravděpodobností dále narazily na tvrdý odpor veřejnosti. Nedostatek pitné vody totiž považují Češi za absolutně nejzávažnější globální environmentální problém (v roce 2018 ho jako velmi vážný označilo 63,7~\% obyvatel, čímž předstihl i hromadění odpadu či globální oteplování). Lidé s vyššími obavami jsou totiž silně motivováni vodou šetřit.~\cite{hejdukova_water_2020}
 
 \section{Legislativní a ekonomické prostředí}
 \label{sec:cz_legislativa}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SEKCE 3: LEGISLATIVA A EKONOMIKA
-% - Povolovací procesy a stavební zákon
 % - Pobídky a role CzechInvestu
 % - Daňový rámec (DPFO, DPPO, DPH, nemovitost, ekologické daně)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Hlavní mimotržní motivací pro výstavbu DC v ČR jsou přímé dotace poskytované vládou a EU. Nejvýznamnější z nich je projekt AI Gigafactory, který má mobilizovat investice ve výši 20 miliard eur. Co se týče ekonomických přínosů, většina toků do veřejného rozpočtu by pocházela z daní fyzických osob, neboť právnické osoby by nejspíš provedly daňovou optimalizaci. Důležitou roli hrají také nemovitostní a ekologické daně z elektřiny. DPH by se DC spíše netýkala, protože své služby neposkytují koncovému zákazníkovi.
 
 \subsection{Pobídky, dotace a role Evropské unie}
 \label{subsec:cz_legislativa_pobidky}
 % Analýza stávajících pobídek a jejich (ne)vhodnosti pro kapitálově náročná DC.
 
-Na rozdíl od Spojených států amerických, kde 38 států využívá k přilákání investorů do datových center rozsáhlý systém daňových úlev (typicky se jedná o osvobození od daně z prodeje, daně z užívání nebo daně z nemovitosti) \cite{gargano_subsidizing_2025}, Česká republika k podpoře využívá především přímé dotační programy. Národní strategie umělé inteligence ČR 2030 \cite{ministerstvo_prumyslu_a_obchodu_narodni_2024} v tomto ohledu klade zásadní důraz na financování z veřejných prostředků Evropské unie. Strategie spoléhá zejména na Národní plán obnovy, ze kterého je vyčleněno 227 milionů eur (zhruba 5,7 miliardy Kč) na konektivitu, kybernetickou bezpečnost a cloudová řešení, a na efektivní čerpání z masivních evropských programů, jako jsou Digitální Evropa a Horizont Evropa.
+Evropské země (na rozdíl od USA) k podpoře využívají především přímé dotační programy, nikoli daňové úlevy. Národní strategie umělé inteligence ČR 2030~\cite{ministerstvo_prumyslu_a_obchodu_narodni_2024} spoléhá zejména na Národní plán obnovy, ze kterého je vyčleněno několik miliard Kč na konektivitu, kybernetickou bezpečnost a cloudová řešení. Jeden z projektů Technologická inkubace agentury CzechInvest má podpořit začínající startupy částkou zhruba 850 milionů korun. Strategie dále počítá s efektivním čerpáním z masivních evropských programů, jako jsou Digitální Evropa a Horizont Evropa. Jde však o obecné, zastřešující oblasti, takže výši konkrétní podpory na výstavbu DC lze odhadovat jen stěží.
 
-Na celoevropské úrovni představuje zcela zásadní krok AI Continent Action Plan \cite{european_commission_ai_2025}, který přichází s ambiciózním projektem tzv. AI Gigafactories (AI gigatováren). Jedná se o obří zařízení pro trénování těch nejsložitějších modelů umělé inteligence, jež budou integrovat více než 100 000 pokročilých AI procesorů a zohledňovat extrémní nároky na spotřebu energie a vody. Tyto gigatovárny mají vznikat na principu partnerství veřejného a soukromého sektoru, přičemž plánovaný nástroj InvestAI má mobilizovat investice ve výši 20 miliard eur na vybudování až pěti takových center napříč EU. V českém prostředí pak Národní strategie zmiňuje i další specifické programy pro rozvoj AI ekosystému. Patří mezi ně například projekt Technologická inkubace agentury CzechInvest, který má podpořit začínající startupy částkou zhruba 850 milionů korun \cite{ministerstvo_prumyslu_a_obchodu_narodni_2024}.
+Na celoevropské úrovni představuje zcela zásadní krok AI Continent Action Plan~\cite{european_commission_ai_2025}, který přichází s ambiciózním projektem AI Gigafactories (AI gigatováren). Tato obří zařízení -- integrující 100~000 čipů a přitom zohledňující jejich environmentální dopady -- mají trénovat nejsložitější modely umělé inteligence. Tyto gigatovárny mají vznikat na principu partnerství veřejného a soukromého sektoru, přičemž plánovaný nástroj InvestAI má mobilizovat investice ve výši 20 miliard eur na vybudování až pěti takových center napříč EU.
 
 \subsection{Daně a ekonomika}
 \label{subsec:cz_dane}
 % Rozbor fiskálních toků: DPH, DPPO, odvody a specifické energetické daně.
 
-Ekonomický přínos výstavby a provozu datového centra pro Českou republiku by byl realizován skrze několik daňových úrovní. Z hlediska fiskální politiky státu je nutné rozlišovat mezi jednorázovými příjmy ve fázi výstavby a kontinuálními příjmy v průběhu provozu zařízení. Veskrze se však tyto příjmy získávají z následujících kanálů:
+Ekonomické přínosy pro Českou republiku jsou realizovány skrze několik daňových úrovní. V případě datových center je nutné rozlišovat mezi jednorázovými příjmy ve fázi výstavby a kontinuálními příjmy v průběhu provozu zařízení -- veskrze se však získávají následujícím způsobem:
 
 \begin{itemize}
 
 \item \textbf{Daň z přidané hodnoty (DPH):} Pro provozovatele datového centra (plátce daně) je DPH u investic a provozních nákladů zpravidla fiskálně neutrální, protože své služby neposkytuje koncovému zákazníkovi.
 
-\item \textbf{Daň z příjmů právnických osob (DPPO):} Tato daň může představovat významný příjem státu, nicméně v prvních letech provozu je její výnos omezen vysokými odpisy technologického vybavení (3 roky). Z dlouhodobého hlediska jí dá vyhnout daňovou optimalizací.
+\item \textbf{Daň z příjmů právnických osob (DPPO):} V prvních letech provozu je daňový výnos omezen vysokými odpisy technologického vybavení. Z dlouhodobého hlediska se jí dá vyhnout daňovou optimalizací.
 
-\item \textbf{Zdanění práce a odvody:} I přes relativně nízký počet stálých zaměstnanců generují datová centra vysoké odvody díky nadstandardní mzdové hladině IT specialistů. Významnou roli hrají i odvody zaměstnanců zúčastněných na výstavbě datového centra.
+\item \textbf{Zdanění práce a odvody:} Daňové příjmy pocházejí od zaměstnanců na stavbě, v samotném DC i v externích službách (např. úklid). 
 
-\item \textbf{Majetkové daně:} Daň z nemovitých věcí je výhradním příjmem obce, na jejímž území centrum stojí. Od roku 2024 došlo k významnému navýšení sazeb pro průmyslové objekty, což posiluje roli datových center jako klíčových plátců do místních rozpočtů.
+\item \textbf{Majetkové daně:} Daň z nemovitých věcí je výhradním příjmem obce, na jejímž území DC stojí. Od roku 2024 došlo k navýšení sazeb pro průmyslové objekty, což z DC činí klíčové plátce do místních rozpočtů.
 
-\item \textbf{Energetické daně:} Vzhledem k vysoké spotřebě elektřiny odvádí dodavatel energie za datové centrum tzv. ekologickou daň. Tato daň je spravována Celní správou ČR a tvoří přímý příjem státního rozpočtu.
+\item \textbf{Energetické daně:} Vzhledem k vysoké spotřebě elektřiny odvádí dodavatel energie za DC tzv. ekologickou daň. Tato daň je spravována Celní správou ČR a tvoří přímý příjem státního rozpočtu.
 
 \end{itemize}
 
 Souhrnný přehled daňových sazeb a relevantní legislativy pro modelování dopadů v roce 2026 uvádí tabulka~\ref{tab:cz_dane_sazby}.
 
-\begin{table}[ht] \centering \setlength{\tabcolsep}{8pt} \small
+\begin{table}[t] \centering \setlength{\tabcolsep}{8pt} \small
 
     \begin{tabular}{llll}
         \toprule
@@ -140,17 +134,17 @@ Souhrnný přehled daňových sazeb a relevantní legislativy pro modelování d
         \midrule
         
         \addlinespace
-        DPH (standardní) & 21 \% & Cena plnění & 235/2004 Sb. \\
-        DPPO & 21 \% & Zisk PO & 586/1992 Sb. \\
-        DPFO (základní) & 15 \% & Hrubá mzda & 586/1992 Sb. \\
-        DPFO (zvýšená) & 23 \% & Mzda nad limit & 586/1992 Sb. \\
+        DPH (standardní) & 21~\% & Cena plnění & 235/2004 Sb. \\
+        DPPO & 21~\% & Zisk PO & 586/1992 Sb. \\
+        DPFO (základní) & 15~\% & Hrubá mzda & 586/1992 Sb. \\
+        DPFO (zvýšená) & 23~\% & Mzda nad limit & 586/1992 Sb. \\
         
         \addlinespace
         
-        Sociální poj. (firma) & 24,8 \% & Hrubá mzda & 589/1992 Sb. \\
-        Sociální poj. (zam.) & 7,1 \% & Hrubá mzda & 589/1992 Sb. \\
-        Zdravotní poj. (firma) & 9,0 \% & Hrubá mzda & 592/1992 Sb.* \\
-        Zdravotní poj. (zam.) & 4,5 \% & Hrubá mzda & 592/1992 Sb.* \\
+        Sociální poj. (firma) & 24,8~\% & Hrubá mzda & 589/1992 Sb. \\
+        Sociální poj. (zam.) & 7,1~\% & Hrubá mzda & 589/1992 Sb. \\
+        Zdravotní poj. (firma) & 9,0~\% & Hrubá mzda & 592/1992 Sb.* \\
+        Zdravotní poj. (zam.) & 4,5~\% & Hrubá mzda & 592/1992 Sb.* \\
         
         \addlinespace
         
@@ -164,12 +158,32 @@ Souhrnný přehled daňových sazeb a relevantní legislativy pro modelování d
     \vspace{2mm}
     \begin{minipage}{0.93\textwidth}
         \footnotesize * Poměr definován v zákoně č. 48/1997 Sb.
-        \footnotesize ** Sazba se liší pro kategorie pozemků a staveb. Výsledná daň je dále násobena místním koeficientem obce (obvykle 1,1 až 5,0).
+        
+        \footnotesize ** Sazba se liší pro kategorie pozemků a staveb. Výsledná daň je dále násobena místním koeficientem obce (1,0 až 5,0).
     \end{minipage}
     
     \caption{Přehled daňových sazeb v ČR pro rok 2026}
     \label{tab:cz_dane_sazby}
 \end{table}
+
+\subsection{Detailnější rozbor DPH}
+
+DPH je je účtována na každém stupni dodavatelského řetězce a její konečnou zátěž nese vždy koncový spotřebitel. Na rozdíl od DPPO je tedy obtížná na optimalizaci -- nedá se jí vyhnout pomocí účetních strategií, neboť není závislá na zisku. Pro kolokační datová centra však platí, že většina jejich služeb není poskytována přímo koncovým zákazníkům, ale jiným podnikům (B2B). V takových případech je DPH pro plátce zpravidla neutrální.
+
+Pokud se jedná o DC pro trénování AI, mohou nastat dvě situace. V prvním případě DC poskytuje služby jiným podnikům, které si trénují vlastní modely -- DPH tak zůstane neutrální. V druhém případě trénování probíhá pro účely samotné firmy provozující DC, tudíž nevznikne žádný prodej (mimo interní účetní operace). Trénování AI modelů konečnými spotřebiteli nepředpokládáme.
+
+Jedinou relevantní situací pro zvážení DPH představují nákupy předplateného lepších AI modelů (nebo nákupy tokenů) koncovými zákazníky, které se řídí zákonem č. 235/2004 Sb., o dani z přidané hodnoty:
+
+\begin{itemize}
+    \item \textbf{§5, odst. 1}: Osobou povinnou k dani je osoba, která \textit{samostatně uskutečňuje ekonomickou činnost} \dots{}
+    \item \textbf{§9, odst. 1}: Místem plnění při poskytnutí služby osobě povinné k dani, která jedná jako taková, je \textit{místo, kde má tato osoba sídlo}\dots{}
+    \item \textbf{§10i, odst. 1}: Místem plnění při poskytnutí služby \textit{osobě nepovinné k dani} je \textit{místo příjemce služby} \dots{}, pokud jde o elektronicky poskytovanou službu.
+    \item \textbf{§10i, odst. 2}: Pro účely DPH se rozumí elektronicky poskytovanou službou služba poskytovaná prostřednictvím veřejné datové sítě \dots{}, a to zejména poskytnutí obrázků, textů nebo informací anebo zpřístupňování databází.
+\end{itemize}
+
+Tyto výňatky jsou implementací evropské směrnice 2006/112/ES, která v článku 7 jako jeden z druhů elektronicky poskytovaných služeb konkrétně charakterizuje \textit{služby automaticky generované z počítače přes internet nebo elektronickou síť v reakci na zadání konkrétních dat příjemcem}, což plně odpovídá podstatě inference modelů umělé inteligence.
+
+ Prakticky to znamená, že výstavba DC na území ČR nepřináší z hlediska DPH žádný užitek, protože stejného důsledku by bylo dosaženo i v případě, že by se DC nacházelo v jiné zemi EU. Při inferenci AI modelů pro účely DPH záleží na poloze koncového zákazníka, nikoli datového centra.
 
 \section{Syntéza: Připravenost ČR na výstavbu DC}
 \label{sec:cz_syntéza}
@@ -180,10 +194,64 @@ Souhrnný přehled daňových sazeb a relevantní legislativy pro modelování d
 % - Limity přenositelnosti dat z USA na české prostředí
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-V současné době se český trh s datovými centry nachází v rané fázi rozvoje. Velkokapacitní projekty jsou na území ČR teprve ve fázi realizace (zdaleka se však neblíží hyperscale projektům) a komplexní strategický výhled pro masivní rozvoj této infrastruktury prozatím chybí. Lze však předpokládat, že právě potenciální úspěch těchto pilotních projektů může působit jako katalyzátor a spustit vlnu dalších investic, podobně jako tomu bylo v jiných evropských regionech, například v Irsku nebo v Německu.
+V současné době se český trh s datovými centry nachází v rané fázi rozvoje. Velkokapacitní projekty se na území ČR právě realizují (+30~MW do konce roku 2027), ale komplexní strategický výhled pro masivní rozvoj této infrastruktury prozatím chybí. Lze však předpokládat, že potenciální úspěch těchto pilotních projektů může působit jako katalyzátor a spustit vlnu dalších investic -- podobně jako tomu bylo v jiných evropských regionech (Irsko, Německo).
 
-V oblasti energetiky je nutné reflektovat skutečnost, že se Česká republika v blízké budoucnosti pravděpodobně stane čistým importérem elektřiny~\cite{chlubna_vypnuti_2025}, a to i bez vlivu nově budovaných datových center. Vzhledem k vysoké propojenosti evropského trhu s energiemi nemusí tento stav představovat fatální překážku, nicméně přináší rizika pro stabilitu domácí přenosové soustavy. Ta se může stát zranitelnější zejména v kombinaci s volatilním charakterem odběru AI datových center. Tento destabilizační efekt by se však stal kritickým faktorem až při masivnější koncentraci instalovaného výkonu v rámci celé sítě.
+V oblasti energetiky je nutné reflektovat skutečnost, že se ČR v blízké budoucnosti stane importérem elektřiny~\cite{chlubna_vypnuti_2025}, a to i bez vlivu nových DC. Díky propojenosti evropského trhu s energiemi to však nemusí být překážkou. Riziko spočívá v destabilizaci domácí přenosové soustavy kvůli volatilnímu odběru AI DC a nedostatku přeshraničních interkonektorů. Zásadním limitem České republiky zůstává nedostatek vody. ČR je závislá primárně na srážkách~\cite{hornicek_water_2026}, což při extrémních nárocích moderních chladicích systémů představuje významnou bariéru pro škálování výkonu~\cite{li_making_2025}.
 
-Zásadním environmentálním limitem České republiky zůstává nedostatek vody. Jakožto „střecha Evropy“ je ČR závislá primárně na srážkách, což při extrémních nárocích moderních kapalinových chladicích systémů představuje významnou bariéru pro škálování výkonu~\cite{li_making_2025}, obzvláště v lokalitách bez přímého přístupu k velkým vodním tokům. Klimatické modely už teď, bez vlivu datových center, předpokládají dramatické zhoršení dostupnosti pitné vody v horizontu 40 až 80 let \cite{mullerova_water_2024}.
+Ekonomické přínosy zůstávají nejednoznačné. Většina daňových příjmů z provozu datových center by pocházela z daní z příjmu fyzických osob a z nemovitostních daní. Naopak daň z příjmu právnických osob by pravděpodobně byla optimalizová pro minimalizaci daňové zátěže. Kvůli principu zdanění v místě spotřeby nelze dobře odhadnout ani daň z přidané hodnoty. Dále nebyla nalezena žádná dostupná literatura o tom, jaké nepřímé a indukované dopady by mohla mít výstavba DC na lokální ekonomiky v České republice.
 
-Co se týče ekonomických přínosů, pro účely matematického modelování je nevhodné pracovat pouze s odhadem přímých fiskálních přínosů do státní pokladny. Obecně nejsou veřejně dostupná data o míře zadlužení provozovatelských společností, o jejich skutečných provozních nákladech, sektorových maržích a především o reálných čistých ziscích generovaných na území ČR. Právě tyto proměnné zásadně ovlivňují výslednou daňovou povinnost (DPPO), která může být navíc optimalizovaná. Z tohoto důvodu je nezbytné v rámci modelu pracovat s alternativní metrikou, která kvantifikuje celkový socioekonomický přínos infrastruktury nezávisle na vnitřní účetní strategii korporací.
+Parametry důležité pro model jsou shrnuty v tabulce~\ref{tab:parametry_modelu_cz}.
+
+\begin{landscape} \begin{table}[p] \centering \setlength{\tabcolsep}{26pt}
+
+    \begin{tabular}{llc}
+        \toprule
+        \addlinespace
+        \textbf{Parametr} & \textbf{Hodnota} & \textbf{Zdroj} \\
+
+        Výroba elektřiny    &   &    \\
+        Spotřeba elektřiny    &   &    \\
+        Max. transformační výkon    &   &    \\
+        \quad Nízké zatížení sítě    &   &    \\
+        \quad Běžné zatížení sítě    &   &    \\
+        \quad Vysoké zatížení sítě    &   &    \\
+        
+        \addlinespace
+        \midrule
+        \addlinespace
+
+        Roční úhrn srážek v ČR    &   &    \\
+        Emisní faktor z výroby elektřiny    &   &    \\
+
+        \addlinespace
+        \midrule
+        \addlinespace
+
+        Průměrná mzda v ČR    &   &    \\
+        Koeficient pro IT specialisty    &   &    \\
+
+        \addlinespace
+        \midrule
+        \addlinespace
+
+        Daňové zatížení práce    &   &    \\
+        \quad Stand. sazba DFPO     &   &    \\
+        \quad Odvody (zaměstnanec)    &   &    \\
+        \quad Odvody (zaměstnavatel)    &   &    \\
+
+        \addlinespace
+        \midrule
+        \addlinespace
+        
+        Sazba ekologické daně    &   &    \\
+        Sazba daně z pozemku (kat. Y)    &   &    \\
+        Sazba daně z budovy (kat. Y)    &   &    \\
+
+        \addlinespace
+        \bottomrule
+    \end{tabular}
+    
+    \caption{Shrnutí kvantifikovatelných specifick ČR}
+    \label{tab:parametry_modelu_cz}
+
+\end{table} \end{landscape}
