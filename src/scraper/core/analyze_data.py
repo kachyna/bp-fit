@@ -23,6 +23,11 @@ def parse_value(value):
         
     return num
 
+def is_estimated(value) -> bool:
+    if value is None:
+        return False
+    return "(est" in str(value).lower()
+
 def analyze(input_path, output_path, top=10):
     input_path = Path(input_path)
     output_path = Path(output_path)
@@ -33,6 +38,11 @@ def analyze(input_path, output_path, top=10):
     providers = {}
     total_mw = 0.0
     total_whitespace = 0.0
+
+    # Ratios computed only from non-estimated source values
+    white_build_ratios = []
+    mw_white_ratios = []
+    build_land_ratios = []
     for row in rows:
         op = (row.get('operator') or '').strip() or '(unknown)'
         stats = providers.setdefault(op, {
@@ -44,17 +54,55 @@ def analyze(input_path, output_path, top=10):
         })
         stats['dc_total'] += 1
 
-        mw = parse_value(row.get('Spec: Fully Built-Out Power'))
+        mw_raw = row.get('Spec: Fully Built-Out Power')
+        mw = parse_value(mw_raw)
         if mw:
             stats['total_mw'] += mw
             stats['dc_with_mw'] += 1
             total_mw += mw
 
-        white = parse_value(row.get('Spec: Fully Built-Out Whitespace'))
+        white_raw = row.get('Spec: Fully Built-Out Whitespace')
+        white = parse_value(white_raw)
         if white:
             stats['total_whitespace'] += white
             stats['dc_with_whitespace'] += 1
             total_whitespace += white
+
+        # Ratio inputs
+        build_raw = row.get('Spec: Total Building Size')
+        build = parse_value(build_raw)
+
+        land_raw_katastr = row.get('land_size_katastr')
+        land_raw_spec = row.get('Spec: Total Plot Size')
+        land_raw = land_raw_katastr if land_raw_katastr not in (None, "") else land_raw_spec
+        land = parse_value(land_raw)
+
+        if (
+            white
+            and build
+            and build > 0
+            and not is_estimated(white_raw)
+            and not is_estimated(build_raw)
+        ):
+            white_build_ratios.append(min(1, white / build))
+
+        if (
+            build
+            and land
+            and land > 0
+            and not is_estimated(build_raw)
+            and not is_estimated(land_raw)
+        ):
+            build_land_ratios.append(min(1, build / land))
+
+        if (
+            mw
+            and white
+            and white > 0
+            and not is_estimated(mw_raw)
+            and not is_estimated(white_raw)
+        ):
+            mw_white_ratios.append(min(1, mw / white))
 
     # prepare output dir
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -78,6 +126,15 @@ def analyze(input_path, output_path, top=10):
     print(f"Analyzed {len(rows)} datacenters from {input_path}")
     print(f"Estimated total MW (sum): {total_mw:.3f} MW")
     print(f"Estimated total whitespace (sum): {total_whitespace:.1f} m^2")
+
+    avg_white_build = sum(white_build_ratios) / len(white_build_ratios) if white_build_ratios else 0.0
+    avg_mw_white = sum(mw_white_ratios) / len(mw_white_ratios) if mw_white_ratios else 0.0
+    avg_build_land = sum(build_land_ratios) / len(build_land_ratios) if build_land_ratios else 0.0
+    print("Calculated Ratios (non-est only):")
+    print(f"  Building/Land Ratio: {avg_build_land:.4f} (n={len(build_land_ratios)})")
+    print(f"  Whitespace/Building Ratio: {avg_white_build:.4f} (n={len(white_build_ratios)})")
+    print(f"  MW/Whitespace Ratio: {avg_mw_white:.4f} (n={len(mw_white_ratios)})")
+
     print(f"Provider stats written to: {output_path}")
     print("Top providers by MW:")
     for i, (op, s) in enumerate(sorted(providers.items(), key=lambda kv: kv[1]['total_mw'], reverse=True)[:top], start=1):
