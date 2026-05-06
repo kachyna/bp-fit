@@ -2,23 +2,25 @@ import csv
 import re
 from pathlib import Path
 
+# Extracts numeric value from strings like '0.15 MW', '250 sq.m.', etc.
 def parse_value(value):
-    if not value:
+    if not value or value.strip() == "":
         return None
-    s = str(value).strip()
-    if s == "":
+    
+    # Extract number
+    match = re.search(r"([0-9]+[.]?[0-9]*)", value.replace(" ", "").replace(",", ""))
+    if not match:
         return None
-    # normalize
-    low = s.lower().replace(" ", "").replace("\u00A0", "")
-    m = re.search(r"([0-9]+[.,]?[0-9]*)", low)
-    if not m:
-        return None
-    num = float(m.group(1).replace(',', '.'))
-    if "kw" in low and "mw" not in low:
-        num = num / 1000.0
-    # whitespace units: accept sq.m or sqm or m2
-    if "sq.ft" in low or "sqft" in low:
-        num = num * 0.092903
+    
+    num = float(match.group(1).replace(",", ""))
+    
+    # Handle units
+    val_lower = value.lower()
+    if "kw" in val_lower:
+        num /= 1000.0  # Convert kW to MW
+    elif "sq.ft" in val_lower:
+        num *= 0.092903  # Convert sq.ft to sq.m
+        
     return num
 
 def analyze(input_path, output_path, top=10):
