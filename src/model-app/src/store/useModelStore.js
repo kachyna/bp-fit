@@ -3,15 +3,32 @@ import { SCENARIOS, COMMON_PARAMS } from '../constants/parameters'
 
 // set, get jsou dependency injection ze Zustand. ta definovana arrow funkce vraci objekt -- stejny zapis, jako bychom psali => { return { activeScearioKey: ...}}
 export const useModelStore = create((set, get) => ({
-    activeScenarioKey: 'REALISTIC',
 
-    setActiveScenario: (newScenarioKey) => set({ activeScenarioKey: newScenarioKey }),
+    datacenters: [
+        { id: '1', type: 'coloc', power: 50, pue: 1.2 }
+    ],
 
-    getCurrentParams: () => {
-        const activeScenarioKey = get().activeScenarioKey
+    addDatacenter: () => set((state) => ({
+        datacenters: [
+            ...state.datacenters,
+            { id: crypto.randomUUID(), type: 'coloc', power: 0, pue: 1.5 }
+        ]
+    })),
+
+    removeDatacenter: (id) => set((state) => ({
+        datacenters: state.datacenters.filter(dc => dc.id !== id)
+    })),
+
+    updateDatacenter: (id, field, value) => set((state) => ({
+        datacenters: state.datacenters.map(dc =>
+            dc.id === id ? { ...dc, [field]: value } : dc
+        )
+    })),
+
+    getParams: () => {
         return {
             ...COMMON_PARAMS,
-            ...SCENARIOS[activeScenarioKey]
+            ...SCENARIOS
         }
     }
 }))
