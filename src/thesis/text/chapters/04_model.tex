@@ -191,9 +191,9 @@ Ze vstupů modelu se dá okamžitě a bez dalších předpokladů vypočítat ce
 
 $$\text{P}_\text{total} = \sum \text{PUE} \cdot \text{P}_\text{IT}.$$
 
-Maximální spotřebu datového centra $\text{E}_\text{max}$ za čas $t$ získáme tak, že jeho celkový příkon $\text{P}$ vynásobíme časem $\text{t}$ podle vzorce
+Maximální spotřebu datového centra $\text{E}_\text{max}$ za čas $\tau$ získáme tak, že jeho celkový příkon $\text{P}$ vynásobíme časem $\tau$ podle vzorce
 
-$$\text{E}_\text{max} = \text{P} \cdot \text{t}.$$
+$$\text{E}_\text{max} = \text{P} \cdot \tau.$$
 
 Datová centra však neběží celou dobu na 100 \% instalovaného příkonu (především kolokační a inferenční), kvůli čemuž je nutné vzít v potaz reálnou spotřebu $\text{E}_\text{real}$. Tu vypočítáme vynásobením maximální spotřeby $\text{E}_\text{Max}$ koeficientem využití $\text{k}_\text{utilization}$
 
@@ -288,9 +288,9 @@ $$\text{GPU Count} = \text{P}_\text{IT} \div \text{GPU Power},$$
 
 kde $\text{P}_\text{IT}$ je instalovaný příkon datového centra a $\text{GPU Power}$ je průměrná spotřeba jednoho GPU. Tržby z trénovacího centra $\text{S}_\text{training}$ se pak vypočítají jako
 
-$$\text{S}_\text{training} = \text{P}_\text{training} \cdot \text{GPU Count} \cdot \text{k}_\text{utilization},$$
+$$\text{S}_\text{training} = \text{P}_\text{training} \cdot \text{GPU Count} \cdot \text{k}_\text{utilization} \cdot \text{k}_\text{occupancy},$$
 
-kde $\text{P}_\text{training}$ je průměrná cena za pronájem GPU, $\text{GPU Count}$ je počet GPU a $\text{k}_\text{utilization}$ je koeficient využití. Je přitom potřeba vzít v potaz, že cena za pronájem GPU se často uvádí v GPU-hodinách -- pro modelování v rámci jednoho roku je proto nutné sazbu přepočítat na roky (vynásobit ji počtem hodin v roce 8 760). Následně se HPH pro trénovací centrum $\text{HPH}_\text{training}$ vypočítá jako rozdíl mezi tržbami a mezispotřebou:
+kde $\text{P}_\text{training}$ je průměrná cena za pronájem GPU, $\text{GPU Count}$ je počet GPU a $\text{k}_\text{utilization}$ je koeficient využití. Je přitom potřeba vzít v potaz, že cena za pronájem GPU se často uvádí v GPU-hodinách -- pro modelování v rámci jednoho roku je proto nutné sazbu přepočítat na roky (vynásobit ji počtem hodin v roce 8~760). Koeficient $\text{k}_\text{occupancy}$ se použije pro zohlednění obsazenosti trénovacího centra. Následně se HPH pro trénovací centrum $\text{HPH}_\text{training}$ vypočítá jako rozdíl mezi tržbami a mezispotřebou:
 
 $$\text{GVA}_\text{training} = \text{S}_\text{training}  - \text{IC}.$$
 
@@ -300,9 +300,9 @@ $$\text{Max Tokens} = \text{E}_\text{IT} \div \text{E}_\text{token},$$
 
 kde $\text{E}_\text{IT}$ je maximální spotřeba IT vybavení a $\text{E}_\text{token}$ je průměrná spotřeba pro zpracování jednoho tokenu. Tržby z inferenčního centra $\text{S}_\text{inference}$ se pak vypočítají jako
 
-$$\text{S}_\text{inference} = \text{P}_\text{token} \cdot \text{Max Tokens} \cdot \text{k}_\text{utilization},$$
+$$\text{S}_\text{inference} = \text{P}_\text{token} \cdot \text{Max Tokens} \cdot \text{k}_\text{utilization} \cdot \text{k}_\text{occupancy},$$
 
-kde $\text{P}_\text{token}$ je průměrná cena za zpracování jednoho tokenu, $\text{Max Tokens}$ je maximální počet zpracovatelných tokenů a $\text{k}_\text{utilization}$ je koeficient využití. Následně se HPH pro inferenční centrum $\text{HPH}_\text{inference}$ vypočítá jako rozdíl mezi tržbami a mezispotřebou:
+kde $\text{P}_\text{token}$ je průměrná cena za zpracování jednoho tokenu, $\text{Max Tokens}$ je maximální počet zpracovatelných tokenů a $\text{k}_\text{utilization}$ je koeficient využití a $\text{k}_\text{occupancy}$ je koeficient obsazenosti. Následně se HPH pro inferenční centrum $\text{HPH}_\text{inference}$ vypočítá jako rozdíl mezi tržbami a mezispotřebou:
 
 $$\text{GVA}_\text{inference} = \text{S}_\text{inference}  - \text{IC}.$$
 
@@ -342,8 +342,10 @@ Ve fázi provozu datového centra se pak pro modelování HPH použíjí vzorce 
 \label{sec:model_struktura}
 % Shrnutí finální struktury modelu
 
-Model je navržený tak, aby zachycoval dopady výstavby AI daotvých center na tři hlavní oblasti: energetiku, ekonomiku a životní prostředí. Pro každou z těchto oblastí jsou definovány klíčové výpočetní bloky, které se vzájemně propojují a umožňují komplexní analýzu dopadů datových center v ČR. Je však nutno zmínit, že model je záměrně zjednodušený a nezohledňuje všechny možné faktory -- přestože jsou instalovaný příkon a PUE stěžejní pro určení spotřeby a rámcově i produkce datového centra, důležitou roli hrají také konkrétní lokalita stavby, vlastnická struktura provozující firmy, konkrétní architektura chlazení a další. Model tyto nuance zohledňuje pouze prostřednictvím scénářů, které představují vývoj různých variant, avšak nedokáží plně zachytit všechny možnosti.
+Model je navržený tak, aby zachycoval dopady výstavby AI datových center na tři hlavní oblasti: energetiku, ekonomiku a životní prostředí. Pro každou z těchto oblastí jsou definovány klíčové výpočetní bloky, které se vzájemně propojují a umožňují komplexní analýzu dopadů datových center v ČR. Je však nutno zmínit, že model je záměrně zjednodušený a nezohledňuje všechny možné faktory -- přestože jsou instalovaný příkon a PUE stěžejní pro určení spotřeby a rámcově i produkce datového centra, důležitou roli hrají také konkrétní lokalita stavby, vlastnická struktura provozující firmy, konkrétní architektura chlazení a další. Model tyto nuance zohledňuje pouze prostřednictvím scénářů, které představují vývoj různých variant, avšak nedokáží plně zachytit všechny možnosti.
 
 Z uvedených vstupů tedy model vypočítá celkovou spotřebu datových center, od které odvozuje náklady na elektřinu, ekologickou daň a emise oxidu uhličitého do ovzduší. Vstupní parametry dále umožňují odhadnout celkovou produkci datových center, která se následně promítne do hrubé přidané hodnoty. Díky datům o počtu vytvořených pracovních míst a průměrné mzdě model vypočítá přínosy do veřejného rozpočtu z oblasti práce, které se spolu s ekologickou daní a daní z nemovitosti sečtou do celkových přínosů do veřejného rozpočtu. Celková přidaná hodnota a environmentální dopady pak slouží pro komplexní posouzení dopadů datových center v ČR.
+
+Finálním výstupem modelu jsou jednotlivé ukazatele (HPH, přinosy do veřejného rozpočtu) pro každý z modelovaných scénářů vynásobené předpokládanou dobou provozu $\tau_{construction}$ sečteny se zbývajícími ukazateli (HPH, přínosy, emise $CO_2$ a spotřeba vody) vynásobené dobou provozu $\tau_{operations}$ -- ty jsou dále agregovány do jedné očekávané hodnoty pro každý ukazatel. Tyto výsledky budou prezentovány v kapitole \ref{chap:testovani} a slouží jako základ pro interpretaci dopadů datových center v ČR a pro informování rozhodování o jejich budoucím rozvoji. Jednotlivé parametry použité v modelu jsou uvedeny v příloze \ref{appendix:parametry} včetně dodatečných komentářů k jejich získávání.
 
 Celkově tato kapitola tedy popisuje metologii výpočtů a strukturu modelu, který bude následně použit pro vytvoření webové aplikace pro vizualizaci dopadů datových center v ČR. Model je navržen tak, aby byl flexibilní a umožňoval snadné úpravy vstupních parametrů a scénářů, což je klíčové vzhledem k rychlému vývoji technologií a trhu s AI datovými centry. Jeho funkčnost a použitelnost bude dále demonstrována v kapitole \ref{chap:testovani}, kde budou prezentovány výsledky pro jednotlivé scénáře a jejich interpretace. Zároveň bude model použit pro vymodelování dopadů pro jiné země podobné České republice, což umožní zjistit jeho přesnost a robustnost na skutečných scénářích.
