@@ -43,6 +43,7 @@ def analyze(input_path, output_path, top=10):
     white_build_ratios = []
     mw_white_ratios = []
     build_land_ratios = []
+    land_mw_ratios = []
     for row in rows:
         op = (row.get('operator') or '').strip() or '(unknown)'
         stats = providers.setdefault(op, {
@@ -104,6 +105,15 @@ def analyze(input_path, output_path, top=10):
         ):
             mw_white_ratios.append(min(1, mw / white))
 
+        if (
+            land
+            and mw
+            and mw > 0
+            and not is_estimated(land_raw)
+            and not is_estimated(mw_raw)
+        ):
+            land_mw_ratios.append(land / mw)
+
     # prepare output dir
     output_path.parent.mkdir(parents=True, exist_ok=True)
     fieldnames = ['operator','total_mw_mw','total_whitespace_m2','dc_total','dc_with_mw','dc_with_whitespace','avg_mw_per_dc']
@@ -130,10 +140,12 @@ def analyze(input_path, output_path, top=10):
     avg_white_build = sum(white_build_ratios) / len(white_build_ratios) if white_build_ratios else 0.0
     avg_mw_white = sum(mw_white_ratios) / len(mw_white_ratios) if mw_white_ratios else 0.0
     avg_build_land = sum(build_land_ratios) / len(build_land_ratios) if build_land_ratios else 0.0
+    avg_land_mw = sum(land_mw_ratios) / len(land_mw_ratios) if land_mw_ratios else 0.0
     print("Calculated Ratios (non-est only):")
     print(f"  Building/Land Ratio: {avg_build_land:.4f} (n={len(build_land_ratios)})")
     print(f"  Whitespace/Building Ratio: {avg_white_build:.4f} (n={len(white_build_ratios)})")
     print(f"  MW/Whitespace Ratio: {avg_mw_white:.4f} (n={len(mw_white_ratios)})")
+    print(f"  Land per 1 MW: {avg_land_mw:.1f} m^2/MW (n={len(land_mw_ratios)})")
 
     print(f"Provider stats written to: {output_path}")
     print("Top providers by MW:")
