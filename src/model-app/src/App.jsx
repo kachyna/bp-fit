@@ -3,9 +3,12 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
+import { useModelStore } from './store/useModelStore'
 
 function App() {
   const [count, setCount] = useState(0)
+  const getCurrentParams = useModelStore((state) => state.getCurrentParams)
+  const currentParams = getCurrentParams()
 
   return (
     <>
@@ -16,7 +19,7 @@ function App() {
           <img src={viteLogo} className="vite" alt="Vite logo" />
         </div>
         <div>
-          <h1>Get started</h1>
+          <h1>Get started - test </h1>
           <p>
             Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
           </p>
@@ -29,6 +32,13 @@ function App() {
           Count is {count}
         </button>
       </section>
+
+        <section>
+       <h2>Current Parameters</h2>
+       <pre className="text-left bg-gray-800 text-green-400 p-4 rounded">
+         {JSON.stringify(currentParams, null, 2)}
+       </pre>
+    </section>
 
       <div className="ticks"></div>
 
