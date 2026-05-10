@@ -207,7 +207,7 @@ Jak bylo popsáno v kapitole \ref{subsec:prikon}, základní jednotkou příkonu
 
 Z literatury plyne jednoznačný vztah mezi náklady na výstavbu datového centra (bez výpočetního vybavení) $\text{I}_\text{building}$ a jeho instalovaným příkonem v megawattech $\text{P}_\text{IT}$.  Celkový investovaný kapitál tak lze snadno vypočítat rovnicí
 
-$$\text{I}_\text{building} = \text{P}_\text{IT} \cdot \text{I}_\text{per MW},$$
+$$\text{I}_\text{building} = \text{P}_\text{IT} \cdot \text{I}_\text{building per MW},$$
 
 kde $\text{I}_\text{per MW}$ jsou průměrné investiční náklady na výstavbu datového centra s 1 MW instalovaného příkonu.
 
@@ -215,7 +215,7 @@ Pro výpočet celkových nákladů na výstavbu datového centra včetně vybave
 
 $$\text{I}_\text{total} = \text{I}_\text{building} + \text{I}_\text{equipment},$$
 
-kde $\text{I}_\text{equipment}$ jsou celkové náklady na pořízení IT vybavení pro datové centrum o určité kapacitě. Detailní rozbor výpočtu této hodnoty je v kapitole \ref{subsec:model_hph}.
+kde $\text{I}_\text{equipment}$ jsou celkové náklady na pořízení IT vybavení, které se vypočítají z průměrné ceny vybavení na 1 MW instalovaného příkonu $\text{I}_\text{equipment per MW}$ (analogicky k $\text{I}_\text{building}$).
 
 Literatura dále ukazuje vztah mezi instalovaným příkonem a průměrným OPEX, nicméně tento vztah je silně vázaný na americkou ekonomiku a její ceny (zejm. vyšší mzdy). OPEX jako takový navíc není relevantní pro modelování HPH, kvůli čemuž byl zvolen přístup pro výpočet mezispotřeby $\text{IC}$. Ta je v případě DC tvořena zejména elektřinou -- jejíž cenu lze ze vstupů vypočítat přesně -- a dalšími složkami jako úklid, ostraha, služby, pojištění a další. Pro svou obsáhlost a neurčitost byl namísto modelování těchto složek zvolen přístup výpočtu z celkového investovaného kapitálu $\text{I}$ pomocí stanoveného koeficientu $\text{k}_\text{OPEX}$ -- například výše pojištění se odvíjí od hodnoty vybavení, stejně jako nutnost ostrahy. Mezispotřebu tedy počítáme jako
 
