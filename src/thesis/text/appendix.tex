@@ -1,14 +1,155 @@
 \chapter{Popis požadavků v klasifikaci Tier}
-\label{app:tiery}
+\label{appendix:tiery}
 
 Následuje slovní popis požadavků v klasifikaci Tier, podle které se určuje dostupnost služeb poskytovaných datovým centrem pro koncové uživatele. Tyto popisy jsou převzaty přímo ze specifikace Uptime Institute~\cite{turner_iv_tier_2008}:
 
 \begin{description}
     \item[Tier I: Základní infrastruktura] Představuje nejnižší úroveň, která disponuje pouze jednou cestou pro napájení a chlazení bez jakýchkoliv redundantních komponent. Tato třída je náchylná k přerušením způsobeným jak plánovanou údržbou, tak neplánovanými poruchami, přičemž očekávaná roční dostupnost dosahuje 99,671~\%. Infrastruktura tohoto typu je vhodná pro úlohy, u nichž není kritická kontinuita provozu.
     
-    \item[Tier II: Redundantní komponenty] Zvyšuje spolehlivost přidáním záložních komponent\footnote{Může jít například o čerpadla, zdroje nepřerušovaného napětí (UPS) nebo generátory.} -- stále však využívají jedinou distribuční cestu. Ačkoliv redundantní komponenty umožňují snazší údržbu vybraných částí, plánované odstávky distribučních cest stále vyžadují vypnutí systému. Očekávaná dostupnost u této třídy činí 99,741~\%.
+    \item[Tier II: Redundantní komponenty] Zvyšuje spolehlivost přidáním záložních komponent -- stále však využívají jedinou distribuční cestu. Ačkoliv redundantní komponenty umožňují snazší údržbu vybraných částí, plánované odstávky distribučních cest stále vyžadují vypnutí systému. Očekávaná dostupnost u této třídy činí 99,741~\%.
     
     \item[Tier III: Souběžně udržovatelná infrastruktura] Představuje skok v robustnosti, neboť disponuje více distribučními cestami pro napájení a chlazení, ale aktivní je vždy jen jedna. Hlavní výhodou je možnost provádět jakoukoliv plánovanou údržbu libovolné části infrastruktury bez nutnosti přerušit provoz systému. Tato úroveň garantuje dostupnost 99,982~\% a je odolná vůči většině incidentů.
 
     \item[Tier IV: Infrastruktura odolná proti poruchám] Nejvyšší třída využívá více nezávislých a současně aktivních distribučních cest. Systém je navržen tak, aby i po kritické poruše jakékoliv komponenty nebo cesty zůstal IT výkon nedotčen, což zajišťuje dostupnost na úrovni 99,995~\%. Tato třída je určena pro nejkritičtější aplikace.
 \end{description}
+
+\chapter{Vstupní data pro model}
+\label{appendix_model_data}
+
+V tabulce \ref{tab:parametry_komplet} jsou uvedeny hodnoty všech parametrů, které model používá k výpočtu výstupů. Většina z nich vychází z literatury a jsou detailně popsané v kapitolách \ref{chap:historie}, \ref{chap:dopady_usa} a\ref{chap:cz}. Některé však musely být pro nedostatek dat odhadnuty. Pro plnou transparentnost je v této příloze uvedeno několik komentářů, které chybějící hodnoty popisují a opodstatňují jejich zvolení:
+
+\begin{description}
+    
+    \item[Průměrné mzdy] Mzdy na výstavbě vycházejí z předpokladu, že průměrný pracovník pobírá asi 60 000 Kč hrubého za měsíc práce. V tom jsou zahrnuty jak mzdy řemeslníků, tak lépe ohodnocených architektů a projektantů elektrických rozvodů a chlazení. Mzdy v provozu pak vycházejí z průměrné mzdy 75 000 Kč, do čehož jsou zahrnuty jak vysoce nadprůměrné mzdy IT techniků, tak nižší mzdy ostrahy a případného úklidu.
+
+    \item[Cena elektřiny] Průměrná cena elektřiny byla vypočítána z dat společnosti Ember. Realistický scénář obsahuje průměr ceny elektřiny za poměrně stabilní dvouleté období leden 2024 -- prosinec 2025, přičemž pesimistický a optimistický scénář představují 20\% odchylku od této ceny. V realitě mohou být výkyvy vyšší, ale velcí odběratelé si obvykle nasmlouvají odběry na roky dopředu.
+
+    \item[Ostatní OPEX] Ostatní provozní náklady (nezahrnující energie) jsou modelovány jako fixní podíl z celkových investičních nákladů na výstavbu a vybavení. Realistický scénář uvažuje s hodnotou 2,5 \%, která odpovídá oborovým standardům. Scénáře 3 \% (pesimistický) a 2 \% (optimistický) pak reflektují variační rozpětí nákladů na údržbu, bezpečnost a správu v závislosti na dosažené provozní efektivitě a úsporách z rozsahu. Tento koeficient vyhází z díla Pham \cite{pham_data_2017}, které OPEX uvádí jako 8,6 \% investičních nákladů, z čehož 39,5 \% jde právě na údržbu, administraci a další. 
+
+    \item[Spotřeba vody] Literatura se zde trochu liší, resp. některé studie přesněji neuvádí, zda se jedná o Scope I, Scope II nebo kombinovanou spotřebu. Uvedené hodnoty se však veskrze shodují, kvůli čemuž byl zaveden předpoklad, že ji lze interpretovat jako Scope I + Scope II spotřebu -- tedy vodu spotřebovanou jak samotným datovým centrem, tak vodu spotřebovanou při výrobě elektřiny pro datové centrum. 
+
+    \item[Koeficienty pro daň z nemovitosti] Model předpokládá, že DC bude postaveno ve středně velkém městě (České Budějovice, Ústí nad Labem, Brno, Olomouc, Zlín, Ostrava), pro která platí koeficient 3,5. Místní koeficient mají tato města také podobný, obvykle 2. Jejich součin tedy činí 7. 
+
+    \item[Koeficient prodaných kapacit] Pro trénovací a inferenční centra se předpokládá, že využití datového centra z prodaných kapacit bude maximální, tzn. veškerá kapacita bude využita k nějakým účelům (typicky pro scénář, kdy DC vlastní jedna firma). Kolokační centra obvykle neprodají veškeré kapacity, což tento koeficient reflektuje. 
+
+    \item[Koeficient reálné spotřeby] Přestože mohou inferenční a trénovací centra prodat veškeré kapacity, kvůli prostojům, resp. stochastické inference modelů není možné využít kapacitu na maximum, což tento koeficient reflektuje. Koeficient prodaných kapacit tak popisuje ekonomickou dimenzi, zatímco koeficient reálné spotřeby popisuje dimenzi energetickou. Koeficient reálné spotřeby DC se získá vynásobením těchto dvou koeficientů.
+
+    \item[Investiční náklady na výpočetní vybavení] Kolokační datová centra nevlastní žádné vybavení -- to je ve vlastnictví jejich zákazníků. Inferenční datová centra používají nákladově efektivnější servery než trénovací DC s cenou asi poloviční oproti trénovacím datovým centrům \cite{barroso_data_2026}.
+
+    \item[Pronájem jednoho GPU] Ceny za pronájem GPU se v čase výrazně mění -- zatímco před dvěma lety se pohybovaly okolo 7~USD / hodina (NVIDIA H100 80 GB), dnes jsou ceny díky vyšší nabídce nižší. Hyperscale firmy je dnes pronajímají asi za 2,5~USD na hodinu, což odpovídá také českému prostředí. K dubnu 2026 tyto grafické čipy k pronájmu nabízejí 2 společnosti, ZonerCloud (3,77~USD/hod pro NVIDIA H200 NVL 141~GB) a WRDatacentrum (2,12~EUR/hod NVIDIA H100 80~GB)
+
+    \item[Cena a energetická náročnost tokenů] Pro oba parametry je nutné zvolit jeden výchozí jakový model, protože cena tokenu se odvíjí od jeho energetické náročnosti. Jegham et al. \cite{jegham_how_2025} ve své práci ukazují průměrné energetické nároky třiceti modelů napříč různými délkami vstupu včetně odchylek, které jsou použity pro modelování pesimistického a optimistického scénáře. Do parametru modelu byl vybrán model GPT-4o mini firmy Open AI, který na 100 vstupních a 300 výstupních tokenů (odpovídá běžné inferenci modelu) spotřebuje 0,577 Wh. Cena za milion vstupních tokenů je k dubnu 2026 0,15 USD a za milion výstupních 0,60 USD. Pro zjednodušení uvažujeme průměrnou cenu za milion tokenů 0,49 USD (vážený průměr).
+
+    
+
+    
+\end{description}
+
+\begin{landscape} \small
+\begin{longtable}{lcccc}
+        \caption{Podrobné parametry modelových scénářů (pokračování na další straně)} \label{tab:parametry_komplet} \\
+        \toprule
+        \textbf{Parametr} & \textbf{Pesimistický} & \textbf{Realistický} & \textbf{Optimistický} & \textbf{Zdroj} \\
+        \midrule
+        \endfirsthead
+    
+        % Definice hlavičky na každé další stránce
+        \multicolumn{5}{c}%
+        {{\bfseries \tablename\ \thetable{} – pokračování z předchozí strany}} \\
+        \toprule
+        \textbf{Parametr} & \textbf{Pesimistický} & \textbf{Realistický} & \textbf{Optimistický} & \textbf{Zdroj} \\
+        \midrule
+        \endhead
+    
+        % Definice patičky na každé stránce (kromě poslední)
+        \midrule
+        \multicolumn{5}{r}{{Pokračování na další straně...}} \\
+        \endfoot
+    
+        % Definice patičky na úplně poslední stránce
+        \bottomrule
+        \endlastfoot
+
+    % --------------------------
+
+        \multicolumn{5}{l}{\textbf{Investiční náklady a výstavba}} \\
+        Náklady na 1 MW příkonu ($\text{I}_\text{building per MW}$) & 148,2 mil. Kč & 211,7 mil. Kč & 275,2 mil. Kč & \cite{barroso_data_2026, international_energy_agency_iea_energy_2025, roychoudhury_economic_2025} \\
+        FTE při výstavbě na 1 MW ($\text{FTE}_\text{building per MW}$) & 4,0 & 5,0 & 6,0 & \cite{to_albertas_2025, lee_breaking_2025} \\
+        Roční prům. mzda výstavba () & 660 000 Kč & 720 000 Kč & 780 000 Kč & příloha \ref{appendix_model_data} \\
+        Doba výstavby v letech & 1,5 & 2,0 & 3,0 & \cite{to_albertas_2025, ginzburg-ganz_technical_2025, pham_data_2017, sheng_power_2026, lee_breaking_2025} \\
+        
+        \addlinespace
+        \midrule
+        \addlinespace
+
+        \multicolumn{5}{l}{\textbf{Provozní parametry a lidské zdroje}} \\
+        Doba provozu (roky) & 25 & 30 & 35 & \cite{barroso_data_2026} \\
+        Přímí FTE v provozu na 1 MW ($\text{FTE}_\text{operations per MW}$) & 0,3 & 0,4 & 0,5 & \cite{to_albertas_2025, lee_breaking_2025,  diao_economic_2025}  \\
+        Prům. mzda v provozu (rok) & 780 000 Kč & 900 000 Kč & 1 080 000 Kč & příloha \ref{appendix_model_data} \\
+        Cena elektřiny za MWh ($\text{Price}_\text{electricity}$) & 1 768 Kč & 2 210 Kč & 2 652 Kč & \cite{ember_average_2026}, příloha \ref{appendix_model_data} \\
+        Ostatní OPEX \% z $IC$ ($\text{k}_\text{OPEX}$) & 4,0 \% & 3,0 \% & 2,0 \% & \cite{pham_data_2017}, příloha \ref{appendix_model_data} \\
+        
+        \addlinespace
+        \midrule
+        \addlinespace
+
+        \multicolumn{5}{l}{\textbf{Environmentální faktory a pozemky}} \\
+        Emise $CO_2$ (Scope II) & 0,43 t/MWh & 0,33 t/MWh & 0,23 t/MWh & \cite{bufka_hodnota_2026} \\
+        Spotřeba vody (na 1 MWh) & 1 800 l & 2 350 l & 2 900 mil. l & \cite{pilz_compute_2023, de_roucy-rochegonde_ai_2025, sheng_power_2026, international_energy_agency_iea_energy_2025} \\
+        Výměra pozemku na 1 MW & 2400,0 $m^2$ & 2998,00 $m^2$ & 3600,0 $m^2$ & sekce \ref{sec:model_scraper} \\
+        Poměr zastavěné plochy ($A_{build}$ / $A_{land}$) & 58,19 \% & 72,74 \% & 87,28 \% & sekce \ref{sec:model_scraper} \\
+
+        \addlinespace
+        \midrule
+        \addlinespace
+
+        \multicolumn{5}{l}{\textbf{Daně a odvody (společné pro všechny scénáře)}} \\
+        DPFO / Sleva na poplatníka & \multicolumn{3}{c}{15,00 \% / 30 840 Kč} & \ref{subsec:cz_dane} \\
+        Odvody (zaměstnavatel / prac.) & \multicolumn{3}{c}{33,80 \% / 11,60 \%} & \ref{subsec:cz_dane} \\
+        Sazba ekologické daně & \multicolumn{3}{c}{28,30 Kč / MWh} & \ref{subsec:cz_dane} \\
+        Daň z nemovitosti (budova / poz.) & \multicolumn{3}{c}{18 Kč / 9 Kč (na $m^2$)} & \ref{subsec:cz_dane} \\
+        Daň z nemovitosti (budova / poz.) & \multicolumn{3}{c}{18 Kč / 9 Kč (na $m^2$)} & \ref{subsec:cz_dane} \\
+        Součin koeficientů pro daň z nemovitosti & \multicolumn{3}{c}{7} & příloha \ref{appendix_model_data} \\        
+
+        \multicolumn{5}{l}{\textbf{Koeficient prodaných kapacit}} \\
+        Colocation DC & 88,0 \% & 92,6 \% & 97,2 \% & \cite{cbre_global_2025}, odchylka 5 \% \\
+        AI DC -- Training & 100,00 \% & 100,00 \% & 100,00 \% & příloha \ref{appendix_model_data} \\
+        AI DC -- Inference & 100,00 \% & 100,00 \% & 100,00 \% & příloha \ref{appendix_model_data} \\
+
+        \addlinespace
+        \midrule
+        \addlinespace
+
+        \multicolumn{5}{l}{\textbf{Koeficient reálné spotřeby z prodaných kapacit (Total Load Factor)}} \\
+        Colocation DC & 40,00 \% & 50,00 \% & 60,00 \% & \cite{shehabi_united_2016} \\
+        AI DC -- Training & 80,00 \% & 90,00 \% & 100,00 \% & \cite{LBNL-2001637, ginzburg-ganz_technical_2025, sheng_power_2026, LBNL-2001637} \\
+        AI DC -- Inference & 20,00 \% & 50,00 \% & 80,00 \% & \cite{ginzburg-ganz_technical_2025, sheng_power_2026} \\
+
+        \addlinespace
+        \midrule
+        \addlinespace
+
+        \multicolumn{5}{l}{\textbf{Investiční náklady na výpočetní vybavení na 1 MW $\text{I}_\text{equipment per MW}$}} \\
+        Colocation DC & 0,00 Kč & 0,00 Kč & 0,00 Kč & příloha \ref{appendix_model_data} \\
+        AI DC -- Training & 618,0 mil. Kč Kč & 721,0 mil. Kč & 824,0 mil. Kč & \cite{barroso_data_2026, pilz_compute_2023} \\
+        AI DC -- Inference & 319,0 mil. Kč & 360,5 mil. Kč & 412,0 mil. Kč & \cite{barroso_data_2026}, příloha \ref{appendix_model_data} \\
+        
+        \addlinespace
+        \midrule
+        \addlinespace
+
+        \multicolumn{5}{l}{\textbf{Cena za služby jednotlivých typů DC}} \\
+        Coloc -- Pronájem 1 MW kapacity (rok) & 44,49 mil. Kč & 48,70 mil. Kč & 53,15 mil. Kč & \cite{cbre_global_2025} \\
+        Training -- Pronájem jednoho GPU (rok) & 360 921 Kč & 541 368 Kč & 721 824 Kč & příloha \ref{appendix_model_data} \\
+        Inference -- Cena za 1 mil. tokenů ($p_{paid}$) & 10,09 Kč & 10,09 Kč & 10,09 Kč & příloha \ref{appendix_model_data} \\
+        
+        \addlinespace
+        \midrule
+        \addlinespace
+
+        \multicolumn{5}{l}{\textbf{Specifické parametry jednotlivých typů DC}} \\
+        Training -- Počet GPU na 1 MW kapacity & 800 & 800 & 800 & \ref{sec:tdp} \\
+        Inference -- Energetická náročnost tokenů & 17 400 Wh / 1M & 13 925 Wh / 1M & 10 450 Wh / 1M & \cite{jegham_how_2025}, model GPT-4o mini \\
+        
+\end{longtable}
+\end{landscape}

@@ -126,6 +126,9 @@ Souhrnný přehled daňových sazeb a relevantní legislativy pro modelování d
 
 \begin{table}[t] \centering \setlength{\tabcolsep}{8pt} \small
 
+    \caption{Přehled daňových sazeb v ČR pro rok 2026}
+    \label{tab:cz_dane_sazby}
+    
     \begin{tabular}{llll}
         \toprule
         \addlinespace
@@ -163,8 +166,6 @@ Souhrnný přehled daňových sazeb a relevantní legislativy pro modelování d
         \footnotesize ** Sazba se liší pro kategorie pozemků a staveb. Výsledná daň je dále násobena místním koeficientem obce (1,0 až 5,0).
     \end{minipage}
     
-    \caption{Přehled daňových sazeb v ČR pro rok 2026}
-    \label{tab:cz_dane_sazby}
 \end{table}
 
 \subsection{Detailnější rozbor DPH}
@@ -220,17 +221,17 @@ Parametry důležité pro model jsou shrnuty v tabulce~\ref{tab:parametry_modelu
 		\addlinespace
 
         Výroba elektřiny (2024, brutto)    & 73,9~TWh &~\cite{energeticky_regulacni_urad_rocni_2025} \\
-        Spotřeba elektřiny (2024)    & 67,2~TWh &~\cite{energeticky_regulacni_urad_rocni_2025} \\
-        Max. transformační výkon přenosové soustavy    & 24~500~MVA &~\cite[s.~127]{bartos_energetika_2025} \\
+        Spotřeba elektřiny (2024, brutto)    & 67,2~TWh &~\cite{energeticky_regulacni_urad_rocni_2025} \\
+        Max. transformační výkon p. s.    & 24~500~MVA &~\cite[s.~127]{bartos_energetika_2025} \\
         \quad Minimální zatížení sítě    & 6~000~MW & \\ \cite{energeticky_regulacni_urad_rocni_2025}
-        \quad Běžné zatížení sítě    & 8~000~MW & \\ (střed minima a maxima)
+        \quad Běžné zatížení sítě    & 8~000~MW & \\
         \quad Maximální zatížení sítě    & 12~250~MW &~\cite{bartos_energetika_2025} \\
         
         \addlinespace
         \midrule
         \addlinespace
 
-        Spotřeba vody jednoho obyvatele    & 88 m$^3$ & \cite{horackova}  \\
+        Spotřeba vody jednoho obyvatele    & 88 m$^3$ & \cite{horackova_vodni_2026}  \\
         Emisní faktor z výroby elektřiny (brutto)    & 0,33~t CO$_2$/MWh &~\cite{energeticky_regulacni_urad_rocni_2025} \\
 
         \addlinespace
@@ -248,8 +249,8 @@ Parametry důležité pro model jsou shrnuty v tabulce~\ref{tab:parametry_modelu
         Daňové zatížení práce    & 15 \% + 45,4 \% & tab.~\ref{tab:cz_dane_sazby} \\
         \quad Stand. sazba DPFO     & 15~\% & tab.~\ref{tab:cz_dane_sazby} \\
         \quad Sleva na poplatníka    & 30~840 Kč/rok & tab.~\ref{tab:cz_dane_sazby} \\
-        \quad Odvody (zaměstnanec)    & 7,1~\% (soc.) + 4,5~\% (zdrav.) & tab.~\ref{tab:cz_dane_sazby} \\
-        \quad Odvody (zaměstnavatel)    & 24,8~\% (soc.) + 9,0~\% (zdrav.) & tab.~\ref{tab:cz_dane_sazby} \\
+        \quad Odvody (zaměstnanec)    & 7,1~\% + 4,5~\% & tab.~\ref{tab:cz_dane_sazby} \\
+        \quad Odvody (zaměstnavatel)    & 24,8~\% + 9,0~\% & tab.~\ref{tab:cz_dane_sazby} \\
 
         \addlinespace
         \midrule

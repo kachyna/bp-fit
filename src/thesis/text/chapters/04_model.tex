@@ -61,7 +61,7 @@ Scraper je plně ovladatelný z příkazové řádky, přičemž jednotlivé fá
 	\label{tab:model_top_poskytovatele}
 \end{table}
 
-Analýza českých datových center dále ukázala poměry mezi velikostí budovy a pozemku (0,7274, n=10), velikostí whitespace a budovy (0,4698, n=6) a instalovaným příkonem a velikostí whitespace (0,0030 $\text{MW} / m^3$, n=17). Tyto hodnoty byly vypočítány pouze z neodhadovaných dat, aby nedošlo k jejich zkreslení. V modelu budou následně použity pro odhad velikost DC pro výpočet daně z nemovitosti. 
+Analýza českých datových center dále ukázala poměry mezi velikostí budovy a pozemku (0,7274, n=10), velikostí whitespace a budovy (0,4698, n=6) a instalovaným příkonem a velikostí whitespace (0,0030 $\text{MW} / m^3$, n=17). Dále se ukázalo, že průměrná velikost pozemku pro datové centrum o instal. příkonu 1 MW je 2998,0 $m^2$ (n=26). Tyto hodnoty byly vypočítány pouze z neodhadovaných dat, aby nedošlo k jejich zkreslení. V modelu budou následně použity pro odhad velikost DC pro výpočet daně z nemovitosti. 
 
 \section{Vymezení modelu}
 \label{sec:model_vymezeni}
@@ -144,7 +144,7 @@ Data vycházející z amerického trhu (počet vytvořených míst, náklady na 
 
 Kvůli tomu byly do modelu implementovány tři scénáře: pesimistický, optimistický a realistický. Tyto scénáře jsou vztaženy k ekonomické části, tedy příjmů do veřejného rozpočtu a vytvořené hrubé přidané hodnotě. To se však může vůči ostatním oblastem projevit inverzně -- nižší spotřeba energie sice způsobí nižší přidanou hodnotu (protože přidaná hodnota DC je proměna energie na informace), ale na druhou stranu tím vyvolá méně emisí oxidu uhličitého do atmosféry a spotřebuje méně vody. Ekonomická oblast byla zvolena jako kotvicí kvůli tomu, že se obecně jedná o primární determinant rozhodovacího procesu jak soukromých investorů, tak státního aparátu.
 
-Pesimistický scénář v každém aspektu počítá s takovými hodnotami, které povedou k nejmenšímu příjmu do veřejného rozpočtu a nejnižší hrubé přidané hodnotě. Opak platí pro scénář optimistický, který naopak povede k nejvyšším příjmům do veřejného rozpočtu a nejvyšší hrubé přidané hodnotě. Realistický scénář používá střední hodnotu (pokud byla z literatury získána), nebo aritmetický průměr nejvyšší a nejnižší hodnoty.
+Pesimistický scénář v každém aspektu počítá s takovými hodnotami, které povedou k nejmenšímu příjmu do veřejného rozpočtu a nejnižší hrubé přidané hodnotě. Opak platí pro scénář optimistický, který naopak povede k nejvyšším příjmům do veřejného rozpočtu a nejvyšší hrubé přidané hodnotě. Realistický scénář používá střední hodnotu (pokud byla z literatury získána), nebo aritmetický průměr nejvyšší a nejnižší hodnoty. V případech, kdy odborná literatura neuvádí specifické rozpětí pro pesimistický a optimistický scénář, byla uplatněna uniformní odchylka 20 \% od realistické (středové) hodnoty. Toto rozpětí reflektuje běžnou míru nejistoty v raných fázích plánování technologických celků a umožňuje testovat robustnost modelu vůči variačnímu riziku.
 
 Model následně vypočítá konkrétní hodnoty pro jednotlivé scénáře a také jednu finální očekávanou hodnotu, která se bude řídit pravděpodobnostním rozdělením jednotlivých scénářů. Rozdělení bylo inspirováno běžně používanou metodikou PERT, která stanovuje váhy přibližně 17 \% pro optimistický, 66 \% pro realistický a 17 \% pro pesimistický scénář. V tomto modelu budou použity hodnoty 20 \% pro optimistický scénář, 60 \% pro realistický scénář a 20 \% pro pesimistický scénář. Mírné posílení vah okrajových scénářů reflektuje relativně vysokou volatilitu trhu s AI technologiemi a energiemi. Výsledná očekávaná hodnota se vypočítá podle vzorce
 
@@ -328,7 +328,7 @@ kde $\text{Water}$ je celková spotřeba vody, $\text{P}_\text{IT}$ je instalova
 
 Model byl rozdělen do fáze výstavby a provozu datového centra, které se liší v charakteru vstupů, výpočtů a časovém horizontu. Fáze výstavby se zaměřuje na investiční náklady, tvorbu pracovních míst a související zdanění, zatímco fáze provozu se soustředí na tržby, HPH, zdanění práce, environmentální dopady a dlouhodobé přínosy do veřejného rozpočtu.
 
-Fáze výstavby se obvykle odehrává v prvních 1--2 letech od zahájení projektu, kdy jsou realizovány stavební práce, instalace vybavení a další přípravné činnosti. V této fázi jsou klíčové investiční náklady, které se promítají do HPH vygenerované stavební firmou. Na základě dat z ČSÚ byl zjištěn průměrný koeficient pro výpočet HPH z investovaných nákladů, který se pohybuje kolem 30 \% \cite{cesky_statisticky_urad_mezispotreba_2026,cesky_statisticky_urad_produkce_2026}. HPH vygenerovaná ve fázi výstavby se tedy vypočítá jako
+Fáze výstavby se obvykle odehrává v prvních 1--2 letech od zahájení projektu, kdy jsou realizovány stavební práce, instalace vybavení a další přípravné činnosti. V této fázi jsou klíčové investiční náklady, které se promítají do HPH vygenerované stavební firmou. Na základě dat z ČSÚ byl zjištěn průměrný koeficient pro výpočet HPH z investovaných nákladů, který se pohybuje kolem 30 \% \cite{csu_mezispotreba_2026,csu_produkce_2026}. HPH vygenerovaná ve fázi výstavby se tedy vypočítá jako
 
 $$\text{HPH}_\text{construction} = \text{I}_\text{total} \cdot \text{k}_\text{GVA on Construction Invesment},$$
 
