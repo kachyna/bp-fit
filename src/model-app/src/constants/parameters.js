@@ -11,6 +11,13 @@ export const COMMON_PARAMS = {
   
   // Specifické technické parametry
   trainingGpuCountPerMW: 800,
+
+  // Pravděpodobnost jednotlivých scénářů
+  scenarioProbabilities: {
+    PESIMISTIC: 0.2,
+    REALISTIC: 0.6,
+    OPTIMISTIC: 0.2
+  }
 };
 
 export const SCENARIOS = {
