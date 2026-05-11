@@ -1,17 +1,20 @@
 import { create } from 'zustand'
 import { SCENARIOS, COMMON_PARAMS } from '../constants/parameters'
+import { enrichDatacenter } from '../logic/enrich'
 
 // set, get jsou dependency injection ze Zustand. ta definovana arrow funkce create vraci objekt -- stejny zapis, jako bychom psali => { return { activeScearioKey: ...}}
 export const useModelStore = create((set, get) => ({
 
     datacenters: [
-        { id: '1', type: 'coloc', itPower: 50, pue: 1.2 }
+        { id: crypto.randomUUID(), type: 'coloc', itPower: 50, pue: 1.2 }
     ],
 
     addDatacenter: () => set((state) => ({
+        
+
         datacenters: [
             ...state.datacenters,
-            { id: crypto.randomUUID(), type: 'coloc', itPower: 0, pue: 1.5 }
+            enrichDatacenter({ id: crypto.randomUUID(), type: 'coloc', itPower: 0, pue: 1.5 }, {SCENARIOS, COMMON_PARAMS }),
         ]
     })),
 
@@ -22,9 +25,12 @@ export const useModelStore = create((set, get) => ({
     })),
 
     updateDatacenter: (id, field, value) => set((state) => ({
-        datacenters: state.datacenters.map(dc =>
-            dc.id === id ? { ...dc, [field]: value } : dc
-        )
+        datacenters: state.datacenters.map(dc => {
+            if ( dc.id === id ) {
+                return enrichDatacenter({ ...dc, [field]: value }, {SCENARIOS, COMMON_PARAMS })
+            }
+            return dc
+        })
     })),
 
     getParams: () => {
