@@ -270,7 +270,7 @@ const calcGvaMetrics = (dc, { priceService, occupancy, utilization, kGvaConstruc
                 yearlyConstructionGva : dc.buildingInvestment * kGvaConstruction
             }
         case 'inference':
-            const maxTokens = calcMaxTokens(dc.realITConsumption, inferenceEnergyPerMillionTokensWh)
+            const maxTokens = calcMaxTokens(dc.maxITConsumption, inferenceEnergyPerMillionTokensWh)
             const sInference = calcInferenceSales(maxTokens, priceService[dc.type], occupancy[dc.type], utilization[dc.type])
             return {
                 maxYearlyTokensInMillions: maxTokens,
