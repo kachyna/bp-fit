@@ -42,8 +42,8 @@ export const DcManager = () => {
               <label className="block text-xs font-semibold text-slate-400 uppercase mb-1">Příkon (MW)</label>
               <input 
                 type="number"
-                value={dc.power}
-                onChange={(e) => updateDatacenter(dc.id, 'power', e.target.value)}
+                value={dc.itPower}
+                onChange={(e) => updateDatacenter(dc.id, 'itPower', e.target.value)}
                 className="w-full h-10 p-2 bg-white border rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="0"
               />

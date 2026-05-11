@@ -5,13 +5,13 @@ import { SCENARIOS, COMMON_PARAMS } from '../constants/parameters'
 export const useModelStore = create((set, get) => ({
 
     datacenters: [
-        { id: '1', type: 'coloc', power: 50, pue: 1.2 }
+        { id: '1', type: 'coloc', itPower: 50, pue: 1.2 }
     ],
 
     addDatacenter: () => set((state) => ({
         datacenters: [
             ...state.datacenters,
-            { id: crypto.randomUUID(), type: 'coloc', power: 0, pue: 1.5 }
+            { id: crypto.randomUUID(), type: 'coloc', itPower: 0, pue: 1.5 }
         ]
     })),
 
