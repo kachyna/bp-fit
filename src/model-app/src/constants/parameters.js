@@ -2,11 +2,11 @@ export const COMMON_PARAMS = {
   // Daně a odvody
   taxIncomeRate: 0.15,
   yearlyTaxDiscount: 30840,
-  contributionsEmployer: 0.338,
-  contributionsEmployee: 0.116,
-  taxEcologyMWh: 28.30,
-  taxBuildingM2: 18,
-  taxLandM2: 9,
+  contributionsEmployerRate: 0.338,
+  contributionsEmployeeRate: 0.116,
+  taxEcologyMWhRate: 28.30,
+  taxBuildingM2Rate: 18,
+  taxLandM2Rate: 9,
   kLocation: 7,
   
   // Specifické technické parametry
@@ -22,7 +22,6 @@ export const COMMON_PARAMS = {
 
 export const SCENARIOS = {
   PESIMISTIC: {
-    label: 'Pesimistický',
     // Investice a výstavba
     costBuildingPerMW: 148200000,
     fteBuildingPerMW: 4.0,
@@ -41,19 +40,19 @@ export const SCENARIOS = {
     ratioBuildingLand: 0.5819,
     // Koeficienty typů DC (Obsazenost / Využití)
     occupancy: { coloc: 0.88, training: 1.0, inference: 1.0 },
-    utilization: { coloc: 0.40, training: 0.80, inference: 0.20 },
+    utilization: { coloc: 0.40, training: 0.80, inference: 0.40 },
     // Náklady na HW a ceny služeb
     costEquipmentPerMW: { coloc: 0, training: 618000000, inference: 319000000 },
     priceService: { 
-      colocYearlyMW: 44490000, 
-      trainingYearlyGPU: 360921, 
-      inferenceMillionTokens: 10.09 
+      coloc: 44490000, //price per rental of 1MW per year
+      training: 360921, // price per rental of 1 GPU per year
+      inference: 10.09 // price per 1 million tokens served
     },
-    inferenceEnergyPerMillionTokensWh: 17400
+    inferenceEnergyPerMillionTokensWh: 1790,
+    kGvaConstruction: 0.28
   },
 
   REALISTIC: {
-    label: 'Realistický',
     costBuildingPerMW: 211700000,
     fteBuildingPerMW: 5.0,
     wageConstruction: 720000,
@@ -71,15 +70,15 @@ export const SCENARIOS = {
     utilization: { coloc: 0.50, training: 0.90, inference: 0.50 },
     costEquipmentPerMW: { coloc: 0, training: 721000000, inference: 360500000 },
     priceService: { 
-      colocYearlyMW: 48700000, 
-      trainingYearlyGPU: 541368, 
-      inferenceMillionTokens: 10.09 
+      coloc: 48700000, 
+      training: 541368, 
+      inference: 10.09 
     },
-    inferenceEnergyPerMillionTokensWh: 13925
+    inferenceEnergyPerMillionTokensWh: 1442.5,
+    kGvaConstruction: 0.30
   },
 
   OPTIMISTIC: {
-    label: 'Optimistický',
     costBuildingPerMW: 275200000,
     fteBuildingPerMW: 6.0,
     wageConstruction: 780000,
@@ -94,13 +93,14 @@ export const SCENARIOS = {
     areaLandPerMW: 3600,
     ratioBuildingLand: 0.8728,
     occupancy: { coloc: 0.972, training: 1.0, inference: 1.0 },
-    utilization: { coloc: 0.60, training: 1.0, inference: 0.80 },
+    utilization: { coloc: 0.60, training: 1.0, inference: 0.60 },
     costEquipmentPerMW: { coloc: 0, training: 824000000, inference: 412000000 },
     priceService: { 
-      colocYearlyMW: 53150000, 
-      trainingYearlyGPU: 721824, 
-      inferenceMillionTokens: 10.09 
+      coloc: 53150000, 
+      training: 721824, 
+      inference: 10.09 
     },
-    inferenceEnergyPerMillionTokensWh: 10450
+    inferenceEnergyPerMillionTokensWh: 1095,
+    kGvaConstruction: 0.32
   }
 };
