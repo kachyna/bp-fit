@@ -274,6 +274,7 @@ const calcGvaMetrics = (dc, { priceService, occupancy, utilization, kGvaConstruc
             const sInference = calcInferenceSales(maxTokens, priceService[dc.type], occupancy[dc.type], utilization[dc.type])
             return {
                 maxYearlyTokensInMillions: maxTokens,
+                realYearlyTokensInMillions: maxTokens * occupancy[dc.type] * utilization[dc.type],
                 yearlySales: sInference,
                 yearlyOperationsGva : calcGVA(sInference, dc.intermediateConsumption),
                 yearlyConstructionGva : dc.buildingInvestment * kGvaConstruction
