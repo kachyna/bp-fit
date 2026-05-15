@@ -5,6 +5,8 @@ import { enrichDatacenter } from '../logic/enrich'
 // set, get jsou dependency injection ze Zustand. ta definovana arrow funkce create vraci objekt -- stejny zapis, jako bychom psali => { return { activeScearioKey: ...}}
 export const useModelStore = create((set, get) => ({
 
+    // TODO: Make parameters editable in UI
+
     datacenters: [
         { id: crypto.randomUUID(), type: 'coloc', itPower: 50, pue: 1.2 }
     ],
@@ -27,7 +29,7 @@ export const useModelStore = create((set, get) => ({
     updateDatacenter: (id, field, value) => set((state) => ({
         datacenters: state.datacenters.map(dc => {
             if ( dc.id === id ) {
-                return enrichDatacenter({ ...dc, [field]: value }, {SCENARIOS, COMMON_PARAMS })
+                return enrichDatacenter({ ...dc, [field]: Number(value) }, {SCENARIOS, COMMON_PARAMS })
             }
             return dc
         })
