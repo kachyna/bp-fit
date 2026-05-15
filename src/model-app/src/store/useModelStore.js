@@ -29,7 +29,7 @@ export const useModelStore = create((set, get) => ({
     updateDatacenter: (id, field, value) => set((state) => ({
         datacenters: state.datacenters.map(dc => {
             if ( dc.id === id ) {
-                return enrichDatacenter({ ...dc, [field]: Number(value) }, {SCENARIOS, COMMON_PARAMS })
+                return enrichDatacenter({ ...dc, [field]: field === 'type' ? value : Number(value) }, {SCENARIOS, COMMON_PARAMS })
             }
             return dc
         })
