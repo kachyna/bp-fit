@@ -1,3 +1,5 @@
+import * as config from './config.js'
+
 /*
 - This is a pipeline for enriching the datacenter object:
     - datacenter = { id: crypto.randomUUID(), type: 'coloc', power: 0, pue: 1.5 }
@@ -5,12 +7,6 @@
 - This set of functions is called on every add and every update, taking O(1) time (becuase only the current object is modified).
 
 */
-
-// ======= CONSTANTS =======
-
-const YEAR_IN_HOURS = 365 * 24
-const TYPES = ['coloc', 'training', 'inference']
-const SCENARIO_KEYS = ['PESIMISTIC', 'REALISTIC', 'OPTIMISTIC']
 
 // ======= MAIN FUNCTION =======
 
@@ -20,7 +16,7 @@ export const enrichDatacenter = (dc, params) => {
     const dcWithMetrics = { ...dc, ...calcMetricsNotBasedOnParams(dc) }
     const results = {}
 
-    SCENARIO_KEYS.forEach(scenario => {
+    config.SCENARIO_KEYS.forEach(scenario => {
         const scenarioParams = params.SCENARIOS[scenario]
 
         let acc = {}
@@ -94,7 +90,7 @@ const calcTotalPower = (itPower, PUE) => {
 }
 
 const calcMaxEnergyConsumption = (totalPower) => {
-    return totalPower * YEAR_IN_HOURS
+    return totalPower * config.YEAR_IN_HOURS
 }
 
 const calcRealEnergyConsumption = (maxConsumption, k) => {
@@ -250,7 +246,6 @@ const calcGVA = (sales, intermediateConsumption) => {
 }
 
 const calcGvaMetrics = (dc, { priceService, occupancy, utilization, kGvaConstruction, inferenceEnergyPerMillionTokensWh }, {trainingGpuCountPerMW}) => {
-    debugger
     switch (dc.type) {
         case 'coloc':
             const sColoc = calcColocSales(dc.itPower, priceService[dc.type], occupancy[dc.type])
