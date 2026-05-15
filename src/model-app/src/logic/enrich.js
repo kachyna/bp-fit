@@ -48,7 +48,6 @@ const validateDeep = (obj, prefix = "") => {
     Object.keys(obj).forEach(key => {
         const value = obj[key];
         const path = prefix ? `${prefix}.${key}` : key;
-
         typeof value === 'object' && value !== null ? validateDeep(value, path) : validateNum(value, path)
     })
 }
@@ -98,7 +97,7 @@ const calcRealEnergyConsumption = (maxConsumption, k) => {
 }
 
 const calcEnergy = (dc, { occupancy, utilization }) => {
-    const k_combined = (validateNum(occupancy[dc.type], "occupancy")) * (validateNum(utilization[dc.type], "utilization"));
+    const k_combined = occupancy[dc.type] * utilization[dc.type];
 
     return {
         realEnergyConsumption: calcRealEnergyConsumption(dc.maxEnergyConsumption, k_combined),
