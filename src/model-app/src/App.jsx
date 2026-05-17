@@ -8,6 +8,7 @@ function App() {
 
   const datacenters = useModelStore(state => state.datacenters)
   const analyzedData = analyzeDatacenters(datacenters)
+  const params = useModelStore(state => state.params)
   
 
   return (
@@ -21,6 +22,15 @@ function App() {
 
         <main className="p-8 max-w-7xl mx-auto w-full space-y-10">
           {/* Main Workspace where the charts and tabs will be */}
+          <section className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+            <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">
+              Model Parameters (Debug)
+            </h2>
+            <pre className="text-xs bg-slate-900 text-green-400 p-4 rounded-xl overflow-x-auto">
+              {JSON.stringify(params, null, 2)}
+            </pre>
+          </section>
+
           <section className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
             <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">
               Summarized Data (Debug)
