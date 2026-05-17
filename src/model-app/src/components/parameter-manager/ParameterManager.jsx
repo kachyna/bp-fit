@@ -13,7 +13,7 @@ import { ResetParamsDialog } from "./reset-params-dialog"
 export function ParameterManager() {
 
     const params = useModelStore((state) => state.params);
-    const updateParameter = useModelStore((state) => state.updateParameter);
+    const updateParameterByPath = useModelStore((state) => state.updateParameterByPath);
 
     const scenarioParamKeys = new Set()
 
@@ -50,7 +50,7 @@ export function ParameterManager() {
                                 label={paramLabel}
                                 description={paramDescription}
                                 value={paramValue}
-                                onChange={(value) => updateParameter("COMMON_PARAMS", paramKey, Number(value))}
+                                onChange={(value) => updateParameterByPath(["COMMON_PARAMS", paramKey], Number(value))}
                             />
                         )
                     })}
@@ -88,7 +88,7 @@ export function ParameterManager() {
                                 label={paramLabel}
                                 description={paramDescription}
                                 paramValues={values}
-                                onChange={(value, scenario) => updateParameter(scenario, paramKey, Number(value))}
+                                onChange={(value, scenario) => updateParameterByPath(["SCENARIOS", scenario, paramKey], Number(value))}
                             />
                         )
                     })}
