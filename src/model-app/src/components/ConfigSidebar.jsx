@@ -31,7 +31,7 @@ export function ConfigSidebar() {
                         <CollapsibleTrigger>
                             <div className="flex flex-row items-center space-between text-sm font-medium text-slate-900 group-data-[state=open]/collapsible:text-slate-600 group-data-[state=open]/collapsible:mb-4">
                                 <span className="font-bold uppercase">Portfolio datových center</span>
-                                <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
+                                <ChevronDown className="ml-auto transition-transform duration-200 group-data-[state=open]:rotate-180" />
                             </div>
                         </CollapsibleTrigger>
                         <CollapsibleContent>
@@ -39,7 +39,7 @@ export function ConfigSidebar() {
                         </CollapsibleContent>
                     </SidebarGroup>
                 </Collapsible>
-                <Collapsible defaultOpen={false} className="group/collapsible">
+                <Collapsible defaultOpen={true} className="group/collapsible">
                     <SidebarGroup>
                         <CollapsibleTrigger>
                             <div className="flex flex-row items-center space-between text-sm font-medium text-slate-900 group-data-[state=open]/collapsible:text-slate-600 group-data-[state=open]/collapsible:mb-4">
