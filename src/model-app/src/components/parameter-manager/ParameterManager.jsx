@@ -1,5 +1,5 @@
 
-import { InfoIcon } from "lucide-react"
+import { InfoIcon, RefreshCcw } from "lucide-react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 import { useModelStore } from "@/store/useModelStore"
@@ -8,7 +8,7 @@ import { PARAM_DETAILS } from '@/constants/param-details'
 import { CategoryDropdown } from "@/components/parameter-manager/parameter-category-dropown"
 import { CommonParameterInput } from "./common-parameter"
 import { ScenarioParameterInput } from "./scenario-parameter"
-
+import { ResetParamsDialog } from "./reset-params-dialog"
 
 export function ParameterManager() {
 
@@ -31,6 +31,9 @@ export function ParameterManager() {
     
     return (
         <div className="flex flex-col gap-2 w-full">
+
+            <ResetParamsDialog />
+
             <CategoryDropdown categoryName="Společné parametry">
                 <div className="space-y-3">
                     {Object.entries(params.COMMON_PARAMS).map(([paramKey, paramValue]) => {
