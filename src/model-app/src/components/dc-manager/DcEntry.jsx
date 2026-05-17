@@ -23,7 +23,7 @@ export const DcEntry = ({ dc, dcTypes, updateDatacenter, removeDatacenter }) => 
               value={dc.type}
               onValueChange={(value) => updateDatacenter(dc.id, "type", value)}
             >
-              <SelectTrigger id={`type-${dc.id}`} className="w-full h-8 text-sm">
+              <SelectTrigger id={`type-${dc.id}`} size="sm" className="w-full text-sm">
                 <SelectValue placeholder="Vyberte typ" />
               </SelectTrigger>
               <SelectContent>
