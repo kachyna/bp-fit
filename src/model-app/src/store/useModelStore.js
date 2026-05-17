@@ -1,9 +1,10 @@
 import { create } from 'zustand'
 import { SCENARIOS, COMMON_PARAMS } from '../constants/parameters'
 import { enrichDatacenter } from '../logic/enrich'
+import { immer } from 'zustand/middleware/immer'
 
 // set, get jsou dependency injection ze Zustand. ta definovana arrow funkce create vraci objekt -- stejny zapis, jako bychom psali => { return { activeScearioKey: ...}}
-export const useModelStore = create((set, get) => ({
+export const useModelStore = create(immer((set, get) => ({
 
     // ========= MANAGING DATACENTER STATES ========
     // basic crud operations for datacenters
@@ -15,30 +16,31 @@ export const useModelStore = create((set, get) => ({
     ],
 
     // when adding a datacenter, we create a new object and enrich it with calculated values based on input parameters
-    addDatacenter: () => set((state) => ({
-        datacenters: [
-            ...state.datacenters,
-            enrichDatacenter({ id: crypto.randomUUID(), type: 'coloc', itPower: 0, pue: 1.5 }, { SCENARIOS, COMMON_PARAMS }),
-        ]
-    })),
+    addDatacenter: () => set((state) => {
+        state.datacenters.push(
+            enrichDatacenter({ id: crypto.randomUUID(), type: 'coloc', itPower: 0, pue: 1.5 }, { SCENARIOS, COMMON_PARAMS })
+        )
+    }),
 
     // returns all datecenters in an array. used for making aggregations and calculations in the output components 
     readDatacenters: () => get().datacenters,
 
     // removes datacenter with given id from the datacenters array
-    removeDatacenter: (id) => set((state) => ({
-        datacenters: state.datacenters.filter(dc => dc.id !== id)
-    })),
+    removeDatacenter: (id) => set((state) => {
+        state.datacenters = state.datacenters.filter(dc => dc.id !== id)
+    }),
 
     // when changing any of the input parameters, we re-calculate all values based on the new input and update the object
-    updateDatacenter: (id, field, value) => set((state) => ({
-        datacenters: state.datacenters.map(dc => {
-            if (dc.id === id) {
-                return enrichDatacenter({ ...dc, [field]: field === 'type' ? value : Number(value) }, { SCENARIOS, COMMON_PARAMS })
-            }
-            return dc
-        })
-    })),
+    updateDatacenter: (id, field, value) => set((state) => {
+        const index = state.datacenters.findIndex(dc => dc.id === id)
+
+        if (index !== -1) {
+        const currentDc = state.datacenters[index]
+        const updatedDc = enrichDatacenter({ ...currentDc, [field]: field === 'type' ? value : Number(value) }, { SCENARIOS, COMMON_PARAMS })
+
+        state.datacenters[index] = updatedDc;
+        }
+    }),
 
     // ========= MANAGING CONFIGURATION PARAMETERS ========
     // add the option to manage configuration parameters
@@ -47,46 +49,25 @@ export const useModelStore = create((set, get) => ({
 
     params: structuredClone({ COMMON_PARAMS, SCENARIOS }),
 
-    updateParameter: (scenario, paramKey, value) => set((state) => {
-        if (scenario === "COMMON_PARAMS") {
-            return {
-                params: {
-                    ...state.params,
-                    COMMON_PARAMS: {
-                        ...state.params.COMMON_PARAMS,
-                        [paramKey]: Number(value)
-                    }
-                }
-            }
-        }
+    updateParameterByPath: (path, value) => set((state) => {
+      let current = state.params;
+      
+      for (let i = 0; i < path.length - 1; i++) {
+        current = current[path[i]];
+      }
 
-        else return {
-            params: {
-                ...state.params,
-                SCENARIOS: {
-                    ...state.params.SCENARIOS,
-                    [scenario]: {
-                        ...state.params.SCENARIOS[scenario],
-                        [paramKey]: Number(value)
-                    }
-                }
-            }
-        }
+      current[path[path.length - 1]] = Number(value);
     }),
 
-    resetParams: () => set(() => ({
-        params: structuredClone({ COMMON_PARAMS, SCENARIOS })
-    })),
+    resetParams: () => set(() => {
+        state.params = structuredClone({ COMMON_PARAMS, SCENARIOS })
+    }),
 
     getParams: () => {
+        const currentParams = get().params;
         return {
-            ...COMMON_PARAMS,
-            ...SCENARIOS
+            ...currentParams.COMMON_PARAMS,
+            ...currentParams.SCENARIOS
         }
     },
-
-    setParams: (newParams) => set((state) => ({
-        ...state,
-        ...newParams
-    }))
-}))
+})))
