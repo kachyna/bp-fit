@@ -1,6 +1,7 @@
 import { useModelStore } from "../../store/useModelStore";
 import { Button } from "../ui/button"
 import { DcEntry } from "./DcEntry";
+import { Plus } from "lucide-react";
 
 export const DcManager = () => {
   const { datacenters, addDatacenter, removeDatacenter, updateDatacenter } = useModelStore();
@@ -12,29 +13,31 @@ export const DcManager = () => {
   ];
 
   return (
-    <div className="p-6 bg-white rounded-2xl shadow-sm border border-slate-100">
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-bold text-slate-800">Konfigurace portfolia</h2>
-        <Button onClick={addDatacenter} variant="default">
-          <span className="text-xl leading-none">+</span> Přidat DC
-        </Button>
-      </div>
-
-      <div className="space-y-4 flex-col">
+    <>
+      <div className="flex flex-col gap-3">
         {datacenters.map((dc) => (
-          <DcEntry 
-            key={dc.id} 
-            dc={dc} 
-            dcTypes={dcTypes} 
-            updateDatacenter={updateDatacenter} 
-            removeDatacenter={removeDatacenter} 
+          <DcEntry
+            key={dc.id}
+            dc={dc}
+            dcTypes={dcTypes}
+            updateDatacenter={updateDatacenter}
+            removeDatacenter={removeDatacenter}
           />
         ))}
       </div>
 
       {datacenters.length === 0 && (
-        <p className="text-center text-slate-400 py-10">Žádná datacentra nebyla přidána. Klikněte na +.</p>
+        <div className="text-center text-slate-400 text-sm py-6 border border-dashed border-slate-200 rounded-xl bg-slate-50/50">
+          Žádná datacentra v portfoliu.
+        </div>
       )}
-    </div>
+
+      <div className="flex justify-end mt-4">
+        <Button variant="outline" size="sm" onClick={addDatacenter}>
+          <Plus className="mr-2 h-4 w-4" />
+          Přidat
+        </Button>
+      </div>
+    </>
   );
 };
