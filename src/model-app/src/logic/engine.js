@@ -1,4 +1,4 @@
-import * as config from './config.js'
+import * as config from '../constants/config.js'
 
 // Agregates data of all datacenters
 

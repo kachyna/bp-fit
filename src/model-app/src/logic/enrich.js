@@ -1,4 +1,4 @@
-import * as config from './config.js'
+import * as config from '../constants/config.js'
 
 /*
 - This is a pipeline for enriching the datacenter object:
