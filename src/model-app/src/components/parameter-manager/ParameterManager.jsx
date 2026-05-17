@@ -5,7 +5,6 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { useModelStore } from "@/store/useModelStore"
 import { SCENARIO_KEYS } from "@/constants/config"
 import { PARAM_DETAILS } from '@/constants/param-details'
-import { PARAM_GROUPS } from '@/constants/param-groups'
 import { CategoryDropdown } from "@/components/parameter-manager/parameter-category-dropown"
 import { CommonParameterInput } from "./common-parameter"
 import { ScenarioParameterInput } from "./scenario-parameter"
@@ -29,23 +28,7 @@ export function ParameterManager() {
             }
         })
     })
-
-    const renderCommonParams = {
-        paramLabel: b,
-        paramDescription: c,
-        paramType: c, //common, scenario
-        paramValue: c,
-    }
-
-    Object.entries(PARAM_GROUPS).map(([key, paramGroup]) => {
-        const groupLabel = paramGroup.label || key
-        const groupDescription = paramGroup.description || ""
-        const paramKeysArray = paramGroup.keys || []
-    })
-
-    const label = "Test"
-
-
+    
     return (
         <div className="flex flex-col gap-2 w-full">
             <CategoryDropdown categoryName="Společné parametry">
