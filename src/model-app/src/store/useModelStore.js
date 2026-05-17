@@ -74,6 +74,10 @@ export const useModelStore = create((set, get) => ({
         }
     }),
 
+    resetParams: () => set(() => ({
+        params: structuredClone({ COMMON_PARAMS, SCENARIOS })
+    })),
+
     getParams: () => {
         return {
             ...COMMON_PARAMS,
