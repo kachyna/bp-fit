@@ -1,10 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
 import { InfoLabel } from "@/components/ui/info-label"
-
-
 
 export const CommonParameterInput = ({ paramKey, label, description, value, onChange }) => (
     <Card className="shadow-sm border-slate-200">
