@@ -8,7 +8,7 @@ export function CategoryDropdown( {categoryName, children} ) {
                 <span className="font-semibold text-xs uppercase">{categoryName}</span>
                 <ChevronDown className="size-5 transition-transform duration-200 group-data-[state=open]:rotate-180" />
             </CollapsibleTrigger>
-            <CollapsibleContent>
+            <CollapsibleContent className="px-1 -mx-1 pt-1 -mt-1 pb-2 -mb-2">
                 {children}
             </CollapsibleContent>
         </Collapsible>

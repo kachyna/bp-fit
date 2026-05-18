@@ -34,7 +34,7 @@ export function ConfigSidebar() {
                                 <ChevronDown className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-180" />
                             </div>
                         </CollapsibleTrigger>
-                        <CollapsibleContent>
+                        <CollapsibleContent className="px-1 -mx-1 pt-1 -mt-1 pb-2 -mb-2">
                             <DcManager />
                         </CollapsibleContent>
                     </SidebarGroup>
@@ -47,7 +47,7 @@ export function ConfigSidebar() {
                                 <ChevronDown className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-180" />
                             </div>
                         </CollapsibleTrigger>
-                        <CollapsibleContent>
+                        <CollapsibleContent className="px-1 -mx-1 pt-1 -mt-1 pb-2 -mb-2">
                             <ParameterManager />
                         </CollapsibleContent>
                     </SidebarGroup>
