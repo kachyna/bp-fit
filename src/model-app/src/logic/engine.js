@@ -22,7 +22,7 @@ export const analyzeDatacenters = (datacenterArray) => {
                     ret[scenario][newKey] = (ret[scenario][newKey] || 0) + datacenter[scenario][scenarioParam]
                 })
             }
-            else {ret[newKey] = (ret[key] || 0) + datacenter[key]}
+            else {ret[newKey] = (ret[newKey] || 0) + datacenter[key]}
         })
     })
 
