@@ -58,7 +58,8 @@ export function AnimatedDashboard() {
       </TabsList>
       
       {/* Motion.div container controls the animation */}
-      <div className="overflow-hidden relative w-full">
+      {/* Obal má padding a negativní margin, aby overflow-hidden neořezával drop-shadows a borders na okrajích karet */}
+      <div className="overflow-hidden relative w-full p-2 -mx-2">
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={activeTab}
