@@ -16,6 +16,7 @@ import { useModelStore } from "@/store/useModelStore"
 
 export function ResetParamsDialog() {
     const resetParams = useModelStore((state) => state.resetParams);
+    const updateAllDatacenters = useModelStore((state) => state.updateAllDatacenters);
 
     return (
         <AlertDialog>
@@ -34,7 +35,10 @@ export function ResetParamsDialog() {
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                     <AlertDialogCancel>Zrušit</AlertDialogCancel>
-                    <AlertDialogAction onClick={resetParams}>Resetovat</AlertDialogAction>
+                    <AlertDialogAction onClick={() => {
+                        resetParams()
+                        updateAllDatacenters()
+                    }}>Resetovat</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>
