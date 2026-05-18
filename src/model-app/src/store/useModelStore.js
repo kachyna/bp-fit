@@ -18,7 +18,7 @@ export const useModelStore = create(immer((set, get) => ({
     // when adding a datacenter, we create a new object and enrich it with calculated values based on input parameters
     addDatacenter: () => set((state) => {
         state.datacenters.push(
-            enrichDatacenter({ id: crypto.randomUUID(), type: 'coloc', itPower: 0, pue: 1.5 }, { SCENARIOS, COMMON_PARAMS })
+            enrichDatacenter({ id: crypto.randomUUID(), type: 'coloc', itPower: 0, pue: 1.5 }, state.params)
         )
     }),
 
@@ -36,7 +36,7 @@ export const useModelStore = create(immer((set, get) => ({
 
         if (index !== -1) {
         const currentDc = state.datacenters[index]
-        const updatedDc = enrichDatacenter({ ...currentDc, [field]: field === 'type' ? value : Number(value) }, { SCENARIOS, COMMON_PARAMS })
+        const updatedDc = enrichDatacenter({ ...currentDc, [field]: field === 'type' ? value : Number(value) }, state.params)
 
         state.datacenters[index] = updatedDc;
         }
@@ -63,7 +63,7 @@ export const useModelStore = create(immer((set, get) => ({
       current[path[path.length - 1]] = Number(value);
     }),
 
-    resetParams: () => set(() => {
+    resetParams: () => set((state) => {
         state.params = structuredClone({ COMMON_PARAMS, SCENARIOS })
     }),
 
