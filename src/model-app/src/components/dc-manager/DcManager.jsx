@@ -1,5 +1,6 @@
 import { useModelStore } from "../../store/useModelStore";
 import { Button } from "../ui/button"
+import { DcTypesInfoDialog } from "./dc-info";
 import { DcEntry } from "./DcEntry";
 import { Plus } from "lucide-react";
 
@@ -32,9 +33,10 @@ export const DcManager = () => {
         </div>
       )}
 
-      <div className="flex justify-end mt-4">
-        <Button variant="outline" size="sm" onClick={addDatacenter}>
-          <Plus className="mr-2 h-4 w-4" />
+      <div className="flex justify-end gap-2 mt-4">
+        <DcTypesInfoDialog />
+        <Button variant="outline" size="sm" className="text-xs gap-2" onClick={addDatacenter}>
+          <Plus className="size-3.5" />
           Přidat
         </Button>
       </div>
