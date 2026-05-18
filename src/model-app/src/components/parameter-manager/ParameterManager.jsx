@@ -9,6 +9,7 @@ import { CategoryDropdown } from "@/components/parameter-manager/parameter-categ
 import { CommonParameterInput } from "./common-parameter"
 import { ScenarioParameterInput } from "./scenario-parameter"
 import { ResetParamsDialog } from "./reset-params-dialog"
+import { RecalculateWithParams } from "./recalculate-with-params"
 
 export function ParameterManager() {
 
@@ -92,7 +93,10 @@ export function ParameterManager() {
                 </AlertDescription>
             </Alert>
 
-            <ResetParamsDialog />
+            <div className="grid grid-cols-2 w-full gap-2">
+                <RecalculateWithParams />
+                <ResetParamsDialog />
+            </div>
 
             {Object.entries(PARAM_DETAILS.categoryLabels).map(([categoryKey, categoryLabel]) => {
 

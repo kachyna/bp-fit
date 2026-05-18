@@ -42,6 +42,10 @@ export const useModelStore = create(immer((set, get) => ({
         }
     }),
 
+    updateAllDatacenters: () => set((state) => {
+        state.datacenters = state.datacenters.map(dc => enrichDatacenter(dc, state.params))
+    }),
+
     // ========= MANAGING CONFIGURATION PARAMETERS ========
     // add the option to manage configuration parameters
     // this adds the possibility to model more complex scenarios, where the user can change
