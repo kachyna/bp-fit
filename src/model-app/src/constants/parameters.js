@@ -13,11 +13,6 @@ export const COMMON_PARAMS = {
   trainingGpuCountPerMW: 800,
 
   // Pravděpodobnost jednotlivých scénářů
-  scenarioProbabilities: {
-    PESIMISTIC: 0.2,
-    REALISTIC: 0.6,
-    OPTIMISTIC: 0.2
-  }
 };
 
 export const SCENARIOS = {
@@ -49,7 +44,8 @@ export const SCENARIOS = {
       inference: 10.09 // price per 1 million tokens served
     },
     inferenceEnergyPerMillionTokensWh: 1790,
-    kGvaConstruction: 0.28
+    kGvaConstruction: 0.28,
+    scenarioProbability: 0.2
   },
 
   REALISTIC: {
@@ -75,7 +71,8 @@ export const SCENARIOS = {
       inference: 10.09 
     },
     inferenceEnergyPerMillionTokensWh: 1442.5,
-    kGvaConstruction: 0.30
+    kGvaConstruction: 0.30,
+    scenarioProbability: 0.6
   },
 
   OPTIMISTIC: {
@@ -101,6 +98,7 @@ export const SCENARIOS = {
       inference: 10.09 
     },
     inferenceEnergyPerMillionTokensWh: 1095,
-    kGvaConstruction: 0.32
+    kGvaConstruction: 0.32,
+    scenarioProbability: 0.2
   }
 };
