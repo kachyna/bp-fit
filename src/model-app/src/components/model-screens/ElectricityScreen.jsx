@@ -60,7 +60,7 @@ export const ElectricityModelScreen = () => {
                 </CardHeader>
                 <CardContent>
                     {/* Zástupný blok pro graf */}
-                    <div className="h-[260px] w-full rounded-md bg-slate-50 border border-slate-200 border-dashed flex items-center justify-center text-slate-400">
+                    <div className="h-65 w-full rounded-md bg-slate-50 border border-slate-200 border-dashed flex items-center justify-center text-slate-400">
                         [ Zde bude vrstvený plošný graf (Area chart) spotřeby elektřiny s hraniční kapacitou sítě ]
                     </div>
                 </CardContent>
@@ -72,7 +72,7 @@ export const ElectricityModelScreen = () => {
                 </CardHeader>
                 <CardContent>
                     {/* Zástupný blok pro graf */}
-                    <div className="h-[200px] w-full rounded-md bg-slate-50 border border-slate-200 border-dashed flex items-center justify-center text-slate-400">
+                    <div className="h-50 w-full rounded-md bg-slate-50 border border-slate-200 border-dashed flex items-center justify-center text-slate-400">
                         [ Zde bude Stacked Bar Chart distribuující zdroje (Plyn, Jádro, Slunce, Vítr) v čase ]
                     </div>
                 </CardContent>

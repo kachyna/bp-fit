@@ -56,7 +56,7 @@ export const AggregateModelScreen = () => {
                     </CardHeader>
                     <CardContent>
                         {/* Zástupný blok pro graf */}
-                        <div className="h-[300px] w-full rounded-md bg-slate-50 border border-slate-200 border-dashed flex items-center justify-center text-slate-400">
+                        <div className="h-75 w-full rounded-md bg-slate-50 border border-slate-200 border-dashed flex items-center justify-center text-slate-400">
                             [ Zde bude sloupcový / liniový graf růstu spotřeby ]
                         </div>
                     </CardContent>
@@ -67,7 +67,7 @@ export const AggregateModelScreen = () => {
                     </CardHeader>
                     <CardContent>
                         {/* Zástupný blok pro graf */}
-                        <div className="h-[300px] w-full rounded-md bg-slate-50 border border-slate-200 border-dashed flex items-center justify-center text-slate-400">
+                        <div className="h-75 w-full rounded-md bg-slate-50 border border-slate-200 border-dashed flex items-center justify-center text-slate-400">
                             [ Zde bude koláčový graf ]
                         </div>
                     </CardContent>

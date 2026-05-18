@@ -53,7 +53,7 @@ export function DcTypesInfoDialog() {
                 </Button>
             </DialogTrigger>
 
-            <DialogContent className="sm:max-w-[550px] bg-white text-slate-900 border-slate-200">
+            <DialogContent className="sm:max-w-137.5 bg-white text-slate-900 border-slate-200">
                 <DialogHeader>
                     <DialogTitle className="text-xl font-bold">Metriky a typologie datacenter</DialogTitle>
                     <DialogDescription className="text-xs text-slate-500">

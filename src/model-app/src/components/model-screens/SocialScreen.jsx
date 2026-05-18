@@ -56,7 +56,7 @@ export const SocialModelScreen = () => {
                     </CardHeader>
                     <CardContent>
                         {/* Zástupný blok pro graf */}
-                        <div className="h-[250px] w-full rounded-md bg-slate-50 border border-slate-200 border-dashed flex items-center justify-center text-slate-400">
+                        <div className="h-62.5 w-full rounded-md bg-slate-50 border border-slate-200 border-dashed flex items-center justify-center text-slate-400">
                             [ Zde bude Stacked Bar Chart (Výstavba vs. Provoz IT vs. Správa) ]
                         </div>
                     </CardContent>
@@ -68,7 +68,7 @@ export const SocialModelScreen = () => {
                     </CardHeader>
                     <CardContent>
                         {/* Zástupný blok pro graf */}
-                        <div className="h-[250px] w-full rounded-md bg-white border border-emerald-100 border-dashed flex items-center justify-center text-emerald-600/70 font-medium">
+                        <div className="h-62.5 w-full rounded-md bg-white border border-emerald-100 border-dashed flex items-center justify-center text-emerald-600/70 font-medium">
                             [ Zde bude Radar Chart (Emise vs Teplo vs Voda) s možností srovnání scénářů ]
                         </div>
                     </CardContent>

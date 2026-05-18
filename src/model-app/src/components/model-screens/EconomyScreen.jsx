@@ -46,7 +46,7 @@ export const EconomyModelScreen = () => {
                     </CardHeader>
                     <CardContent>
                         {/* Zástupný blok pro graf */}
-                        <div className="h-[432px] w-full rounded-md bg-slate-50 border border-slate-200 border-dashed flex items-center justify-center text-slate-400 text-center p-4">
+                        <div className="h-108 w-full rounded-md bg-slate-50 border border-slate-200 border-dashed flex items-center justify-center text-slate-400 text-center p-4">
                             [ Zde bude liniový Cash Flow graf / ROI pro státní / místní rozpočty ]
                         </div>
                     </CardContent>
@@ -68,7 +68,7 @@ export const EconomyModelScreen = () => {
                         </CardHeader>
                         <CardContent>
                             {/* Zástupný blok pro graf */}
-                            <div className="h-[280px] w-full rounded-md bg-slate-50 border border-slate-200 border-dashed flex items-center justify-center text-slate-400 text-center p-4">
+                            <div className="h-70 w-full rounded-md bg-slate-50 border border-slate-200 border-dashed flex items-center justify-center text-slate-400 text-center p-4">
                                 [ Zde bude koláčový/treemap graf - Land, Shell, IT Equipment... ]
                             </div>
                         </CardContent>
