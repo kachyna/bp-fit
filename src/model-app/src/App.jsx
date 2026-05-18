@@ -3,6 +3,7 @@ import { useModelStore } from './store/useModelStore'
 import { ConfigSidebar } from './components/ConfigSidebar'
 import { analyzeDatacenters } from './logic/engine.js'
 import { SidebarProvider, SidebarInset, SidebarTrigger } from './components/ui/sidebar'
+import { DebugView } from './components/debug-view'
 
 function App() {
 
@@ -22,32 +23,13 @@ function App() {
 
         <main className="p-8 max-w-7xl mx-auto w-full space-y-10">
           {/* Main Workspace where the charts and tabs will be */}
-          <section className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-            <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">
-              Model Parameters (Debug)
-            </h2>
-            <pre className="text-xs bg-slate-900 text-green-400 p-4 rounded-xl overflow-x-auto">
-              {JSON.stringify(params, null, 2)}
-            </pre>
-          </section>
+          
+          <DebugView 
+            params={params} 
+            analyzedData={analyzedData} 
+            datacenters={datacenters} 
+          />
 
-          <section className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-            <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">
-              Summarized Data (Debug)
-            </h2>
-            <pre className="text-xs bg-slate-900 text-green-400 p-4 rounded-xl overflow-x-auto">
-              {JSON.stringify(analyzedData, null, 2)}
-            </pre>
-          </section>
-
-          <section className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-            <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">
-              Live Data Store (Debug)
-            </h2>
-            <pre className="text-xs bg-slate-900 text-green-400 p-4 rounded-xl overflow-x-auto">
-              {JSON.stringify(datacenters, null, 2)}
-            </pre>
-          </section>
         </main>
       </SidebarInset>
     </SidebarProvider>
