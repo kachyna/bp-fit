@@ -22,7 +22,7 @@ export function ResetParamsDialog() {
             <AlertDialogTrigger asChild>
                 <Button variant="destructive">
                     <RefreshCw className="mr-2 h-4 w-4" />
-                    Resetovat parametry
+                    Obnovit parametry
                 </Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
