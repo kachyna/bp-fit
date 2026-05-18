@@ -49,13 +49,15 @@ export function AnimatedDashboard() {
 
   return (
     <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-      <TabsList className="mb-6 grid w-full grid-cols-5 md:w-fit">
-        <TabsTrigger value="aggregate">Agregovaný pohled</TabsTrigger>
-        <TabsTrigger value="electricity">Elektřina</TabsTrigger>
-        <TabsTrigger value="economy">Ekonomika</TabsTrigger>
-        <TabsTrigger value="social">Ostatní dopady</TabsTrigger>
-        <TabsTrigger value="debug">Debug data</TabsTrigger>
-      </TabsList>
+      <div className="flex justify-center w-full mb-6">
+        <TabsList className="grid w-full grid-cols-5 md:w-fit">
+          <TabsTrigger value="aggregate">Agregovaný pohled</TabsTrigger>
+          <TabsTrigger value="electricity">Elektřina</TabsTrigger>
+          <TabsTrigger value="economy">Ekonomika</TabsTrigger>
+          <TabsTrigger value="social">Ostatní dopady</TabsTrigger>
+          <TabsTrigger value="debug">Debug data</TabsTrigger>
+        </TabsList>
+      </div>
       
       {/* Motion.div container controls the animation */}
       {/* Obal má padding a negativní margin, aby overflow-hidden neořezával drop-shadows a borders na okrajích karet */}
