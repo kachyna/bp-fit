@@ -12,7 +12,7 @@ export function InfoLabel({ label, description, htmlFor="" }) {
                     <Label className="text-xs text-slate-500" htmlFor={htmlFor}>
                         {label}
                     </Label>
-                    <InfoIcon className="size-3.5 text-slate-500" />
+                    <InfoIcon className="size-3 text-slate-500" />
                 </div>
             </HoverCardTrigger>
             <HoverCardContent side="top" collisionPadding={16}>
