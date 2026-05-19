@@ -20,6 +20,10 @@ const buttonVariants = cva(
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         confirm:
           "bg-emerald-500/10 text-emerald-600 hover:bg-emerald-500/20 focus-visible:border-emerald-500/40 focus-visible:ring-emerald-500/20 dark:bg-emerald-500/20 dark:text-emerald-500 dark:hover:bg-emerald-500/30 dark:focus-visible:ring-emerald-500/40",
+          ghost_destructive:
+          "hover:bg-destructive/10 text-destructive hover:text-destructive aria-expanded:bg-destructive/20 aria-expanded:text-destructive focus-visible:ring-destructive/20 dark:hover:bg-destructive/30 dark:text-destructive dark:aria-expanded:bg-destructive/30 dark:aria-expanded:text-destructive",
+        ghost_confirm:
+          "hover:bg-emerald-500/10 text-emerald-600 hover:text-emerald-600 aria-expanded:bg-emerald-500/20 aria-expanded:text-emerald-600 focus-visible:ring-emerald-500/20 dark:hover:bg-emerald-500/30 dark:text-emerald-500 dark:aria-expanded:bg-emerald-500/30 dark:aria-expanded:text-emerald-500",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
