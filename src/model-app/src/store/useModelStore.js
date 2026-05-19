@@ -12,13 +12,13 @@ export const useModelStore = create(immer((set, get) => ({
 
     // datacenters array that stores all datacenter objects with their input parameters
     datacenters: [
-        enrichDatacenter({ id: crypto.randomUUID(), type: 'coloc', itPower: 0, pue: 1.5 }, { SCENARIOS, COMMON_PARAMS })
+        enrichDatacenter({ id: crypto.randomUUID(), type: 'coloc', itPower: 5, pue: 1.5, count: 1 }, { SCENARIOS, COMMON_PARAMS })
     ],
 
     // when adding a datacenter, we create a new object and enrich it with calculated values based on input parameters
     addDatacenter: () => set((state) => {
         state.datacenters.push(
-            enrichDatacenter({ id: crypto.randomUUID(), type: 'coloc', itPower: 0, pue: 1.5 }, state.params)
+            enrichDatacenter({ id: crypto.randomUUID(), type: 'coloc', itPower: 5, pue: 1.5, count: 1 }, state.params)
         )
     }),
 

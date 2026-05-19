@@ -19,10 +19,12 @@ export const analyzeDatacenters = (datacenterArray) => {
                     const scenario = key
                     ret[scenario] = ret[scenario] || {}
                     newKey = `portfolio${scenarioParam.charAt(0).toUpperCase() + scenarioParam.slice(1)}`
-                    ret[scenario][newKey] = (ret[scenario][newKey] || 0) + datacenter[scenario][scenarioParam]
+                    ret[scenario][newKey] = (ret[scenario][newKey] || 0) + datacenter[scenario][scenarioParam] * datacenter.count
                 })
             }
-            else {ret[newKey] = (ret[newKey] || 0) + datacenter[key]}
+            else {
+                key === "count" ?   ret[newKey] = (ret[newKey] || 0) + datacenter[key] :
+                                    ret[newKey] = (ret[newKey] || 0) + datacenter[key] * datacenter.count}
         })
     })
 
