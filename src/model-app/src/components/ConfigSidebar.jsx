@@ -2,13 +2,7 @@ import {
     Sidebar,
     SidebarContent,
     SidebarGroup,
-    SidebarGroupContent,
     SidebarHeader,
-    SidebarGroupLabel,
-    SidebarMenu,
-    SidebarMenuItem,
-    SidebarMenuButton,
-    SidebarMenuAction
 } from "./ui/sidebar";
 
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "./ui/collapsible";
