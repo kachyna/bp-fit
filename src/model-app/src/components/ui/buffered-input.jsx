@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react"
 import { Input } from "@/components/ui/input"
+import { toast } from "sonner"
 
-export const BufferedInput = ({ value, onChange, ...props }) => {
+export const BufferedInput = ({ value, onChange, validate, error, ...props }) => {
     const [localValue, setLocalValue] = useState(value === 0 ? "" : String(value));
 
     useEffect(() => {
@@ -10,16 +11,26 @@ export const BufferedInput = ({ value, onChange, ...props }) => {
 
     const handleCommit = () => {
         const numericValue = localValue === "" ? 0 : Number(localValue);
-        if (!isNaN(numericValue)) {
-            onChange(numericValue);
-        }
+
+        // Validate either returns the original value, or a fall back
+        const savedValue = validate(numericValue)
+
+        if (savedValue !== numericValue) {
+            // Fallback value
+            onChange(savedValue);
+            setLocalValue(String(savedValue));
+            toast.warning( "Neplatná hodnota" , {
+                    description: error,
+                    postion: "top-center",
+            });
+        } else onChange(savedValue);
     }
 
     return (
-        <Input 
-            {...props} 
+        <Input
+            {...props}
             type="number"
-            className={`h-8 text-sm [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${props.className || ''}`}
+            className={`h-8 text-sm ${props.className || ''}`}
             value={localValue}
             onChange={(e) => setLocalValue(e.target.value)}
             onBlur={handleCommit}
@@ -27,7 +38,7 @@ export const BufferedInput = ({ value, onChange, ...props }) => {
                 if (e.key === "Enter") {
                     e.currentTarget.blur();
                 }
-                props.onKeyDown?.(e); 
+                props.onKeyDown?.(e);
             }}
         />
     )
