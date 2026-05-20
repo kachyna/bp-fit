@@ -19,9 +19,9 @@ export const BufferedInput = ({ value, onChange, validate, error, ...props }) =>
             // Fallback value
             onChange(savedValue);
             setLocalValue(String(savedValue));
-            toast.warning( "Neplatná hodnota" , {
-                    description: error,
-                    postion: "top-center",
+            toast.warning("Neplatná hodnota", {
+                position: "top-center",
+                description: error,
             });
         } else onChange(savedValue);
     }
