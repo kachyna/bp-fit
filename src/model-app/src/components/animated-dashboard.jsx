@@ -11,7 +11,7 @@ import { analyzeDatacenters } from "@/logic/engine"
 
 const TAB_ORDER = ["aggregate", "electricity", "economy", "social", "debug"]
 
-export function AnimatedDashboard() {
+export function AnimatedDashboard({ debug }) {
 
   const datacenters = useModelStore(state => state.datacenters)
   const analyzedData = analyzeDatacenters(datacenters)
@@ -50,12 +50,12 @@ export function AnimatedDashboard() {
   return (
     <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
       <div className="flex justify-center w-full mb-6">
-        <TabsList className="grid w-full grid-cols-5 md:w-fit">
-          <TabsTrigger value="aggregate">Agregovaný pohled</TabsTrigger>
+        <TabsList className={`grid w-full ${debug ? 'grid-cols-5' : 'grid-cols-4'} md:w-fit`}>
+          <TabsTrigger value="aggregate">Přehled</TabsTrigger>
           <TabsTrigger value="electricity">Elektřina</TabsTrigger>
           <TabsTrigger value="economy">Ekonomika</TabsTrigger>
-          <TabsTrigger value="social">Ostatní dopady</TabsTrigger>
-          <TabsTrigger value="debug">Debug data</TabsTrigger>
+          <TabsTrigger value="social">Udržitelnost / ESG</TabsTrigger>
+          {debug && <TabsTrigger value="debug">Debug</TabsTrigger>}
         </TabsList>
       </div>
       
