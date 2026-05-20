@@ -2,6 +2,7 @@ import './App.css'
 import { ConfigSidebar } from './components/ConfigSidebar'
 import { SidebarProvider, SidebarInset, SidebarTrigger } from './components/ui/sidebar'
 import { AnimatedDashboard } from '#components/animated-dashboard'
+import { Toaster } from '@/components/ui/sonner'
 
 function App() {  
 
@@ -16,6 +17,7 @@ function App() {
 
         <main className="p-8 max-w-7xl mx-auto w-full space-y-10">
           <AnimatedDashboard />
+          <Toaster/>
         </main>
         
       </SidebarInset>
