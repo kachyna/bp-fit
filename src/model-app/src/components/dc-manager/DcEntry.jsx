@@ -10,7 +10,7 @@ import {
   SelectValue,
 } from "../ui/select";
 import { Card, CardContent } from "../ui/card";
-import { Trash2, Maximize2, Minimize2} from "lucide-react";
+import { Trash2, Maximize2, Minimize2 } from "lucide-react";
 import {
   Collapsible,
   CollapsibleContent,
@@ -49,7 +49,7 @@ export const DcEntry = ({ dc, dcTypes, updateDatacenter, removeDatacenter }) => 
                 </SelectContent>
               </Select>
             </div>
-            
+
             <div className="flex items-center">
               <CollapsibleTrigger asChild>
                 <Button
@@ -82,8 +82,12 @@ export const DcEntry = ({ dc, dcTypes, updateDatacenter, removeDatacenter }) => 
                 type="number"
                 value={dc.itPower}
                 min="1"
-                max="999"
                 onChange={(e) => updateDatacenter(dc.id, "itPower", e)}
+                validate={(value) => {
+                  if (value < 0) return 0;
+                  return value;
+                }}
+                error="Příkon musí být vyšší nebo roven 0."
                 placeholder="0"
                 className="h-8 text-sm px-2 text-center"
               />
@@ -98,6 +102,11 @@ export const DcEntry = ({ dc, dcTypes, updateDatacenter, removeDatacenter }) => 
                 step="0.1"
                 value={dc.pue}
                 onChange={(e) => updateDatacenter(dc.id, "pue", e)}
+                validate={(value) => {
+                  if (value < 1) return 1;
+                  return value;
+                }}
+                error="PUE musí být vyšší nebo rovno 1,00."
                 placeholder="0"
                 className="h-8 text-sm px-2 text-center"
               />
@@ -108,10 +117,15 @@ export const DcEntry = ({ dc, dcTypes, updateDatacenter, removeDatacenter }) => 
               <BufferedInput
                 id={`count-${dc.id}`}
                 type="number"
-                min="1"
+                min="0"
                 max="999"
                 value={dc.count}
                 onChange={(e) => updateDatacenter(dc.id, "count", e)}
+                validate={(value) => {
+                  if (value < 0) return 0;
+                  return value;
+                }}
+                error="Počet musí být vyšší nebo roven 0."
                 placeholder="0"
                 className="h-8 text-sm px-2 text-center"
               />
