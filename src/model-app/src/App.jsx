@@ -1,11 +1,11 @@
 import './App.css'
-import { ConfigSidebar } from './components/ConfigSidebar'
+import { ConfigSidebar } from './components/layout/ConfigSidebar'
 import { SidebarProvider, SidebarInset, SidebarTrigger } from './components/ui/sidebar'
-import { AnimatedDashboard } from '#components/animated-dashboard'
+import { AnimatedDashboard } from '#components/layout/animated-dashboard'
 import { Toaster } from '@/components/ui/sonner'
 import { useState } from 'react'
-import { SelectScenario } from '#components/select-scenario'
-import { SettingsMenu } from '#components/settings'
+import { SelectScenario } from '#components/layout/select-scenario'
+import { SettingsMenu } from '#components/layout/settings'
 
 function App() {
   const [debug, setDebug] = useState(false)

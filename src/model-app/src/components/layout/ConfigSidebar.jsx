@@ -3,13 +3,13 @@ import {
     SidebarContent,
     SidebarGroup,
     SidebarHeader,
-} from "./ui/sidebar";
+} from "../ui/sidebar";
 
-import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "./ui/collapsible";
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "../ui/collapsible";
 import { ChevronDown } from "lucide-react";
 
-import { DcManager } from "./dc-manager/DcManager";
-import { ParameterManager } from "./parameter-manager/ParameterManager";
+import { DcManager } from "../dc-manager/DcManager";
+import { ParameterManager } from "../parameter-manager/ParameterManager";
 
 export function ConfigSidebar() {
     return (
