@@ -74,4 +74,19 @@ export const useModelStore = create(immer((set, get) => ({
             ...currentParams.SCENARIOS
         }
     },
+
+    // ========= MANAGING ACTIVE SCENARIO ========
+
+    activeScenarioKey: 'REALISTIC',
+
+    getActiveScenario: () => {
+        return state.activeScenarioKey;
+    },
+
+    setActiveScenario: (scenarioKey) => set((state) => {
+        if ( state.params.SCENARIOS[scenarioKey] ) {
+            state.activeScenarioKey = scenarioKey;
+        } else state.activeScenarioKey = 'REALISTIC';
+    })
+
 })))
