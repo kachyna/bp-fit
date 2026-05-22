@@ -1,10 +1,11 @@
 import { useState } from "react"
+import { useMemo } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { AggregateModelScreen } from "../model-screens/AggregateScreen"
 import { EconomyModelScreen } from "../model-screens/EconomyScreen"
 import { ElectricityModelScreen } from "../model-screens/ElectricityScreen"
-import { SocialModelScreen } from "../model-screens/SocialScreen"
+import { ESGModelScreen } from "../model-screens/ESGScreen"
 import { DebugView } from "../model-screens/debug-view"
 import { useModelStore } from "@/store/useModelStore"
 import { analyzeDatacenters } from "@/logic/engine"
@@ -14,8 +15,13 @@ const TAB_ORDER = ["aggregate", "electricity", "economy", "social", "debug"]
 export function AnimatedDashboard({ debug }) {
 
   const datacenters = useModelStore(state => state.datacenters)
-  const analyzedData = analyzeDatacenters(datacenters)
   const params = useModelStore(state => state.params)
+
+  const analyzedData = useMemo(() => {
+    return analyzeDatacenters(datacenters)
+  }, [datacenters])
+
+  const scenario = useModelStore(state => state.activeScenarioKey)
 
   const [activeTab, setActiveTab] = useState("aggregate")
   const [direction, setDirection] = useState(1) // 1 = right, -1 = left
@@ -55,7 +61,7 @@ export function AnimatedDashboard({ debug }) {
           <TabsTrigger value="electricity">Elektřina</TabsTrigger>
           <TabsTrigger value="economy">Ekonomika</TabsTrigger>
           <TabsTrigger value="social">Udržitelnost / ESG</TabsTrigger>
-          {debug && <TabsTrigger value="debug">Debug</TabsTrigger>}
+          { debug && <TabsTrigger value="debug">Debug</TabsTrigger>}
         </TabsList>
       </div>
       
@@ -73,10 +79,10 @@ export function AnimatedDashboard({ debug }) {
             className="w-full"
           >
             {/* Manually re-render the active screen based on the active tab */}
-            {activeTab === "aggregate" && <AggregateModelScreen />}
+            {activeTab === "aggregate" && <AggregateModelScreen analyzedData={analyzedData} scenario={scenario} />}
             {activeTab === "electricity" && <ElectricityModelScreen />}
             {activeTab === "economy" && <EconomyModelScreen />}
-            {activeTab === "social" && <SocialModelScreen />}
+            {activeTab === "social" && <ESGModelScreen data={analyzedData} activeScenario={scenario} />}
             {activeTab === "debug" && (
               <DebugView 
                 params={params} 
