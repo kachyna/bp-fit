@@ -12,6 +12,11 @@ export const CommonParameterInput = ({ paramKey, label, description, value, onCh
                     type="number"
                     value={value}
                     onChange={(e) => onChange(e)}
+                    validate={(value) => {
+                        if (value < 0) return 0;
+                        return value;
+                    }}
+                    error="Parametr musí být vyšší nebo roven 0."
                     placeholder="0"
                 />
             </div>

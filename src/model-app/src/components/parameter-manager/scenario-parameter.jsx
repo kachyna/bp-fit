@@ -10,13 +10,18 @@ export const ScenarioParameterInput = ({ paramKey, label, description, paramValu
 
                 <div className="flex flex-row gap-2">
                     {Object.entries(paramValues).map(([scenario, value]) => (
-                    <BufferedInput key={scenario} className="h-8 text-sm [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-                        id={`${scenario}-${paramKey}`}
-                        type="number"
-                        value={value}
-                        onChange={(e) => onChange(e, scenario)}
-                        placeholder="0"
-                    />
+                        <BufferedInput key={scenario} className="h-8 text-sm [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                            id={`${scenario}-${paramKey}`}
+                            type="number"
+                            value={value}
+                            onChange={(e) => onChange(e, scenario)}
+                            placeholder="0"
+                            validate={(value) => {
+                                if (value < 0) return 0;
+                                return value;
+                            }}
+                            error="Parametr musí být vyšší nebo roven 0."
+                        />
                     ))}
                 </div>
             </div>
