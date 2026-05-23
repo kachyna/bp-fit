@@ -5,6 +5,8 @@ const colorClasses = {
     card: "border-amber-100/50 bg-amber-50/50 hover:bg-amber-50",
     title: "text-amber-900",
     iconWrapper: "bg-amber-100 text-amber-600",
+    hoverContentBorder: "border-amber-200/70",
+    hoverContentText: "text-amber-700",
   },
   stone: {
     card: "border-stone-200/60 bg-stone-50/80 hover:bg-stone-50",
@@ -72,18 +74,17 @@ const colorClasses = {
 }
 
 const getHoverCardClasses = (color) => {
-  if (color === "stone") return colorClasses.stone
-  if (color === "cyan") return colorClasses.cyan
-  if (color === "emerald") return colorClasses.emerald
-  return colorClasses.amber
+  return colorClasses[color] || colorClasses.amber
 }
 
 export const ESGHoverCard = ({
   title,
   color,
   icon,
-  children,
-  hoverContent,
+  mainText,
+  comparisonHeader = "To je jako...",
+  comparisons,
+  children
 }) => {
   const classes = getHoverCardClasses(color)
 
@@ -98,10 +99,14 @@ export const ESGHoverCard = ({
         </div>
       </CardHeader>
       <CardContent>
-        {children}
+        {mainText}
         <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100">
-          <div className="overflow-hidden">
-            {hoverContent}
+          <div className={`overflow-hidden space-y-2 mt-2 pt-2 text-xs ${classes.hoverContentText}`}>
+            <div className={`flex flex-col space-y-2 border-t ${comparisons ? 'border-b' : ''} pt-2 ${comparisons ? 'pb-2' : ''} ${classes.hoverContentBorder}`}>
+              {comparisons && <h2 className={`text-sm font-medium ${classes.title}`}>{comparisonHeader}</h2>}
+              {comparisons}
+            </div>
+            {children}
           </div>
         </div>
       </CardContent>
