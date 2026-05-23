@@ -72,10 +72,7 @@ export const ESGModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
       <div className="lg:col-span-1 flex flex-col gap-4">
 
         {/* KARTA 1: Sociální dopady & NIMBY */}
-        <ESGHoverCard
-          title="NIMBY v ČR"
-          color="amber"
-          icon={<AlertTriangle className="h-4 w-4" />}
+        <ESGHoverCard title="NIMBY v ČR" color="amber" icon={<AlertTriangle className="h-4 w-4" />}
           hoverContent={
             <div className="space-y-2 border-t border-amber-200/50 pt-4 text-xs text-amber-700">
               <p>NIMBY (akronym pro "Not In My Back Yard") je efekt popisující odpor místních komunit vůči plánovaným projektům. V České republice je <a className="underline text-indigo-400" href="https://stemmark.cz/hlavne-nekopejte-u-meho-domu">obzvláště silný</a>, zejména v oblasti infrastukturních staveb – továren, skladů nebo dálnic.</p>
@@ -89,19 +86,15 @@ export const ESGModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
           </p>
         </ESGHoverCard>
 
-        {/* Doplnit zdroje!! */}
         {/* KARTA 2: Uhlíková stopa + Ekvivalenty */}
-        <ESGHoverCard
-          title="Roční emise uhlíku"
-          color="stone"
-          icon={<Leaf className="h-4 w-4" />}
+        <ESGHoverCard title="Roční emise uhlíku" color="stone" icon={<Leaf className="h-4 w-4" />}
           hoverContent={
             <div className="mt-3 space-y-1.5 border-t border-stone-200 pt-2 text-xs text-stone-600">
               <h2 className="text-sm font-medium text-stone-800">To je jako...</h2>
+              
               <ComparisonData sources={sources.cars} className="text-stone-600 hover:text-stone-800 transition-colors">
                 <p>roční provoz <span className="font-semibold text-stone-800"> {equivalents.cars.toLocaleString("cs-CZ")}</span> osobních aut,</p>
               </ComparisonData>
-
               <ComparisonData sources={sources.flights} className="text-stone-600 hover:text-stone-800 transition-colors">
                 <p><span className="font-semibold text-stone-800">{equivalents.flights.toLocaleString("cs-CZ")} </span> zpátečních letů PRG - NY.</p>
               </ComparisonData>
@@ -125,13 +118,11 @@ export const ESGModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
         </ESGHoverCard>
 
         {/* KARTA 3: Spotřeba vody + Hydrologické srovnání */}
-        <ESGHoverCard
-          title="Roční spotřeba vody"
-          color="cyan"
-          icon={<Droplet className="h-4 w-4" />}
+        <ESGHoverCard title="Roční spotřeba vody" color="cyan" icon={<Droplet className="h-4 w-4" />}
           hoverContent={
             <div className="mt-3 space-y-1.5 border-t border-cyan-200/50 pt-2 text-xs text-cyan-700">
               <h2 className="text-sm font-medium text-cyan-800">To je jako...</h2>
+
               <ComparisonData sources={sources.waterPeople} className="text-cyan-600 hover:text-cyan-800 transition-colors">
                 <p> roční spotřeba <span className="font-semibold text-cyan-900"> {equivalents.waterPeople.toLocaleString("cs-CZ")} </span> Čechů,</p>
               </ComparisonData>
@@ -159,13 +150,11 @@ export const ESGModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
         </ESGHoverCard>
 
         {/* KARTA 4: Zábor půdy vs. Zemědělský/Sídlenkový ekvivalent */}
-        <ESGHoverCard
-          title="Prostorová náročnost"
-          color="emerald"
-          icon={<Map className="h-4 w-4" />}
+        <ESGHoverCard title="Prostorová náročnost" color="emerald" icon={<Map className="h-4 w-4" />}
           hoverContent={
             <div className="mt-2 space-y-1.5 border-t border-emerald-200/50 pt-2 text-xs text-emerald-700">
               <h2 className="text-sm font-medium text-emerald-800">Pozemky se mohly použít na...</h2>
+              
               <ComparisonData sources={sources.potatoes} className="text-emerald-600 hover:text-emerald-800 transition-colors">
                 <p> roční produkci <span className="font-semibold text-emerald-900"> {equivalents.potatoesTonnes} tun </span> brambor,</p>
               </ComparisonData>
@@ -218,7 +207,7 @@ export const ESGModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
         </Card>
 
         {/* Graf scénářů */}
-        <Card className="border-indigo-100 bg-gradient-to-br from-indigo-50/40 via-slate-50/20 to-rose-50/30 shadow-sm transition-all duration-300 hover:shadow-md hover:border-indigo-200/80">
+        <Card className="border-indigo-100 bg-linear-to-br from-indigo-50/40 via-slate-50/20 to-rose-50/30 shadow-sm transition-all duration-300 hover:shadow-md hover:border-indigo-200/80">
           <CardHeader>
             <CardTitle className="text-base font-semibold text-slate-800 flex items-center gap-2">
               <div className="p-1.5 bg-indigo-100/70 text-indigo-700 rounded-md">
