@@ -70,7 +70,7 @@ export const ESGModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
         </Card>
 
         {/* Graf scénářů */}
-        <Card className="border-indigo-100 bg-linear-to-br from-indigo-50/40 via-slate-50/20 to-rose-50/30 shadow-sm transition-all duration-300 hover:shadow-md hover:border-indigo-200/80">
+        <Card className="border-indigo-100 bg-linear-to-br from-indigo-50/40 via-slate-50/20 to-rose-50/30 shadow-sm transition-all duration-300 hover:shadow-md hover:border-indigo-200/80 group cursor-default">
           <CardHeader>
             <CardTitle className="text-base font-semibold text-slate-800 flex items-center gap-2">
               <div className="p-1.5 bg-indigo-100/70 text-indigo-700 rounded-md">
@@ -151,6 +151,15 @@ export const ESGModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
                   </ComposedChart>
                 </ResponsiveContainer>
               </ChartContainer>
+            </div>
+
+            {/* Hover vysvětlení pod grafem */}
+            <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100">
+              <div className="overflow-hidden">
+                <div className="border-t border-dashed mt-4 pt-4 border-slate-200 text-xs text-slate-600 leading-relaxed">
+                  {esgCopy.chart.hoverExplanation}
+                </div>
+              </div>
             </div>
           </CardContent>
         </Card>

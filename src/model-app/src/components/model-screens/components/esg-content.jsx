@@ -162,7 +162,8 @@ export const getEsgCopy = (currentData) => {
     },
     chart: {
         title: "Meziscénářové srovnání spotřeby a emisí",
-        description: "Sledujte, jak jednotlivé parametry v různých scénářích ovlivňují IT výkon, celkový výkon a emise skleníkových plynů. Nejzajímavější je ukazatel PUE, který přímo ovlivňuje celkovou spotřebu elektřiny a tím pádem i uhlíkové emise."
+        description: "Sledujte, jak jednotlivé parametry v různých scénářích ovlivňují IT výkon, celkový výkon a emise skleníkových plynů. Nejzajímavější je ukazatel PUE, který přímo ovlivňuje celkovou spotřebu elektřiny a tím pádem i uhlíkové emise.",
+        hoverExplanation: "Proč křivka emisí oxidu uhličitého klesá i přesto, že se spotřeba zvyšuje? V optimistickém scénáří model počítá s tím, že provozovatel datového centra bude alespoň zčásti využívat obnovitelné zdroje energie. V Americe je dnes běžné, že DC má vlastní solární nebo větrné elektrárny, které mu pomáhají snížit emise. Emisní faktor můžete změnit v levém menu v Konfiguraci parametrů -> Environmentální parametry -> Emisní faktor. Zkuste jej například nastavit pro každý scénář stejně (tzn. DC používá pouze průměrnou energii ze sítě) a uvidíte přímou korelaci se spotřebou."
     }
     }
 }
