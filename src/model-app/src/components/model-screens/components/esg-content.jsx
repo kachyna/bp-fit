@@ -11,8 +11,23 @@ export const esgSources = {
     houses: ["https://csu.gov.cz/rychle-informace/analyza-bytove-vystavby-v-roce-2005-31bcbzh1t6"]
 }
 
-export const getEsgCopy = (currentData, equivalents) => ({
-    nimby: {
+export const getEsgCopy = (currentData) => {
+    const emissions = currentData.portfolioEmissionsTonnesCO2 || 0
+    const waterLiters = currentData.portfolioWaterConsumptionLiters || 0
+    const landUse = currentData.portfolioLandUse || 0
+    const buildingArea = currentData.portfolioBuildingArea || 0
+
+    const equivalents = {
+        cars: Math.round(emissions / (19155 * 129 / 1000000)),
+        flights: Math.round(emissions / 2.4),
+        waterPeople: Math.round(waterLiters / 32850),
+        lipnoPercent: (waterLiters / (309000000 * 1000) * 100).toFixed(5),
+        potatoesTonnes: ((landUse / 10000) * 28.82).toFixed(1),
+        houses: Math.round(buildingArea / 140)
+    }
+
+    return {
+        nimby: {
         title: "NIMBY v ČR",
         color: "amber",
         icon: <AlertTriangle className="h-4 w-4" />,
@@ -149,4 +164,5 @@ export const getEsgCopy = (currentData, equivalents) => ({
         title: "Meziscénářové srovnání spotřeby a emisí",
         description: "Sledujte, jak jednotlivé parametry v různých scénářích ovlivňují IT výkon, celkový výkon a emise skleníkových plynů. Nejzajímavější je ukazatel PUE, který přímo ovlivňuje celkovou spotřebu elektřiny a tím pádem i uhlíkové emise."
     }
-})
+    }
+}

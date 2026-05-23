@@ -1,11 +1,10 @@
 import { useMemo } from "react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { Droplet, Leaf, Map, AlertTriangle, HelpCircle, BarChart3 } from "lucide-react"
+import { HelpCircle, BarChart3 } from "lucide-react"
 import { Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, ComposedChart, Line } from "recharts"
 import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent } from "@/components/ui/chart"
 import { ESGHoverCard } from "@/components/model-screens/components/hover-card"
-import { ComparisonData } from "@/components/model-screens/components/comparisons"
-import { esgSources, getEsgCopy } from "@/components/model-screens/components/esg-content"
+import { getEsgCopy } from "@/components/model-screens/components/esg-content"
 
 const chartConfig = {
   it_energyTWh: { label: "Spotřeba IT (TWh)", color: "#06b6d4" },
@@ -29,21 +28,7 @@ const getScenarioData = (data, scenario) => {
 export const ESGModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
   const currentData = getScenarioData(data, activeScenario)
 
-  const emissions = currentData.portfolioEmissionsTonnesCO2
-  const waterLiters = currentData.portfolioWaterConsumptionLiters
-  const landUse = currentData.portfolioLandUse
-  const buildingArea = currentData.portfolioBuildingArea
-
-  const equivalents = {
-    cars: Math.round(emissions / (19155 * 129 / 1000000)),
-    flights: Math.round(emissions / 2.4),
-    waterPeople: Math.round(waterLiters / 32850),
-    lipnoPercent: (waterLiters / (309000000 * 1000) * 100).toFixed(5),
-    potatoesTonnes: ((landUse / 10000) * 28.82).toFixed(1),
-    houses: Math.round(buildingArea / 140)
-  }
-
-  const esgCopy = getEsgCopy(currentData, equivalents)
+  const esgCopy = getEsgCopy(currentData)
 
   // Data pro meziscénářový graf
   const comparisonData = useMemo(() => {
