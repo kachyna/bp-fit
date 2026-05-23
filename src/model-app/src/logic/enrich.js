@@ -23,9 +23,10 @@ export const enrichDatacenter = (dc, params) => {
         acc = { ...acc, ...calcEnergy(dcWithMetrics, scenarioParams) }
         acc = { ...acc, ...calcCosts({ ...dcWithMetrics, ...acc }, scenarioParams) }
         acc = { ...acc, ...calcEmployment({ ...dcWithMetrics, ...acc }, { ...scenarioParams }) }
-        acc = { ...acc, ...calcEnvironment({ ...dcWithMetrics, ...acc }, { ...scenarioParams })}
+        acc = { ...acc, ...calcEnvironment({ ...dcWithMetrics, ...acc }, { ...scenarioParams }) }
         acc = { ...acc, ...calcTaxes({ ...dcWithMetrics, ...acc }, { ...scenarioParams }, params.COMMON_PARAMS) }
         acc = { ...acc, ...calcGvaMetrics({ ...dcWithMetrics, ...acc }, { ...scenarioParams }, params.COMMON_PARAMS) }
+        acc = { ...acc, ...finalize(acc) }
 
         results[scenario] = acc
     })
@@ -145,7 +146,7 @@ const calcCosts = (dc, { costBuildingPerMW, costEquipmentPerMW, priceElectricity
 // ======= EMPLOYMENT =======
 
 const calculateEmployment = (itPower, FTEperMW) => {
-    return itPower * FTEperMW
+    return Math.ceil(itPower * FTEperMW)
 }
 
 const calcEmployment = (dc, { fteBuildingPerMW, wageConstruction, fteOperationsPerMW, wageOperations }) => {
@@ -244,15 +245,15 @@ const calcGVA = (sales, intermediateConsumption) => {
     return sales - intermediateConsumption
 }
 
-const calcGvaMetrics = (dc, { priceService, occupancy, utilization, kGvaConstruction, inferenceEnergyPerMillionTokensWh }, {trainingGpuCountPerMW}) => {
+const calcGvaMetrics = (dc, { priceService, occupancy, utilization, kGvaConstruction, inferenceEnergyPerMillionTokensWh }, { trainingGpuCountPerMW }) => {
     switch (dc.type) {
         case 'coloc':
             const sColoc = calcColocSales(dc.itPower, priceService[dc.type], occupancy[dc.type])
             return {
                 yearlySales: sColoc,
-                yearlyOperationsGva : calcGVA(sColoc, dc.intermediateConsumption),
-                yearlyConstructionGva : dc.buildingInvestment * kGvaConstruction
-                
+                yearlyOperationsGva: calcGVA(sColoc, dc.intermediateConsumption),
+                yearlyConstructionGva: dc.buildingInvestment * kGvaConstruction
+
             }
         case 'training':
             const gpuCount = dc.itPower * trainingGpuCountPerMW
@@ -260,8 +261,8 @@ const calcGvaMetrics = (dc, { priceService, occupancy, utilization, kGvaConstruc
             return {
                 gpuCount: gpuCount,
                 yearlySales: sTraining,
-                yearlyOperationsGva : calcGVA(sTraining, dc.intermediateConsumption),
-                yearlyConstructionGva : dc.buildingInvestment * kGvaConstruction
+                yearlyOperationsGva: calcGVA(sTraining, dc.intermediateConsumption),
+                yearlyConstructionGva: dc.buildingInvestment * kGvaConstruction
             }
         case 'inference':
             const maxTokens = calcMaxTokens(dc.maxITConsumption, inferenceEnergyPerMillionTokensWh)
@@ -270,8 +271,8 @@ const calcGvaMetrics = (dc, { priceService, occupancy, utilization, kGvaConstruc
                 maxYearlyTokensInMillions: maxTokens,
                 realYearlyTokensInMillions: maxTokens * occupancy[dc.type] * utilization[dc.type],
                 yearlySales: sInference,
-                yearlyOperationsGva : calcGVA(sInference, dc.intermediateConsumption),
-                yearlyConstructionGva : dc.buildingInvestment * kGvaConstruction
+                yearlyOperationsGva: calcGVA(sInference, dc.intermediateConsumption),
+                yearlyConstructionGva: dc.buildingInvestment * kGvaConstruction
             }
         default:
             throw new Error(`Neznámý typ datacentra: ${dc.type}`)
@@ -281,5 +282,16 @@ const calcGvaMetrics = (dc, { priceService, occupancy, utilization, kGvaConstruc
         yearlySales: calcSales(dc, priceService[dc.type], occupancy[dc.type]),
     }
 }
+
+// adds final calcultaions to the results object. This has been added after initial implementation, otherwise it could have been
+// a part of other functions
+const finalize = (results) => {
+    const ret = {};
+
+    ret["totalPublicIncome"] = results.incomeTaxConstruction + results.contributionsConstruction + results.incomeTaxOperations + results.contributionsOperations + results.ecologyTax + results.propertyTax
+    return ret;
+}
+    
+
 
 
