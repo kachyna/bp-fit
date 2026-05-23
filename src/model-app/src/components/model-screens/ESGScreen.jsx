@@ -62,53 +62,21 @@ export const ESGModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
     <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
       <div className="lg:col-span-1 flex flex-col gap-4">
 
-        {/* KARTA 1: Sociální dopady & NIMBY */}
-        <ESGHoverCard
-          title={esgCopy.nimby.title}
-          color={esgCopy.nimby.color}
-          icon={esgCopy.nimby.icon}
-          mainText={esgCopy.nimby.mainText}
-          comparisons={esgCopy.nimby.comparisons}
-        >
-          {esgCopy.nimby.children}
-        </ESGHoverCard>
-
-        {/* KARTA 2: Uhlíková stopa + Ekvivalenty */}
-        <ESGHoverCard
-          title={esgCopy.emissions.title}
-          color={esgCopy.emissions.color}
-          icon={esgCopy.emissions.icon}
-          mainText={esgCopy.emissions.mainText}
-          comparisonHeader={esgCopy.emissions.comparisonHeader}
-          comparisons={esgCopy.emissions.comparisons}
-        >
-          {esgCopy.emissions.children}
-        </ESGHoverCard>
-
-        {/* KARTA 3: Spotřeba vody + Hydrologické srovnání */}
-        <ESGHoverCard
-          title={esgCopy.water.title}
-          color={esgCopy.water.color}
-          icon={esgCopy.water.icon}
-          mainText={esgCopy.water.mainText}
-          comparisonHeader={esgCopy.water.comparisonHeader}
-          comparisons={esgCopy.water.comparisons}
-        >
-          {esgCopy.water.children}
-        </ESGHoverCard>
-
-        {/* KARTA 4: Zábor půdy vs. Zemědělský/Sídlenkový ekvivalent */}
-        <ESGHoverCard
-          title={esgCopy.land.title}
-          color={esgCopy.land.color}
-          icon={esgCopy.land.icon}
-          mainText={esgCopy.land.mainText}
-          comparisonHeader={esgCopy.land.comparisonHeader}
-          comparisons={esgCopy.land.comparisons}
-        >
-          {esgCopy.land.children}
-        </ESGHoverCard>
-
+        { ['nimby', 'emissions', 'water', 'land'].map((category) => {
+          return (
+            <ESGHoverCard
+              key={category}
+              title={esgCopy[category].title}
+              color={esgCopy[category].color}
+              icon={esgCopy[category].icon}
+              mainText={esgCopy[category].mainText}
+              comparisonHeader={esgCopy[category].comparisonHeader}
+              comparisons={esgCopy[category].comparisons}
+            >
+              {esgCopy[category].children}
+            </ESGHoverCard>
+          )
+        })}
       </div>
 
       {/* PRAVÝ SLOUPEC: Informační panel a graf scénářů */}
