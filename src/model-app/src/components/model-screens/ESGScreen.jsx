@@ -38,21 +38,19 @@ const getScenarioData = (data, scenario) => {
 export const ESGModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
   const currentData = getScenarioData(data, activeScenario)
 
-  const equivalents = useMemo(() => {
-    const emissions = currentData.portfolioEmissionsTonnesCO2
-    const waterLiters = currentData.portfolioWaterConsumptionLiters
-    const landUse = currentData.portfolioLandUse
-    const buildingArea = currentData.portfolioBuildingArea
+  const emissions = currentData.portfolioEmissionsTonnesCO2
+  const waterLiters = currentData.portfolioWaterConsumptionLiters
+  const landUse = currentData.portfolioLandUse
+  const buildingArea = currentData.portfolioBuildingArea
 
-    return {
-      cars: Math.round(emissions / (19155 * 129 / 1000000)),
-      flights: Math.round(emissions / 2.4),
-      waterPeople: Math.round(waterLiters / 32850),
-      lipnoPercent: (waterLiters / (309000000 * 1000) * 100).toFixed(5),
-      potatoesTonnes: ((landUse / 10000) * 28.82).toFixed(1),
-      houses: Math.round(buildingArea / 140)
-    }
-  }, [currentData])
+  const equivalents = {
+    cars: Math.round(emissions / (19155 * 129 / 1000000)),
+    flights: Math.round(emissions / 2.4),
+    waterPeople: Math.round(waterLiters / 32850),
+    lipnoPercent: (waterLiters / (309000000 * 1000) * 100).toFixed(5),
+    potatoesTonnes: ((landUse / 10000) * 28.82).toFixed(1),
+    houses: Math.round(buildingArea / 140)
+  }
 
   // Data pro meziscénářový graf
   const comparisonData = useMemo(() => {
