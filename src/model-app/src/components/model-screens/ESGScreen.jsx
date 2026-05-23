@@ -12,28 +12,15 @@ const chartConfig = {
   emissionsThousandTonnes: { label: "Emise CO₂ (tis. t)", color: "#f43f5e" },
 }
 
-const getScenarioData = (data, scenario) => {
-  if (!data) return {}
-  switch (scenario) {
-    case "PESIMISTIC":
-      return data.PESIMISTIC || {}
-    case "OPTIMISTIC":
-      return data.OPTIMISTIC || {}
-    case "REALISTIC":
-    default:
-      return data.REALISTIC || {}
-  }
-}
-
 export const ESGModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
-  const currentData = getScenarioData(data, activeScenario)
+  const currentData = data[activeScenario]
 
   const esgCopy = getEsgCopy(currentData)
 
   // Data pro meziscénářový graf
   const comparisonData = useMemo(() => {
     return ["PESIMISTIC", "REALISTIC", "OPTIMISTIC"].map((scenario) => {
-      const sData = getScenarioData(data, scenario)
+      const sData = data[scenario]
       return {
         name: scenario === "PESIMISTIC" ? "Pesimistický" : scenario === "REALISTIC" ? "Realistický" : "Optimistický",
         emissionsThousandTonnes: Math.round(sData.portfolioEmissionsTonnesCO2) / 1000,
