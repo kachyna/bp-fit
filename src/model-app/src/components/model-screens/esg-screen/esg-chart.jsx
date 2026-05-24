@@ -5,6 +5,7 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLe
 import { ChartCard } from "@/components/model-screens/components/chart-card"
 import { StyledYAxis } from "@/components/model-screens/components/styled-yaxis"
 import { SCENARIO_NAMES } from "@/constants/chart-labels"
+import { toThousands, toMillions } from "@/logic/utility"
 
 const chartConfig = {
   it_energyTWh: { label: "Spotřeba IT (TWh)", color: "#06b6d4" },
@@ -17,9 +18,9 @@ const prepareChartData = (data) => {
     const scenarioData = data[scenario]
     return {
       name: SCENARIO_NAMES[scenario] || scenario,
-      emissionsThousandTonnes: Math.round(scenarioData.portfolioEmissionsTonnesCO2) / 1000,
-      energyTWh: Math.round(scenarioData.portfolioRealEnergyConsumption / 1000) / 1000,
-      it_energyTWh: Math.round(scenarioData.portfolioRealITConsumption / 1000) / 1000,
+      emissionsThousandTonnes: toThousands(scenarioData.portfolioEmissionsTonnesCO2, 2),
+      energyTWh: toMillions(scenarioData.portfolioRealEnergyConsumption, 2),
+      it_energyTWh: toMillions(scenarioData.portfolioRealITConsumption, 2),
     }
   })
 }
@@ -56,7 +57,7 @@ export const ESGChart = ({ data, chartCopy }) => {
             tickFormatter={(value) => `${value.toLocaleString("cs-CZ")} tis. t`}
           />
 
-          <ChartTooltip content={<ChartTooltipContent />} />
+          <ChartTooltip content={<ChartTooltipContent className="w-[110%]" />} />
           <ChartLegend content={<ChartLegendContent verticalAlign="top" />} />
 
           <Bar
@@ -73,7 +74,7 @@ export const ESGChart = ({ data, chartCopy }) => {
           <Bar
             yAxisId="left"
             dataKey="energyTWh"
-            name="Celková roční spotřeba (TWh)"
+            name="Celková spotřeba (TWh)"
             fill="var(--color-energyTWh)"
             opacity={0.4}
             radius={[4, 4, 0, 0]}
