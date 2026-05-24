@@ -1,5 +1,5 @@
 import { AlertTriangle, Leaf, Droplet, Map } from "lucide-react"
-import { ComparisonData } from "./comparisons"
+import { ComparisonData } from "../components/comparisons"
 
 export const esgSources = {
     cars: ["https://www.seznamzpravy.cz/clanek/ekonomika-prumerne-emise-co2-z-novych-aut-v-cesku-loni-klesly-o-38-procenta-295896",
