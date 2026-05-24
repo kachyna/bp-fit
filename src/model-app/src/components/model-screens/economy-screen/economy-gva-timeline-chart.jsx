@@ -13,7 +13,7 @@ export const EconomyGvaTimelineChart = ({ gvaTimelineData, chartCopy }) => {
     if (!gvaTimelineData || !chartCopy) return null;
 
     return (
-        <Card className="border-indigo-100 bg-gradient-to-br from-indigo-50/40 via-slate-50/20 to-rose-50/30 shadow-sm transition-all duration-300 hover:shadow-md hover:border-indigo-200/80 group cursor-default">
+        <Card className="border-indigo-100 bg-linear-to-br from-indigo-50/40 via-slate-50/20 to-rose-50/30 shadow-sm transition-all duration-300 hover:shadow-md hover:border-indigo-200/80 group cursor-default">
             <CardHeader>
                 <CardTitle className="text-base font-semibold text-slate-800 flex items-center gap-2">
                     <div className="p-1.5 bg-indigo-100/70 text-indigo-700 rounded-md">

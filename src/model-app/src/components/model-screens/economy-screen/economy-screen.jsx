@@ -85,7 +85,7 @@ export const EconomyModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
     return (
         <div className="flex flex-col gap-6">
             {/* 1. ÚVODNÍ KONTEXTOVÁ KARTA */}
-            <Card className="border-amber-100 bg-gradient-to-r from-amber-500/10 via-slate-50 to-indigo-500/10 shadow-sm transition-all duration-300 hover:shadow-md hover:border-amber-200/80 group cursor-default">
+            <Card className="border-amber-100 bg-linear-to-r from-amber-500/10 via-slate-50 to-indigo-500/10 shadow-sm transition-all duration-300 hover:shadow-md hover:border-amber-200/80 group cursor-default">
                 <CardHeader className="pb-2">
                     <CardTitle className="text-base font-semibold text-slate-800 flex items-center gap-2">
                         <div className="p-1.5 bg-amber-100/70 text-amber-700 rounded-md">

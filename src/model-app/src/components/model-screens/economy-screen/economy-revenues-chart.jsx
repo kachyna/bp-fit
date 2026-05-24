@@ -13,7 +13,7 @@ export const EconomyRevenuesChart = ({ comparisonData, chartCopy }) => {
     if (!comparisonData || !chartCopy) return null;
 
     return (
-        <Card className="border-emerald-100 bg-gradient-to-br from-emerald-50/40 via-slate-50/20 to-cyan-50/30 shadow-sm transition-all duration-300 hover:shadow-md hover:border-emerald-200/80 group cursor-default">
+        <Card className="border-emerald-100 bg-linear-to-br from-emerald-50/40 via-slate-50/20 to-cyan-50/30 shadow-sm transition-all duration-300 hover:shadow-md hover:border-emerald-200/80 group cursor-default">
             <CardHeader>
                 <CardTitle className="text-base font-semibold text-slate-800 flex items-center gap-2">
                     <div className="p-1.5 bg-emerald-100/70 text-emerald-700 rounded-md">
