@@ -1,79 +1,315 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { TrendingUp, Landmark, Wallet, CircleDollarSign } from "lucide-react"
+import { useMemo } from "react"
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+import { Landmark, TrendingUp, Users, Wallet, BarChart3 } from "lucide-react"
+import { Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, ComposedChart, PieChart, Pie, Cell } from "recharts"
+import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent } from "@/components/ui/chart"
+import { ESGHoverCard } from "@/components/model-screens/components/hover-card"
+import { ComparisonData } from "@/components/model-screens/components/comparisons"
+import { getEconomyCopy, economySources } from "@/components/model-screens/components/economy-content"
 
-export const EconomyModelScreen = () => {
+const chartConfigRevenues = {
+    gva: { label: "Hrubá přidaná hodnota (HPH)", color: "#10b981" },
+    electricity: { label: "Náklady na elektřinu", color: "#06b6d4" },
+    otherOpex: { label: "Ostatní provozní náklady", color: "#6366f1" },
+}
+
+const chartConfigTaxes = {
+    propertyTax: { label: "Daň z nemovitosti", color: "#f59e0b" },
+    ecologyTax: { label: "Ekologická daň", color: "#10b981" },
+    opsTaxes: { label: "Odvody a daně z provozu", color: "#3b82f6" },
+    constrTaxes: { label: "Odvody a daně z výstavby", color: "#ec4899" },
+}
+
+const getScenarioData = (data, scenario) => {
+    if (!data) return {}
+    switch (scenario) {
+        case "PESIMISTIC":
+            return data.PESIMISTIC || {}
+        case "OPTIMISTIC":
+            return data.OPTIMISTIC || {}
+        case "REALISTIC":
+        default:
+            return data.REALISTIC || {}
+    }
+}
+
+const toMillions = (val) => Number(((val || 0) / 1000000).toFixed(3))
+
+
+export const EconomyModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
+    const currentData = getScenarioData(data, activeScenario)
+    const economyCopy = getEconomyCopy(currentData)
+
+    const comparisonData = useMemo(() => {
+        return ["PESIMISTIC", "REALISTIC", "OPTIMISTIC"].map((scenario) => {
+            const sData = getScenarioData(data, scenario)
+            return {
+                key: scenario,
+                name: scenario === "PESIMISTIC" ? "Pesimistický" : scenario === "REALISTIC" ? "Realistický" : "Optimistický",
+
+                // Chart 1: Revenue decomposition (summing to portfolioYearlySales)
+                gva: toMillions(sData.portfolioYearlyOperationsGva),
+                electricity: toMillions(sData.portfolioElectricityCosts),
+                otherOpex: toMillions(sData.portfolioOtherOpex),
+            }
+        })
+    }, [data])
+
+    const pieChartData = useMemo(() => {
+        if (!data) return []
+        const rData = getScenarioData(data, "REALISTIC")
+        const contr = rData.portfolioContributionsOperations || 0
+        const incTax = rData.portfolioIncomeTaxOperations || 0
+        const ecoTax = rData.portfolioEcologyTax || 0
+        const propTax = rData.portfolioPropertyTax || 0
+
+        const constrTax = rData.portfolioIncomeTaxConstruction || 0
+        const constrContr = rData.portfolioContributionsConstruction || 0
+        const totalConstrTaxes = constrTax + constrContr
+
+        return [
+            {
+                key: "propertyTax",
+                name: "Daň z nemovitosti",
+                value: toMillions(propTax),
+                fill: chartConfigTaxes.propertyTax.color,
+            },
+            {
+                key: "ecologyTax",
+                name: "Ekologická daň",
+                value: toMillions(ecoTax),
+                fill: chartConfigTaxes.ecologyTax.color,
+            },
+            {
+                key: "opsTaxes",
+                name: "Odvody a daně z provozu",
+                value: toMillions(contr + incTax),
+                fill: chartConfigTaxes.opsTaxes.color,
+            },
+            {
+                key: "constrTaxes",
+                name: "Odvody a daně z výstavby",
+                value: toMillions(totalConstrTaxes),
+                fill: chartConfigTaxes.constrTaxes.color,
+            }
+        ].filter(item => item.value > 0)
+    }, [data])
+
     return (
-        <div className="space-y-6">
-            {/* KPI Karty */}
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-                <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">Celkové investice (CAPEX)</CardTitle>
-                        <Landmark className="h-4 w-4 text-slate-500" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">12.8 mld. Kč</div>
-                        <p className="text-xs text-slate-500">Za sledované období</p>
-                    </CardContent>
-                </Card>
-                <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">Roční provoz (OPEX)</CardTitle>
-                        <Wallet className="h-4 w-4 text-slate-500" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">2.4 mld. Kč</div>
-                        <p className="text-xs text-slate-500">Průměr za sledované období</p>
-                    </CardContent>
-                </Card>
-                <Card className="bg-slate-900 border-slate-800">
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium text-slate-200">Nové HDP / Přidaná hodnota</CardTitle>
-                        <TrendingUp className="h-4 w-4 text-emerald-400" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold text-slate-50">+18.5 mld. Kč</div>
-                        <p className="text-xs text-slate-400">Kumulovaný vliv na ekonomiku</p>
-                    </CardContent>
-                </Card>
+        <div className="flex flex-col gap-6">
+            {/* 1. ÚVODNÍ KONTEXTOVÁ KARTA */}
+            <Card className="border-amber-100 bg-gradient-to-r from-amber-500/10 via-slate-50 to-indigo-500/10 shadow-sm transition-all duration-300 hover:shadow-md hover:border-amber-200/80 group cursor-default">
+                <CardHeader className="pb-2">
+                    <CardTitle className="text-base font-semibold text-slate-800 flex items-center gap-2">
+                        <div className="p-1.5 bg-amber-100/70 text-amber-700 rounded-md">
+                            <Landmark className="h-4 w-4" />
+                        </div>
+                        {economyCopy.intro.title}
+                    </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2 text-sm text-slate-600 leading-relaxed">
+                    {economyCopy.intro.children}
+
+                    {economyCopy.intro.hover && (
+                        <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100">
+                            <div className="overflow-hidden">
+                                <div className="space-y-2 text-sm text-slate-600 mt-4 leading-relaxed">
+                                    {economyCopy.intro.hover}
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </CardContent>
+            </Card>
+
+            {/* 2. KPI KARTY ROW */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 group/row">
+                {["capex", "gva", "fte", "taxes"].map((category) => {
+                    return (
+                        <ESGHoverCard
+                            key={category}
+                            title={economyCopy[category].title}
+                            color={economyCopy[category].color}
+                            icon={economyCopy[category].icon}
+                            mainText={economyCopy[category].mainText}
+                            comparisonHeader={economyCopy[category].comparisonHeader}
+                            comparisons={economyCopy[category].comparisons}
+                            expandOnRowHover={true}
+                        >
+                            {economyCopy[category].children}
+                        </ESGHoverCard>
+                    )
+                })}
             </div>
 
-            {/* Hlavní grafy / Datové panely */}
-            <div className="grid gap-4 md:grid-cols-3">
-                <Card className="col-span-2">
+            {/* 3. VIZUALIZACE CHARTS ROW */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* GRAF 1: Dekompozice tržeb */}
+                <Card className="border-emerald-100 bg-gradient-to-br from-emerald-50/40 via-slate-50/20 to-cyan-50/30 shadow-sm transition-all duration-300 hover:shadow-md hover:border-emerald-200/80 group cursor-default">
                     <CardHeader>
-                        <CardTitle>Kumulovaný Cash flow a návratnost pro stát (Kč)</CardTitle>
+                        <CardTitle className="text-base font-semibold text-slate-800 flex items-center gap-2">
+                            <div className="p-1.5 bg-emerald-100/70 text-emerald-700 rounded-md">
+                                <BarChart3 className="h-4 w-4" />
+                            </div>
+                            {economyCopy.chartRevenues.title}
+                        </CardTitle>
+                        <CardDescription className="text-slate-500 pl-9">
+                            {economyCopy.chartRevenues.description}
+                        </CardDescription>
                     </CardHeader>
-                    <CardContent>
-                        {/* Zástupný blok pro graf */}
-                        <div className="h-108 w-full rounded-md bg-slate-50 border border-slate-200 border-dashed flex items-center justify-center text-slate-400 text-center p-4">
-                            [ Zde bude liniový Cash Flow graf / ROI pro státní / místní rozpočty ]
+                    <CardContent className="pb-6">
+                        <div className="w-full mt-2 h-[350px]">
+                            <ChartContainer config={chartConfigRevenues} className="w-full h-full aspect-auto">
+                                <ResponsiveContainer width="100%" height="100%">
+                                    <ComposedChart data={comparisonData} margin={{ top: 10, right: 10, bottom: 0, left: 10 }}>
+                                        <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+                                        <XAxis dataKey="name" tickLine={false} axisLine={false} className="text-xs font-semibold fill-slate-500" />
+                                        <YAxis
+                                            tickLine={false}
+                                            axisLine={false}
+                                            tick={{ fill: "#64748b", fontSize: 10 }}
+                                            tickFormatter={(value) => `${value.toLocaleString("cs-CZ")} mil. Kč`}
+                                            width={100}
+                                        />
+                                        <ChartTooltip
+                                            content={
+                                                <ChartTooltipContent
+                                                    formatter={(value, name, item) => {
+                                                        const label = chartConfigRevenues[item.dataKey]?.label || name
+                                                        return (
+                                                            <>
+                                                                <div
+                                                                    className="shrink-0 rounded-[2px] h-2.5 w-2.5"
+                                                                    style={{ backgroundColor: item.color }}
+                                                                />
+                                                                <div className="flex flex-1 justify-between items-center leading-none">
+                                                                    <span className="text-muted-foreground">{label}</span>
+                                                                    <span className="font-mono font-medium text-foreground tabular-nums ml-2">
+                                                                        {Number(value).toLocaleString("cs-CZ", { minimumFractionDigits: 3, maximumFractionDigits: 3 })} mil. Kč
+                                                                    </span>
+                                                                </div>
+                                                            </>
+                                                        )
+                                                    }}
+                                                />
+                                            }
+                                        />
+                                        <ChartLegend content={<ChartLegendContent verticalAlign="top" />} />
+
+                                        <Bar
+                                            dataKey="gva"
+                                            name="Hrubá přidaná hodnota (HPH)"
+                                            stackId="a"
+                                            fill="var(--color-gva)"
+                                            opacity={0.55}
+                                            maxBarSize={50}
+                                            activeBar={{ opacity: 0.9, stroke: "var(--color-gva)", strokeWidth: 1 }}
+                                        />
+                                        <Bar
+                                            dataKey="electricity"
+                                            name="Náklady na elektřinu"
+                                            stackId="a"
+                                            fill="var(--color-electricity)"
+                                            opacity={0.55}
+                                            maxBarSize={50}
+                                            activeBar={{ opacity: 0.9, stroke: "var(--color-electricity)", strokeWidth: 1 }}
+                                        />
+                                        <Bar
+                                            dataKey="otherOpex"
+                                            name="Ostatní provozní náklady"
+                                            stackId="a"
+                                            fill="var(--color-otherOpex)"
+                                            opacity={0.55}
+                                            radius={[4, 4, 0, 0]}
+                                            maxBarSize={50}
+                                            activeBar={{ opacity: 0.9, stroke: "var(--color-otherOpex)", strokeWidth: 1 }}
+                                        />
+                                    </ComposedChart>
+                                </ResponsiveContainer>
+                            </ChartContainer>
+                        </div>
+
+                        {/* Hover vysvětlení pod grafem */}
+                        <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100">
+                            <div className="overflow-hidden">
+                                <div className="border-t border-dashed mt-4 pt-4 border-slate-200 text-xs text-slate-600 leading-relaxed">
+                                    {economyCopy.chartRevenues.hoverExplanation}
+                                </div>
+                            </div>
                         </div>
                     </CardContent>
                 </Card>
-                <div className="col-span-1 space-y-4">
-                    <Card>
-                        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                            <CardTitle className="text-sm font-medium">Odvedené daně a poplatky</CardTitle>
-                            <CircleDollarSign className="h-4 w-4 text-slate-500" />
-                        </CardHeader>
-                        <CardContent>
-                            <div className="text-2xl font-bold">850 mil. Kč</div>
-                            <p className="text-xs text-slate-500">Průměrný roční přínos do rozpočtu</p>
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>Struktura CAPEX</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                            {/* Zástupný blok pro graf */}
-                            <div className="h-70 w-full rounded-md bg-slate-50 border border-slate-200 border-dashed flex items-center justify-center text-slate-400 text-center p-4">
-                                [ Zde bude koláčový/treemap graf - Land, Shell, IT Equipment... ]
+
+                {/* GRAF 2: Rozložení daňových přínosů */}
+                <Card className="border-indigo-100 bg-gradient-to-br from-indigo-50/40 via-slate-50/20 to-rose-50/30 shadow-sm transition-all duration-300 hover:shadow-md hover:border-indigo-200/80 group cursor-default">
+                    <CardHeader>
+                        <CardTitle className="text-base font-semibold text-slate-800 flex items-center gap-2">
+                            <div className="p-1.5 bg-indigo-100/70 text-indigo-700 rounded-md">
+                                <BarChart3 className="h-4 w-4" />
                             </div>
-                        </CardContent>
-                    </Card>
-                </div>
+                            {economyCopy.chartTaxes.title}
+                        </CardTitle>
+                        <CardDescription className="text-slate-500 pl-9">
+                            {economyCopy.chartTaxes.description}
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent className="pb-6">
+                        <div className="w-full mt-2 h-[350px]">
+                            <ChartContainer config={chartConfigTaxes} className="w-full h-full aspect-auto">
+                                <ResponsiveContainer width="100%" height="100%">
+                                    <PieChart margin={{ top: 10, right: 10, bottom: 10, left: 10 }}>
+                                        <ChartTooltip
+                                            content={
+                                                <ChartTooltipContent
+                                                    hideLabel
+                                                    formatter={(value, name, item) => {
+                                                        const label = chartConfigTaxes[name]?.label || name
+                                                        return (
+                                                            <>
+                                                                <div
+                                                                    className="shrink-0 rounded-[2px] h-2.5 w-2.5"
+                                                                    style={{ backgroundColor: item.payload?.fill || item.color }}
+                                                                />
+                                                                <div className="flex flex-1 justify-between items-center leading-none">
+                                                                    <span className="text-muted-foreground">{label}</span>
+                                                                    <span className="font-mono font-medium text-foreground tabular-nums ml-2">
+                                                                        {Number(value).toLocaleString("cs-CZ", { minimumFractionDigits: 3, maximumFractionDigits: 3 })} mil. Kč
+                                                                    </span>
+                                                                </div>
+                                                            </>
+                                                        )
+                                                    }}
+                                                />
+                                            }
+                                        />
+                                        <Pie
+                                            data={pieChartData}
+                                            dataKey="value"
+                                            nameKey="key"
+                                            innerRadius={60}
+                                            outerRadius={100}
+                                            paddingAngle={2}
+                                        >
+                                            {pieChartData.map((entry, index) => (
+                                                <Cell key={`cell-${index}`} fill={entry.fill} />
+                                            ))}
+                                        </Pie>
+                                        <ChartLegend content={<ChartLegendContent />} />
+                                    </PieChart>
+                                </ResponsiveContainer>
+                            </ChartContainer>
+                        </div>
+
+                        {/* Hover vysvětlení pod grafem */}
+                        <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100">
+                            <div className="overflow-hidden">
+                                <div className="border-t border-dashed mt-4 pt-4 border-slate-200 text-xs text-slate-600 leading-relaxed">
+                                    {economyCopy.chartTaxes.hoverExplanation}
+                                </div>
+                            </div>
+                        </div>
+                    </CardContent>
+                </Card>
             </div>
         </div>
     )
