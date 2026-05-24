@@ -2,11 +2,11 @@ import { useState } from "react"
 import { useMemo } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { AggregateModelScreen } from "../model-screens/AggregateScreen"
-import { EconomyModelScreen } from "../model-screens/EconomyScreen"
-import { ElectricityModelScreen } from "../model-screens/ElectricityScreen"
-import { ESGModelScreen } from "../model-screens/ESGScreen"
-import { DebugView } from "../model-screens/debug-view"
+import { AggregateModelScreen } from "@/components/model-screens/aggregate-screen/aggregate-screen"
+import { EconomyModelScreen } from "@/components/model-screens/economy-screen/economy-screen"
+import { ElectricityModelScreen } from "@/components/model-screens/electricity-screen/electricity-screen"
+import { ESGModelScreen } from "@/components/model-screens/esg-screen/esg-screen"
+import { DebugView } from "@/components/model-screens/debug-view"
 import { useModelStore } from "@/store/useModelStore"
 import { analyzeDatacenters } from "@/logic/engine"
 
@@ -29,7 +29,7 @@ export function AnimatedDashboard({ debug }) {
   const handleTabChange = (newTab) => {
     const currentIndex = TAB_ORDER.indexOf(activeTab)
     const nextIndex = TAB_ORDER.indexOf(newTab)
-    
+
     // Decide the diretion of the animation based on the index of the current and next tab
     setDirection(nextIndex > currentIndex ? 1 : -1)
     setActiveTab(newTab)
@@ -61,10 +61,10 @@ export function AnimatedDashboard({ debug }) {
           <TabsTrigger value="electricity">Elektřina</TabsTrigger>
           <TabsTrigger value="economy">Ekonomika</TabsTrigger>
           <TabsTrigger value="social">Udržitelnost / ESG</TabsTrigger>
-          { debug && <TabsTrigger value="debug">Debug</TabsTrigger>}
+          {debug && <TabsTrigger value="debug">Debug</TabsTrigger>}
         </TabsList>
       </div>
-      
+
       {/* Motion.div container controls the animation */}
       {/* Obal má padding a negativní margin, aby overflow-hidden neořezával drop-shadows a borders na okrajích karet */}
       <div className="overflow-hidden relative w-full p-2 -mx-2">
@@ -84,10 +84,10 @@ export function AnimatedDashboard({ debug }) {
             {activeTab === "economy" && <EconomyModelScreen data={analyzedData} activeScenario={scenario} />}
             {activeTab === "social" && <ESGModelScreen data={analyzedData} activeScenario={scenario} />}
             {activeTab === "debug" && (
-              <DebugView 
-                params={params} 
-                analyzedData={analyzedData} 
-                datacenters={datacenters} 
+              <DebugView
+                params={params}
+                analyzedData={analyzedData}
+                datacenters={datacenters}
               />
             )}
           </motion.div>

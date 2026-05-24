@@ -1,5 +1,5 @@
 import { Landmark, TrendingUp, Users, Wallet } from "lucide-react"
-import { ComparisonData } from "./comparisons"
+import { ComparisonData } from "@/components/model-screens/components/comparisons"
 
 export const economySources = {
     highway: ["https://www.garaz.cz/clanek/zajimavosti-kolik-stoji-jeden-kilometr-dalnice-je-to-penez-jako-zelez-ale-byvalo-i-hur-21013380"],
@@ -279,7 +279,7 @@ export const getEconomyCopy = (currentData) => {
         chartRevenues: {
             title: "Dekompozice tržeb (Modelování HPH)",
             description: "Srovnání celkového výnosu a jeho rozdělení na přidanou hodnotu a hlavní provozní náklady napříč scénáři (mil. Kč).",
-            hoverExplanation:   `Tento graf ukazuje strukturu tržeb (výnosů) za provoz portfolia.
+            hoverExplanation: `Tento graf ukazuje strukturu tržeb (výnosů) za provoz portfolia.
                                  Výška celého sloupce ukazuje celkové tržby portfolia datových center a rozkládá je na HPH a mezispotřebu (elektřina + ostatní OPEX).
                                  Najetím na jednotlivé sloupce můžete srovnat hodnoty napříč pesimistickým, realistickým a optimistickým scénářem.
                                  Zkuste si vymodelovat také jednotlivé typy datových center a porovnejte, jak se liší struktura jejich nákladů.`
@@ -287,7 +287,7 @@ export const getEconomyCopy = (currentData) => {
         chartGvaTimeline: {
             title: "Kumulativní vývoj HPH v čase",
             description: "Celkový ekonomický přínos vyjádřený jako HPH vytvořená během výstavby a následného provozu (mil. Kč).",
-            hoverExplanation:   `Tento graf ukazuje, jak se v čase kumuluje Hrubá přidaná hodnota (HPH) projektu.
+            hoverExplanation: `Tento graf ukazuje, jak se v čase kumuluje Hrubá přidaná hodnota (HPH) projektu.
                                  Během let výstavby vzniká jednorázová HPH z realizace stavby.
                                  Po jejím dokončení začíná každoročně nabíhat provozní HPH, která se postupně sčítá.
                                  Můžete tak sledovat celkový přínos projektu za celou dobu jeho životnosti.`
