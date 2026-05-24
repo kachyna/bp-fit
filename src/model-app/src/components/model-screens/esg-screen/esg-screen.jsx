@@ -1,4 +1,3 @@
-import { useMemo } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { HelpCircle } from "lucide-react"
 import { ESGHoverCard } from "@/components/model-screens/components/hover-card"
@@ -6,22 +5,7 @@ import { getEsgCopy } from "@/components/model-screens/esg-screen/esg-content"
 import { ESGChart } from "./esg-chart"
 
 export const ESGModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
-  const currentData = data[activeScenario]
-
-  const esgCopy = getEsgCopy(currentData)
-
-  // Data pro meziscénářový graf
-  const comparisonData = useMemo(() => {
-    return ["PESIMISTIC", "REALISTIC", "OPTIMISTIC"].map((scenario) => {
-      const sData = data[scenario]
-      return {
-        name: scenario === "PESIMISTIC" ? "Pesimistický" : scenario === "REALISTIC" ? "Realistický" : "Optimistický",
-        emissionsThousandTonnes: Math.round(sData.portfolioEmissionsTonnesCO2) / 1000,
-        energyTWh: Math.round(sData.portfolioRealEnergyConsumption / 1000) / 1000,
-        it_energyTWh: Math.round(sData.portfolioRealITConsumption / 1000) / 1000,
-      }
-    })
-  }, [data])
+  const esgCopy = getEsgCopy(data[activeScenario])
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -63,9 +47,9 @@ export const ESGModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
         </Card>
 
         {/* Graf scénářů */}
-        <ESGChart comparisonData={comparisonData} chartCopy={esgCopy.chart} />
+        <ESGChart data={data} chartCopy={esgCopy.chart} />
       </div>
 
-    </div >
+    </div>
   )
 }
