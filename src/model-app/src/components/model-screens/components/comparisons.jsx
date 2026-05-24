@@ -12,7 +12,7 @@ export const ComparisonData = ({ sources, className, children }) => (
                     className={className}
                     title="Zdroje dat">
                     <div className="flex flex-row gap-1 items-center">
-                        <HelpCircle className="h-3 w-3" />
+                        {sources && sources.length > 0 && <HelpCircle className="h-3 w-3" />}
                     </div>
                 </a>
             </div>
