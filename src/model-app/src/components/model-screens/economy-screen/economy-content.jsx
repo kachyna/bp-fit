@@ -5,34 +5,45 @@ export const economySources = {
     highway: ["https://www.garaz.cz/clanek/zajimavosti-kolik-stoji-jeden-kilometr-dalnice-je-to-penez-jako-zelez-ale-byvalo-i-hur-21013380"],
     hospital: ["https://www.transparency.cz/stavba-nove-krajske-nemocnice-nebo-rekonstrukce-te-stavajici-poslechnete-si-zlinskou-verejnou-debatu/"],
     gvaComparison: ["https://apl.czso.cz/pll/rocenka/rocenkavyber.socas"],
-    czechInvest: ["https://www.czechinvest.org/cz/O-CzechInvestu/Statistiky-investic"],
+    avgInvestmentPerJob: ["https://doi.org/10.2908/SBS_NA_SCA_R2"],
     kindergarten: ["https://www.denik.cz/ekonomika/skoly-skolky-penize-stavba.html"],
     teacherSalary: ["https://www.czso.cz/csu/czso/struktura-mezd-zamestnancu-2025"]
 }
 
 export const getEconomyCopy = (currentData) => {
-    const capex = currentData.portfolioTotalInvestment || 0
     const gvaOperations = currentData.portfolioYearlyOperationsGva || 0
     const totalTaxes = currentData.portfolioTotalPublicIncome || 0
     const propertyTax = currentData.portfolioPropertyTax || 0
     const fteOps = currentData.portfolioFteOperations || 1
+    const annualizedCapex = currentData.portfolioAnnualizedCapex || 0
+    const totalCapex = currentData.portfolioTotalOperationsCapex || 0
 
     const equivalents = {
-        highwayKm: (capex / 239000000).toFixed(1),
-        hostpital: (capex / 8000000000).toFixed(1),
+        highwayKm: (annualizedCapex / 239000000).toFixed(1),
+        hostpital: (annualizedCapex / 8000000000).toFixed(1),
         OilGasGva: (gvaOperations * 100 / 1547000000).toFixed(2),
         PharmaFva: (gvaOperations * 100 / 29879000000).toFixed(2),
         ItGva: (gvaOperations * 100 / 298858000000).toFixed(2),
         gvaPerWorker: (gvaOperations / fteOps / 1000000).toFixed(1),
-        investmentPerJob: (capex / fteOps / 1000000).toFixed(1),
+        // 1 million USD creates 7 jobs. Divide 1 million by 7 and get cost per one job.
+        // Take annualizedCapex and divide cost per one job to get number of potentially created jobs.
+        energyJobs: Math.round(annualizedCapex / (20000000 / 7)),
+        roadsJobs: Math.round(annualizedCapex / (20000000 / 5)),
+        schoolsJobs: Math.round(annualizedCapex / (20000000 / 3)),
+        waterJobs: Math.round(annualizedCapex / (20000000 / 5)),
+        rdJobs: Math.round(annualizedCapex / (20000000 / 10)),
         teachersCount: Math.round(totalTaxes / 800000),
         kindergartensCount: (totalTaxes / 40000000).toFixed(1)
     }
 
-    const formattedCAPEX = `${(capex / 1000000000).toLocaleString("cs-CZ", { minimumFractionDigits: 3, maximumFractionDigits: 3 })} mld. Kč`
+    const formattedAnnualizedCAPEX = `${(annualizedCapex / 1000000000).toLocaleString("cs-CZ", { minimumFractionDigits: 3, maximumFractionDigits: 3 })} mld. Kč`
     const formattedGVA = `${(gvaOperations / 1000000000).toLocaleString("cs-CZ", { minimumFractionDigits: 3, maximumFractionDigits: 3 })} mld. Kč`
     const formattedTaxes = `${(totalTaxes / 1000000000).toLocaleString("cs-CZ", { minimumFractionDigits: 3, maximumFractionDigits: 3 })} mld. Kč`
-    const formattedPropertyTax = `${(propertyTax / 1000000000).toLocaleString("cs-CZ", { minimumFractionDigits: 3, maximumFractionDigits: 3 })} mld. Kč`
+    const formattedTotalCapex = `${(totalCapex / 1000000000).toLocaleString("cs-CZ", { minimumFractionDigits: 3, maximumFractionDigits: 3 })} mld. Kč`
+    const formattedYearlyPropertyTax = `${(propertyTax / 1000000).toLocaleString("cs-CZ", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} mil. Kč`
+    const formattedYearlyEcologyTax = `${(currentData.portfolioEcologyTax / 1000000).toLocaleString("cs-CZ", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} mil. Kč`
+    const formattedYearlyOperationsContributions = `${(currentData.portfolioContributionsOperations / 1000000).toLocaleString("cs-CZ", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} mil. Kč`
+    const formattedYearlyOperationsIncomeTax = `${(currentData.portfolioIncomeTaxOperations / 1000000).toLocaleString("cs-CZ", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} mil. Kč`
 
     return {
         intro: {
@@ -82,13 +93,13 @@ export const getEconomyCopy = (currentData) => {
             )
         },
         capex: {
-            title: "Celková investice",
+            title: "Roční investice",
             color: "amber",
             icon: <Landmark className="h-4 w-4" />,
             mainText: (
                 <>
                     <div className="text-2xl font-bold text-amber-950 mb-2">
-                        {formattedCAPEX}
+                        {formattedAnnualizedCAPEX}
                     </div>
                     <p className="text-xs text-amber-600/70 mt-2">na stavbu a IT vybavení</p>
                 </>
@@ -107,11 +118,17 @@ export const getEconomyCopy = (currentData) => {
             ),
             children: (
                 <>
-                    <p>Datová centra vyžadují masivní počáteční investice. Zatímco samotná budova, chlazení a infrastruktura stojí asi 230 milionů Kč na 1 MW příkonu, IT technologie stojí na 1 MW až 4krát víc. Zobrazená částka pokrývá celkové náklady na pořízení všech technologií a vybudování budovy.
+                    <p>
+                        Zobrazená částka ukazuje celkové náklady na budovu včetně výpočetní techniky vydělené počtem let provozu datového centra (annualized CAPEX).
+                        Datová centra v DHM vlastní především budovu a IT vybavení, přičemž budovy se odpisují 30 let a IT vybavení 4 roky – za životnost budovy se tak IT vybavení obmění teoreticky 7,5krát.
+                        Celková investice do DHM za provoz tohoto portfolia DC je <span className="font-semibold text-amber-900">{formattedTotalCapex}</span>.
+                    </p>
+                    <p>Datová centra vyžadují masivní počáteční investice.
+                        Samotná budova, chlazení a infrastruktura stojí asi 230 milionů Kč na 1 MW příkonu, IT vybavení stojí na 1 MW až 4krát víc.
                     </p><p>
-                        Samotná výše investice nám toho z pohledu ekonomiky moc neřekne – důležité je srovnání kapitálové náročnosti projektu s ostatními ukazateli, které nám o jeho efektivitě prozradí víc (najdete je v ostatních kartách).
+                        Výše investice jako taková nám toho moc neřekne – důležité je srovnání kapitálové náročnosti projektu s ostatními ukazateli, které nám o jeho efektivitě prozradí víc (najdete je v ostatních kartách).
                     </p><p>
-                        Srovnání s dálnicemi a nemocnicemi uvedené výše jsou pouze ilustrační. Investice do DC většinou pocházejí ze soukromých zdrojů. Není to tak, že místo DC by stát mohl postavit dálnici nebo nemocnici.
+                        Srovnání s dálnicemi a nemocnicemi je ilustrační. Investice do DC většinou pocházejí ze soukromých zdrojů. Není to tak, že místo DC by stát mohl postavit dálnici nebo nemocnici.
                     </p>
                 </>
             )
@@ -149,7 +166,7 @@ export const getEconomyCopy = (currentData) => {
             children: (
                 <>
                     <p>
-                        Hrubá přidaná hodnota je čistý ekonomický přínos projektu po odečtení mezispotřeby od celkové produkce.
+                        Hrubá přidaná hodnota je čistý ekonomický přínos projektu vyjádřený odečtením mezispotřeby od celkové produkce.
                         Ukazuje reálnou nově vytvořenou hodnotu v rámci ekonomiky.
                     </p><p>
                         V případě datových center jsou produkcí prodané kapacity, prodané služby nebo zpracované tokeny.
@@ -172,29 +189,49 @@ export const getEconomyCopy = (currentData) => {
                 <>
                     <div className="flex items-baseline gap-2">
                         <span className="text-2xl font-bold text-cyan-950">
-                            {currentData.portfolioFteOperations || 0} FTE
+                            {currentData.portfolioFteOperations || 0} FTE<sup>*</sup>
                         </span>
-                        <span className="text-xs text-cyan-800/70">provoz</span>
+                        <span className="text-xs text-cyan-800/70">v provozu</span>
                     </div>
                     <div className="text-xs text-cyan-800/60 mt-1">
                         + {currentData.portfolioFteConstruction || 0} FTE výstavba (dočasné)
                     </div>
                 </>
             ),
-            comparisonHeader: "Pro srovnání náročnosti...",
+            comparisonHeader: "Stejná investice by vytvořila...",
             comparisons: (
                 <>
-                    <ComparisonData sources={economySources.czechInvest} className="text-cyan-700 hover:text-cyan-900 transition-colors">
-                        <p>V průměrném průmyslovém projektu zprostředkovaném agenturou CzechInvest postačuje investice zhruba 5.3 mil. Kč na vytvoření 1 pracovního místa.</p>
+                    <ComparisonData sources={economySources.avgInvestmentPerJob} className="text-cyan-700 hover:text-cyan-900 transition-colors">
+                        <p><span className="font-semibold text-cyan-900">{equivalents.energyJobs} FTE</span> v energetice,</p>
                     </ComparisonData>
-                    <p>
-                        U tohoto datového centra však jedno stálé provozní místo vyžaduje kapitálovou investici ve výši{" "}
-                        <span className="font-semibold text-cyan-900">{equivalents.investmentPerJob} mil. Kč</span> – tedy více než 100× vyšší kapitálové zapojení na jednoho pracovníka.
-                    </p>
+                    <ComparisonData sources={economySources.avgInvestmentPerJob} className="text-cyan-700 hover:text-cyan-900 transition-colors">
+                        <p><span className="font-semibold text-cyan-900">{equivalents.roadsJobs} FTE</span> ve stavebnictví,</p>
+                    </ComparisonData>
+                    <ComparisonData sources={economySources.avgInvestmentPerJob} className="text-cyan-700 hover:text-cyan-900 transition-colors">
+                        <p><span className="font-semibold text-cyan-900">{equivalents.schoolsJobs} FTE</span> ve školství,</p>
+                    </ComparisonData>
+                    <ComparisonData sources={economySources.avgInvestmentPerJob} className="text-cyan-700 hover:text-cyan-900 transition-colors">
+                        <p><span className="font-semibold text-cyan-900">{equivalents.waterJobs} FTE</span> ve vodním hospodářství,</p>
+                    </ComparisonData>
+                    <ComparisonData sources={economySources.avgInvestmentPerJob} className="text-cyan-700 hover:text-cyan-900 transition-colors">
+                        <p>nebo <span className="font-semibold text-cyan-900">{equivalents.rdJobs} FTE</span> ve výzkumu a vývoji...</p>
+                    </ComparisonData>
                 </>
             ),
             children: (
-                <p>Tento graf odhaluje klíčový makroekonomický paradox datových center: jsou extrémně kapitálově náročná, ale přímo generují jen minimum stálých pracovních míst. Zatímco fáze výstavby generuje vyšší počet dočasných pozic, provoz vyžaduje úzce specializovaný tým.</p>
+                <>
+                    <p>...zatímco v případě DC roční investice ve výši <span className="font-semibold text-cyan-900">{formattedAnnualizedCAPEX}</span> vytvoří <span className="font-semibold text-cyan-900">{fteOps} FTE.</span></p>
+                    <p>
+                        Karta o HPH ukazuje, že jsou datová centra velice efektivní a mají jedno z nějvyšších HPH na zaměstnance.
+                        To je ale dvojsečná zbraň – za obrovské investice vytvoří jen málo pracovních míst, což se projeví v lokální ekonomice.
+                        Pokud navíc vezmeme v potaz problémy s určením daní PO a DPH (jak je popsáno v úvodní kartě), celkové ekonomické přínosy datových center jsou problematické.
+                    </p><p>
+                        <sup>*</sup>FTE (Full Time Equivalent) přepočítává zaměstnance na plné úvazky po dobu jednoho roku.
+                        Například 5 zaměstnanců na 1/2 úvazku je rovno 2,5 FTE.
+                        Stejně tak jeden zaměstnanec na plný úvazek zaměstnaný na půl roku je roven 1/2 FTE.
+                        Tato metrika se používá především při výstavbě, kde se může vystřídat až několik tisíců osob, ale každá krátkodobě – FTE sčítá jejich odpracovaný čas a dělí jej počtem pracovních dnů v roce.
+                    </p>
+                </>
             )
         },
         taxes: {
@@ -211,34 +248,49 @@ export const getEconomyCopy = (currentData) => {
                     </div>
                 </>
             ),
-            comparisonHeader: "Za tuto roční částku by se dalo pořídit...",
+            comparisonHeader: "Z toho...",
             comparisons: (
                 <>
-                    <ComparisonData sources={economySources.teacherSalary} className="text-stone-600 hover:text-stone-800 transition-colors">
-                        <p>roční platy pro přibližně <span className="font-semibold text-stone-800">{equivalents.teachersCount} učitelů</span> základních škol v ČR (při průměrném platu 50 000 Kč/měsíc včetně odvodů zaměstnavatele),</p>
+                    <ComparisonData className="text-stone-600 hover:text-stone-800 transition-colors">
+                        <p><span className="font-semibold text-stone-800">{formattedYearlyPropertyTax}</span> daní z nemovitosti,</p>
                     </ComparisonData>
 
-                    <ComparisonData sources={economySources.kindergarten} className="text-stone-600 hover:text-stone-800 transition-colors">
-                        <p>nebo výstavba <span className="font-semibold text-stone-800">{equivalents.kindergartensCount} nových moderních mateřských škol</span> pro místní děti každé dva roky (při typické ceně cca 40 mil. Kč za novou školku).</p>
+                    <ComparisonData className="text-stone-600 hover:text-stone-800 transition-colors">
+                        <p><span className="font-semibold text-stone-800">{formattedYearlyEcologyTax}</span> ekologické daně, </p>
+                    </ComparisonData>
+
+                    <ComparisonData className="text-stone-600 hover:text-stone-800 transition-colors">
+                        <p><span className="font-semibold text-stone-800">{formattedYearlyOperationsContributions}</span> z povinných odvodů a</p>
+                    </ComparisonData>
+
+                    <ComparisonData className="text-stone-600 hover:text-stone-800 transition-colors">
+                        <p><span className="font-semibold text-stone-800">{formattedYearlyOperationsIncomeTax}</span> z DPFO.</p>
                     </ComparisonData>
                 </>
             ),
             children: (
                 <>
-                    <p>Roční odvody a daně generované provozem představují stabilní přínos pro veřejné finance. Celková roční daňová povinnost z provozu projektu zahrnuje daň z příjmů, odvody, ekologická daň a daň z nemovitosti.</p>
-                    <p>Samotná daň z nemovitosti ({formattedPropertyTax} ročně) navíc představuje stabilní, přímý příjem rozpočtu dané municipality, který může pokrýt například roční údržbu obecní zeleně či opravu dětských hřišť.</p>
+                    <p>Roční odvody a daně generované ve fázi provozu představují stabilní přínos pro veřejné finance, vykazují však <strong>anomální strukturální rozdělení</strong>.</p>
+                    <p>Zatímco u běžných odvětví (průmysl, služby) tvoří drtivou většinu odvodů státu daně navázané na živou práci (DPFO a sociální/zdravotní pojištění zaměstnanců), u datových center je tento poměr obrácený. Kvůli minimální zaměstnanosti (pouze jednotky FTE) je fiskální přínos tažen primárně <strong>majetkovými a ekologickými daněmi (daň z nemovitých věcí, poplatky za energie)</strong>, nikoliv lidskou prací.</p>
+                    <p>Ideální by bylo do příjmu veřejného rozpočtu zahrnout také DPPO a DPH, nicméně jejich zahrnutí komplikuje modelaci (vysvětleno v úvodní kartě).</p>
                 </>
             )
         },
         chartRevenues: {
-            title: "Dekompozice tržeb (Struktura výkonnosti)",
-            description: "Analýza struktury tržeb: Srovnání celkového výnosu a jeho rozdělení na přidanou hodnotu a hlavní provozní náklady napříč scénáři (mil. Kč).",
-            hoverExplanation: "Tento graf ukazuje strukturu tržeb (výnosů) za provoz portfolia. Tržby se skládají z hrubé přidané hodnoty (HPH), což je čistý přínos projektu po odečtení mezispotřeby, dále z přímých nákladů na elektrickou energii a ostatních provozních nákladů (OPEX). Najetím na jednotlivé sloupce můžete srovnat hodnoty napříč pesimistickým, realistickým a optimistickým scénářem."
+            title: "Dekompozice tržeb (Modelování HPH)",
+            description: "Srovnání celkového výnosu a jeho rozdělení na přidanou hodnotu a hlavní provozní náklady napříč scénáři (mil. Kč).",
+            hoverExplanation:   `Tento graf ukazuje strukturu tržeb (výnosů) za provoz portfolia.
+                                 Výška celého sloupce ukazuje celkové tržby portfolia datových center a rozkládá je na HPH a mezispotřebu (elektřina + ostatní OPEX).
+                                 Najetím na jednotlivé sloupce můžete srovnat hodnoty napříč pesimistickým, realistickým a optimistickým scénářem.
+                                 Zkuste si vymodelovat také jednotlivé typy datových center a porovnejte, jak se liší struktura jejich nákladů.`
         },
-        chartTaxes: {
-            title: "Struktura odvodů a daňových přínosů (Realistický scénář)",
-            description: "Složení ročních příspěvků do veřejných rozpočtů generovaných projektem v realistickém scénáři (mil. Kč).",
-            hoverExplanation: "Tento koláčový graf podrobně rozebírá strukturu veřejných příjmů (daní a odvodů) generovaných projektem v realistickém scénáři. Ukazuje, jak se doplňují stabilní daň z nemovitosti (přímý příjem municipality), ekologická daň, provozní odvody za zaměstnance a jednorázové odvody z fáze výstavby."
+        chartGvaTimeline: {
+            title: "Kumulativní vývoj HPH v čase",
+            description: "Celkový ekonomický přínos vyjádřený jako HPH vytvořená během výstavby a následného provozu (mil. Kč).",
+            hoverExplanation:   `Tento graf ukazuje, jak se v čase kumuluje Hrubá přidaná hodnota (HPH) projektu.
+                                 Během let výstavby vzniká jednorázová HPH z realizace stavby.
+                                 Po jejím dokončení začíná každoročně nabíhat provozní HPH, která se postupně sčítá.
+                                 Můžete tak sledovat celkový přínos projektu za celou dobu jeho životnosti.`
         }
     }
 }
