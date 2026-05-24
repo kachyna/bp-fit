@@ -77,11 +77,16 @@ export const PARAM_DETAILS = {
     description: "Odhadovaný čas od zahájení stavebních prací po finální kolaudaci a spuštění provozu.",
     category: "model"
   },
-  
+
   // Provoz
   durationOperationsYrs: {
     label: "Doba provozu datacentra (roky)",
     description: "Plánovaná ekonomická životnost projektu, po kterou se předpokládá generování výnosů.",
+    category: "model"
+  },
+  itEquipmentDepreciationPeriodYrs: {
+    label: "Doba odpisování IT vybavení (roky)",
+    description: "Doba, po kterou se předpokládá odpisování IT vybavení. Má vliv na výši anualizovaného CAPEXu, který se používá pro srovnání s jinými investičními přiležitostmi.",
     category: "model"
   },
   fteOperationsPerMW: {
@@ -104,7 +109,7 @@ export const PARAM_DETAILS = {
     description: "Provozní náklady na údržbu, opravy, pojištění a správu technologií, vyjádřené jako procento z celkových investovaných nákladů (na budovu i vybavení).",
     category: "costs"
   },
-  
+
   // Enviro a pozemky
   emissionFactorTonnesMWh: {
     label: "Emisní faktor (t CO₂/MWh)",
@@ -126,7 +131,7 @@ export const PARAM_DETAILS = {
     description: "Koeficient zastavěnosti udávající, jak velké procento z celkového pozemku tvoří půdorys budovy.",
     category: "environment"
   },
-  
+
   inferenceEnergyPerMillionTokensWh: {
     label: "Spotřeba na 1 mil. tokenů (Wh)",
     description: "Energetická náročnost AI modelů při generování odpovědí (inference), vyjádřená ve watthodinách na milion zpracovaných tokenů.",
@@ -158,7 +163,7 @@ export const PARAM_DETAILS = {
     description: "Jednotková prodejní cena: roční nájem za 1 MW (Coloc), roční pronájem 1 GPU (Training) nebo cena za 1 mil. tokenů (Inference).",
     category: "revenue"
   },
-    // --- NÁKLADY NA IT VYBAVENÍ PODLE BUSINESS MODELŮ ---
+  // --- NÁKLADY NA IT VYBAVENÍ PODLE BUSINESS MODELŮ ---
   "costEquipmentPerMW-coloc": {
     label: "Náklady na IT vybavení (Colocation)",
     description: "Investiční náklady na základní síťovou infrastrukturu, rozvaděče a podpůrné IT prvky pro zákaznické servery jsou již zahrnuty v ceně výstavby budovy. Kolokační centra obvykle vlastní vybavení nemají.",
@@ -184,7 +189,7 @@ export const PARAM_DETAILS = {
     label: "Ceník služeb – Cena za tokeny (AI Inference)",
     description: "Jednotková prodejní cena za provoz AI modelů přes API, účtovaná klientům jako fixní částka za 1 milion zpracovaných nebo vygenerovaných tokenů.",
   },
-    // --- OBSAZENOST (BUSINESS HLEDISKO: KOLIK KAPACIT SE PRODÁ) ---
+  // --- OBSAZENOST (BUSINESS HLEDISKO: KOLIK KAPACIT SE PRODÁ) ---
   "occupancy-coloc": {
     label: "Cílová obsazenost (Colocation)",
     description: "Z pohledu byznysu vyjadřuje, kolik procent z celkové kapacity (prostoru a příkonu sálů) dokáže datacentrum komerčně pronajmout zákazníkům.",
@@ -211,35 +216,35 @@ export const PARAM_DETAILS = {
     description: "Z energetického hlediska určuje průměrný reálný příkon infrastruktury v čase, který kolísá na základě aktuálního množství uživatelských dotazů (inference) přicházejících zvenčí.",
   },
   // Metadata a popisky scénářů / modelů
-  PESIMISTIC: { 
-    label: "Pesimistický scénář", 
+  PESIMISTIC: {
+    label: "Pesimistický scénář",
     description: "Konzervativní odhad vývoje počítající s nepříznivými tržními podmínkami, vyššími cenami vstupů (elektřina) a nižší obsazeností.",
-    category: "economy" 
+    category: "economy"
   },
-  REALISTIC: { 
-    label: "Realistický scénář", 
+  REALISTIC: {
+    label: "Realistický scénář",
     description: "Střední, nejpravděpodobnější varianta vývoje. Vychází z aktuálních průměrných tržních hodnot a stabilního, očekávaného provozu.",
-    category: "economy" 
+    category: "economy"
   },
-  OPTIMISTIC: { 
-    label: "Optimistický scénář", 
+  OPTIMISTIC: {
+    label: "Optimistický scénář",
     description: "Ideální vývoj projektu za předpokladu maximální poptávky, nízkých cen energií a stoprocentního komerčního úspěchu.",
-    category: "economy" 
+    category: "economy"
   },
-  coloc: { 
-    label: "Colocation", 
+  coloc: {
+    label: "Colocation",
     description: "Business model: Pronájem fyzického prostoru, chlazení a napájení pro servery...",
-    category: "dc_specific" 
+    category: "dc_specific"
   },
-  training: { 
-    label: "AI Training", 
+  training: {
+    label: "AI Training",
     description: "Business model: Pronájem masivního výpočetního výkonu (celých GPU clusterů)...",
-    category: "dc_specific" 
+    category: "dc_specific"
   },
-  inference: { 
-    label: "AI Inference", 
+  inference: {
+    label: "AI Inference",
     description: "Business model: Provozování již hotových AI modelů v produkci...",
-    category: "dc_specific" 
+    category: "dc_specific"
   },
   categoryLabels: {
     tax_rates: "Daňové sazby",

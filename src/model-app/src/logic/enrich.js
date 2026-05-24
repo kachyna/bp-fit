@@ -26,7 +26,7 @@ export const enrichDatacenter = (dc, params) => {
         acc = { ...acc, ...calcEnvironment({ ...dcWithMetrics, ...acc }, { ...scenarioParams }) }
         acc = { ...acc, ...calcTaxes({ ...dcWithMetrics, ...acc }, { ...scenarioParams }, params.COMMON_PARAMS) }
         acc = { ...acc, ...calcGvaMetrics({ ...dcWithMetrics, ...acc }, { ...scenarioParams }, params.COMMON_PARAMS) }
-        acc = { ...acc, ...finalize(acc) }
+        acc = { ...acc, ...finalize({ ...dcWithMetrics, ...acc }, { ...scenarioParams }, params.COMMON_PARAMS) }
 
         results[scenario] = acc
     })
@@ -285,13 +285,16 @@ const calcGvaMetrics = (dc, { priceService, occupancy, utilization, kGvaConstruc
 
 // adds final calcultaions to the results object. This has been added after initial implementation, otherwise it could have been
 // a part of other functions
-const finalize = (results) => {
+const finalize = (results, scenarioParams, commonParams) => {
     const ret = {};
 
     ret["totalPublicIncome"] = results.incomeTaxConstruction + results.contributionsConstruction + results.incomeTaxOperations + results.contributionsOperations + results.ecologyTax + results.propertyTax
+    ret["totalOperationsCapex"] = results.buildingInvestment + results.itEquipmentInvestment * scenarioParams.durationOperationsYrs / scenarioParams.itEquipmentDepreciationPeriodYrs
+    ret["annualizedCapex"] = ret["totalOperationsCapex"] / scenarioParams.durationOperationsYrs
+
     return ret;
 }
-    
+
 
 
 
