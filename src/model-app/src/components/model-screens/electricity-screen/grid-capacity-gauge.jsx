@@ -121,7 +121,7 @@ const GridCapacityBarometer = ({ value, gridLoad }) => {
     )
 }
 
-export const ElectricityBarometerChart = ({ value, chartCopy }) => {
+export const ElectricityBarometerChart = ({ value, chartCopy, className }) => {
     const [gridLoad, setGridLoad] = useState(8000)
 
     if (!chartCopy) return null
@@ -133,7 +133,7 @@ export const ElectricityBarometerChart = ({ value, chartCopy }) => {
             hoverExplanation={chartCopy.hoverExplanation}
             icon={<Gauge className="h-4 w-4" />}
             iconBgClass="bg-rose-100/70 text-rose-700"
-            cardClass="border-rose-100 bg-linear-to-br from-rose-50/40 via-slate-50/20 to-amber-50/30"
+            cardClass={`border-rose-100 bg-linear-to-br from-rose-50/40 via-slate-50/20 to-amber-50/30 ${className || ""}`}
         >
             <div className="w-full mt-2 px-9 pb-4 flex flex-col gap-4">
                 <div className="min-h-[220px] flex items-center justify-center">

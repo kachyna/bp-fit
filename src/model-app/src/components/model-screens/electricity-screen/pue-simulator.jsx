@@ -3,7 +3,7 @@ import { ArrowRightLeft } from "lucide-react"
 import { Slider } from "@/components/ui/slider"
 import { ChartCard } from "@/components/model-screens/components/chart-card"
 
-export const PueSimulator = ({ chartCopy }) => {
+export const PueSimulator = ({ chartCopy, className }) => {
     const [pue, setPue] = useState(1.4)
 
     const pctEffective = ((1.0 / pue) * 100).toFixed(1)
@@ -17,7 +17,7 @@ export const PueSimulator = ({ chartCopy }) => {
             description={chartCopy.description}
             icon={<ArrowRightLeft className="h-4 w-4" />}
             iconBgClass="bg-indigo-100/70 text-indigo-700"
-            cardClass="border-indigo-100 bg-linear-to-br from-indigo-50/40 via-slate-50/20 to-emerald-50/30"
+            cardClass={`border-indigo-100 bg-linear-to-br from-indigo-50/40 via-slate-50/20 to-emerald-50/30 ${className || ""}`}
         >
             <div className="w-full mt-2 px-9 pb-4 pt-2 space-y-6 flex flex-col justify-center h-full">
                 <div className="space-y-2">

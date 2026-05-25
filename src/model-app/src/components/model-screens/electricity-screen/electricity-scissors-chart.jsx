@@ -39,7 +39,7 @@ const prepareScissorsData = (data) => {
     return chartPoints
 }
 
-export const ElectricityScissorsChart = ({ data, chartCopy }) => {
+export const ElectricityScissorsChart = ({ data, chartCopy, className }) => {
     if (!data || !chartCopy) return null
     const scissorsData = useMemo(() => prepareScissorsData(data), [data])
 
@@ -50,7 +50,7 @@ export const ElectricityScissorsChart = ({ data, chartCopy }) => {
             hoverExplanation={chartCopy.hoverExplanation}
             icon={<TrendingUp className="h-4 w-4" />}
             iconBgClass="bg-emerald-100/70 text-emerald-700"
-            cardClass="border-emerald-100 bg-linear-to-br from-emerald-50/40 via-slate-50/20 to-cyan-50/30"
+            cardClass={`border-emerald-100 bg-linear-to-br from-emerald-50/40 via-slate-50/20 to-cyan-50/30 ${className || ""}`}
         >
             <ChartContainer config={chartConfigScissors} className="w-full mt-2 h-[280px] aspect-auto">
                 <ComposedChart data={scissorsData} margin={{ top: 10, right: 10, bottom: 0, left: 10 }}>

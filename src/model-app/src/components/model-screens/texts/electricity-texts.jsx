@@ -275,6 +275,37 @@ export const getElectricityCopy = (inputData) => {
                     <p>Tato komponenta není napojená na modelovaný scénář, takže s ní můžete volně experimentovat.</p>
                 </div>
             )
+        },
+        contextCard: {
+            title: "Udržitelnost a inovace v energetice DC",
+            sections: [
+                {
+                    title: "Využití odpadního tepla (CZT)",
+                    text: "Více než 95 % elektrické energie spotřebované datovým centrem se přemění na teplo. V ČR se začíná diskutovat o připojení datových center na městské teplárenské sítě (systémy CZT). Odpadní teplo o teplotě 30–45 °C lze pomocí tepelných čerpadel dohřát a vytápět jím celé čtvrti, skleníky nebo průmyslové areály, což výrazně zvyšuje celkovou energetickou účinnost projektu. Například v severských zemích už tento model dobře funguje."
+                },
+                {
+                    title: "Zelené PPA kontrakty",
+                    text: (
+                        <p>
+                            Aby datová centra zbytečně nezatěžovala uhelnou či plynovou síť, provozovatelé mohou uzavřít tzv. <a className="text-blue-600 cursor-pointer" href="https://www.cezesco.cz/cs/produkty/power-purchase-agreement-ppa" target="_blank">PPA kontrakty</a> (Power Purchase Agreements) s výrobci obnovitelné energie.
+                            Tím garantují dlouhodobý odběr a přímo financují výstavbu nových solárních a větrných parků, což podporuje dekarbonizaci české sítě.
+                        </p>
+                    )
+                },
+                {
+                    title: "Záložní UPS jako baterie pro síť",
+                    text: (
+                        <>
+                            <p>
+                                Datová centra mají obrovská bateriová úložiště (UPS) pro překlenutí krátkodobých výpadků. Tato kapacita však může v době stability sítě sloužit jako tzv. podpůrná služba pro ČEPS. Datová centra tak mohou poskytovat flexibilitu, pomáhat vyrovnávat frekvenční výkyvy v síti a zamezit nutnosti zapínat špičkové uhelné zdroje.
+                            </p>
+                            <p>
+                                V praxi to znamená, že datová centra mohou v době nedostatku energie dodávat energii do sítě a v době nadbytku energie ji ze sítě naopak odebírat. Tím pomáhají stabilizovat síť a snižovat náklady na provoz přenosové soustavy.
+                            </p>
+                        </>
+                    )
+                }
+            ]
         }
     }
 }
