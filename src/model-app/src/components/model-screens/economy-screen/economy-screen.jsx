@@ -4,6 +4,7 @@ import { ESGHoverCard } from "@/components/model-screens/components/hover-card"
 import { getEconomyCopy } from "../texts/economy-texts"
 import { EconomyRevenuesChart } from "./economy-revenues-chart"
 import { EconomyGvaTimelineChart } from "./economy-gva-timeline-chart"
+import { ScreenHeader } from "../components/screen-header"
 
 export const EconomyModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
     const currentData = data[activeScenario]
@@ -11,6 +12,14 @@ export const EconomyModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
 
     return (
         <div className="flex flex-col gap-6">
+            {/* Dashboard Header */}
+            <ScreenHeader
+                title="Ekonomické dopady a investice"
+                subtitle="Modelování investičních (CAPEX) a provozních (OPEX) nákladů, přidané hodnoty (HPH) a daní."
+                analyzedData={data}
+                pulseColor="bg-emerald-500"
+            />
+
             {/* 1. INTRO CARD */}
             <Card className="border-amber-100 bg-linear-to-r from-amber-500/10 via-slate-50 to-indigo-500/10 shadow-sm transition-all duration-300 hover:shadow-md hover:border-amber-200/80 group cursor-default">
                 <CardHeader className="pb-2">

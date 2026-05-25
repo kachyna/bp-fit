@@ -8,6 +8,7 @@ import { ElectricityBarometerChart } from "./grid-capacity-gauge"
 import { ElectricityScissorsChart } from "./electricity-scissors-chart"
 import { PueSimulator } from "./pue-simulator"
 import { ElectricityContextCard } from "./electricity-context-card"
+import { ScreenHeader } from "../components/screen-header"
 
 export const ElectricityModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
     const params = useModelStore(state => state.params)
@@ -27,6 +28,14 @@ export const ElectricityModelScreen = ({ data, activeScenario = "REALISTIC" }) =
 
     return (
         <div className="flex flex-col gap-6">
+            {/* Dashboard Header */}
+            <ScreenHeader
+                title="Elektřina a energetická bilance"
+                subtitle="Modelování celkového příkonu, reálné spotřeby a zatížení přenosové soustavy ČR."
+                analyzedData={data}
+                pulseColor="bg-yellow-500"
+            />
+
             {/* 1. INTRO CARD */}
             <Card className="border-yellow-200 bg-linear-to-r from-yellow-500/15 via-amber-50/40 to-yellow-500/10 shadow-sm transition-all duration-300 hover:shadow-md hover:border-yellow-300/80 group cursor-default">
                 <CardHeader className="pb-2">
