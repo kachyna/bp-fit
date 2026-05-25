@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { HelpCircle } from "lucide-react"
-import { ESGHoverCard } from "@/components/model-screens/components/hover-card"
+import { NumberHoverCard } from "@/components/model-screens/components/number-hover-card"
 import { getEsgCopy } from "@/components/model-screens/texts/esg-texts"
 import { ESGChart } from "./esg-chart"
 import { ScreenHeader } from "../components/screen-header"
@@ -23,7 +23,7 @@ export const ESGModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
 
           {['nimby', 'emissions', 'water', 'land'].map((category) => {
             return (
-              <ESGHoverCard
+              <NumberHoverCard
                 key={category}
                 title={esgCopy[category].title}
                 color={esgCopy[category].color}
@@ -33,7 +33,7 @@ export const ESGModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
                 comparisons={esgCopy[category].comparisons}
               >
                 {esgCopy[category].children}
-              </ESGHoverCard>
+              </NumberHoverCard>
             )
           })}
         </div>

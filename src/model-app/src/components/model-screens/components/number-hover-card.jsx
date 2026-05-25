@@ -77,7 +77,7 @@ const getHoverCardClasses = (color) => {
   return colorClasses[color] || colorClasses.amber
 }
 
-export const ESGHoverCard = ({
+export const NumberHoverCard = ({
   title,
   color,
   icon,

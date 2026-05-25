@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Landmark } from "lucide-react"
-import { ESGHoverCard } from "@/components/model-screens/components/hover-card"
+import { NumberHoverCard } from "@/components/model-screens/components/number-hover-card"
 import { getEconomyCopy } from "../texts/economy-texts"
 import { EconomyRevenuesChart } from "./economy-revenues-chart"
 import { EconomyGvaTimelineChart } from "./economy-gva-timeline-chart"
@@ -49,7 +49,7 @@ export const EconomyModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 group/row">
                 {["capex", "gva", "fte", "taxes"].map((category) => {
                     return (
-                        <ESGHoverCard
+                        <NumberHoverCard
                             key={category}
                             title={economyCopy[category].title}
                             color={economyCopy[category].color}
@@ -60,7 +60,7 @@ export const EconomyModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
                             expandOnRowHover={true}
                         >
                             {economyCopy[category].children}
-                        </ESGHoverCard>
+                        </NumberHoverCard>
                     )
                 })}
             </div>

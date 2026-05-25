@@ -1,7 +1,7 @@
 
 import { Zap } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ESGHoverCard } from "@/components/model-screens/components/hover-card"
+import { NumberHoverCard } from "@/components/model-screens/components/number-hover-card"
 import { useModelStore } from "@/store/useModelStore"
 import { getElectricityCopy } from "../texts/electricity-texts"
 import { ElectricityBarometerChart } from "./grid-capacity-gauge"
@@ -79,7 +79,7 @@ export const ElectricityModelScreen = ({ data, activeScenario = "REALISTIC" }) =
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 group/row">
                 {["installedPower", "realConsumption", "czComparison", "energyCosts"]
                     .map((category) => (
-                        <ESGHoverCard
+                        <NumberHoverCard
                             key={category}
                             title={electricityCopy[category].title}
                             color={electricityCopy[category].color}
@@ -90,7 +90,7 @@ export const ElectricityModelScreen = ({ data, activeScenario = "REALISTIC" }) =
                             expandOnRowHover={true}
                         >
                             {electricityCopy[category].children}
-                        </ESGHoverCard>
+                        </NumberHoverCard>
                     ))}
             </div>
 
