@@ -93,15 +93,18 @@ export const getElectricityCopy = (inputData) => {
             color: "rose",
             icon: <Zap className="h-4 w-4" />,
             mainText: (
-                <div className="text-2xl font-bold text-rose-950">
-                    {data.portfolioTotalPower.formatted}
-                </div>
+                <>
+                    <div className="text-2xl font-bold text-rose-950">
+                        {data.portfolioTotalPower.formatted}
+                    </div>
+                    <p className="text-xs text-rose-600/70 mt-2">maximální rezervovaný příkon</p>
+                </>
             ),
             comparisonHeader: "Srovnání kapacit...",
             comparisons: (
                 <>
                     <ComparisonData sources={electricitySources.czCapacity} className="text-rose-700 hover:text-rose-900 transition-colors">
-                        <p>ČR má momentálně <span className="font-semibold text-rose-900">{equivalents.czCapacity} MW</span> kapacit,</p>
+                        <p>DC v ČR teď mají <span className="font-semibold text-rose-900">{equivalents.czCapacity} MW</span> kapacit,</p>
                     </ComparisonData>
                     <ComparisonData sources={electricitySources.czCapacity} className="text-rose-700 hover:text-rose-900 transition-colors">
                         <p>takže by došlo k navýšení o <span className="font-semibold text-rose-900">{equivalents.pctOfCzPower} %</span>.</p>
@@ -134,9 +137,12 @@ export const getElectricityCopy = (inputData) => {
             color: "stone",
             icon: <Activity className="h-4 w-4" />,
             mainText: (
-                <div className="text-2xl font-bold text-stone-950">
-                    {data.portfolioRealEnergyConsumption.formattedTwh}
-                </div>
+                <>
+                    <div className="text-2xl font-bold text-stone-950">
+                        {data.portfolioRealEnergyConsumption.formattedTwh}
+                    </div>
+                    <p className="text-xs text-stone-600/70 mt-2">odhadovaný roční odběr portfolia</p>
+                </>
             ),
             comparisonHeader: "Reálný provoz vs. maximum...",
             comparisons: (
@@ -171,9 +177,12 @@ export const getElectricityCopy = (inputData) => {
             color: "indigo",
             icon: <Info className="h-4 w-4" />,
             mainText: (
-                <div className="text-2xl font-bold text-indigo-950">
-                    {equivalents.pctOfCzConsumption} %
-                </div>
+                <>
+                    <div className="text-2xl font-bold text-indigo-950">
+                        {equivalents.pctOfCzConsumption} %
+                    </div>
+                    <p className="text-xs text-indigo-600/70 mt-2">podíl na celkové spotřebě ČR</p>
+                </>
             ),
             comparisonHeader: "To je jako spotřeba...",
             comparisons: (
@@ -212,9 +221,12 @@ export const getElectricityCopy = (inputData) => {
             color: "emerald",
             icon: <Wallet className="h-4 w-4" />,
             mainText: (
-                <div className="text-2xl font-bold text-emerald-900">
-                    {data.portfolioElectricityCosts.formatted}
-                </div>
+                <>
+                    <div className="text-2xl font-bold text-emerald-900">
+                        {data.portfolioElectricityCosts.formatted}
+                    </div>
+                    <p className="text-xs text-emerald-700/70 mt-2">roční výdaje za silovou elektřinu</p>
+                </>
             ),
             comparisonHeader: "Finanční toky za energie...",
             comparisons: (null),
