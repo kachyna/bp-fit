@@ -108,11 +108,11 @@ const GridCapacityBarometer = ({ value, gridLoad }) => {
                         </span>
                     ) : totalLoad < 11500 ? (
                         <span className="text-amber-700 bg-amber-100/70 border border-amber-200/50 px-2.5 py-1 rounded-full">
-                            Vyžaduje zapojení regulačních záloh
+                            Zvýšená opatrnost
                         </span>
                     ) : (
                         <span className="text-rose-700 bg-rose-100/70 border border-rose-200/50 px-2.5 py-1 rounded-full">
-                            Kritické zatížení / riziko odpojení spotřebičů
+                            Všechna DC nemohou bezpečně fungovat
                         </span>
                     )}
                 </div>
@@ -130,6 +130,7 @@ export const ElectricityBarometerChart = ({ value, chartCopy }) => {
         <ChartCard
             title={chartCopy.title}
             description={chartCopy.description}
+            hoverExplanation={chartCopy.hoverExplanation}
             icon={<Gauge className="h-4 w-4" />}
             iconBgClass="bg-rose-100/70 text-rose-700"
             cardClass="border-rose-100 bg-linear-to-br from-rose-50/40 via-slate-50/20 to-amber-50/30"
@@ -142,11 +143,11 @@ export const ElectricityBarometerChart = ({ value, chartCopy }) => {
                 {/* Collapsible hover content container */}
                 <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100">
                     <div className="overflow-hidden">
-                        <div className="border-t border-rose-100/50 pt-4 space-y-4">
+                        <div className="pt-4 space-y-4">
                             {/* Interactive Grid Load Slider */}
                             <div className="space-y-2">
                                 <div className="flex justify-between items-center text-xs font-semibold text-slate-700">
-                                    <span>Aktuální zatížení sítě ČR (mimo projekt)</span>
+                                    <span>Aktuální zatížení sítě ČR (mimo DC)</span>
                                     <span className="text-sm font-bold text-rose-600 bg-rose-50/80 px-2.5 py-0.5 rounded-md font-mono border border-rose-100">
                                         {gridLoad.toLocaleString("cs-CZ")} MW
                                     </span>
@@ -164,15 +165,6 @@ export const ElectricityBarometerChart = ({ value, chartCopy }) => {
                                     <span>{normalPowerDemand.toLocaleString("cs-CZ")} MW (Běžné)</span>
                                     <span>{maxPowerDemand.toLocaleString("cs-CZ")} MW (Špička)</span>
                                 </div>
-                            </div>
-
-                            {/* Additional comment under slider */}
-                            <div className="text-[11px] text-slate-600 leading-relaxed bg-amber-500/5 border border-amber-200/30 rounded-lg p-2.5">
-                                <p>
-                                    <strong>Poznámka k přenosové soustavě:</strong> Zatížení sítě v ČR kolísá podle denní doby a ročního období.
-                                    Při vysokém zatížení (např. zimní špičky nad 10 GW) čelí přenosová soustava výrazným limitům.
-                                    Připojením datových center se volná kapacita dále snižuje a může dojít k nutnosti aktivovat podpůrné služby (regulační zálohy) k udržení rovnováhy.
-                                </p>
                             </div>
                         </div>
                     </div>
