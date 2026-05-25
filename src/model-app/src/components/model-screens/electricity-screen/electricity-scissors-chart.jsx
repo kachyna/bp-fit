@@ -47,6 +47,7 @@ export const ElectricityScissorsChart = ({ data, chartCopy }) => {
         <ChartCard
             title={chartCopy.title}
             description={chartCopy.description}
+            hoverExplanation={chartCopy.hoverExplanation}
             icon={<TrendingUp className="h-4 w-4" />}
             iconBgClass="bg-emerald-100/70 text-emerald-700"
             cardClass="border-emerald-100 bg-linear-to-br from-emerald-50/40 via-slate-50/20 to-cyan-50/30"
