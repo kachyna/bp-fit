@@ -26,7 +26,7 @@ function App() {
         </header>
 
         <main className="p-8 max-w-7xl mx-auto w-full space-y-10">
-          <AnimatedDashboard debug={true} />
+          <AnimatedDashboard debug={debug} />
           <Toaster />
         </main>
 
