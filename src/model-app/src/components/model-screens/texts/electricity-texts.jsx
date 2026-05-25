@@ -230,8 +230,8 @@ export const getElectricityCopy = (inputData) => {
             )
         },
         chartGridCapacity: {
-            title: "Barometr volné kapacity přenosové sítě ČR",
-            description: "Vizualizace celkového příkonu portfolia v kontextu volných kapacit české přenosové soustavy pro připojení nových velkoodběratelů.",
+            title: "Kapacity přenosové sítě ČR",
+            description: "Dokáže česká přenosová soustava uživit nová datová centra? Nastavte zatížení a pozorujte, jak se síť drží.",
             hoverExplanation: (
                 <div className="space-y-2">
                     <p>
