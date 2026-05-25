@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+import { useUiStore } from "@/store/useUiStore"
 
 const colorClasses = {
   blue: {
@@ -33,6 +34,11 @@ export const TextHoverCard = ({
   className = ""
 }) => {
   const classes = getHoverCardClasses(color)
+  const expandAllCards = useUiStore(state => state.expandAllCards)
+
+  const gridRowsClass = expandAllCards
+    ? "grid grid-rows-[1fr] opacity-100 pl-9"
+    : "grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100 pl-9"
 
   return (
     <Card className={`group transition-all duration-300 shadow-sm cursor-default ${classes.card} ${className}`}>
@@ -57,7 +63,7 @@ export const TextHoverCard = ({
         </div>
         
         {hoverContent && (
-          <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100 pl-9">
+          <div className={gridRowsClass}>
             <div className="overflow-hidden">
               <div className="border-t border-dashed mt-4 pt-4 border-slate-200 text-xs text-slate-600 space-y-3 leading-relaxed">
                 {hoverContent}
