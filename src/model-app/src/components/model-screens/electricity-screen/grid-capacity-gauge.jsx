@@ -40,7 +40,7 @@ const GridCapacityBarometer = ({ value, gridLoad }) => {
 
     return (
         <div className="flex flex-col items-center justify-center p-2 w-full animate-fade-in">
-            <svg viewBox="0 0 200 120" className="w-full max-w-[260px] drop-shadow-sm overflow-visible">
+            <svg viewBox="0 0 200 120" className="w-full max-w-[260px] overflow-visible">
                 {/* Gray Background Arc */}
                 <path
                     d="M 20 100 A 80 80 0 0 1 180 100"
