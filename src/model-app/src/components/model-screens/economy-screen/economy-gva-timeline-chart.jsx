@@ -41,7 +41,7 @@ const prepareChartData = (data, scenarioParams) => {
 
         const point = {
             year: t,
-            name: `Rok ${t}`,
+            name: `Rok ${t + 1}`,
             constructionGva: toBillions(cumConstructionRaw, 3),
             operationsGva: toBillions(cumOperationsRaw, 3),
             totalGva: toBillions(cumConstructionRaw + cumOperationsRaw, 3),
