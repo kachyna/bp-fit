@@ -50,6 +50,7 @@ export const getEconomyCopy = (inputData) => {
     return {
         intro: {
             title: "Ekonomický přínos a struktura projektu",
+            description: "Kolik výstavba a provoz datových center stojí, kdo ji zaplatí a komu se reálně vyplatí?",
             children: (
                 <>
                     <p>

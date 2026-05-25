@@ -152,6 +152,7 @@ export const getEsgCopy = (inputData) => {
         },
         intro: {
             title: "ESG v kontextu datových center",
+            description: "Jaké jsou skutečné ekologické a sociální dopady technologií a proč vyvolávají NIMBY efekt?",
             children: (
                 <>
                     <p>

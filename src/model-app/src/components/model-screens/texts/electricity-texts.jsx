@@ -69,6 +69,7 @@ export const getElectricityCopy = (inputData) => {
     return {
         intro: {
             title: "Energetická náročnost datových center",
+            description: "Jak moc nová datová centra zatíží českou elektrizační soustavu a proč by nás to mělo zajímat?",
             children: (
                 <p>
                     Provoz datových center je extrémně energeticky náročný. Jen základní projekt o kapacitě 10 MW spotřebuje za rok stejně energie jako středně velké město.

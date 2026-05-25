@@ -4,6 +4,7 @@ import { NumberHoverCard } from "@/components/model-screens/components/number-ho
 import { getEsgCopy } from "@/components/model-screens/texts/esg-texts"
 import { ESGChart } from "./esg-chart"
 import { ScreenHeader } from "../components/screen-header"
+import { TextHoverCard } from "../components/text-hover-card"
 
 export const ESGModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
   const esgCopy = getEsgCopy(data[activeScenario])
@@ -41,20 +42,14 @@ export const ESGModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
         {/* PRAVÝ SLOUPEC: Informační panel a graf scénářů */}
         <div className="lg:col-span-3 flex flex-col gap-6">
 
-          {/* KARTA s úvodním kontextem */}
-          <Card className="border-emerald-100 bg-linear-to-br from-emerald-50/50 via-slate-50/30 to-indigo-50/30 shadow-sm">
-            <CardHeader className="pb-2">
-              <CardTitle className="text-base font-semibold text-slate-800 flex items-center gap-2">
-                <div className="p-1.5 bg-emerald-100/70 text-emerald-700 rounded-md">
-                  <HelpCircle className="h-4 w-4" />
-                </div>
-                {esgCopy.intro.title}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-2 text-sm text-slate-600 leading-relaxed">
-              {esgCopy.intro.children}
-            </CardContent>
-          </Card>
+          <TextHoverCard
+            title={esgCopy.intro.title}
+            description={esgCopy.intro.description}
+            color="emerald"
+            icon={<HelpCircle className="h-4 w-4" />}
+          >
+            {esgCopy.intro.children}
+          </TextHoverCard>
 
           {/* Graf scénářů */}
           <ESGChart data={data} chartCopy={esgCopy.chart} />
