@@ -286,11 +286,12 @@ export const getEconomyCopy = (currentData) => {
         },
         chartGvaTimeline: {
             title: "Kumulativní vývoj HPH v čase",
-            description: "Celkový ekonomický přínos vyjádřený jako HPH vytvořená během výstavby a následného provozu (mil. Kč).",
-            hoverExplanation: `Tento graf ukazuje, jak se v čase kumuluje Hrubá přidaná hodnota (HPH) projektu.
-                                 Během let výstavby vzniká jednorázová HPH z realizace stavby.
-                                 Po jejím dokončení začíná každoročně nabíhat provozní HPH, která se postupně sčítá.
-                                 Můžete tak sledovat celkový přínos projektu za celou dobu jeho životnosti.`
+            description: "Celkový ekonomický přínos vyjádřený jako HPH vytvořená během výstavby a následného provozu (mld. Kč).",
+            hoverExplanation: `Zatímco ostatní karty a grafy vyjadřují spíše momentové hodnoty vztažené k jednomu roku, tento graf ukazuje dlouhodobý pohled.
+                            Oranžovou část tvoří jednorázový impuls HPH, která vzniká během let výstavby.
+                            Zelenou část tvoří roční HPH z provozu, která vzniká po celou dobu výstavby.
+                            Celková délka sloupce představuje celkovou hrubou přidanou hodnotu portfolia za celou jeho živostnost, resp. do určitého zvoleného roku.
+                            `
         }
     }
 }
