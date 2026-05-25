@@ -1,3 +1,4 @@
+
 import { Zap } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ESGHoverCard } from "@/components/model-screens/components/hover-card"
@@ -29,7 +30,7 @@ export const ElectricityModelScreen = ({ data, activeScenario = "REALISTIC" }) =
             <div className="lg:col-span-3 flex flex-col gap-6">
 
                 {/* INTRO CARD */}
-                <Card className="border-yellow-200 bg-linear-to-r from-yellow-500/15 via-amber-50/40 to-yellow-500/10 shadow-sm transition-all duration-300 hover:shadow-md hover:border-yellow-300/80">
+                <Card className="border-yellow-200 bg-linear-to-r from-yellow-500/15 via-amber-50/40 to-yellow-500/10 shadow-sm transition-all duration-300 hover:shadow-md hover:border-yellow-300/80 group cursor-default">
                     <CardHeader className="pb-2">
                         <CardTitle className="text-base font-semibold text-slate-800 flex items-center gap-2">
                             <div className="p-1.5 bg-yellow-100 text-yellow-600 rounded-md">
@@ -40,6 +41,16 @@ export const ElectricityModelScreen = ({ data, activeScenario = "REALISTIC" }) =
                     </CardHeader>
                     <CardContent className="space-y-2 text-sm text-slate-600 leading-relaxed">
                         {electricityCopy.intro.children}
+
+                        {electricityCopy.intro.hover && (
+                            <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100">
+                                <div className="overflow-hidden">
+                                    <div className="space-y-2 text-sm text-slate-600 mt-4 leading-relaxed">
+                                        {electricityCopy.intro.hover}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                     </CardContent>
                 </Card>
 
