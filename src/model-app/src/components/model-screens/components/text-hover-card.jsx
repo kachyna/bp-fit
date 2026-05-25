@@ -18,6 +18,10 @@ const colorClasses = {
     card: "border-amber-100 bg-linear-to-br from-amber-50/40 via-slate-50/20 to-orange-50/30 hover:border-amber-300/80",
     iconWrapper: "bg-amber-100 text-amber-600",
   },
+  slate: {
+    card: "border-slate-200 bg-linear-to-br from-slate-50/40 via-slate-50/20 to-slate-100/30 hover:border-slate-300/80",
+    iconWrapper: "bg-slate-200 text-slate-600",
+  },
 }
 
 const getHoverCardClasses = (color) => {
