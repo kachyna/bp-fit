@@ -185,7 +185,7 @@ export const getEconomyCopy = (inputData) => {
         },
         fte: {
             title: "Pracovních míst (FTE)",
-            color: "cyan",
+            color: "blue",
             icon: <Users className="h-4 w-4" />,
             mainText: (
                 <>
