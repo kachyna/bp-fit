@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Landmark } from "lucide-react"
 import { ESGHoverCard } from "@/components/model-screens/components/hover-card"
-import { getEconomyCopy } from "./economy-content"
+import { getEconomyCopy } from "../texts/economy-texts"
 import { EconomyRevenuesChart } from "./economy-revenues-chart"
 import { EconomyGvaTimelineChart } from "./economy-gva-timeline-chart"
 

@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { HelpCircle } from "lucide-react"
 import { ESGHoverCard } from "@/components/model-screens/components/hover-card"
-import { getEsgCopy } from "@/components/model-screens/esg-screen/esg-content"
+import { getEsgCopy } from "@/components/model-screens/texts/esg-texts"
 import { ESGChart } from "./esg-chart"
 
 export const ESGModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
