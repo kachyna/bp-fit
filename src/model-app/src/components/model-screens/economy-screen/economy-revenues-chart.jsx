@@ -4,7 +4,7 @@ import { Bar, XAxis, CartesianGrid, ComposedChart } from "recharts"
 import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent } from "@/components/ui/chart"
 import { ChartCard } from "@/components/model-screens/components/chart-card"
 import { StyledYAxis } from "@/components/model-screens/components/styled-yaxis"
-import { SCENARIO_NAMES } from "@/constants/chart-labels"
+import { SCENARIO_LABELS } from "@/constants/config"
 import { toMillions } from "@/logic/utility"
 
 // Konfigurace barev a popisků pro graf
@@ -15,17 +15,20 @@ const chartConfigRevenues = {
 }
 
 const prepareChartData = (data) => {
-    if (!data) return []
-    return ["PESIMISTIC", "REALISTIC", "OPTIMISTIC"].map((scenario) => {
-        const scenarioData = data[scenario]
-        return {
-            key: scenario,
-            name: SCENARIO_NAMES[scenario] || scenario,
+
+    const chartPoints = []
+    Object.entries(SCENARIO_LABELS).forEach(([key, label]) => {
+        const scenarioData = data[key]
+        chartPoints.push({
+            key: key,
+            name: label,
             gva: toMillions(scenarioData.portfolioYearlyOperationsGva),
             electricity: toMillions(scenarioData.portfolioElectricityCosts),
             otherOpex: toMillions(scenarioData.portfolioOtherOpex),
-        }
+        })
     })
+
+    return chartPoints
 }
 
 export const EconomyRevenuesChart = ({ data, chartCopy }) => {

@@ -4,7 +4,7 @@ import { Bar, XAxis, CartesianGrid, ComposedChart, Line } from "recharts"
 import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent } from "@/components/ui/chart"
 import { ChartCard } from "@/components/model-screens/components/chart-card"
 import { StyledYAxis } from "@/components/model-screens/components/styled-yaxis"
-import { SCENARIO_NAMES } from "@/constants/chart-labels"
+import { SCENARIO_LABELS } from "@/constants/config"
 import { toThousands, toMillions } from "@/logic/utility"
 
 const chartConfig = {
@@ -14,15 +14,18 @@ const chartConfig = {
 }
 
 const prepareChartData = (data) => {
-  return ["PESIMISTIC", "REALISTIC", "OPTIMISTIC"].map((scenario) => {
-    const scenarioData = data[scenario]
-    return {
-      name: SCENARIO_NAMES[scenario] || scenario,
+  const chartPoints = []
+  Object.entries(SCENARIO_LABELS).forEach(([key, label]) => {
+    const scenarioData = data[key]
+    chartPoints.push({
+      name: label,
       emissionsThousandTonnes: toThousands(scenarioData.portfolioEmissionsTonnesCO2, 2),
       energyTWh: toMillions(scenarioData.portfolioRealEnergyConsumption, 2),
       it_energyTWh: toMillions(scenarioData.portfolioRealITConsumption, 2),
-    }
+    })
   })
+
+  return chartPoints
 }
 
 export const ESGChart = ({ data, chartCopy }) => {
