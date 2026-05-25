@@ -105,13 +105,13 @@ export const NumberHoverCard = ({
           ? "group-hover/row:grid-rows-[1fr] group-hover/row:opacity-100"
           : "group-hover:grid-rows-[1fr] group-hover:opacity-100"
           }`}>
-          <div className={`overflow-hidden space-y-2 mt-2 pt-2 text-xs ${classes.hoverContentText}`}>
+          {(comparisons || children) && <div className={`overflow-hidden space-y-2 mt-2 pt-2 text-xs ${classes.hoverContentText}`}>
             <div className={`flex flex-col space-y-2 border-t ${comparisons ? 'border-b' : ''} pt-2 ${comparisons ? 'pb-2' : ''} ${classes.hoverContentBorder}`}>
-              {comparisons && <h2 className={`text-sm font-medium ${classes.title}`}>{comparisonHeader}</h2>}
+              <h2 className={`text-sm font-medium ${classes.title}`}>{comparisonHeader}</h2>
               {comparisons}
             </div>
             {children}
-          </div>
+          </div>} 
         </div>
       </CardContent>
     </Card>
