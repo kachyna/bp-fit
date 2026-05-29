@@ -295,6 +295,54 @@ export const getEconomyCopy = (inputData) => {
                             Zelenou část tvoří roční HPH z provozu, která vzniká po celou dobu výstavby.
                             Celková délka sloupce představuje celkovou hrubou přidanou hodnotu portfolia za celou jeho živostnost, resp. do určitého zvoleného roku.
                             `
+        },
+        contextCard: {
+            title: "Jak interpretovat přidanou hodnotu (HPH)?",
+            description: "Pochopte, jak se přidaná hodnota datových center chová v reálné ekonomice a kdo z ní těží.",
+            sections: [
+                {
+                    title: "Co je to HPH a co vyjadřuje?",
+                    icon: <TrendingUp className="h-4 w-4 text-blue-500" />,
+                    text: (
+                        <>
+                            <p>
+                                <strong>Hrubá přidaná hodnota (HPH)</strong> je klíčový ukazatel ekonomické výkonnosti. Vyjadřuje nově vytvořenou hodnotu, kterou datová centra přinášejí do hospodářství nad rámec spotřebovaných vstupů (jako je elektřina nebo režijní služby).
+                            </p>
+                            <p className="mt-2">
+                                Počítá se jako rozdíl mezi celkovými výnosy za prodej výpočetního výkonu a tzv. mezispotřebou. Zjednodušeně řečeno: je to hodnota, ze které se následně platí mzdy zaměstnanců, odvádějí daně státu a generuje se čistý zisk majitelů.
+                            </p>
+                        </>
+                    )
+                },
+                {
+                    title: "Extrémní produktivita práce",
+                    icon: <Users className="h-4 w-4 text-emerald-500" />,
+                    text: (
+                        <>
+                            <p>
+                                Datová centra vykazují anomálně vysokou produktivitu práce vyjádřenou v HPH. Průměrná roční HPH na jednoho zaměstnance (FTE) dosahuje přibližně <strong>{equivalents.gvaPerWorker} mil. Kč</strong>.
+                            </p>
+                            <p className="mt-2">
+                                To je přibližně <a className="text-blue-600 hover:text-blue-700 cursor-pointer font-semibold" target="_blank" rel="noopener noreferrer" href="https://ris3.gov.cz/monitoring/indikatory/v03-produktivita-prace-podle-sektoru-hphzamestnance">30–40krát více</a> než celorepublikový průměr (který se pohybuje kolem 1 mil. Kč na pracovníka). DC jsou tak kapitálově extrémně intenzivní, ale z hlediska lidské práce velmi efektivní.
+                            </p>
+                        </>
+                    )
+                },
+                {
+                    title: "Kde peníze z HPH reálně končí?",
+                    icon: <Landmark className="h-4 w-4 text-indigo-500" />,
+                    text: (
+                        <>
+                            <p>
+                                Ačkoli je číslo HPH ohromující, pro českou ekonomiku má svá specifika. Jelikož datová centra zaměstnávají jen minimum lidí a jsou často vlastněna nadnárodními technologickým giganty, <strong>drtivá většina vytvořené HPH odchází ve formě zisků mateřským společnostem do zahraničí</strong>.
+                            </p>
+                            <p className="mt-2">
+                                Skutečný tuzemský přínos je proto dán především vybranými korporátními daněmi, daněmi z nemovitostí, poplatky za distribuci elektřiny a platy oněch několika málo místních zaměstnanců, nikoli celým objemem HPH.
+                            </p>
+                        </>
+                    )
+                }
+            ]
         }
     }
 }
