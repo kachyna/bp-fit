@@ -1,13 +1,7 @@
 import { Button } from "@/components/ui/button"
 import {
-    Dialog,
-    DialogClose,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
+    Dialog, DialogClose, DialogContent, DialogDescription,
+    DialogFooter, DialogHeader, DialogTitle, DialogTrigger
 } from "@/components/ui/dialog"
 import { HelpCircle, Zap, Activity } from "lucide-react"
 
@@ -23,6 +17,9 @@ const styles = {
     cardValue: "font-semibold",
 }
 
+/**
+ * DC type card, used to generate list of DC types
+ */
 const DcTypeCard = ({
     title,
     description,
@@ -73,16 +70,16 @@ export function DcTypesInfoDialog() {
                     </DialogDescription>
                 </DialogHeader>
 
-                {/* SCROLLOVACÍ OBSAH */}
+                {/* SCROLLABLE CONTENT */}
                 <div className="-mx-4 no-scrollbar max-h-[60vh] overflow-y-auto px-4 space-y-6 pt-2">
 
-                    {/* SEKCE: ZÁKLADNÍ POJMY */}
+                    {/* BASIC TERMINOLOGY SECTION */}
                     <div className={styles.section}>
                         <h3 className={styles.sectionTitle}>
                             Co znamenají klíčové metriky?
                         </h3>
 
-                        {/* IT Příkon */}
+                        {/* IT LOAD */}
                         <div className={styles.metricGroup}>
                             <div className={styles.metricHeader}>
                                 <Zap className="size-4 text-amber-500 fill-amber-500/10" />
@@ -92,7 +89,7 @@ export function DcTypesInfoDialog() {
                                 Čistý elektrický výkon vyhrazený <strong>výhradně pro napájení výpočetního hardwaru</strong> (servery, disková pole, síťové prvky, GPU). Nezahrnuje spotřebu klimatizací, osvětlení budovy ani ztráty v transformátorech. Udává se buď v kW na jeden rack, nebo v MW pro celkovou kapacitu datacentra.
                             </p>
 
-                            {/* TABULKA TYPICKÝCH PŘÍKONŮ */}
+                            {/* TABLE OF POWER */}
                             <div className={styles.indentedContainer}>
                                 <div className="border border-slate-200 rounded-lg overflow-hidden">
                                     <table className="w-full text-left text-xs border-collapse">
@@ -162,7 +159,7 @@ export function DcTypesInfoDialog() {
                         </div>
                     </div>
 
-                    {/* SEKCE: TYPY DC */}
+                    {/* DC TYPES SECTION */}
                     <div className={styles.section}>
                         <h3 className={styles.sectionTitle}>
                             Typy datových center v modelu
@@ -215,7 +212,7 @@ export function DcTypesInfoDialog() {
 
                 </div>
 
-                {/* FIXNÍ FOOTER */}
+                {/* FOOTER */}
                 <DialogFooter className="border-t border-slate-100 pt-3">
                     <DialogClose asChild>
                         <Button variant="outline" className="w-full sm:w-auto">
