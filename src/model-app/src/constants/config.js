@@ -6,3 +6,9 @@ export const SCENARIO_LABELS = {
     REALISTIC: "Realistický",
     OPTIMISTIC: "Optimistický",
 }
+export const DC_LABELS = {
+    COLOCATION: "Kolokační",
+    TRAINING: "AI trénovací",
+    INFERENCE: "AI inferenční"
+
+}

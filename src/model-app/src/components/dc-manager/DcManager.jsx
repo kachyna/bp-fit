@@ -3,14 +3,15 @@ import { Button } from "../ui/button"
 import { DcTypesInfoDialog } from "./dc-info";
 import { DcEntry } from "./DcEntry";
 import { Plus } from "lucide-react";
+import { DC_LABELS } from "@/constants/config"
 
 export const DcManager = () => {
   const { datacenters, addDatacenter, removeDatacenter, updateDatacenter } = useModelStore();
 
   const dcTypes = [
-    { id: 'coloc', label: 'Kolokační' },
-    { id: 'training', label: 'AI trénovací' },
-    { id: 'inference', label: 'AI inferenční' }
+    { id: 'coloc', label: DC_LABELS.COLOCATION },
+    { id: 'training', label: DC_LABELS.TRAINING },
+    { id: 'inference', label: DC_LABELS.INFERENCE }
   ];
 
   return (

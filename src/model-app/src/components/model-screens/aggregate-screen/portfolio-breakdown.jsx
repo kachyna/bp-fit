@@ -3,6 +3,7 @@ import { Database, HelpCircle } from "lucide-react"
 import { useModelStore } from "@/store/useModelStore"
 import { Card, CardHeader, CardTitle } from "@/components/ui/card"
 import { getAggregateCopy } from "../texts/aggregate-texts"
+import { DC_LABELS } from "@/constants/config"
 
 const staticTexts = getAggregateCopy({}, {}, "").portfolio
 
@@ -10,9 +11,9 @@ const getDcBreakdown = (datacenters) => {
     let totalCount = 0;
     let totalPower = 0;
     const types = {
-        coloc: { count: 0, power: 0, label: "Colocation", color: "bg-blue-500", textColor: "text-blue-700", border: "border-blue-100", bg: "bg-blue-50/40" },
-        training: { count: 0, power: 0, label: "AI Training", color: "bg-violet-500", textColor: "text-violet-700", border: "border-violet-100", bg: "bg-violet-50/40" },
-        inference: { count: 0, power: 0, label: "AI Inference", color: "bg-amber-500", textColor: "text-amber-700", border: "border-amber-100", bg: "bg-amber-50/40" }
+        coloc: { count: 0, power: 0, label: DC_LABELS.COLOCATION, color: "bg-blue-500", textColor: "text-blue-700", border: "border-blue-100", bg: "bg-blue-50/40" },
+        training: { count: 0, power: 0, label: DC_LABELS.TRAINING, color: "bg-violet-500", textColor: "text-violet-700", border: "border-violet-100", bg: "bg-violet-50/40" },
+        inference: { count: 0, power: 0, label: DC_LABELS.INFERENCE, color: "bg-amber-500", textColor: "text-amber-700", border: "border-amber-100", bg: "bg-amber-50/40" }
     };
 
     datacenters.forEach(dc => {
@@ -36,11 +37,11 @@ const getDcBreakdown = (datacenters) => {
         };
     });
 
-    return { 
-        list, 
-        totalCount, 
-        totalPower, 
-        formattedTotalPower: totalPower.toLocaleString("cs-CZ") 
+    return {
+        list,
+        totalCount,
+        totalPower,
+        formattedTotalPower: totalPower.toLocaleString("cs-CZ")
     };
 }
 
