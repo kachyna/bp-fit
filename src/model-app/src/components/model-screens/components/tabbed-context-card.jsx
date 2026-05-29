@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+import { useUiStore } from "@/store/useUiStore"
 
 const themeStyles = {
     electricity: {
@@ -41,6 +42,7 @@ export const TabbedContextCard = ({
     buttonClassName = "p-3"
 }) => {
     const [activeTab, setActiveTab] = useState(0)
+    const expandAllCards = useUiStore(state => state.expandAllCards)
 
     if (!contextCopy || !contextCopy.sections) return null
 
@@ -50,6 +52,8 @@ export const TabbedContextCard = ({
 
     const sections = contextCopy.sections
     const currentSection = sections[activeTab]
+
+    const finalContainerClass = `${textContainerClassName} ${expandAllCards ? "!max-h-none max-h-none!" : ""}`
 
     return (
         <Card size={size} className={`border-slate-200/80 bg-linear-to-br from-slate-50 via-white to-slate-50/50 shadow-sm transition-all duration-300 hover:shadow-md hover:border-slate-300 ${hasHoverExpand ? 'group/context' : ''} ${className}`}>
@@ -91,7 +95,7 @@ export const TabbedContextCard = ({
                     })}
                 </div>
 
-                <div className={textContainerClassName}>
+                <div className={finalContainerClass}>
                     <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-2 flex items-center gap-1.5 shrink-0">
                         {currentSection.title}
                     </h4>
