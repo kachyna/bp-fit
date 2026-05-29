@@ -8,8 +8,18 @@ import * as config from '../constants/config.js'
 
 */
 
-// ======= MAIN FUNCTION =======
 
+/**
+ * This function takes a datacenter object and parameters object.
+ * It validates the input parameters, calculates the metrics for each scenario 
+ * and returns an enriched datacenter object with all metrics added.
+ * 
+ * The metrics are calculated in a pipeline, where each function takes the result of the previous function.
+ * 
+ * @param {Object} dc - The datacenter object to enrich
+ * @param {Object} params - The parameters object containing scenarios and common parameters
+ * @returns {Object} The enriched datacenter object
+ */
 export const enrichDatacenter = (dc, params) => {
     validateParameters(dc, params)
 
@@ -37,6 +47,13 @@ export const enrichDatacenter = (dc, params) => {
     }
 }
 
+/**
+ * Calculates metrics not dependent on scenario parameters.
+ * We calculate them first because they are used in the pipeline for each scenario.
+ * 
+ * @param {Object} dc - The datacenter object
+ * @returns {Object} The enriched datacenter object
+ */
 const calcMetricsNotBasedOnParams = (dc) => {
     return {
         totalPower: calcTotalPower(dc.itPower, dc.pue),
@@ -45,6 +62,12 @@ const calcMetricsNotBasedOnParams = (dc) => {
     }
 }
 
+/**
+ * Recursively validates the parameters object.
+ * 
+ * @param {Object} obj - The object to validate
+ * @param {string} prefix - The prefix for the current path
+ */
 const validateDeep = (obj, prefix = "") => {
     Object.keys(obj).forEach(key => {
         const value = obj[key];
@@ -53,14 +76,28 @@ const validateDeep = (obj, prefix = "") => {
     })
 }
 
+/**
+ * Validates datacenter input and model parameters.
+ * Throws an error if the parameters are invalid.
+ * 
+ * @param {Object} dc - The datacenter object
+ * @param {Object} params - The parameters object
+ */
 const validateParameters = (dc, params) => {
     validateNum(dc.itPower, "itPower", dc.id);
     validateNum(dc.pue, "pue", dc.id);
     validateDeep(params);
 };
 
-// ======= MISC =======
-
+/**
+ * Validates if a value is a number and not null or undefined.
+ * Throws an error if the value is invalid.
+ * 
+ * @param {number} val - The value to validate
+ * @param {string} fieldName - The name of the field
+ * @param {string} datacenterId - The ID of the datacenter. Optional.
+ * @returns {number} The validated value
+ */
 const validateNum = (val, fieldName, datacenterId = null) => {
     const n = Number(val);
     if (isNaN(n) || val === null || val === undefined) {
@@ -72,16 +109,7 @@ const validateNum = (val, fieldName, datacenterId = null) => {
     return n;
 }
 
-const validateDivisor = (val, fieldName, datacenterId = null) => {
-    const n = Number(val);
-    if (isNaN(n) || val === null || val === undefined || n === 0) {
-        if (!datacenterId) {
-            throw new Error(`Chyba v konfiguračním poli "${fieldName}": Hodnota "${val}" není platné číslo nebo je nulová a nelze jí dělit.`);
-        }
-        throw new Error(`Chyba v poli "${fieldName}" datacentra "${datacenterId}": Hodnota "${val}" není platné číslo nebo je nulová a nelze jí dělit.`);
-    }
-    return n;
-}
+// Most of the following functions do not have JSDoc comments, as they are simple enough to not warrant them.
 
 // ======= ELECTRICITY =======
 
@@ -108,7 +136,6 @@ const calcEnergy = (dc, { occupancy, utilization }) => {
 
 // ======= COSTS =======
 
-// these functions take the aggregated power data object and the general parameters saved in constants/parameters.js
 const calcBuildingInvestment = (itPower, costBuildingPerMW) => {
     return itPower * costBuildingPerMW
 }
