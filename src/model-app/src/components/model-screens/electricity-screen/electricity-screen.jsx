@@ -90,7 +90,7 @@ export const ElectricityModelScreen = ({ data, activeScenario = "REALISTIC" }) =
                 <TabbedContextCard
                     contextCopy={electricityCopy.contextCard}
                     theme="electricity"
-                    textContainerClassName="rounded-xl border border-slate-100 bg-slate-50/40 p-5 min-h-[140px] flex flex-col justify-center transition-all duration-300"
+                    textContainerClassName="rounded-xl border border-slate-100 bg-slate-50/40 p-5 min-h-[170px] flex flex-col justify-top transition-all duration-300"
                     hasHoverExpand={false}
                     className="lg:col-span-2"
                 />

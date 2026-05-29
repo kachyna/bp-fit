@@ -80,7 +80,7 @@ export const EconomyModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
                         contentClassName="px-4 pb-4"
                         tabsGridClassName="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4"
                         buttonClassName="py-2 px-2.5"
-                        textContainerClassName="rounded-xl border border-slate-100 bg-slate-50/40 px-3 pt-3 transition-all duration-500 ease-in-out overflow-hidden min-h-[75px] max-h-[175px] group-hover/context:max-h-[300px] flex flex-col justify-start"
+                        textContainerClassName="rounded-xl border border-slate-100 bg-slate-50/40 px-3 pt-3 transition-all duration-500 ease-in-out overflow-hidden min-h-[75px] max-h-[200px] group-hover/context:min-h-[640px] flex flex-col justify-start"
                         hasHoverExpand={true}
                         className="h-full"
                     />

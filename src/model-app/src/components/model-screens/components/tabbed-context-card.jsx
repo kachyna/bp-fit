@@ -29,9 +29,9 @@ const themeStyles = {
     }
 }
 
-export const TabbedContextCard = ({ 
-    contextCopy, 
-    className = "", 
+export const TabbedContextCard = ({
+    contextCopy,
+    className = "",
     theme = "electricity",
     textContainerClassName = "rounded-xl border border-slate-100 bg-slate-50/40 p-5 min-h-[140px] flex flex-col justify-center transition-all duration-300",
     hasHoverExpand = false,
@@ -80,9 +80,8 @@ export const TabbedContextCard = ({
                             <button
                                 key={idx}
                                 onClick={() => setActiveTab(idx)}
-                                className={`flex items-center gap-2.5 rounded-lg border text-left text-xs font-semibold transition-all duration-200 cursor-pointer ${buttonClassName} ${
-                                    isActive ? (activeStyles[idx] || activeStyles[0]) : "border-slate-100 bg-slate-50/50 text-slate-600 hover:border-slate-200 hover:bg-slate-50"
-                                }`}
+                                className={`flex items-center gap-2.5 rounded-lg border text-left text-xs font-semibold transition-all duration-200 cursor-pointer ${buttonClassName} ${isActive ? (activeStyles[idx] || activeStyles[0]) : "border-slate-100 bg-slate-50/50 text-slate-600 hover:border-slate-200 hover:bg-slate-50"
+                                    }`}
                             >
                                 {section.icon && (
                                     <span className={`p-1 rounded-md ${isActive ? 'bg-white shadow-xs' : 'bg-slate-100'}`}>
