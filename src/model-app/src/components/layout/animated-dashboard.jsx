@@ -82,7 +82,7 @@ export function AnimatedDashboard() {
             className="w-full"
           >
             {/* Manually re-render the active screen based on the active tab */}
-            {activeTab === "aggregate" && <AggregateModelScreen analyzedData={analyzedData} scenario={scenario} />}
+            {activeTab === "aggregate" && <AggregateModelScreen data={analyzedData} activeScenario={scenario} />}
             {activeTab === "electricity" && <ElectricityModelScreen data={analyzedData} activeScenario={scenario} />}
             {activeTab === "economy" && <EconomyModelScreen data={analyzedData} activeScenario={scenario} />}
             {activeTab === "social" && <ESGModelScreen data={analyzedData} activeScenario={scenario} />}

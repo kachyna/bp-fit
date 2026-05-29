@@ -6,23 +6,29 @@ import { getAggregateCopy } from "../texts/aggregate-texts"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { ChevronDown } from "lucide-react"
 
-export const AggregateModelScreen = ({ analyzedData, scenario }) => {
-    const currentScenarioData = analyzedData[scenario] || {}
-    const texts = getAggregateCopy(currentScenarioData, analyzedData, scenario)
+export const AggregateModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
+    const aggregateCopy = getAggregateCopy(
+        {
+            ...data?.[activeScenario],
+            portfolioTotalPower: data?.portfolioTotalPower ?? 0,
+            portfolioMaxEnergyConsumption: data?.portfolioMaxEnergyConsumption ?? 0,
+            portfolioMaxITConsumption: data?.portfolioMaxITConsumption ?? 0
+        }
+    )
 
     return (
         <div className="space-y-6 animate-fade-in">
             <ScreenHeader
-                title={texts.header.title}
-                subtitle={texts.header.subtitle}
-                analyzedData={analyzedData}
+                title={aggregateCopy.header.title}
+                subtitle={aggregateCopy.header.subtitle}
+                analyzedData={data}
                 pulseColor="bg-emerald-500"
             />
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
                 <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 group/row">
-                    {texts.kpis.map((kpi) => (
+                    {aggregateCopy.kpis.map((kpi) => (
                         <NumberHoverCard
                             key={kpi.key}
                             title={kpi.title}
@@ -54,7 +60,7 @@ export const AggregateModelScreen = ({ analyzedData, scenario }) => {
                 <CollapsibleContent className="mt-6 space-y-6 overflow-visible">
                     <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
                         {["about", "settingsTip"].map((key) => {
-                            const card = texts[key]
+                            const card = aggregateCopy[key]
                             return (
                                 <TextHoverCard
                                     key={key}
@@ -73,7 +79,7 @@ export const AggregateModelScreen = ({ analyzedData, scenario }) => {
 
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                         {["guide", "scenarios", "credits"].map((key) => {
-                            const card = texts[key]
+                            const card = aggregateCopy[key]
                             return (
                                 <TextHoverCard
                                     key={key}
