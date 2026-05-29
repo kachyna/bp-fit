@@ -15,9 +15,9 @@ export function ConfigSidebar() {
     return (
         <Sidebar className="border-r border-slate-200">
             <SidebarHeader className="p-4 border-b border-slate-100">
-                <h1 className="text-xl font-bold tracking-tight text-slate-900">
-                    Model Výstavby
-                </h1>
+                <h2 className="text-lg font-semibold text-slate-800">
+                    Portfolio a parametry
+                </h2>
             </SidebarHeader>
             <SidebarContent className="p-4">
                 <Collapsible defaultOpen className="group/collapsible">

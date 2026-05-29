@@ -66,7 +66,7 @@ export function DcTypesInfoDialog() {
                 <DialogHeader>
                     <DialogTitle className="text-xl font-bold">Metriky a typologie datacenter</DialogTitle>
                     <DialogDescription className="text-xs text-slate-500">
-                        Průvodce základními pojmy a přehled specifikací jednotlivých typů.
+                        Průvodce základními pojmy a přehled specifikací jednotlivých typů datových center.
                     </DialogDescription>
                 </DialogHeader>
 
@@ -83,7 +83,7 @@ export function DcTypesInfoDialog() {
                         <div className={styles.metricGroup}>
                             <div className={styles.metricHeader}>
                                 <Zap className="size-4 text-amber-500 fill-amber-500/10" />
-                                <h4>IT Příkon (IT Load / IT Power)</h4>
+                                <h4>IT příkon (IT Load / IT Power)</h4>
                             </div>
                             <p className={styles.metricText}>
                                 Čistý elektrický výkon vyhrazený <strong>výhradně pro napájení výpočetního hardwaru</strong> (servery, disková pole, síťové prvky, GPU). Nezahrnuje spotřebu klimatizací, osvětlení budovy ani ztráty v transformátorech. Udává se buď v kW na jeden rack, nebo v MW pro celkovou kapacitu datacentra.
@@ -102,17 +102,17 @@ export function DcTypesInfoDialog() {
                                         </thead>
                                         <tbody className="divide-y divide-slate-100 text-slate-600">
                                             <tr>
-                                                <td className="p-2.5 font-medium text-slate-900">Colocation (Tradiční DC)</td>
+                                                <td className="p-2.5 font-medium text-slate-900">Kolokační</td>
                                                 <td className="p-2.5">5 – 15 kW</td>
                                                 <td className="p-2.5">10 – 50 MW</td>
                                             </tr>
                                             <tr>
-                                                <td className="p-2.5 font-medium text-slate-900">AI Training Cluster</td>
+                                                <td className="p-2.5 font-medium text-slate-900">AI trénovací</td>
                                                 <td className="p-2.5">40 – 100+ kW</td>
                                                 <td className="p-2.5">20 – 100+ MW</td>
                                             </tr>
                                             <tr>
-                                                <td className="p-2.5 font-medium text-slate-900">AI Inference Node</td>
+                                                <td className="p-2.5 font-medium text-slate-900">AI inferenční</td>
                                                 <td className="p-2.5">20 – 40 kW</td>
                                                 <td className="p-2.5">5 – 30 MW</td>
                                             </tr>
@@ -122,7 +122,7 @@ export function DcTypesInfoDialog() {
                             </div>
 
                             <p className={styles.metricTextExtra}>
-                                V České republice se zatím nacházejí výhradně kolokační datová centra, nicméně na konci roku 2026 a v průběhu 2027 se mají postavit i spcializovaná AI datová centra s vyšším příkonem. Projekt Prague Gatewy DC má mít v počáteční fázi instalovaný IT příkon 25 MW (plánuje se rozšíření na více než 70 MW), zatímco plánované DC v Kanicích u Brna 4 MW (s možností rozšíření na 26 MW).
+                                V České republice se zatím nacházejí výhradně kolokační datová centra, nicméně na konci roku 2026 a v průběhu 2027 se mají postavit i specializovaná AI datová centra s vyšším příkonem. Projekt Prague Gateway DC má mít v počáteční fázi instalovaný IT příkon 25 MW (plánuje se rozšíření na více než 70 MW), zatímco plánované DC v Kanicích u Brna 4 MW (s možností rozšíření na 26 MW).
                             </p>
                         </div>
 
@@ -152,7 +152,7 @@ export function DcTypesInfoDialog() {
                             </div>
                             <p className={styles.metricTextExtra}>
                                 Ideální hodnota je 1,0 (veškerá energie jde do serverů).
-                                Pokud je PUE 1,5, na každých 1 kW výkonu pro servery musíme spotřebovat dalších 0,5 kW na chlazení a režii budovy.
+                                Pokud je PUE 1,5, na každý 1 kW výkonu pro servery musíme spotřebovat dalších 0,5 kW na chlazení a režii budovy.
                                 Čím nižší číslo, tím je datacentrum efektivnější a ekologičtější.
                                 Momentálně se nejnižší hodnoty pohybují kolem 1,05, nicméně postavit takové DC je velmi nákladné. Průměrná moderní zařízení dosahují PUE mezi 1,3 a 1,5.
                             </p>
