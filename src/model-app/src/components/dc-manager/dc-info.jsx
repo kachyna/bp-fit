@@ -11,6 +11,18 @@ import {
 } from "@/components/ui/dialog"
 import { HelpCircle, Zap, Activity } from "lucide-react"
 
+const styles = {
+    section: "space-y-6",
+    sectionTitle: "font-bold text-sm uppercase tracking-wider text-slate-400 mb-2",
+    metricGroup: "space-y-2",
+    metricHeader: "flex items-center gap-2 text-slate-900 font-semibold text-sm",
+    metricText: "text-xs text-slate-600 leading-relaxed pl-6",
+    metricTextExtra: "text-xs text-slate-600 leading-relaxed pl-6 mt-2",
+    indentedContainer: "pl-6 pt-1",
+    cardLabel: "text-[10px] uppercase font-bold block mb-0.5",
+    cardValue: "font-semibold",
+}
+
 const DcTypeCard = ({
     title,
     description,
@@ -28,16 +40,16 @@ const DcTypeCard = ({
         <p className="text-xs text-slate-600 leading-relaxed pl-4">{description}</p>
         <div className={`grid grid-cols-3 gap-2 p-2.5 rounded-lg border text-xs ml-4 ${cardBgClass}`}>
             <div>
-                <span className={`text-[10px] uppercase font-bold block mb-0.5 ${labelColorClass}`}>Příkon / Rack</span>
-                <span className={`font-semibold ${valueColorClass}`}>{stats.power}</span>
+                <span className={`${styles.cardLabel} ${labelColorClass}`}>Příkon / Rack</span>
+                <span className={`${styles.cardValue} ${valueColorClass}`}>{stats.power}</span>
             </div>
             <div>
-                <span className={`text-[10px] uppercase font-bold block mb-0.5 ${labelColorClass}`}>Cílové PUE</span>
-                <span className={`font-semibold ${valueColorClass}`}>{stats.pue}</span>
+                <span className={`${styles.cardLabel} ${labelColorClass}`}>Cílové PUE</span>
+                <span className={`${styles.cardValue} ${valueColorClass}`}>{stats.pue}</span>
             </div>
             <div>
-                <span className={`text-[10px] uppercase font-bold block mb-0.5 ${labelColorClass}`}>Chlazení</span>
-                <span className={`font-semibold ${valueColorClass}`}>{stats.cooling}</span>
+                <span className={`${styles.cardLabel} ${labelColorClass}`}>Chlazení</span>
+                <span className={`${styles.cardValue} ${valueColorClass}`}>{stats.cooling}</span>
             </div>
         </div>
     </div>
@@ -65,23 +77,23 @@ export function DcTypesInfoDialog() {
                 <div className="-mx-4 no-scrollbar max-h-[60vh] overflow-y-auto px-4 space-y-6 pt-2">
 
                     {/* SEKCE: ZÁKLADNÍ POJMY */}
-                    <div className="space-y-6">
-                        <h3 className="font-bold text-sm uppercase tracking-wider text-slate-400 mb-2">
+                    <div className={styles.section}>
+                        <h3 className={styles.sectionTitle}>
                             Co znamenají klíčové metriky?
                         </h3>
 
                         {/* IT Příkon */}
-                        <div className="space-y-2">
-                            <div className="flex items-center gap-2 text-slate-900 font-semibold text-sm">
+                        <div className={styles.metricGroup}>
+                            <div className={styles.metricHeader}>
                                 <Zap className="size-4 text-amber-500 fill-amber-500/10" />
                                 <h4>IT Příkon (IT Load / IT Power)</h4>
                             </div>
-                            <p className="text-xs text-slate-600 leading-relaxed pl-6">
+                            <p className={styles.metricText}>
                                 Čistý elektrický výkon vyhrazený <strong>výhradně pro napájení výpočetního hardwaru</strong> (servery, disková pole, síťové prvky, GPU). Nezahrnuje spotřebu klimatizací, osvětlení budovy ani ztráty v transformátorech. Udává se buď v kW na jeden rack, nebo v MW pro celkovou kapacitu datacentra.
                             </p>
 
                             {/* TABULKA TYPICKÝCH PŘÍKONŮ */}
-                            <div className="pl-6 pt-1">
+                            <div className={styles.indentedContainer}>
                                 <div className="border border-slate-200 rounded-lg overflow-hidden">
                                     <table className="w-full text-left text-xs border-collapse">
                                         <thead>
@@ -112,22 +124,22 @@ export function DcTypesInfoDialog() {
                                 </div>
                             </div>
 
-                            <p className="text-xs text-slate-600 leading-relaxed pl-6 mt-2">
+                            <p className={styles.metricTextExtra}>
                                 V České republice se zatím nacházejí výhradně kolokační datová centra, nicméně na konci roku 2026 a v průběhu 2027 se mají postavit i spcializovaná AI datová centra s vyšším příkonem. Projekt Prague Gatewy DC má mít v počáteční fázi instalovaný IT příkon 25 MW (plánuje se rozšíření na více než 70 MW), zatímco plánované DC v Kanicích u Brna 4 MW (s možností rozšíření na 26 MW).
                             </p>
                         </div>
 
                         {/* PUE */}
-                        <div className="space-y-2 pt-2">
-                            <div className="flex items-center gap-2 text-slate-900 font-semibold text-sm">
+                        <div className={`${styles.metricGroup} pt-2`}>
+                            <div className={styles.metricHeader}>
                                 <Activity className="size-4 text-emerald-500" />
                                 <h4>PUE (Power Usage Effectiveness)</h4>
                             </div>
-                            <p className="text-xs text-slate-600 leading-relaxed pl-6">
+                            <p className={styles.metricText}>
                                 Globální standard pro měření energetické účinnosti datacentra. Vyjadřuje poměr mezi celkovou energií, která do budovy vstupuje, a energií, která se reálně využije na provoz IT hardwaru.
                             </p>
 
-                            <div className="pl-6 pt-1">
+                            <div className={styles.indentedContainer}>
                                 <div className="bg-slate-50 p-4 rounded-lg border border-slate-100 flex items-center justify-center gap-3 my-1 font-medium text-xs sm:text-sm">
                                     <span className="font-bold text-slate-900 text-base">PUE =</span>
 
@@ -141,7 +153,7 @@ export function DcTypesInfoDialog() {
                                     </div>
                                 </div>
                             </div>
-                            <p className="text-xs text-slate-600 leading-relaxed pl-6 mt-2">
+                            <p className={styles.metricTextExtra}>
                                 Ideální hodnota je 1,0 (veškerá energie jde do serverů).
                                 Pokud je PUE 1,5, na každých 1 kW výkonu pro servery musíme spotřebovat dalších 0,5 kW na chlazení a režii budovy.
                                 Čím nižší číslo, tím je datacentrum efektivnější a ekologičtější.
@@ -151,8 +163,8 @@ export function DcTypesInfoDialog() {
                     </div>
 
                     {/* SEKCE: TYPY DC */}
-                    <div className="space-y-6">
-                        <h3 className="font-bold text-sm uppercase tracking-wider text-slate-400 mb-2">
+                    <div className={styles.section}>
+                        <h3 className={styles.sectionTitle}>
                             Typy datových center v modelu
                         </h3>
 
