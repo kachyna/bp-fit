@@ -1,11 +1,12 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useModelStore } from "@/store/useModelStore"
+import { SCENARIO_LABELS } from "@/constants/config";
 
 const scenarioStyles = {
     PESIMISTIC: "decoration-rose-400 hover:decoration-rose-500",
     REALISTIC: "decoration-amber-400 hover:decoration-amber-500",
     OPTIMISTIC: "decoration-emerald-400 hover:decoration-emerald-500",
-  };
+};
 
 export const SelectScenario = () => {
 
@@ -18,9 +19,9 @@ export const SelectScenario = () => {
                 <SelectValue placeholder="Vyberte scénář" />
             </SelectTrigger>
             <SelectContent align="end">
-                <SelectItem value="PESIMISTIC">Pesimistický</SelectItem>
-                <SelectItem value="REALISTIC">Realistický</SelectItem>
-                <SelectItem value="OPTIMISTIC">Optimistický</SelectItem>
+                {Object.entries(SCENARIO_LABELS).map(([key, label]) => (
+                    <SelectItem key={key} value={key}>{label}</SelectItem>
+                ))}
             </SelectContent>
         </Select>
     )
