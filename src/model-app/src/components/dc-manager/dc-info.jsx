@@ -167,7 +167,7 @@ export function DcTypesInfoDialog() {
 
                         <div className="space-y-6">
                             <DcTypeCard
-                                title="Colocation (Tradiční DC)"
+                                title="Kolokační (tradiční) DC"
                                 description="Pronájem fyzického prostoru (sálů, klecí, racků) a sdílené podpůrné infrastruktury pro servery externích zákazníků. Zákazník si dodává vlastní hardware, zatímco operátor garantuje konektivitu, napájení a chlazení."
                                 dotColorClass="bg-slate-400"
                                 cardBgClass="bg-slate-50 border-slate-100"
@@ -181,7 +181,7 @@ export function DcTypesInfoDialog() {
                             />
 
                             <DcTypeCard
-                                title="AI Training Cluster"
+                                title="AI trénovací"
                                 description="Specializovaný superpočítačový cluster navržený pro trénování komplexních LLM a neuronových sítí. Propojuje tisíce špičkových GPU akcelerátorů pomocí ultra-rychlé síťové architektury s nízkou latencí (např. InfiniBand)."
                                 dotColorClass="bg-amber-500"
                                 cardBgClass="bg-amber-50/30 border-amber-100/50"
@@ -195,7 +195,7 @@ export function DcTypesInfoDialog() {
                             />
 
                             <DcTypeCard
-                                title="AI Inference Node"
+                                title="AI inferenční"
                                 description="Produkční servery optimalizované pro provoz již vytrénovaných modelů v reálném čase. Architektura je stavěná na okamžité odbavování uživatelských dotazů (generování textu, obrázků) přes API s důrazem na minimální latenci."
                                 dotColorClass="bg-sky-500"
                                 cardBgClass="bg-sky-50/30 border-sky-100/50"

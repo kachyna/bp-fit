@@ -8,9 +8,9 @@ export const DcManager = () => {
   const { datacenters, addDatacenter, removeDatacenter, updateDatacenter } = useModelStore();
 
   const dcTypes = [
-    { id: 'coloc', label: 'Colocation' },
-    { id: 'training', label: 'AI Training' },
-    { id: 'inference', label: 'AI Inference' }
+    { id: 'coloc', label: 'Kolokační' },
+    { id: 'training', label: 'AI trénovací' },
+    { id: 'inference', label: 'AI inferenční' }
   ];
 
   return (
