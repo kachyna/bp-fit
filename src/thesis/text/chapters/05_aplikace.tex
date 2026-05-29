@@ -1,2 +1,178 @@
 \chapter{Vizualizace modelu}
 \label{chap:app}
+
+Tato kapitola se věnuje druhé polovině praktické části práce -- návrhu a implementaci interaktivní webové aplikace pro zhmotnění vytvořeného modelu. Aplikace slouží k zejména vizualizaci vstupních hodnot a snadné interpretaci výsledků. Je určený především pro širokou, neboť se v něm vysvětlují základní pojmy a texty jsou napsány populárně naučnou formou. Využít jej však může i odborná veřejnost, protože parametry modelu jsou plně nastavitelné a webová aplikace zpřístupňuje rozšiřující rozhraní se všemi vypočítanými hodnotami. V následujících sekcích je popsána motivace k vytvoření aplikace, zvolené technologie, softwarová architektura, způsob nasazení a samotné uživatelské rozhraní.
+
+\section{Motivace k vytvoření aplikace}
+\label{sec:app_motivace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SEKCE 1: MOTIVACE K VYTVOŘENÍ APLIKACE
+% - Cíl vytvořit interaktivní nástroj (sandbox) pro širokou veřejnost.
+% - Akademický text/model v bakalářské práci může být pro laiky složitý.
+% - Okamžité dopady změn parametrů (vizualizace složitých dat).
+% - Zvýšení povědomí o reálných dopadech výstavby v ČR (hlučnost, voda, emise).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Samotný model datových center popsaný v kapitole \ref{chap:model} je pouze abstraktní matematickou konstrukcí, kterou je bez konkrétních hodnot je těžké si představit. Navíc, akademický text a formální zápis modelu v bakalářské práci může být složitý a hůře pochopitelný, kvůli čemuž je jeho pratická aplikace pro širokou veřejnost obtížná.
+
+Přestože byl model nejprve testován v Excelovém souboru, který umožňoval rychlé zadávání hodnot a okamžité zobrazení výsledků, tento přístup není ideální pro prezentaci širšímu publiku. Webová aplikace nabízí mnohem lepší možnosti pro vizualizaci složitých dat a umožňuje uživatelům snadno manipulovat s parametry v přívětivém prostředí s dodatečným vysvětlením.
+
+Důležité je zmínit, že dopady výstavby datových center budou působit na širokou veřejnost. Proto je klíčové, aby informace o těchto dopadech byly snadno dostupné a srozumitelné. Stejně tak je důležité zvýšit povědomí o reálných dopadech výstavby datových center v ČR, jako jsou hlučnost, emise a spotřeba vody, které často nejsou dostatečně zohledňovány v diskuzích o ekonomickém přínosu těchto projektů -- zejména kvůli tomu, že se jedná o PR články placené investory projektu. K tomu je ale potřeba chápat jisté souvislosti a mít možnost experimentovat s různými scénáři.
+
+Cílem této aplikace je tedy vytvořit interaktivní nástroj, který uživatelům umožní vyzkoušet různé vstupy (postavit si různá datová centra) a okamžitě vidět dopady svých rozhodnutí. Aplikace bude poskytovat jak tvrdá data vyházející z modelu, tak dodatečné vizualizace a srovnání s běžnými referenčními hodnotami (např. srovnání s Temelínem nebo s průměrnou domácností). Tímto způsobem bude komplexní problematika výstavby datových center přístupná a srozumitelná i pro laiky, což může přispět k informovanější veřejné diskusi o těchto projektech a jejich dopadech na společnost a životní prostředí.
+
+\section{Technologický stack}
+\label{sec:app_stack}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SEKCE 2: TECHNOLOGICKÝ STACK
+% - Výběr moderních webových technologií pro rychlé rozhraní.
+% - Předchozí zkušenosti s knihovnou React.
+% - Využití frameworku Vite pro rychlé sestavení aplikace.
+% - Popis jednotlivých knihoven (Zustand, Tailwind, shadcn/ui, Recharts, ...).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Pro vývoj webové aplikace byl vybrán moderní technologický stack založený na JavaScriptu a Reactu, který umožňuje rychlý vývoj a snadnou údržbu pomocí znovupoužitelných komponent. Pro usnadnění vývoje a zajištění konzistentního vzhledu byla zvolena knihovna shadcn/ui, která poskytuje širokou škálu přizpůsobitelných UI komponent postavených na Tailwind CSS. Pro vizualizaci dat a grafů byla použita knihovna Recharts. Při vývoji byly použity velké jazykové modely Gemini Pro 3.1 a Gemini 3.5 Flash, které pomohly zejména s vytvářením vlastních stylů a s bežnými, opakujícími se operacemi. Architektura aplikace a logické výpočty byly vytvořeny bez umělé inteligence.
+
+\subsection{Jádro aplikace a správa stavu}
+\label{subsec:app_stack_jadro}
+
+První krok při výběru technologického stacku bylo rozhodnutí o platformě, na které bude aplikace postavena. Vzhledem k tomu, že cílem bylo vytvořit interaktivní webovou aplikaci, která má reagovat na vstupy uživatelů, se nabízela volba JavaScriptu a Reactu. JavaScript je pro webový vývoj standardem a pro interaktivitu webu je takřka nepostradatelný. React, jako jedna z nejpopulárnějších platforem pro tvorbu uživatelských rozhraní, nabízí efektivní způsob, jak spravovat stav a aktualizovat UI v reakci na změny dat.
+
+Mimo to byl React zvolen kvůli vysoké dostupnosti dodatečných knihoven a nástrojů, které usnadňují vývoj a zlepšují zkušenost vývojářů. Díky tomu bylo možné rychle implementovat složité funkce a vizualizace, které by jinak vyžadovaly mnohem více času a úsilí. Dodatečný komentář k použitým knihovnám je v podsekci \ref{subsec:app_stack_ui}.
+
+Dalším důležitým aspektem bylo zajištění rychlého sestavení a vývoje aplikace, což vedlo k výběru frameworku Vite. Vite poskytuje rychlé načítání a hot module replacement, což výrazně zrychluje vývojový cyklus a umožňuje okamžité zobrazení změn v prohlížeči.
+
+Pro správu stavu v aplikaci byl zvolen Zustand -- lehký a flexibilní plug-in přímo pro React. V kombinaci s knihovnou Immer umožňuje jednoduše a bezpečně měnit globální stavy bez zbytečného kódu. Díky tomuto přístupu lze centralizovat a efektivně spravovat stav celé aplikace, což je klíčové pro zajištění konzistence hodnot. Takto lehká aplikace by se bez Zustandu bez problému obešla (stačilo by použít React hooky useState a useMemo), ale pro větší projekty je tento přístup velmi výhodný a umožňuje snadné rozšiřování a údržbu kódu v budoucnu.
+
+Zde je přehled použitých technologií a knihoven:
+
+\begin{description}
+	\item [JavaScript] Programovací jazyk pro vývoj webových aplikací, umožňující interaktivitu a dynamické chování na straně klienta.
+	\item[React] JavaScriptová knihovna pro tvorbu uživatelských rozhraní, umožňující efektivní reaktivní překreslování komponent při změně stavu.
+	\item[Vite] Framework pro rychlé sestavení aplikace při vývoji. Používá se i pro sestavení produkční verze, ale jeho hlavní výhodou je rychlost a efektivita během vývoje.
+	\item[Zustand a Immer] Zustand slouží jako lehký a flexibilní stavový manažer. V kombinaci s knihovnou Immer umožňuje jednoduchou a bezpečnou mutaci vnořených stavů bez zbytečného kódu.
+\end{description}
+
+\subsection{Uživatelské rozhraní a vizualizace}
+\label{subsec:app_stack_ui}
+
+Pro usnadnění a urychlení vývoje uživatelského rozhraní byl zvolen přístup použití knihovny již existujících komponent. To znamená, že místo vytváření vlastních UI prvků od nuly byly použity již předpřipravné bloky kódu, které lze snadno přizpůsobit a integrovat do projektu. Komponenty obsažené v aplikaci, například Sidebar, Card, Button, Input, Select a další tak byly převzaty z již existujících knihoven a následně přízpůsobeny pro potřeby této aplikace. Tento přístup výrazně zrychlil vývoj a umožnil se zaměřit na logiku a funkčnost aplikace, místo na design a implementaci základních UI prvků.
+
+Nevýhodou tohoto přístupu naopak je, že se do projektu dostává více kódu, než je skutečně potřeba, což může zvyšovat velikost výsledné aplikace a ztěžovat její údržbu. Pro tento projekt se však takový kompromis ukázal jako výhodný, protože umožnil rychle vytvořit profesionálně vypadající a funkční uživatelské rozhraní.
+
+Konkrétně byla použita knihovna komponent shadcn/ui, která používá Tailwind CSS pro styling a nabízí širokou škálu přizpůsobitelných komponent. Pro vizualizaci dat a grafů byla použita knihovna Recharts, která je postavena přímo pro React a umožňuje snadné vytváření interaktivních grafů. Jak Tailwind, tak Recharts používá právě shadcn/ui, takže se všechny tyto technologie navzájem dobře doplňují a umožňují rychlý vývoj a snadnou integraci.
+
+Pro zlepšení uživatelské přívětivosti a vizuálního dojmu byly použity i další knihovny, jako je Framer Motion pro plynulé přechody a animace (při přepínání záložek). Vizuální styl rozhraní doplňují ikony z knihovny Lucide React.
+
+Přehled použitých knihoven pro uživatelské rozhraní a vizualizaci:
+
+\begin{description}
+	\item[Tailwind CSS] Utility-first CSS framework pro rychlý a flexibilní návrh moderního vzhledu a responzivního layoutu. Umožňuje snadné přizpůsobení jednotlivých komponent, nicméně vyžaduje psaní většího množství CSS tříd přímo v kódu. Nevýhdou je obtížné udržení konzistentního stylu napříč celou aplikací, což ale řeší vytváření znovupouziželných komponent.
+	\item[shadcn/ui] Knihovna znovupoužitelných, přístupných a vysoce přizpůsobitelných UI komponent postavená na Radix UI a Tailwindu. Na rozdíl od klasických knihoven (např. MUI) se komponenty instalují přímo do projektu, což dává plnou kontrolu nad jejich kódem a stylem. I přesto se ale do projektu dostává více kódu, než je skutečně potřeba.
+	\item[Recharts] Knihovna pro tvorbu responzivních a interaktivních grafů postavená přímo pro React. Umožňuje snadné vytváření různých typů grafů (sloupcové, spojnicové, koláčové) a jejich přizpůsobení pro vizualizaci dat z modelu.
+	\item[Framer Motion] Knihovna pro plynulé přechody a animace, které zlepšují uživatelskou přívětivost (např. animované přepínání záložek).
+	\item[Lucide React] Sada čistých a moderních ikon doplňující vizuální styl rozhraní.
+\end{description}
+
+\section{Architektura aplikace a datový tok}
+\label{sec:app_architektura}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SEKCE 3: ARCHITEKTURA APLIKACE A DATOVÝ TOK
+% - Čistě frontendová aplikace bez backendu (všechny výpočty probíhají v prohlížeči).
+% - Reaktivní jednosměrný datový tok (Uživatel -> Store -> Logika -> UI).
+% - Stavový manažer (Zustand) pro centralizaci a správu stavu aplikace.
+% - Přístup postupného obohacování a cachování výsledků v paměti.
+% - Konfigurační soubory s konstantami (Single Source of Truth).
+% - Oddělení výpočetní logiky (engine.js) od vizuálních komponent (views).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Protože aplikace nemusí komunikovat se žádným serverem a všechny výpočty probíhají přímo v prohlížeči, byla zvolena čistě frontendová architektura. To znamená, že veškerá logika, správa stavu a vizualizace jsou implementovány na straně klienta -- odehrávají se tak v prohlížeči uživatele. Tento přístup umožňuje rychlé načítání a okamžité zobrazení výsledků bez potřeby čekat na odpověď ze serveru, což je klíčové pro zamýšlený interaktivní uživatelský zážitek.
+
+\subsection{Datový tok a správa stavu}
+\label{subsec:app_architektura_data}
+
+Na vstupu aplikace je uživatel, který zadává hodnoty do formulářů a interaguje s UI. Z několika zadaných hodnot je poté třeba vypočítat součet všech hodnot, dodatečné ukazatele (maximální spotřebu, produkci uhlíku, vytvořenou HPH) a zobrazit je v agregované formě. Cílem je, aby tyto vstupy byly okamžitě zpracovány a výsledky zobrazeny v přehledné formě.
+
+Pro tyto účely je v aplikaci implementován reaktivní jednosměrný datový tok, který lze popsat následovně:
+
+\begin{enumerate}
+	\item Uživatel zadává hodnoty do formulářů a interaguje s UI.
+	\item Po stisknutí Enter nebo změně kontextu jsou tyto hodnoty odesílány do globálního stavu pomocí stavového manažera (Zustand).
+	\item Před uložením do stavu jsou vložené hodnoty validovány. V případě úspěchu validace jsou obohaceny o dodatečné výpočty dle kapitoly \ref{chap:model}.
+	\item Jakmile jsou nové hodnoty uloženy ve stavu, spouští se agregační logika, která sčítá data napříč všemi datovými centry.
+	\item Po změně agregačního objektu se všechny komponenty, které tento objekt používají, automaticky překreslí a zobrazí aktualizované výsledky.
+\end{enumerate}
+
+Tento přístup je výhodný kvůli tomu, že umožňuje ukládat všechny hodnoty v centrálním skladu (globální stav), který je směrodatný pro celou aplikaci (Single Source of Truth). Díky tomu je zajištěna konzistence dat a snadná správa stavu, protože všechny komponenty se odkazují na stejný zdroj pravdy. Díky obohacování jednotlivých DC o dodatečné výpočty lze navíc zobrazit nejen agregované hodonty, ale také dopady jednolitvých zadaných datových center.
+
+Složitost přidávání datového centra je lineární, neboť přidání samotného objektu je konstantní operace a následné přepočítání agregace je lineární vzhledem k počtu datových center. Pro zlepšení výkonu by bylo možné implementovat pokročilejší přístup, který by pouze přepočítával agregaci pro změněné datové centrum. To by ale vyžadovalo ukládat také agregovaný objekt, což by zvyšovalo náročnost údržby. Pro tento projekt však není potřeba optimalizovat výkon, protože počet datových center bude pravděpodobně omezený a lineární přístup je dostatečně rychlý.
+
+\subsection{Struktura projektu a oddělení logiky od vizuálních komponent}
+\label{subsec:app_architektura_struktura}
+
+Projekt je logicky rozdělen do několika složek, které oddělují různé aspekty aplikace a usnadňují její údržbu a rozšiřování. Hlavní složky jsou:
+
+\begin{description}
+	\item[components] Obsahuje znovupoužitelné UI komponenty, které jsou přizpůsobeny pro potřeby aplikace. Tyto komponenty jsou postavené na knihovně shadcn/ui a slouží k vytváření uživatelského rozhraní.
+	\item[logic] Obsahuje veškerou výpočetní logiku, která zpracovává vstupy od uživatele a generuje výsledky. Stěžejním souborem je enrich.js, který implementuje výýpočetní logiku z kapitoly \ref{chap:model}. Dále obsaguje soubor engine.js, který zajišťuje agregaci hodnot datových center.
+	\item[constants] Obsahuje konstantní hodnoty a nastavení, které jsou používány napříč celou aplikací. Tento přístup umožňuje centralizovat důležité hodnoty a usnadňuje jejich údržbu.
+	\item[store] Obsahuje implementaci stavového manažera (Zustand a Immer), který spravuje globální stav aplikace a zajišťuje jeho konzistenci.
+\end{description}
+
+Celkově je aplikace navržena pro snadnou rozšiřitelnost a údržbu, přičemž logika a vizuální komponenty jsou jasně oddělené. Vytváření komponent je závislé na konfiguračních souborech s konstantami (aby bylo možné snadno měnit hodnoty a přizpůsobovat aplikaci bez zásahu do samotných komponent). Tento přístup je nejlepší možností také v případě, že by se v budoucnu aplikace překládala do dalších jazyků (např. angličtiny).
+
+Tento přístup se při vývoji osvědčil, protože několikrát umožnil rychle přidat nové funkce a změnit vizuální styl bez nutnosti zásahu do logiky nebo naopak. Díky tomu bylo možné udržet kód čistý a dobře organizovaný, což je klíčové pro jeho úspěšný vývoj a údržbu.
+
+\section{Nasazení na server}
+\label{sec:app_nasazeni}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SEKCE 4: NASAZENÍ NA SERVER
+% - Kontejnerizace aplikace pomocí Dockeru (Dockerfile, compose).
+% - Hosting (servery FIT ČVUT na doméně bp-kachyna.ksi.in.fit.cvut.cz).
+% - Způsob nasazování nové verze.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Testování aplikace}
+\label{sec:app_testovani}
+
+Pro aplikaci nejsou napsány žádné automatizované testy, protože se jedná o poměrně malý projekt, který je navíc určen pro prezentaci modelu a ne pro produkční použití. Během vývoje však byly prováděny manuální testy, které zahrnovaly zadávání různých hodnot do formulářů a ověřování, že výsledky odpovídají očekáváním na základě modelu popsaného v kapitole \ref{chap:model}. Testování se zaměřovalo na správnost výpočtů, konzistenci zobrazení a uživatelskou přívětivost rozhraní.
+
+Dalším důvodem, proč nebyly napsány automatizované testy, je fakt, že se jedná o jednorázový projekt, který nebude dále rozšiřován ani udržován. Psaní testů by v tomto případě nebylo efektivní, protože by vyžadovalo značné množství času a úsilí, které by nebylo adekvátní vzhledem k rozsahu a účelu projektu. Testy by byly napsány, ale poté by se používaly pouze na jedné verzi aplikace, což by vedlo k plýtvání zdroji.
+
+\section{Uživatelské rozhraní a průchod aplikací}
+\label{sec:app_ui}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SEKCE 5: UŽIVATELSKÉ ROZHRANÍ A PRŮCHOD APLIKACÍ
+% - Popis celého flow a rozvržení obrazovky (boční panel vs. hlavní část).
+% - Detailní popis záložek (Portfolio, Energetika, Ekonomika, ESG).
+% - Srovnání výsledků s referenčními hodnotami (Temelín, Lipno).
+% - Vizualizace pomocí screenshotů z aplikace.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Uživatelské rozhraní aplikace je navrženo tak, aby bylo intuitivní a snadno použitelné. Klíčovým prvkem je boční panel (Sidebar), který funguje jako správce portfolia datových center a parametrů modelu. V podstatě celé ovládání se tak shlukuje na jednom místě, což je pro uživatele snadné pochopitelné a přehledné. Ve středu obrazovky jsou pak kartičky, které zobrazují vypočtené hodnoty. Uživatel má možnost pozorovat, jak se tyto hodnoty mění v závislosti na zadaných parametrech. V horní části obrazovky je umístěna navigace, která umožňuje přepínat mezi jednotlivými záložkami (Přehled, Energetika, Ekonomika, ESG) nabízejícími detaily týkající se dané oblasti. V této sekci je popsán celý průchod aplikací a popis stěžejních komponent.
+
+\subsection{První pohled na model}
+\label{subsec:app_ui_uvod}
+
+\subsection{Ovládací panel}
+\label{subsec:app_ui_panel}
+
+\subsection{Záložka Přehled}
+\label{subsec:app_ui_prehled}
+
+\subsection{Záložka Energetika}
+\label{subsec:app_ui_energetika}
+
+\subsection{Záložka Ekonomika}
+\label{subsec:app_ui_ekonomika}
+
+\subsection{Záložka ESG}
+\label{subsec:app_ui_esg}
+
+\subsection{Debug}
+\label{subsec:app_ui_debug}
