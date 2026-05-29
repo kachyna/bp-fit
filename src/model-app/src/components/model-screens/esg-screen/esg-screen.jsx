@@ -14,7 +14,7 @@ export const ESGModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
       {/* Dashboard Header */}
       <ScreenHeader
         title="Udržitelnost a ESG dopady"
-        subtitle="Vyhodnocení uhlíkové stopy (Scope 2), spotřeby vody pro chlazení, záboru půdy a lokálního NIMBY efektu."
+        subtitle="Vyhodnocení uhlíkové stopy (Scope II), spotřeby vody, záboru půdy a lokálního NIMBY efektu."
         analyzedData={data}
         pulseColor="bg-emerald-500"
       />

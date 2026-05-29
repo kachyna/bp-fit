@@ -52,45 +52,45 @@ export const getEconomyCopy = (inputData) => {
             title: "Ekonomický přínos a struktura projektu",
             description: "Kolik výstavba a provoz datových center stojí, kdo ji zaplatí a komu se reálně vyplatí?",
             children: (
-                <>
+                <div className="space-y-2">
                     <p>
-                        Pokud se má někde stavět datové centrum, jde hlavně o peníze a ekonomiku.
-                        V tomto modulu můžete prozkoumat, jaké ekonomické dopady bude mít výstavba a provoz vašeho portfolia datových center na Českou republiku.
-                        Model počítá pouze přímé efekty, nikoli nepřímé ani indukované.
+                        Pokud se má někde stavět datové centrum, jde hlavně o peníze.
+                        V této sekci můžeš prozkoumat, jaké dopady bude mít výstavba a provoz tvého portfolia datových center na českou ekonomiku.
                     </p><p>
-                        Můžete si vymodelovat celé portfolio, ale vyzkoušetje také dopady jednotlivých typů datových center – možná vás překvapí, jak zásadně se jejich ekonomický dopad liší.
-                        Pomocí výběru scénáře vpravo nahoře vedle nastavení můžete sledovat, jak se mění ekonomická výkonnost a přínosy v závislosti na tržních podmínkách a obsazenosti.
+                        Můžeš si namodelovat celé portfolio, ale vyzkoušej také dopady jednotlivých typů datových center – možná tě překvapí, jak zásadně se jejich ekonomický dopad liší.
+                        Pomocí výběru scénáře vpravo nahoře můžeš sledovat, jak se přínosy mění v závislosti na tržních podmínkách a obsazenosti. Model počítá pouze přímé efekty.
                     </p>
-                </>
+                </div>
             ),
             hover: (
                 <>
                     <p>
-                        Obecně datová centra v ekonomice vytvoří <strong>velký impuls při výstavbě</strong>, kdy vznikne asi 500 pracovních pozic na 100 MW a do ekonomiky se dostanou miliardy Kč z výstavby – obzvláště pokud se jí zúčastní domácí firmy.
-                        Pořizování samotného vybavení pak většinou probíhá ze zahraničí a přímý dopad na ČR je minimální. Clo na IT technologie je totiž v EU nulové a zaplacená DPH se provozovateli na konci účetního období vrací.
+                        Obecně datová centra v ekonomice vytvoří <strong>velký impuls při výstavbě</strong>, kdy vznikne asi 500 pracovních pozic na 100 MW a do ekonomiky se dostanou miliardy Kč – obzvláště pokud se stavby zúčastní domácí firmy.
+                        Pořizování samotného IT vybavení pak většinou probíhá ze zahraničí a přímý dopad na ČR je minimální. Clo na IT technologie je totiž v EU nulové a DPH se investorovi na konci účetního období vrací.
                     </p><p>
-                        <strong>Ve fázi provozu</strong> pak záleží na ziscích, jaké v daném roce firma dosáhne – to je ale obtížné vymodelovat, protože záleží na účetní a odpisové politice dané firmy.
+                        <strong>Ve fázi provozu</strong> pak záleží na ziscích, kterých v daném roce firma dosáhne – ty jsou ale obtížné vymodelovat, jelikož závisí na účetní a odpisové politice firmy.
                         Ani DPH nelze přesně vymodelovat, protože firma své služby prodává především jiným podnikatelům a často i do zahraničí.
-                        Jediným konečným zákazníkem AI DC jsou klienti, kteří posílají dotazy modelům umělé inteligenci a platí za to. Zde ale nastává paradox:
+                        Jediným konečným zákazníkem klienti, kteří posílají dotazy placeným modelům umělé inteligence (placené verze ChatGPT, Gemini, Claude a další).
+                        Zde ale nastává paradox:
                     </p>
                     <ul className="list-disc list-inside space-y-1 my-2 pl-4">
                         <li>DPH za výpočetní služby se v EU platí v místě spotřeby. </li>
-                        <li>Pokud se tedy uživatel z Polska rozhodne využívat AI model běžící v datovém centru v ČR, tak platí DPH do polské státní pokladny.</li>
-                        <li>Opačnou logikou platí, že kdyby DC stálo v Polsku a využívali by ho Češi, přes DPH by do veřejného rozpočtu stejně peněz, jako kdyby stálo u nás.</li>
+                        <li> Pokud se tedy uživatel z Polska rozhodne využívat AI model běžící v datovém centru v ČR, platí DPH do polské státní pokladny.</li>
+                        <li>Opačnou logikou platí, že kdyby DC stálo v Polsku a využívali by ho Češi, přiteklo by přes DPH do našeho veřejného rozpočtu stejně peněz, jako kdyby stálo u nás.</li>
                         <li>Dopad na českou ekonomiku by byl tak či onak stejný.</li>
                     </ul>
                     <p>
-                        Zůstává tedy otázkou, proč si to brát na triko? Výpočetní výkon se už dnes stává drahou komoditou, podobně jako ropa nebo zemní plyn.
+                        <strong>Proč tedy datová centra stavět?</strong> Výpočetní výkon se už dnes stává drahou komoditou, podobně jako ropa nebo zemní plyn.
                         Z politického hlediska je proto důležité, aby měl každý stát (či větší celek) vlastní zdroje, neboť závislost na jiném celku by se v budoucnu mohla stát hrozbou.
                         Konkrétně pro evropské země je pak důležitá podpora ze strany EU, která má v rámci projektu AI factory mobilizovat investice ve výši až 20 miliard eur.
                     </p><p>
-                        A proč si to na triko vzaly státy v USA nebo třeba Irsko? Provozovatelé DC jim totiž slibovali, že výstavba nového datového centra v ekonomice způsobí obrovský rozkvět lukrativních IT pozic a koncentrace nových firem.
-                        Realita je však jiná – samotné datové centrum má asi 50 zaměstnanců na 100 MW (podívejte se na kartu níže) a žádný lokální rozkvět nezpůsobuje, jak ukazuje například studie <a className="text-blue-400 hover:text-blue-500 cursor-pointer" target="_blank" rel="noopener noreferrer" href="https://dx.doi.org/10.2139/ssrn.5881105">Subsidizing the Cloud: U.S. State Incentives to Data Centers</a>.
+                        <strong>Většina DC je však provozována soukromě. Proč je tedy ve velkém schvalují státy v USA nebo třeba Irsko?</strong> Provozovatelé DC jim totiž slibovali, že výstavba nového datového centra způsobí v ekonomice obrovský rozkvět lukrativních IT pozic a přiláká nové firmy.
+                        Realita je však jiná – samotné datové centrum má asi 50 zaměstnanců na 100 MW (podívej se na kartu níže) a žádný lokální rozkvět nezpůsobuje, jak ukazuje například studie <a className="text-blue-400 hover:text-blue-500 cursor-pointer" target="_blank" rel="noopener noreferrer" href="https://dx.doi.org/10.2139/ssrn.5881105">Subsidizing the Cloud: U.S. State Incentives to Data Centers</a>.
                     </p><p>
-                        Přínosy datových center tak skutečně spočívají spíše ve strategické rovině než ekonomické návratnosti.
-                        Při rozhodování o povolení jejich výstavby je důležité především kdo bude provozovatelem a jaké podmínky nabídne.
-                        Kdo bude DC a v něm uložená data vlastnit? Bude moct stát používat výpočetní výkon a za jakých okolností?
-                        Bude z výstavby těžit pouze soukromý majitel, nebo se podaří DC použít i pro vědu a výzkum?
+                        Přínosy datových center tak skutečně spočívají <strong>spíše ve strategické rovině</strong> než v ekonomické návratnosti.
+                        Při rozhodování o povolení jejich výstavby je důležité především to, kdo bude provozovatelem a jaké podmínky nabídne.
+                        Kdo bude DC a v něm uložená data vlastnit? Bude moci stát používat výpočetní výkon a za jakých okolností?
+                        Bude z výstavby těžit pouze soukromý majitel, nebo se podaří DC využít i pro vědu a výzkum?
                     </p>
                 </>
             )
@@ -123,15 +123,12 @@ export const getEconomyCopy = (inputData) => {
                 <>
                     <p>
                         Zobrazená částka ukazuje celkové náklady na budovu včetně výpočetní techniky vydělené počtem let provozu datového centra (annualized CAPEX).
-                        Datová centra v DHM vlastní především budovu a IT vybavení, přičemž budovy se odpisují 30 let a IT vybavení 4 roky – za životnost budovy se tak IT vybavení obmění teoreticky 7,5krát.
                         Celková investice do DHM za provoz tohoto portfolia DC je <span className="font-semibold text-amber-900">{data.portfolioTotalOperationsCapex.formatted}</span>.
                     </p>
                     <p>Datová centra vyžadují masivní počáteční investice.
                         Samotná budova, chlazení a infrastruktura stojí asi 230 milionů Kč na 1 MW příkonu, IT vybavení stojí na 1 MW až 4krát víc.
                     </p><p>
-                        Výše investice jako taková nám toho moc neřekne – důležité je srovnání kapitálové náročnosti projektu s ostatními ukazateli, které nám o jeho efektivitě prozradí víc (najdete je v ostatních kartách).
-                    </p><p>
-                        Srovnání s dálnicemi a nemocnicemi je ilustrační. Investice do DC většinou pocházejí ze soukromých zdrojů. Není to tak, že místo DC by stát mohl postavit dálnici nebo nemocnici.
+                        Srovnání s dálnicemi a nemocnicemi je ilustrační. Investice do DC většinou pocházejí ze soukromých zdrojů. Neplatí, že by stát místo DC mohl postavit dálnici nebo nemocnici.
                     </p>
                 </>
             )
@@ -169,17 +166,14 @@ export const getEconomyCopy = (inputData) => {
             children: (
                 <>
                     <p>
-                        Hrubá přidaná hodnota je čistý ekonomický přínos projektu vyjádřený odečtením mezispotřeby od celkové produkce.
-                        Ukazuje reálnou nově vytvořenou hodnotu v rámci ekonomiky.
+                        Hrubá přidaná hodnota je ekonomický přínos projektu vyjádřený odečtením mezispotřeby od celkové produkce.
                     </p><p>
-                        V případě datových center jsou produkcí prodané kapacity, prodané služby nebo zpracované tokeny.
-                        Mezispotřebu tvoří především elektrická energie a služby spojené s provozem IT technologií – licence software, servis, konektivita a další. Nezapočítavají se sem mzdy.
+                        Produkcí jsou prodané kapacity (kolokační), prodané služby (trénovací) nebo zpracované tokeny (inferenční).
+                        Mezispotřebu tvoří elektřina a služby spojené s provozem IT technologií – licence softwaru, servis, konektivita a další. Nezapočítávají se sem mzdy.
                     </p><p>
-                        Zajímavé je sledovat, že podíl zaměstnanců na celkové HPH dosahuje přibližně{" "}
-                        <span className="font-semibold text-emerald-900">{equivalents.gvaPerWorker} mil. Kč na zaměstnance</span> ročně.
-                        To je přibližně <a className="text-blue-400 hover:text-blue-500 cursor-pointer" target="_blank" rel="noopener noreferrer" href="https://ris3.gov.cz/monitoring/indikatory/v03-produktivita-prace-podle-sektoru-hphzamestnance">30-40krát více</a> než celorepublikový průměr, což DC řadí k vůbec nejefektivnějším odvětvím.
-                    </p><p>
-
+                        Zajímavé je sledovat, že hrubá přidaná hodnota na jednoho zaměstnance dosahuje přibližně{" "}
+                        <span className="font-semibold text-emerald-900">{equivalents.gvaPerWorker} mil. Kč</span> ročně.
+                        To je přibližně <a className="text-blue-400 hover:text-blue-500 cursor-pointer" target="_blank" rel="noopener noreferrer" href="https://ris3.gov.cz/monitoring/indikatory/v03-produktivita-prace-podle-sektoru-hphzamestnance">30–40krát více</a> než celorepublikový průměr, což DC řadí k vůbec nejproduktivnějším odvětvím.
                     </p>
                 </>
             )
@@ -192,7 +186,7 @@ export const getEconomyCopy = (inputData) => {
                 <>
                     <div className="flex items-baseline gap-2">
                         <span className="text-2xl font-bold text-cyan-950">
-                            {data.portfolioFteOperations.formatted}
+                            {data.portfolioFteOperations.formatted}<sup>*</sup>
                         </span>
                         <span className="text-xs text-cyan-800/70">v provozu</span>
                     </div>
@@ -225,14 +219,12 @@ export const getEconomyCopy = (inputData) => {
                 <>
                     <p>...zatímco v případě DC roční investice ve výši <span className="font-semibold text-cyan-900">{data.portfolioAnnualizedCapex.formatted}</span> vytvoří <span className="font-semibold text-cyan-900">{data.portfolioFteOperations.value} FTE.</span></p>
                     <p>
-                        Karta o HPH ukazuje, že jsou datová centra velice efektivní a mají jedno z nějvyšších HPH na zaměstnance.
+                        Karta o HPH ukazuje, že jsou datová centra velice efektivní a mají jedno z nejvyšších HPH na zaměstnance.
                         To je ale dvojsečná zbraň – za obrovské investice vytvoří jen málo pracovních míst, což se projeví v lokální ekonomice.
-                        Pokud navíc vezmeme v potaz problémy s určením daní PO a DPH (jak je popsáno v úvodní kartě), celkové ekonomické přínosy datových center jsou problematické.
+                        Pokud navíc vezmeš v úvahu problémy s určováním daní z příjmů právnických osob a DPH (jak je popsáno na úvodní kartě), celkové ekonomické přínosy datových center jsou sporné.
                     </p><p>
                         <sup>*</sup>FTE (Full Time Equivalent) přepočítává zaměstnance na plné úvazky po dobu jednoho roku.
-                        Například 5 zaměstnanců na 1/2 úvazku je rovno 2,5 FTE.
-                        Stejně tak jeden zaměstnanec na plný úvazek zaměstnaný na půl roku je roven 1/2 FTE.
-                        Tato metrika se používá především při výstavbě, kde se může vystřídat až několik tisíců osob, ale každá krátkodobě – FTE sčítá jejich odpracovaný čas a dělí jej počtem pracovních dnů v roce.
+                        Například 5 zaměstnanců na 1/2 úvazku se rovná 2,5 FTE. Jeden zaměstnanec na plný půlroční úvazek odpovídá 1/2 FTE.
                     </p>
                 </>
             )
@@ -263,83 +255,107 @@ export const getEconomyCopy = (inputData) => {
                     </ComparisonData>
 
                     <ComparisonData className="text-stone-600 hover:text-stone-800 transition-colors">
-                        <p><span className="font-semibold text-stone-800">{data.portfolioContributionsOperations.formatted}</span> z povinných odvodů a</p>
+                        <p><span className="font-semibold text-stone-800">{data.portfolioContributionsOperations.formatted}</span> z povinných odvodů</p>
                     </ComparisonData>
 
                     <ComparisonData className="text-stone-600 hover:text-stone-800 transition-colors">
-                        <p><span className="font-semibold text-stone-800">{data.portfolioIncomeTaxOperations.formatted}</span> z DPFO.</p>
+                        <p>a <span className="font-semibold text-stone-800">{data.portfolioIncomeTaxOperations.formatted}</span> z DPFO.</p>
                     </ComparisonData>
                 </>
             ),
             children: (
                 <>
-                    <p>Roční odvody a daně generované ve fázi provozu představují stabilní přínos pro veřejné finance, vykazují však <strong>anomální strukturální rozdělení</strong>.</p>
-                    <p>Zatímco u běžných odvětví (průmysl, služby) tvoří drtivou většinu odvodů státu daně navázané na živou práci (DPFO a sociální/zdravotní pojištění zaměstnanců), u datových center je tento poměr obrácený. Kvůli minimální zaměstnanosti (pouze jednotky FTE) je fiskální přínos tažen primárně <strong>majetkovými a ekologickými daněmi (daň z nemovitých věcí, poplatky za energie)</strong>, nikoliv lidskou prací.</p>
-                    <p>Ideální by bylo do příjmu veřejného rozpočtu zahrnout také DPPO a DPH, nicméně jejich zahrnutí komplikuje modelaci (vysvětleno v úvodní kartě).</p>
+                    <p>
+                        Roční odvody a daně ve fázi provozu představují stabilní přínos pro veřejné finance, ale mají neobvyklé rozdělení.
+                    </p><p>
+                        Zatímco u běžných odvětví (průmysl, služby) tvoří drtivou většinu odvodů státu daně navázané na živou práci (DPFO a sociální/zdravotní pojištění zaměstnanců), u datových center je tento poměr obrácený. Kvůli minimální zaměstnanosti (pouze jednotky FTE) je fiskální přínos tažen primárně <strong>majetkovými a ekologickými daněmi (daň z nemovitých věcí, poplatky za energie)</strong>, nikoliv lidskou prací.
+                    </p><p>
+                        Ideální by bylo do příjmu veřejného rozpočtu zahrnout také DPPO a DPH, nicméně jejich zahrnutí komplikuje modelaci (viz úvodní kartu).
+                    </p>
                 </>
             )
         },
         chartRevenues: {
-            title: "Dekompozice tržeb (Modelování HPH)",
+            title: "Dekompozice tržeb (pro modelování HPH)",
             description: "Srovnání celkového výnosu a jeho rozdělení na přidanou hodnotu a hlavní provozní náklady napříč scénáři (mil. Kč).",
-            hoverExplanation: `Tento graf ukazuje strukturu tržeb (výnosů) za provoz portfolia.
-                                 Výška celého sloupce ukazuje celkové tržby portfolia datových center a rozkládá je na HPH a mezispotřebu (elektřina + ostatní OPEX).
-                                 Najetím na jednotlivé sloupce můžete srovnat hodnoty napříč pesimistickým, realistickým a optimistickým scénářem.
-                                 Zkuste si vymodelovat také jednotlivé typy datových center a porovnejte, jak se liší struktura jejich nákladů.`
+            hoverExplanation: `Tento graf ukazuje strukturu tržeb (produkce) za provoz portfolia.
+                                 Výška celého sloupce ukazuje celkovou produkci portfolia datových center a rozkládá ji na HPH a mezispotřebu (elektřina + ostatní OPEX).
+                                 Najetím na jednotlivé sloupce můžeš srovnat hodnoty napříč pesimistickým, realistickým a optimistickým scénářem.
+                                 Zkus si namodelovat také jednotlivé typy datových center a porovnej, jak se liší struktura jejich nákladů.`
         },
         chartGvaTimeline: {
             title: "Kumulativní vývoj HPH v čase",
             description: "Celkový ekonomický přínos vyjádřený jako HPH vytvořená během výstavby a následného provozu (mld. Kč).",
             hoverExplanation: `Zatímco ostatní karty a grafy vyjadřují spíše momentové hodnoty vztažené k jednomu roku, tento graf ukazuje dlouhodobý pohled.
                             Oranžovou část tvoří jednorázový impuls HPH, která vzniká během let výstavby.
-                            Zelenou část tvoří roční HPH z provozu, která vzniká po celou dobu výstavby.
-                            Celková délka sloupce představuje celkovou hrubou přidanou hodnotu portfolia za celou jeho živostnost, resp. do určitého zvoleného roku.
+                            Zelenou část tvoří provozní HPH, která vzniká po celou dobu provozu.
+                            Celková výška v každém bodě představuje celkovou hrubou přidanou hodnotu portfolia vytvořenou do toho bodu v čase.
                             `
         },
         contextCard: {
             title: "Jak interpretovat přidanou hodnotu (HPH)?",
-            description: "Pochopte, jak se přidaná hodnota datových center chová v reálné ekonomice a kdo z ní těží.",
+            description: "Podívej se, co vlastně přidaná hodnota je a kdo z ní těží.",
             sections: [
                 {
-                    title: "Co je to HPH a co vyjadřuje?",
+                    title: "Co HPH vyjadřuje?",
                     icon: <TrendingUp className="h-4 w-4 text-blue-500" />,
                     text: (
-                        <>
+                        <div className="space-y-2">
                             <p>
-                                <strong>Hrubá přidaná hodnota (HPH)</strong> je klíčový ukazatel ekonomické výkonnosti. Vyjadřuje nově vytvořenou hodnotu, kterou datová centra přinášejí do hospodářství nad rámec spotřebovaných vstupů (jako je elektřina nebo režijní služby).
+                                <strong>Hrubá přidaná hodnota (HPH)</strong> je standardní ekonomický ukazatel, který zachycuje nově vytvořenou hodnotu. Zjednodušeně řečeno vyjadřuje rozdíl mezi tím, kolik datové centrum utrží za své služby (produkce), a tím, co musí nakoupit od jiných firem pro zajištění chodu, jako je elektřina, licence či konektivita (mezispotřeba). Mzdy se do mezispotřeby nepočítají.
+                            </p><p>
+                                HPH je v podstatě balík peněz, ze kterého se následně platí mzdy zaměstnanců a související odvody, kryjí se odpisy budov i technologií a zbylá část tvoří zisk majitelů. Součet HPH všech odvětví v zemi po zohlednění nepřímých daní a dotací odpovídá hrubému domácímu produktu (HDP).
+                            </p><p>
+                                Pro účely našeho modelu je HPH skvělým ukazatelem, protože je <strong>robustní vůči účetním přesunům zisku a daňové optimalizaci</strong>. I když nevíme, jak přesně si nadnárodní korporace upraví daně a jaký čistý zisk v ČR formálně vykáže, HPH vyjadřuje reálnou ekonomickou hodnotu, která v tuzemsku díky datovému centru skutečně vznikne.
+                            </p><p>
+                                Tady je modelový příklad:
                             </p>
-                            <p className="mt-2">
-                                Počítá se jako rozdíl mezi celkovými výnosy za prodej výpočetního výkonu a tzv. mezispotřebou. Zjednodušeně řečeno: je to hodnota, ze které se následně platí mzdy zaměstnanců, odvádějí daně státu a generuje se čistý zisk majitelů.
-                            </p>
-                        </>
+                            <ul className="list-disc list-inside space-y-1 pl-2">
+                                <li>Pokud datové centrum pronajme racky, prodá výpočetní sílu pro AI trénování nebo zpracuje dotazy uživatelů za celkem <strong>100 mil. Kč ročně</strong> (to je celková <strong>produkce</strong> datového centra),</li>
+                                <li>a spotřebuje k tomu elektrickou energii, chlazení, zaplatí softwarové licence a nakoupí internetovou konektivitu za <strong>60 mil. Kč</strong> (to tvoří <strong>mezispotřebu</strong>; mzdy ani daně v tom ještě započítané nejsou),</li>
+                                <li>vygeneruje tím <strong>hrubou přidanou hodnotu (HPH) ve výši 40 mil. Kč</strong> – a právě z této sumy se následně vyplatí platy zaměstnancům (např. 10 mil. Kč), pokryjí se odpisy budov i serverů a zbytek tvoří provozní zisk majitele.</li>
+                            </ul>
+                        </div>
                     )
                 },
                 {
-                    title: "Extrémní produktivita práce",
+                    title: "Extrémní efektivita?",
                     icon: <Users className="h-4 w-4 text-emerald-500" />,
                     text: (
-                        <>
+                        <div className="space-y-2">
                             <p>
-                                Datová centra vykazují anomálně vysokou produktivitu práce vyjádřenou v HPH. Průměrná roční HPH na jednoho zaměstnance (FTE) dosahuje přibližně <strong>{equivalents.gvaPerWorker} mil. Kč</strong>.
+                                Když se podíváš na čísla, datová centra vypadají jako ekonomický zázrak.
+                                V přepočtu na jednoho pracovníka totiž generují astronomickou hrubou přidanou hodnotu – zhruba <strong>{equivalents.gvaPerWorker} mil. Kč ročně</strong>.
+                                To je až <a className="text-blue-600 hover:text-blue-700 cursor-pointer font-semibold" target="_blank" rel="noopener noreferrer" href="https://ris3.gov.cz/monitoring/indikatory/v03-produktivita-prace-podle-sektoru-hphzamestnance">čtyřicetkrát více</a>, než činí průměrná produktivita v České republice!
+                                Jenže tato úchvatná statistika je spíše velký optický, respektive ekonomický klam.
+                            </p><p>
+                                Ďábel se skrývá v detailech účetnictví.
+                                Hrubá přidaná hodnota v sobě povinně obsahuje i <strong>odpisy majetku</strong>.
+                                A protože srdcem každého datového centra je extrémně drahé IT vybavení (grafické karty, AI akcelerátory, servery), které morálně zastará během <strong>pouhých 4 let</strong>,
+                                obrovský kus celého HPH se okamžitě rozpustí právě v těchto rychlých a masivních odpisech hardwaru.
+                            </p><p>
+                                <strong>Tradiční odvětví</strong> běžně používají přepočet na pracovníky, protože lidská práce je tam klíčovým a nenahraditelným vstupem. Pro datová centra to ale <strong>vůbec neplatí</strong> – moderní DC běží víceméně jako autonomní stroje, které fungují prakticky bez zásahu a lidé jsou zapotřebí jen v krizových případech. Srovnávat takto produktivitu práce je proto <strong>silně zavádějící</strong>. Daleko smysluplnější a objektivnější by bylo poměřovat vytvořenou HPH na <strong>investovaný kapitál</strong>.
+                            </p><p>
+                                Ale co ty dovezené komponenty, ty nám nic nedají? Jak už víš z úvodní karty, servery a čipy se do ČR <strong>kompletně dovážejí ze zahraničí</strong>. Vzhledem k tomu, že clo na IT technologie je v EU nulové a zaplacenou DPH dostane provozovatel od státu zpět, z nákupu těchto technologií nemá tuzemská ekonomika <strong>vůbec nic</strong>. Skoro polovina celého vygenerovaného HPH tak sice na papíře vypadá skvěle a zvyšuje české HDP, ale pro reálný blahobyt naší země je v podstatě <strong>bezvýznamná</strong>.
                             </p>
-                            <p className="mt-2">
-                                To je přibližně <a className="text-blue-600 hover:text-blue-700 cursor-pointer font-semibold" target="_blank" rel="noopener noreferrer" href="https://ris3.gov.cz/monitoring/indikatory/v03-produktivita-prace-podle-sektoru-hphzamestnance">30–40krát více</a> než celorepublikový průměr (který se pohybuje kolem 1 mil. Kč na pracovníka). DC jsou tak kapitálově extrémně intenzivní, ale z hlediska lidské práce velmi efektivní.
-                            </p>
-                        </>
+                        </div>
                     )
                 },
                 {
-                    title: "Kde peníze z HPH reálně končí?",
+                    title: "Co z toho plyne?",
                     icon: <Landmark className="h-4 w-4 text-indigo-500" />,
                     text: (
-                        <>
+                        <div className="space-y-2">
                             <p>
-                                Ačkoli je číslo HPH ohromující, pro českou ekonomiku má svá specifika. Jelikož datová centra zaměstnávají jen minimum lidí a jsou často vlastněna nadnárodními technologickým giganty, <strong>drtivá většina vytvořené HPH odchází ve formě zisků mateřským společnostem do zahraničí</strong>.
+                                Ačkoli je výsledné číslo HPH na první pohled ohromující, pro českou ekonomiku má svá velmi specifická úskalí. Je pravda, že HPH věrně ukazuje, jaká hodnota byla fyzicky <strong>vyprodukována přímo na území ČR</strong>. Jenže na rozdíl od tradičních odvětví, jako je například <strong>průmysl</strong>, nám toto číslo říká jen velmi málo o tom, kolik z těchto přínosů u nás skutečně zůstane.
                             </p>
-                            <p className="mt-2">
-                                Skutečný tuzemský přínos je proto dán především vybranými korporátními daněmi, daněmi z nemovitostí, poplatky za distribuci elektřiny a platy oněch několika málo místních zaměstnanců, nikoli celým objemem HPH.
+                            <p>
+                                <strong>Drtivou většinu HPH totiž pohltí odpisy</strong> extrémně drahého hardwaru (ze kterého, jak už víme, česká ekonomika nic nemá). To, co po odečtení odpisů a mezd zbude jako <strong>čistý provozní zisk</strong>, pak velmi často odtéká mateřským společnostem do zahraničí, protože provozovateli bývají nadnárodní technologičtí giganti.
                             </p>
-                        </>
+                            <p>
+                                A i kdyby byl vlastník ryze domácí subjekt, kvůli možnostem <strong>daňových optimalizací</strong> se firmy mohou placení daně z příjmů právnických osob (DPPO) velmi snadno vyhnout. Skutečný tuzemský přínos je proto dán spíše drobky ze stolu: vybranou daní z nemovitých věcí, ekologickými poplatky, platbami za distribuci elektřiny a platy té hrstky zaměstnanců. Je proto klíčové se nad tímto <strong>strukturálním rozdílem</strong> zamyslet a nenechat se oslnit zdánlivě astronomickými makroekonomickými ukazateli.
+                            </p>
+                        </div>
                     )
                 }
             ]

@@ -1,5 +1,5 @@
-import { BookOpen, Sliders, Layers, Cpu, CheckCircle2, Zap, Coins, Leaf, TrendingUp, Landmark, Settings } from "lucide-react"
-import { prepareData, formatData } from "@/components/model-screens/texts/textutils"
+import { BookOpen, Sliders, Layers, Cpu, Zap, Coins, Leaf, TrendingUp, Landmark, Settings } from "lucide-react"
+import { prepareData } from "@/components/model-screens/texts/textutils"
 
 const formatMwhToTwh = (mwh, fixed = 3) => {
     return `${(mwh / 10 ** 6).toLocaleString("cs-CZ", { minimumFractionDigits: fixed, maximumFractionDigits: fixed })} TWh`
@@ -287,7 +287,7 @@ export const getAggregateCopy = (inputData) => {
                             <li><strong>Udržitelnost / ESG:</strong> Výpočet nepřímých emisí Scope 2, spotřeba vody (srovnání se spotřebou obyvatel či objemem Lipna) a zábor půdy.</li>
                         </ul>
                         <p>
-                            Pokud by tě zajímaly jiné výpočty, než které jsou v modelu implementovány, zdrojové hodnoty můžes zjistit po rozkliknutí Nastavení v pravém horním rohu a povolení Debug view.
+                            Pokud by tě zajímaly jiné výpočty, než které jsou v modelu implementovány, zdrojové hodnoty můžeš zjistit po rozkliknutí Nastavení v pravém horním rohu a povolení Debug view.
                             Pak se ti zobrazí jedna dodatečná záložka, po jejímž rozkliknutí uvidíš údaje o všech datových centrech, jejich součty a celkové hodnoty.
                         </p>
 

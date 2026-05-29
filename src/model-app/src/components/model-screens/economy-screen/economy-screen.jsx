@@ -16,7 +16,7 @@ export const EconomyModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
             {/* Dashboard Header */}
             <ScreenHeader
                 title="Ekonomické dopady a investice"
-                subtitle="Modelování investičních (CAPEX) a provozních (OPEX) nákladů, přidané hodnoty (HPH) a daní."
+                subtitle="Modelování investičních a provozních nákladů, přidané hodnoty (HPH) a daní."
                 analyzedData={data}
                 pulseColor="bg-cyan-500"
             />

@@ -31,28 +31,28 @@ export const CALCULATION_DETAILS = {
         "label": "Celková teoretická maximální spotřeba",
         "description": "Maximální sumární roční spotřeba elektrické energie všech objektů při nepřetržitém provozu na 100% projektovaný výkon po dobu 365 dní.",
         "unit": "MWh/rok",
-        "formattedUnit": "tis. MWh/rok",
+        "formattedUnit": "mil. MWh/rok",
         "decimals": 1
     },
     "portfolioMaxITConsumption": {
         "label": "Celková teoretická maximální spotřeba IT",
         "description": "Maximální sumární roční objem elektrické energie spotřebovaný čistě výpočetním hardwarem napříč celým portfoliem při permanentním plném vytížení.",
         "unit": "MWh/rok",
-        "formattedUnit": "tis. MWh/rok",
+        "formattedUnit": "mil. MWh/rok",
         "decimals": 1
     },
     "portfolioRealEnergyConsumption": {
         "label": "Celková reálná roční spotřeba energie",
         "description": "Odhadovaná skutečná roční spotřeba elektřiny všech center v portfoliu dohromady po započítání reálného průměrného vytížení a koeficientů PUE.",
         "unit": "MWh/rok",
-        "formattedUnit": "tis. MWh/rok",
+        "formattedUnit": "mil. MWh/rok",
         "decimals": 1
     },
     "portfolioRealITConsumption": {
         "label": "Celková reálná roční spotřeba IT",
         "description": "Odhadovaná skutečná roční spotřeba elektrické energie spotřebovaná výhradně IT infrastrukturou napříč všemi objekty při zohlednění modelované průměrné zátěže.",
         "unit": "MWh/rok",
-        "formattedUnit": "tis. MWh/rok",
+        "formattedUnit": "mil. MWh/rok",
         "decimals": 1
     },
     "portfolioBuildingInvestment": {
@@ -157,15 +157,15 @@ export const CALCULATION_DETAILS = {
         "label": "Celkové roční DPFO z provozu",
         "description": "Pravidelný roční sumární výnos státního rozpočtu z daně z příjmů trvalých provozních zaměstnanců napříč celým portfoliem center.",
         "unit": "Kč/rok",
-        "formattedUnit": "tis. Kč",
-        "decimals": 0
+        "formattedUnit": "mil. Kč",
+        "decimals": 1
     },
     "portfolioContributionsOperations": {
         "label": "Celkové roční provozní odvody na pojištění",
         "description": "Pravidelný roční sumární přítok do systému sociálního a zdravotního zabezpečení generovaný stálými provozními pracovníky celého portfolia.",
         "unit": "Kč/rok",
-        "formattedUnit": "tis. Kč",
-        "decimals": 0
+        "formattedUnit": "mil. Kč",
+        "decimals": 2
     },
     "portfolioEcologyTax": {
         "label": "Celková roční ekologická daň",

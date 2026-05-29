@@ -162,16 +162,16 @@ export const getEsgCopy = (inputData) => {
                         Role vlády a místních samospráv (<strong className="text-indigo-700 font-bold">G</strong>overnment) pak propojuje potřeby byznysu se zájmy společnosti.
                     </p>
                     <p>
-                        V této sekci máte příležitost vymodelovat environmentální dopady jak celého portfolia datových center, tak jednotlivých budov – environmentální dopady totiž bývají silně lokalizované.
-                        Namísto gigawattového komplexu zkuste v levé části stránky zadat jedno datové centrum a experimentujte s jeho typem a PUE. Jak se mění jednotlivé ukazatele?
+                        V této sekci máš příležitost vymodelovat environmentální dopady jak celého portfolia datových center, tak jednotlivých budov – environmentální dopady totiž bývají silně lokalizované.
+                        Namísto gigawattového komplexu zkus v levé části stránky zadat jedno datové centrum a experimentuj s jeho typem a PUE. Jak se mění jednotlivé ukazatele?
                     </p>
                 </>
             )
         },
         chart: {
             title: "Meziscénářové srovnání spotřeby a emisí",
-            description: "Sledujte, jak jednotlivé parametry v různých scénářích ovlivňují IT výkon, celkový výkon a emise skleníkových plynů. Nejzajímavější je ukazatel PUE, který přímo ovlivňuje celkovou spotřebu elektřiny a tím pádem i uhlíkové emise.",
-            hoverExplanation: "Proč křivka emisí oxidu uhličitého klesá i přesto, že se spotřeba zvyšuje? V optimistickém scénáří model počítá s tím, že provozovatel datového centra bude alespoň zčásti využívat obnovitelné zdroje energie. V Americe je dnes běžné, že DC má vlastní solární nebo větrné elektrárny, které mu pomáhají snížit emise. Emisní faktor můžete změnit v levém menu v Konfiguraci parametrů -> Environmentální parametry -> Emisní faktor. Zkuste jej například nastavit pro každý scénář stejně (tzn. DC používá pouze průměrnou energii ze sítě) a uvidíte přímou korelaci se spotřebou."
+            description: "Sleduj, jak jednotlivé parametry v různých scénářích ovlivňují IT výkon, celkový výkon a emise skleníkových plynů. Nejzajímavější je ukazatel PUE, který přímo ovlivňuje celkovou spotřebu elektřiny a tím pádem i uhlíkové emise.",
+            hoverExplanation: "Proč křivka emisí oxidu uhličitého klesá i přesto, že se spotřeba zvyšuje? V optimistickém scénáři model počítá s tím, že provozovatel datového centra bude alespoň zčásti využívat obnovitelné zdroje energie. V Americe je dnes běžné, že DC má vlastní solární nebo větrné elektrárny, které mu pomáhají snížit emise. Emisní faktor můžeš změnit v levém menu v Konfiguraci parametrů -> Environmentální parametry -> Emisní faktor. Zkus jej například nastavit pro každý scénář stejně (tzn. DC používá pouze průměrnou energii ze sítě) a uvidíš přímou korelaci se spotřebou."
         }
     }
 }
