@@ -20,9 +20,59 @@
 
 ### Kód a praktická část
 
-#### Závislosti
+Praktickou část projektu tvoří vytvoření modelu, který počítá a popisuje socioeknomické dopady výstavby datových center v České republice.
+Součástí je vytvoření webové aplikace, která výpočty vizualizuje a prezentuje v přehledné formě pro laickou i odbornou veřejnost.
+V tomto dokumentu je popsána pouze technická stránka aplikace, samotná metodologie modelu je součástí LaTeXové části práce.
 
-#### Jak kód spustit
+#### Stack a závislosti
+
+Aplikace je postavena na moderních webových technologiích:
+- Javascript,
+- React,
+- Zustand a Immer,
+- Tailwind CSS,
+- Recharts,
+- Lucide React,
+- Shadcn UI,
+- a Framer Motion.
+
+Tento stack umožňuje interaktivní vizualizaci dat a responzivní design.
+Technologie React navíc umožňuje okamžité přepisování komponent při změně parametrů modelu,
+díky čemuž je výstup rychlý, intuitivní a uživatelsky přívětivý.
+
+#### Architektura aplikace
+
+Cílem aplikace je počítat spotřebu, uhlíkovou stopu nebo hrubou přidanou hodnotu celého portfolia datových center.
+Přímočarým řešením by tedy bylo stahovat datová centra, sečíst jejich parametry a z nich poté vypočítat výsledné dopady.
+Tento přístup má však několik nedostatků: 
+- Neumožňuje sledovat přínosy jednotlivých datových center.
+- Je neefektivní, jelikož by se při každé změně musela přepočítat všechna data, nedají se totiž cachovat dílčí výsledky.
+
+Aplikace je proto založená na okamžitém obohacování zadaných dat:
+- Po zadání datového centra dojde k vypočítání modelových parametrů pro dané datové centrum.
+- Uživatel má možnost zjistit, jaký přínos do celku má konkrétní datové centrum.
+- Tento mezivýsledek se následně uloží k původnímu objektu datového centra, aby se nemusel přepočítávat.
+- Ze všech těchto dílčích výsledků se prostým součtem vypočítají výsledné hodnoty pro celé portfolio.
+
+Při změně vstupních datových center se pak provádí pouze obohacení daného DC a součet přes všechny DC (složitost O(n)). Alternativně by šlo výsledky uložit a následně od nich odečítat/přičítat pouze změněné hodnoty pro dosažení složitosti O(1), nicméně tato implementační komplexita do modelu zanesena nebyla.
+
+Součet nad datovými centry se při změně provede v hlavní komponentě, která pak vypočítaná data předá grafům a dalším komponentám k zobrazení. Neukládá se do storu ani jiného globálního stavu, grafy si data v podstatě vyžádají v momentě, kdy je uživatel zobrazí.
+
+#### Odkaz na živou verzi aplikace
+
+Aplikace byla nasazena na server na doméně [BP FIT ČVUT - Model datových center](https://bp-kachyna.ksi.in.fit.cvut.cz).
+Server má nicméně omezenou platnost do konce února 2027, kvůli čemuž aplikace později nemusí být dosutpná. Odkaz případně aktualizuju. 
+
+#### Jak aplikaci spustit lokálně
+
+Celá webová aplikace je kontejnerizovaná, takže ji lze snadno spustit i v lokálním prostředí:
+
+1. Nainstalujte si Docker Desktop (pokud nemáte)
+2. Ve složce `bp-fit/src/model-app` spusťte příkaz: `docker compose up --build`
+3. Po dokončení kompilace by měla být aplikace dostupná na adrese [http://localhost:5173](http://localhost:5173/)
+4. Po dokončení práce kontejnery zastavte příkazem: `docker compose down`
+
+Poznámka: Tímto se spustí vývojové prostředí, nikoli produkční verze aplikace.
 
 ---
 
