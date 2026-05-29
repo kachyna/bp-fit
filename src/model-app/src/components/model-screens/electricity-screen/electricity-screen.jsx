@@ -7,7 +7,7 @@ import { getElectricityCopy } from "../texts/electricity-texts"
 import { ElectricityBarometerChart } from "./grid-capacity-gauge"
 import { ElectricityScissorsChart } from "./electricity-scissors-chart"
 import { PueSimulator } from "./pue-simulator"
-import { ElectricityContextCard } from "./electricity-context-card"
+import { TabbedContextCard } from "../components/tabbed-context-card"
 import { ScreenHeader } from "../components/screen-header"
 import { TextHoverCard } from "../components/text-hover-card"
 
@@ -87,8 +87,11 @@ export const ElectricityModelScreen = ({ data, activeScenario = "REALISTIC" }) =
                     className="lg:col-span-1"
                 />
 
-                <ElectricityContextCard
+                <TabbedContextCard
                     contextCopy={electricityCopy.contextCard}
+                    theme="electricity"
+                    textContainerClassName="rounded-xl border border-slate-100 bg-slate-50/40 p-5 min-h-[140px] flex flex-col justify-center transition-all duration-300"
+                    hasHoverExpand={false}
                     className="lg:col-span-2"
                 />
             </div>
