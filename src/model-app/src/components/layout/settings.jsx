@@ -9,9 +9,20 @@ const styles = {
     label: "text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-slate-700 cursor-pointer"
 }
 
-export function SettingsMenu({ debug, onCheckboxChange }) {
+export function SettingsMenu() {
+
+    /**
+     * If checked, all tailwind groups will be removed.
+     * This means that all cards will be expanded.
+     */
     const expandAllCards = useUiStore(state => state.expandAllCards)
     const setExpandAllCards = useUiStore(state => state.setExpandAllCards)
+
+    /**
+     * If checked, the debug card will be displayed.
+     * Users can see raw calculated values, maybe if they want to check if the model is working correctly
+     * or calcualte their own custom metrics.
+     */
     const showDebugCard = useUiStore(state => state.showDebugCard)
     const setShowDebugCard = useUiStore(state => state.setShowDebugCard)
 
@@ -34,10 +45,7 @@ export function SettingsMenu({ debug, onCheckboxChange }) {
                                 checked={showDebugCard}
                                 onChange={(e) => { setShowDebugCard(e.target.checked) }}
                             />
-                            <label
-                                htmlFor="debug-mode"
-                                className={styles.label}
-                            >
+                            <label htmlFor="debug-mode" className={styles.label}>
                                 Povolit debug view
                             </label>
                         </div>
@@ -50,10 +58,7 @@ export function SettingsMenu({ debug, onCheckboxChange }) {
                                 checked={expandAllCards}
                                 onChange={(e) => { setExpandAllCards(e.target.checked) }}
                             />
-                            <label
-                                htmlFor="expand-all-cards"
-                                className={styles.label}
-                            >
+                            <label htmlFor="expand-all-cards" className={styles.label}>
                                 Rozbalit všechny karty
                             </label>
                         </div>
