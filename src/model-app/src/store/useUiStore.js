@@ -5,5 +5,10 @@ export const useUiStore = create(immer((set) => ({
     expandAllCards: false,
     setExpandAllCards: (val) => set((state) => {
         state.expandAllCards = val
+    }),
+
+    showDebugCard: false,
+    setShowDebugCard: (val) => set((state) => {
+        state.showDebugCard = val
     })
 })))

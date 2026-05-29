@@ -8,14 +8,17 @@ import { ElectricityModelScreen } from "@/components/model-screens/electricity-s
 import { ESGModelScreen } from "@/components/model-screens/esg-screen/esg-screen"
 import { DebugView } from "@/components/model-screens/debug-view"
 import { useModelStore } from "@/store/useModelStore"
+import { useUiStore } from "@/store/useUiStore"
 import { analyzeDatacenters } from "@/logic/engine"
 
 const TAB_ORDER = ["aggregate", "electricity", "economy", "social", "debug"]
 
-export function AnimatedDashboard({ debug }) {
+export function AnimatedDashboard() {
 
   const datacenters = useModelStore(state => state.datacenters)
   const params = useModelStore(state => state.params)
+
+  const showDebug = useUiStore(state => state.showDebugCard)
 
   const analyzedData = useMemo(() => {
     return analyzeDatacenters(datacenters)
@@ -56,12 +59,12 @@ export function AnimatedDashboard({ debug }) {
   return (
     <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
       <div className="flex justify-center w-full mb-6">
-        <TabsList className={`grid w-full ${debug ? 'grid-cols-5' : 'grid-cols-4'} md:w-fit`}>
+        <TabsList className={`grid w-full ${showDebug ? 'grid-cols-5' : 'grid-cols-4'} md:w-fit`}>
           <TabsTrigger value="aggregate">Přehled</TabsTrigger>
           <TabsTrigger value="electricity">Elektřina</TabsTrigger>
           <TabsTrigger value="economy">Ekonomika</TabsTrigger>
           <TabsTrigger value="social">Udržitelnost / ESG</TabsTrigger>
-          {debug && <TabsTrigger value="debug">Debug</TabsTrigger>}
+          {showDebug && <TabsTrigger value="debug">Debug</TabsTrigger>}
         </TabsList>
       </div>
 
