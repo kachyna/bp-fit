@@ -2,20 +2,10 @@ import React, { useState } from "react";
 import { Button } from "../ui/button";
 import { BufferedInput } from "@/components/ui/buffered-input";
 import { Label } from "../ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { Card, CardContent } from "../ui/card";
 import { Trash2, Maximize2, Minimize2 } from "lucide-react";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "../ui/collapsible";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../ui/collapsible";
 import { DcOverview } from "./dc-overview";
 
 export const DcEntry = ({ dc, dcTypes, updateDatacenter, removeDatacenter }) => {
@@ -29,7 +19,6 @@ export const DcEntry = ({ dc, dcTypes, updateDatacenter, removeDatacenter }) => 
           onOpenChange={setIsOpen}
           className="flex flex-col gap-3 w-full"
         >
-          {/* První řádek: Typ datacentra a ovládací tlačítka */}
           <div className="flex items-end gap-2 justify-between">
             <div className="flex-1 space-y-1.5">
               <Label htmlFor={`type-${dc.id}`} className="text-xs text-slate-500">Typ datacentra</Label>
@@ -132,7 +121,7 @@ export const DcEntry = ({ dc, dcTypes, updateDatacenter, removeDatacenter }) => 
             </div>
           </div>
 
-          {/* Rozbalovací část: Vypočítané informace */}
+          {/* Render overview data in a collapsible section */}
           <CollapsibleContent className="pt-3 mt-1 border-t border-slate-100 overflow-hidden text-sm data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
             <DcOverview dc={dc} />
           </CollapsibleContent>
