@@ -1,4 +1,4 @@
-import { Zap, Activity, Info, Wallet } from "lucide-react"
+import { Zap, Activity, Info, Wallet, Flame, Leaf, Battery } from "lucide-react"
 import { ComparisonData } from "../components/comparisons"
 import { prepareData } from "./textutils"
 
@@ -291,13 +291,16 @@ export const getElectricityCopy = (inputData) => {
         },
         contextCard: {
             title: "Udržitelnost a inovace v energetice DC",
+            description: "Prozkoumejte technologické synergie a inovace, které pomáhají řešit vysokou energetickou spotřebu.",
             sections: [
                 {
                     title: "Využití odpadního tepla (CZT)",
+                    icon: <Flame className="h-4 w-4 text-orange-500" />,
                     text: "Více než 95 % elektrické energie spotřebované datovým centrem se přemění na teplo. V ČR se začíná diskutovat o připojení datových center na městské teplárenské sítě (systémy CZT). Odpadní teplo o teplotě 30–45 °C lze pomocí tepelných čerpadel dohřát a vytápět jím celé čtvrti, skleníky nebo průmyslové areály, což výrazně zvyšuje celkovou energetickou účinnost projektu. Například v severských zemích už tento model dobře funguje."
                 },
                 {
                     title: "Zelené PPA kontrakty",
+                    icon: <Leaf className="h-4 w-4 text-emerald-500" />,
                     text: (
                         <p>
                             Aby datová centra zbytečně nezatěžovala uhelnou či plynovou síť, provozovatelé mohou uzavřít tzv. <a className="text-blue-600 cursor-pointer" href="https://www.cezesco.cz/cs/produkty/power-purchase-agreement-ppa" target="_blank">PPA kontrakty</a> (Power Purchase Agreements) s výrobci obnovitelné energie.
@@ -307,6 +310,7 @@ export const getElectricityCopy = (inputData) => {
                 },
                 {
                     title: "Záložní UPS jako baterie pro síť",
+                    icon: <Battery className="h-4 w-4 text-blue-500" />,
                     text: (
                         <>
                             <p>
