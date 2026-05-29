@@ -3,6 +3,7 @@ import { NumberHoverCard } from "@/components/model-screens/components/number-ho
 import { getEconomyCopy } from "../texts/economy-texts"
 import { EconomyRevenuesChart } from "./economy-revenues-chart"
 import { EconomyGvaTimelineChart } from "./economy-gva-timeline-chart"
+import { TabbedContextCard } from "../components/tabbed-context-card"
 import { ScreenHeader } from "../components/screen-header"
 import { TextHoverCard } from "../components/text-hover-card"
 
@@ -30,24 +31,60 @@ export const EconomyModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
                 {economyCopy.intro.children}
             </TextHoverCard>
 
-            {/* 2. KPI CARDS ROW */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 group/row">
-                {["capex", "gva", "fte", "taxes"].map((category) => {
-                    return (
-                        <NumberHoverCard
-                            key={category}
-                            title={economyCopy[category].title}
-                            color={economyCopy[category].color}
-                            icon={economyCopy[category].icon}
-                            mainText={economyCopy[category].mainText}
-                            comparisonHeader={economyCopy[category].comparisonHeader}
-                            comparisons={economyCopy[category].comparisons}
-                            expandOnRowHover={true}
-                        >
-                            {economyCopy[category].children}
-                        </NumberHoverCard>
-                    )
-                })}
+            {/* KPI CARDS & CONTEXT CARD ROW */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="lg:col-span-1 flex flex-col gap-6">
+                    {/* First row of 2 cards (capex, gva) */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 group/row">
+                        {["capex", "gva"].map((category) => (
+                            <NumberHoverCard
+                                key={category}
+                                title={economyCopy[category].title}
+                                color={economyCopy[category].color}
+                                icon={economyCopy[category].icon}
+                                mainText={economyCopy[category].mainText}
+                                comparisonHeader={economyCopy[category].comparisonHeader}
+                                comparisons={economyCopy[category].comparisons}
+                                expandOnRowHover={true}
+                            >
+                                {economyCopy[category].children}
+                            </NumberHoverCard>
+                        ))}
+                    </div>
+
+                    {/* Second row of 2 cards (fte, taxes) */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 group/row">
+                        {["fte", "taxes"].map((category) => (
+                            <NumberHoverCard
+                                key={category}
+                                title={economyCopy[category].title}
+                                color={economyCopy[category].color}
+                                icon={economyCopy[category].icon}
+                                mainText={economyCopy[category].mainText}
+                                comparisonHeader={economyCopy[category].comparisonHeader}
+                                comparisons={economyCopy[category].comparisons}
+                                expandOnRowHover={true}
+                            >
+                                {economyCopy[category].children}
+                            </NumberHoverCard>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="lg:col-span-1">
+                    <TabbedContextCard
+                        contextCopy={economyCopy.contextCard}
+                        theme="economy"
+                        size="sm"
+                        headerClassName="pb-2"
+                        contentClassName="px-4 pb-4"
+                        tabsGridClassName="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4"
+                        buttonClassName="py-2 px-2.5"
+                        textContainerClassName="rounded-xl border border-slate-100 bg-slate-50/40 px-3 pt-3 transition-all duration-500 ease-in-out overflow-hidden min-h-[75px] max-h-[175px] group-hover/context:max-h-[300px] flex flex-col justify-start"
+                        hasHoverExpand={true}
+                        className="h-full"
+                    />
+                </div>
             </div>
 
             {/* 3. CHARTS ROW */}

@@ -1,78 +1,97 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Activity, Zap, Server, Building } from "lucide-react"
+import { ScreenHeader } from "../components/screen-header"
+import { TextHoverCard } from "../components/text-hover-card"
+import { NumberHoverCard } from "@/components/model-screens/components/number-hover-card"
+import { PortfolioBreakdown } from "./portfolio-breakdown"
+import { getAggregateCopy } from "../texts/aggregate-texts"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
+import { ChevronDown } from "lucide-react"
 
-export const AggregateModelScreen = () => {
+export const AggregateModelScreen = ({ analyzedData, scenario }) => {
+    const currentScenarioData = analyzedData[scenario] || {}
+    const texts = getAggregateCopy(currentScenarioData, analyzedData, scenario)
+
     return (
-        <div className="space-y-6">
-            {/* KPI Karty */}
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-                <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">Agregat</CardTitle>
-                        <Zap className="h-4 w-4 text-slate-500" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">128 MW</div>
-                        <p className="text-xs text-slate-500">+14 % oproti původnímu plánu</p>
-                    </CardContent>
-                </Card>
-                <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">Počet datacenter</CardTitle>
-                        <Building className="h-4 w-4 text-slate-500" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">5</div>
-                        <p className="text-xs text-slate-500">2 v provozu, 3 ve výstavbě</p>
-                    </CardContent>
-                </Card>
-                <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">Průměrné PUE</CardTitle>
-                        <Activity className="h-4 w-4 text-slate-500" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">1.24</div>
-                        <p className="text-xs text-slate-500">-0.05 oproti referenční hodnotě</p>
-                    </CardContent>
-                </Card>
-                <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">Odhad serverů</CardTitle>
-                        <Server className="h-4 w-4 text-slate-500" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">24 500</div>
-                        <p className="text-xs text-slate-500">Kapacita zaplněna na 90 %</p>
-                    </CardContent>
-                </Card>
+        <div className="space-y-6 animate-fade-in">
+            <ScreenHeader
+                title={texts.header.title}
+                subtitle={texts.header.subtitle}
+                analyzedData={analyzedData}
+                pulseColor="bg-emerald-500"
+            />
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+                <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 group/row">
+                    {texts.kpis.map((kpi) => (
+                        <NumberHoverCard
+                            key={kpi.key}
+                            title={kpi.title}
+                            color={kpi.color}
+                            icon={kpi.icon}
+                            mainText={kpi.mainText}
+                            expandOnRowHover={true}
+                        />
+                    ))}
+                </div>
+
+                <div className="lg:col-span-1">
+                    <PortfolioBreakdown />
+                </div>
+
             </div>
 
-            {/* Hlavní grafy / Datové panely */}
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-                <Card className="col-span-4">
-                    <CardHeader>
-                        <CardTitle>Roční predikce růstu spotřeby (TWh)</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        {/* Zástupný blok pro graf */}
-                        <div className="h-75 w-full rounded-md bg-slate-50 border border-slate-200 border-dashed flex items-center justify-center text-slate-400">
-                            [ Zde bude sloupcový / liniový graf růstu spotřeby ]
+            <Collapsible defaultOpen={false} className="group/collapsible mt-10">
+                <CollapsibleTrigger asChild>
+                    <div className="cursor-pointer flex items-center justify-between hover:opacity-80 transition-opacity">
+                        <div>
+                            <h2 className="text-2xl font-bold text-slate-800 tracking-tight">Jak model používat?</h2>
+                            <p className="text-sm text-slate-500">Klikni na mě a zjisti více informací o této aplikaci.</p>
                         </div>
-                    </CardContent>
-                </Card>
-                <Card className="col-span-3">
-                    <CardHeader>
-                        <CardTitle>Rozložení výkonu dle typu DC</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        {/* Zástupný blok pro graf */}
-                        <div className="h-75 w-full rounded-md bg-slate-50 border border-slate-200 border-dashed flex items-center justify-center text-slate-400">
-                            [ Zde bude koláčový graf ]
-                        </div>
-                    </CardContent>
-                </Card>
-            </div>
+                        <ChevronDown className="size-6 text-slate-400 transition-transform duration-200 group-data-[state=open]/collapsible:rotate-180" />
+                    </div>
+                </CollapsibleTrigger>
+
+                <CollapsibleContent className="mt-6 space-y-6 overflow-visible">
+                    <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                        {["about", "settingsTip"].map((key) => {
+                            const card = texts[key]
+                            return (
+                                <TextHoverCard
+                                    key={key}
+                                    title={card.title}
+                                    description={card.description}
+                                    color={card.color}
+                                    icon={card.icon}
+                                    className={card.className}
+                                    hoverContent={card.hoverContent}
+                                >
+                                    {card.children}
+                                </TextHoverCard>
+                            )
+                        })}
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        {["guide", "scenarios", "credits"].map((key) => {
+                            const card = texts[key]
+                            return (
+                                <TextHoverCard
+                                    key={key}
+                                    title={card.title}
+                                    description={card.description}
+                                    color={card.color}
+                                    icon={card.icon}
+                                    className={card.className}
+                                    hoverContent={card.hoverContent}
+                                >
+                                    {card.children}
+                                </TextHoverCard>
+                            )
+                        })}
+                    </div>
+                </CollapsibleContent>
+            </Collapsible>
+
         </div>
     )
 }
