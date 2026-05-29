@@ -65,7 +65,7 @@ export const DcEntry = ({ dc, dcTypes, updateDatacenter, removeDatacenter }) => 
           {/* Druhý řádek: Číselné parametry */}
           <div className="grid grid-cols-3 gap-2">
             <div className="space-y-1.5">
-              <Label htmlFor={`itPower-${dc.id}`} className="text-xs text-slate-500">IT Příkon</Label>
+              <Label htmlFor={`itPower-${dc.id}`} className="text-xs text-slate-500">IT Příkon (MW)</Label>
               <BufferedInput
                 id={`itPower-${dc.id}`}
                 type="number"
