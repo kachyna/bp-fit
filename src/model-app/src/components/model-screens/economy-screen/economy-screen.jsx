@@ -18,7 +18,7 @@ export const EconomyModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
                 title="Ekonomické dopady a investice"
                 subtitle="Modelování investičních (CAPEX) a provozních (OPEX) nákladů, přidané hodnoty (HPH) a daní."
                 analyzedData={data}
-                pulseColor="bg-emerald-500"
+                pulseColor="bg-cyan-500"
             />
 
             <TextHoverCard
