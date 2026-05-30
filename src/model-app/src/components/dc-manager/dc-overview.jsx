@@ -10,7 +10,7 @@ const getOverviewItems = (data) => [
   {
     key: "consumption",
     label: "Roční spotřeba:",
-    value: formatData(data.realEnergyConsumption, 0, "MWh"),
+    value: formatData(data.realEnergyConsumption / 1000000, 3, "TWh"),
     icon: <Zap size={14} />,
     iconClass: "bg-amber-100 text-amber-600",
     cardClass: "bg-amber-50/50 border border-amber-100/50",
