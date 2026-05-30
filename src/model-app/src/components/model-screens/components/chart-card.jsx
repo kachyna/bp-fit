@@ -17,7 +17,7 @@ export const ChartCard = ({
         : "grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100"
 
     return (
-        <Card className={`shadow-sm transition-all duration-300 hover:shadow-md group cursor-default ${cardClass}`}>
+        <Card className={`shadow-sm transition-all duration-300 hover:shadow-md group cursor-default overflow-visible ${cardClass}`}>
             <CardHeader className="flex flex-col gap-1.5">
                 <CardTitle className="text-base font-semibold text-slate-800 flex items-center gap-2">
                     {icon && (
