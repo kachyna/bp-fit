@@ -1,2 +1,134 @@
 \chapter{Testovací scénáře pro model}
 \label{chap:testovani}
+
+Pro ověření funkčnosti modelu byly vytvořeno několik testovacích scénářů v podobě přepřipravených portfolií datových center. Tato portfolia lze v uživatelském rozhraní načíst a spustit, čímž se provede výpočet modelu pro danou vzorovou zemi. Testování spočívá v tom, že se porovnají výsledky modelu s očekávanými hodnotami podle veřejně dostupných dat a informací o energetické infrastruktuře dané země. Nicméně se ukázalo, že tento přístup je značně problematický kvůli nedosupnosti dat a nutnosti změn parametrů modelu. Kvůli tomu lze otestovat pouze základní parametry, které nejsou závislé na specificky českých parameterch. V tomto ohledu pak testovací scénáře uspěly.
+
+\section{Metodika testování}
+\label{sec:testovani_metodika}
+
+Testování modelu může probíhat ve dvou rovinách: testování správnosti výpočtů z matematického hlediska a testování správnosti výpočtů z hlediska reálných dat. V první rovině se ověřuje, zda model správně implementuje matematické vzorce a algoritmy, které jsou základem jeho funkčnosti. Jak již bylo zmíněno v kapitole \ref{subsec:app_testovani}, tento typ testů prováděn nebyl. Výpočty logického enginu byly ověřeny ručně na několika scénářích, ale automatizované testy kvůli časové náročnosti vytvořeny nebyly.
+
+V druhé rovině se testuje samotný model z pohledu reálných dat, nikoli čistě jeho implementaci. To znamená, že se porovnávají výsledky modelu s reálnými daty a informacemi o energetické infrastruktuře dané země na základě reálných parametrů. Celá metodologie testování se tedy dá shrnout do následujících kroků:
+
+\begin{enumerate}
+    \item Zjištění složení portfolia datových center pro danou zemi, včetně jejich kapacity a energetické efektivity. Tato data jsou však často nedostupná, proto může být zapotřebí odhadnout složení portfolia na základě agregovaných informací o infrastruktuře datových center v dané zemi.
+    \item Získaná data se zadají do modelu a vypočítají se výsledné hodnoty. Import je možný buď ručně, nebo zadáním přímo do zdrojového kódu modelu (k tomu je potřeba stáhnout repozitář a spustit aplikaci lokálně). Jediný rozdíl v uvedených přístupech je, že zadáním dat do zdrojového kódu se portfolio DC uloží.
+    \item Daším krokem je srovnání výsledků modelu s reálnými daty a informacemi o energetické infrastruktuře dané země. To zahrnuje porovnání vypočítaných hodnot s veřejně dostupnými daty o spotřebě energie, kapacitě datových center a dalších relevantních parametrech.
+    \item Nakonec dojde k vyhodnocení úspěšnosti testů a identifikace případných odchylek nebo nesrovnalostí.
+\end{enumerate}
+
+Tímto způsobem lze ověřit, zda model poskytuje realistické a přesné výsledky v kontextu reálných dat a informací o energetické infrastruktuře. Do zdrojového kódu byla nahrána 4 vzorová portfolia pro různé země, konkrétně Českou republiku, Irsko, Německo a USA. V následující sekci je popsáno, jak v uživatelském rohhraní testování zaponut a jaké jsou výsledky testování pro tyto země.
+
+\section{Testování v UI}
+\label{sec:testovani_ui}
+
+\section{Testovací scénáře}
+\label{sec:testovani_scenare}
+
+V následujících podsekcích jsou popsány jednotlivé testovací scénáře pro vybrané země. Každý scénář zahrnuje specifické parametry a očekávané výsledky, které jsou porovnány s reálnými daty a informacemi o energetické infrastruktuře dané země.
+
+\subsection{Testovací scénář 1: Česko}
+\label{subsec:testovani_cesko}
+
+Pro scénář České republiky bylo zvoleno portfolio, které odpovídá rozvíjejícímu se trhu ve střední Evropě. Portfolio obsahuje několik typů kolokačních center a trénovacích center pro AI (viz tabulka \ref{tab:portfolio_cesko}).
+
+\begin{table}[tbp]
+    \centering
+    \caption{Složení portfolia pro testovací scénář Česko.}
+    \begin{tabular}{|l|r|c|r|}
+        \hline
+        Typ centra & IT příkon [MW] & PUE & Počet \\ \hline
+        Kolokační & 0,45 & 1,70 & 22 \\ \hline
+        Kolokační & 1,33 & 1,50 & 11 \\ \hline
+        Kolokační & 3,16 & 1,40 & 15 \\ \hline
+        Kolokační & 9,75 & 1,35 & 4 \\ \hline
+        Trénovací & 0,20 & 1,30 & 2 \\ \hline
+        Trénovací & 26,00 & 1,20 & 2 \\ \hline
+    \end{tabular}
+    \label{tab:portfolio_cesko}
+\end{table}
+
+Celkový instalovaný IT příkon tohoto portfolia je 163,33 MW s váženým průměrem PUE 1,35.
+
+\subsection{Testovací scénář 2: Irsko}
+\label{subsec:testovani_irsko}
+
+Irsko je evropským lídrem v oblasti datových center. Testovací portfolio pro tuto zemi zahrnuje velká kolokační centra i specializovaná centra pro AI (viz tabulka \ref{tab:portfolio_irsko}). Specificky u Irska byla data zapsána ve formě klastrů (shluků center) namísto jednotlivých budov, což vysvětluje nižší absolutní počet položek, ale pro účely testování modelu tato agregace není překážkou.
+
+\begin{table}[tbp]
+    \centering
+    \caption{Složení portfolia pro testovací scénář Irsko.}
+    \begin{tabular}{|l|r|c|r|}
+        \hline
+        Typ centra & IT příkon [MW] & PUE & Počet \\ \hline
+        Kolokační & 20,00 & 1,35 & 30 \\ \hline
+        Kolokační & 10,00 & 1,60 & 10 \\ \hline
+        Trénovací & 50,00 & 1,20 & 3 \\ \hline
+        Inferenční & 40,00 & 1,25 & 5 \\ \hline
+    \end{tabular}
+    \label{tab:portfolio_irsko}
+\end{table}
+
+Celkový instalovaný IT příkon portfolia činí 1050 MW s průměrnou hodnotou PUE 1,33.
+
+\subsection{Testovací scénář 3: Německo}
+\label{subsec:testovani_nemecko}
+
+Německý trh, soustředěný zejména v okolí Frankfurtu, patří k největším na světě. Portfolio reflektuje vysoký počet menších i středně velkých center (viz tabulka \ref{tab:portfolio_nemecko}).
+
+\begin{table}[tbp]
+    \centering
+    \caption{Složení portfolia pro testovací scénář Německo.}
+    \begin{tabular}{|l|r|c|r|}
+        \hline
+        Typ centra & IT příkon [MW] & PUE & Počet \\ \hline
+        Kolokační & 1,00 & 1,50 & 800 \\ \hline
+        Kolokační & 2,00 & 1,50 & 400 \\ \hline
+        Kolokační & 5,00 & 1,40 & 200 \\ \hline
+        Trénovací & 70,00 & 1,10 & 6 \\ \hline
+        Inferenční & 40,00 & 1,20 & 9 \\ \hline
+    \end{tabular}
+    \label{tab:portfolio_nemecko}
+\end{table}
+
+Celkový IT příkon pro německý scénář je 3380 MW s váženým průměrem PUE 1,39.
+
+\subsection{Testovací scénář 4: USA}
+\label{subsec:testovani_usa}
+
+USA jako globální lídr disponují největším a nejrozmanitějším portfoliem, které zahrnuje tisíce menších i desítky obřích center (viz tabulka \ref{tab:portfolio_usa}).
+
+\begin{table}[tbp]
+    \centering
+    \caption{Složení portfolia pro testovací scénář USA.}
+    \begin{tabular}{|l|r|c|r|}
+        \hline
+        Typ centra & IT příkon [MW] & PUE & Počet \\ \hline
+        Kolokační & 0,85 & 2,10 & 2545 \\ \hline
+        Kolokační & 3,20 & 1,85 & 1440 \\ \hline
+        Kolokační & 18,50 & 1,55 & 182 \\ \hline
+        Kolokační & 92,00 & 1,45 & 11 \\ \hline
+        Inferenční & 12,00 & 1,50 & 156 \\ \hline
+        Inferenční & 35,00 & 1,40 & 72 \\ \hline
+        Inferenční & 110,00 & 1,30 & 8 \\ \hline
+        Trénovací & 22,00 & 1,45 & 94 \\ \hline
+        Trénovací & 65,00 & 1,35 & 28 \\ \hline
+        Trénovací & 145,00 & 1,25 & 12 \\ \hline
+    \end{tabular}
+    \label{tab:portfolio_usa}
+\end{table}
+
+Celkový instalovaný IT příkon pro tento rozsáhlý scénář je 24 050,25 MW při váženém průměru PUE 1,45.
+
+\section{Vyhodnocení testů}
+\label{sec:testovani_vyhodnoceni}
+
+Z výsledků testů plyne, že neparametrizované výpočty v modelu fungují velmi dobře. Například maximální spotřeba je u všech scénářů vypočítána správně, stejně jako průměrně PUE, maximální IT příkon, složení portfolia a další. To však svědčí spíše o správnosti matematické implementaci modelu než o jeho validitě.
+
+Výpočty používající parametry nezávislé na českých specifikách jsou v modelu počítány také s vysokou přesností. Například výpočet reálné spotřeby energie se shoduje s hodnotami z veřejně dostupných dat pro všechny testované země. To je klíčová informace, protože od této hodnoty se odvíjí další výpočty a závěry modelu. Pokud by tento výpočet nebyl správný, pak by byly nepřesné i všechny další výpočty, které z něj vycházejí.
+
+Další výpočty, které jsou závislé na specifických parametrech pro Českou republiku, pak nedává smysl s daty z jiných zemí srovnávat, neboť by pro výpočet musely být použity jiné parametry. To však v rámci této práce nebylo realistické stihnout, neboť samotný sběr dat jen pro Českou republiku byl velmi časově náročný. Získávat detailní parametry energetické infrastruktury dalších zemí by bylo ještě náročnější.
+
+Předpoklad je tedy takový, že model správně počítá reálnou spotřebu portfolia datových center, což je klíčový výstup pro další analýzy a závěry. A vzhledem k tomu, že ostatní parametry jsou na celkově spotřebě závislé, lze předpokládat, že i tyto výpočty jsou správné. Například emise CO2, které jsou odvozeny z reálné spotřeby, jsou zajisté správné, neboť závisí pouze na spotřebě a emisním faktoru, který je pro Českou republiku známý.
+
+Velkou výhodou vytvořené aplikace je však skutečnost, že umožňuje parametry snadno změnit. V případě, že někdo bude chtít model otestovat pro jinou zemi, stačí v uživatelském rozhraní nastavit specifické parametry a spustit výpočet. Přestože jsou tedy výsledky pro jiné země pouze orientační, při doplnění správných parametrů může model univerzálně vypovídat o různých zemích po celém světě.
