@@ -19,7 +19,7 @@ const prepareChartData = (data) => {
     const scenarioData = data[key]
     chartPoints.push({
       name: label,
-      emissionsThousandTonnes: toThousands(scenarioData.portfolioEmissionsTonnesCO2, 2),
+      emissionsThousandTonnes: toMillions(scenarioData.portfolioEmissionsTonnesCO2, 2),
       energyTWh: toMillions(scenarioData.portfolioRealEnergyConsumption, 2),
       it_energyTWh: toMillions(scenarioData.portfolioRealITConsumption, 2),
     })
@@ -57,7 +57,7 @@ export const ESGChart = ({ data, chartCopy }) => {
           <StyledYAxis
             yAxisId="right"
             orientation="right"
-            tickFormatter={(value) => `${value.toLocaleString("cs-CZ")} tis. t`}
+            tickFormatter={(value) => `${value.toLocaleString("cs-CZ")} mil. t`}
           />
 
           <ChartTooltip content={<ChartTooltipContent className="w-[110%]" />} />
