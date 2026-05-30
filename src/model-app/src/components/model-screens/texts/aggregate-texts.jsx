@@ -39,8 +39,8 @@ export const getAggregateCopy = (inputData) => {
         },
         kpis: [
             {
-                key: "installedPower",
-                title: "Instalovaný příkon",
+                key: "totalPower",
+                title: "Příkon datových center",
                 color: "rose",
                 icon: <Zap className="h-4 w-4" />,
                 mainText: (
