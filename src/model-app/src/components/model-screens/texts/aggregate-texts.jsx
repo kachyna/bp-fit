@@ -332,7 +332,7 @@ export const getAggregateCopy = (inputData) => {
             color: "slate",
             icon: <Settings className="h-4 w-4" />,
             className: "lg:col-span-1",
-            children: "V nastavení vpravo nahoře si můžeš nastavit automatickou expanzi všech karet pro pohodlné čtení."
+            children: "V nastavení vpravo nahoře si můžeš zapnout automatickou expanzi všech karet pro pohodlné čtení. Nebo si ji vypni, pokud jsi na mobilu a nezajímají tě všechny texty."
         },
         portfolio: {
             title: "Složení portfolia",
