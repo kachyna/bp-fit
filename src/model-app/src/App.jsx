@@ -1,5 +1,5 @@
 import './App.css'
-import { ConfigSidebar } from './components/layout/ConfigSidebar'
+import { ConfigSidebar } from './components/layout/config-sidebar'
 import { SidebarProvider, SidebarInset, SidebarTrigger } from './components/ui/sidebar'
 import { AnimatedDashboard } from '#components/layout/animated-dashboard'
 import { Toaster } from '@/components/ui/sonner'

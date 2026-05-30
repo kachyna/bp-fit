@@ -1,7 +1,7 @@
 import { useModelStore } from "../../store/useModelStore";
 import { Button } from "../ui/button"
 import { DcTypesInfoDialog } from "./dc-info";
-import { DcEntry } from "./DcEntry";
+import { DcEntry } from "./dc-entry";
 import { Plus } from "lucide-react";
 import { DC_LABELS } from "@/constants/config"
 

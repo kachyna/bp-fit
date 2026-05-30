@@ -8,8 +8,8 @@ import {
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "../ui/collapsible";
 import { ChevronDown } from "lucide-react";
 
-import { DcManager } from "../dc-manager/DcManager";
-import { ParameterManager } from "../parameter-manager/ParameterManager";
+import { DcManager } from "../dc-manager/dc-manager";
+import { ParameterManager } from "../parameter-manager/parameter-manager";
 
 export function ConfigSidebar() {
     return (
