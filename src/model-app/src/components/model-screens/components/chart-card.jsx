@@ -18,17 +18,17 @@ export const ChartCard = ({
 
     return (
         <Card className={`shadow-sm transition-all duration-300 hover:shadow-md group cursor-default ${cardClass}`}>
-            <CardHeader>
+            <CardHeader className="flex flex-col gap-1.5">
                 <CardTitle className="text-base font-semibold text-slate-800 flex items-center gap-2">
                     {icon && (
-                        <div className={`p-1.5 rounded-md ${iconBgClass}`}>
+                        <div className={`p-1.5 rounded-md shrink-0 ${iconBgClass}`}>
                             {icon}
                         </div>
                     )}
-                    {title}
+                    <span>{title}</span>
                 </CardTitle>
                 {description && (
-                    <CardDescription className="text-slate-500 pl-9">
+                    <CardDescription className="text-slate-500 text-xs leading-normal">
                         {description}
                     </CardDescription>
                 )}
@@ -39,7 +39,7 @@ export const ChartCard = ({
                 {hoverExplanation && (
                     <div className={gridRowsClass}>
                         <div className="overflow-hidden">
-                            <div className="border-t border-dashed mt-4 pt-4 pl-9 pr-9 border-slate-200 text-xs text-slate-600 leading-relaxed">
+                            <div className="border-t border-dashed mt-4 pt-4 border-slate-200 text-xs text-slate-600 leading-relaxed">
                                 {hoverExplanation}
                             </div>
                         </div>
@@ -47,5 +47,6 @@ export const ChartCard = ({
                 )}
             </CardContent>
         </Card>
+
     )
 }

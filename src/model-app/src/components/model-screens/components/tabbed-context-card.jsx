@@ -57,17 +57,17 @@ export const TabbedContextCard = ({
 
     return (
         <Card size={size} className={`border-slate-200/80 bg-linear-to-br from-slate-50 via-white to-slate-50/50 shadow-sm transition-all duration-300 hover:shadow-md hover:border-slate-300 ${hasHoverExpand ? 'group/context' : ''} ${className}`}>
-            <CardHeader className={headerClassName}>
+            <CardHeader className={`flex flex-col gap-1.5 ${headerClassName}`}>
                 <CardTitle className="text-base font-semibold text-slate-800 flex items-center gap-2">
                     {currentSection.icon && (
-                        <div className={`p-1.5 rounded-md transition-colors duration-300 ${activeHeaderBg[activeTab] || activeHeaderBg[0]}`}>
+                        <div className={`p-1.5 rounded-md transition-colors duration-300 shrink-0 ${activeHeaderBg[activeTab] || activeHeaderBg[0]}`}>
                             {currentSection.icon}
                         </div>
                     )}
-                    {contextCopy.title}
+                    <span>{contextCopy.title}</span>
                 </CardTitle>
                 {contextCopy.description && (
-                    <CardDescription className="text-slate-500 pl-9 font-medium text-xs">
+                    <CardDescription className="text-slate-500 font-medium text-xs leading-normal">
                         {contextCopy.description}
                     </CardDescription>
                 )}

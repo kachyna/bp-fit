@@ -41,28 +41,28 @@ export const TextHoverCard = ({
   const expandAllCards = useUiStore(state => state.expandAllCards)
 
   const gridRowsClass = expandAllCards
-    ? "grid grid-rows-[1fr] opacity-100 pl-9"
-    : "grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100 pl-9"
+    ? "grid grid-rows-[1fr] opacity-100"
+    : "grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100"
 
   return (
     <Card className={`group transition-all duration-300 shadow-sm cursor-default ${classes.card} ${className}`}>
-      <CardHeader className="pb-3">
+      <CardHeader className="pb-3 flex flex-col gap-1.5">
         <CardTitle className="text-base font-semibold text-slate-800 flex items-center gap-2">
           {icon && (
-            <div className={`p-1.5 rounded-md ${classes.iconWrapper}`}>
+            <div className={`p-1.5 rounded-md shrink-0 ${classes.iconWrapper}`}>
               {icon}
             </div>
           )}
-          {title}
+          <span>{title}</span>
         </CardTitle>
         {description && (
-          <CardDescription className="text-slate-500 pl-9 font-medium text-xs">
+          <CardDescription className="text-slate-500 font-medium text-xs leading-normal">
             {description}
           </CardDescription>
         )}
       </CardHeader>
       <CardContent className="pb-6">
-        <div className="text-sm text-slate-600 leading-relaxed pl-9">
+        <div className="text-sm text-slate-600 leading-relaxed">
           {children}
         </div>
         
