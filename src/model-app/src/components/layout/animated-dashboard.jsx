@@ -58,7 +58,7 @@ export function AnimatedDashboard() {
 
   return (
     <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-      <div className="w-full overflow-x-auto no-scrollbar mb-6 rounded-lg">
+      <div className="w-full overflow-x-auto overflow-y-hidden no-scrollbar mb-6 rounded-lg">
         <div className="flex justify-start md:justify-center min-w-full">
           <TabsList className="shrink-0 w-max">
             <TabsTrigger value="aggregate">Přehled</TabsTrigger>
