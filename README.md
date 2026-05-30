@@ -74,6 +74,21 @@ Celá webová aplikace je kontejnerizovaná, takže ji lze snadno spustit i v lo
 
 Poznámka: Tímto se spustí vývojové prostředí, nikoli produkční verze aplikace.
 
+#### Návod na spuštění na serveru
+
+Aplikace je kontejnerizovaná a dostupná v Docker image s tagem `kachyna/model-app:latest`.
+
+**Pro vydání nové verze:**
+1. Nejprve se přihlaste k docker registru: `docker login`
+2. Ve složce `src/model-app` spusťte příkaz: `docker build --platform linux/amd64 -t kachyna/model-app:latest -f docker/Dockerfile.prod .`
+3. A nakonec pushněte image: `docker push kachyna/model-app:latest`
+
+**Pro nasazení nové verze:**
+1. Na server nahrajte docker compose soubor `docker-compose.prod.yml` ze složky `model-app/docker`
+1. Na serveru zastavte běžící kontejnery `docker compose -f docker-compose-prod.yml down -v`
+1. Pullněte nový image `docker compose -f docker-compose-prod.yml pull`
+1. A spusťte kontejner `docker compose -f docker-compose-prod.yml up -d`
+
 ---
 
 ## Struktura výstupů (`out/`)
