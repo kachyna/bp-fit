@@ -7,7 +7,6 @@ const economySources = {
     hospital: ["https://www.transparency.cz/stavba-nove-krajske-nemocnice-nebo-rekonstrukce-te-stavajici-poslechnete-si-zlinskou-verejnou-debatu/"],
     gvaComparison: ["https://apl.czso.cz/pll/rocenka/rocenkavyber.socas"],
     avgInvestmentPerJob: ["https://doi.org/10.2908/SBS_NA_SCA_R2"],
-    kindergarten: ["https://www.denik.cz/ekonomika/skoly-skolky-penize-stavba.html"],
     teacherSalary: ["https://www.czso.cz/csu/czso/struktura-mezd-zamestnancu-2025"]
 }
 
@@ -25,8 +24,8 @@ const economyKeys = [
 ]
 
 const prepareEquivalents = (data) => ({
-    highwayKm: (data.portfolioAnnualizedCapex.value / 239000000).toFixed(1),
-    hospital: (data.portfolioAnnualizedCapex.value / 8000000000).toFixed(1),
+    highwayKm: (data.portfolioAnnualizedCapex.value / 239000000).toFixed(3),
+    hospital: (data.portfolioAnnualizedCapex.value / 8000000000).toFixed(3),
     oilGasGva: (data.portfolioYearlyOperationsGva.value * 100 / 1547000000).toFixed(2),
     pharmaFva: (data.portfolioYearlyOperationsGva.value * 100 / 29879000000).toFixed(2),
     itGva: (data.portfolioYearlyOperationsGva.value * 100 / 298858000000).toFixed(2),
@@ -39,7 +38,6 @@ const prepareEquivalents = (data) => ({
     waterJobs: Math.round(data.portfolioAnnualizedCapex.value / (20000000 / 5)),
     rdJobs: Math.round(data.portfolioAnnualizedCapex.value / (20000000 / 10)),
     teachersCount: Math.round(data.portfolioTotalPublicIncome.value / 800000),
-    kindergartensCount: (data.portfolioTotalPublicIncome.value / 40000000).toFixed(1)
 })
 
 export const getEconomyCopy = (inputData) => {
@@ -107,7 +105,7 @@ export const getEconomyCopy = (inputData) => {
                     <p className="text-xs text-amber-600/70 mt-2">na stavbu a IT vybavení</p>
                 </>
             ),
-            comparisonHeader: "Za tuto částku by bylo možné...",
+            comparisonHeader: "Za tuto částku by šlo každý rok...",
             comparisons: (
                 <>
                     <ComparisonData sources={economySources.highway} className="text-amber-700 hover:text-amber-900 transition-colors">

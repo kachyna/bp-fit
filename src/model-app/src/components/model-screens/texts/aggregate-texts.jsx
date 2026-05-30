@@ -35,7 +35,7 @@ export const getAggregateCopy = (inputData) => {
     return {
         header: {
             title: "Přehled portfolia",
-            subtitle: "Základní přehled nejdůležitějších metrik tvého portfolia."
+            subtitle: "Přehled nejdůležitějších metrik tvého portfolia."
         },
         kpis: [
             {

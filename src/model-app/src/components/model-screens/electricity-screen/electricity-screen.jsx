@@ -31,7 +31,7 @@ export const ElectricityModelScreen = ({ data, activeScenario = "REALISTIC" }) =
         <div className="flex flex-col gap-6">
             {/* Dashboard Header */}
             <ScreenHeader
-                title="Elektřina a energetická bilance"
+                title="Elektřina a její bilance"
                 subtitle="Modelování celkového příkonu, reálné spotřeby a zatížení přenosové soustavy ČR."
                 analyzedData={data}
                 pulseColor="bg-yellow-500"

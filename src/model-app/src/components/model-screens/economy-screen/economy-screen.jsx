@@ -15,7 +15,7 @@ export const EconomyModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
         <div className="flex flex-col gap-6">
             {/* Dashboard Header */}
             <ScreenHeader
-                title="Ekonomické dopady a investice"
+                title="Ekonomické dopady"
                 subtitle="Modelování investičních a provozních nákladů, přidané hodnoty (HPH) a daní."
                 analyzedData={data}
                 pulseColor="bg-cyan-500"

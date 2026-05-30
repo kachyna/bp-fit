@@ -104,7 +104,7 @@ export const getElectricityCopy = (inputData) => {
             comparisons: (
                 <>
                     <ComparisonData sources={electricitySources.czCapacity} className="text-rose-700 hover:text-rose-900 transition-colors">
-                        <p>DC v ČR mají nyní celkovou kapacitu <span className="font-semibold text-rose-900">{equivalents.czCapacity} MW</span>,</p>
+                        <p>DC v ČR teď mají kapacitu <span className="font-semibold text-rose-900">{equivalents.czCapacity} MW</span>,</p>
                     </ComparisonData>
                     <ComparisonData sources={electricitySources.czCapacity} className="text-rose-700 hover:text-rose-900 transition-colors">
                         <p>takže by došlo k navýšení o <span className="font-semibold text-rose-900">{equivalents.pctOfCzPower} %</span>.</p>
@@ -263,7 +263,7 @@ export const getElectricityCopy = (inputData) => {
             )
         },
         chartScissors: {
-            title: "Rozpad roční spotřeby portfolia",
+            title: "Rozpad roční spotřeby",
             description: "Srovnání maximální rezervované kapacity se skutečně využívanou energií a režijními ztrátami chlazení.",
             hoverExplanation: (
                 <div className="space-y-2">

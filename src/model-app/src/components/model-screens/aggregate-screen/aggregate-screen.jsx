@@ -18,40 +18,13 @@ export const AggregateModelScreen = ({ data, activeScenario = "REALISTIC" }) => 
 
     return (
         <div className="space-y-6 animate-fade-in">
-            <ScreenHeader
-                title={aggregateCopy.header.title}
-                subtitle={aggregateCopy.header.subtitle}
-                analyzedData={data}
-                pulseColor="bg-emerald-500"
-            />
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
-                <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 group/row">
-                    {aggregateCopy.kpis.map((kpi) => (
-                        <NumberHoverCard
-                            key={kpi.key}
-                            title={kpi.title}
-                            color={kpi.color}
-                            icon={kpi.icon}
-                            mainText={kpi.mainText}
-                            expandOnRowHover={true}
-                        />
-                    ))}
-                </div>
-
-                <div className="lg:col-span-1">
-                    <PortfolioBreakdown />
-                </div>
-
-            </div>
-
-            <Collapsible defaultOpen={false} className="group/collapsible mt-10">
+            <Collapsible defaultOpen={false} className="group/collapsible">
                 <CollapsibleTrigger asChild>
                     <div className="cursor-pointer flex items-center justify-between hover:opacity-80 transition-opacity">
                         <div>
                             <h2 className="text-2xl font-bold text-slate-800 tracking-tight">Jak model používat?</h2>
-                            <p className="text-sm text-slate-500">Klikni na mě a zjisti více informací o této aplikaci.</p>
+                            <p className="text-sm text-slate-500">Klikni na mě a zjisti více informací.</p>
                         </div>
                         <ChevronDown className="size-6 text-slate-400 transition-transform duration-200 group-data-[state=open]/collapsible:rotate-180" />
                     </div>
@@ -97,6 +70,34 @@ export const AggregateModelScreen = ({ data, activeScenario = "REALISTIC" }) => 
                     </div>
                 </CollapsibleContent>
             </Collapsible>
+
+            <ScreenHeader
+                title={aggregateCopy.header.title}
+                subtitle={aggregateCopy.header.subtitle}
+                analyzedData={data}
+                pulseColor="bg-emerald-500"
+            />
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+                <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 group/row">
+                    {aggregateCopy.kpis.map((kpi) => (
+                        <NumberHoverCard
+                            key={kpi.key}
+                            title={kpi.title}
+                            color={kpi.color}
+                            icon={kpi.icon}
+                            mainText={kpi.mainText}
+                            expandOnRowHover={true}
+                        />
+                    ))}
+                </div>
+
+                <div className="lg:col-span-1">
+                    <PortfolioBreakdown />
+                </div>
+
+            </div>
 
         </div>
     )
