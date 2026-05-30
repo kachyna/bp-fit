@@ -46,6 +46,17 @@ export const useModelStore = create(immer((set, get) => ({
         state.datacenters = state.datacenters.map(dc => enrichDatacenter(dc, state.params))
     }),
 
+    /**
+     * Takes an array of datacenter objects and sets the store's datacenters to this array,
+     * after enriching each datacenter with calculated values based on the current parameters in the store.
+     * 
+     * @param {Array<Object>} portfolio An array of datacenter objects with the same structure as the datacenters in the store.
+     * @returns Sets the datacenters in the store to the given portfolio.
+     */
+    setPortfolio: (portfolio) => set((state) => {
+        state.datacenters = portfolio.map(dc => enrichDatacenter(dc, state.params))
+    }),
+
     // ========= MANAGING CONFIGURATION PARAMETERS ========
     // add the option to manage configuration parameters
     // this adds the possibility to model more complex scenarios, where the user can change

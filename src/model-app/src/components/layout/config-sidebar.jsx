@@ -8,8 +8,9 @@ import {
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "../ui/collapsible";
 import { ChevronDown } from "lucide-react";
 
-import { DcManager } from "../dc-manager/dc-manager";
-import { ParameterManager } from "../parameter-manager/parameter-manager";
+import { DcManager } from "@/components/dc-manager/dc-manager";
+import { ParameterManager } from "@/components/parameter-manager/parameter-manager";
+import { PortfolioManager } from "@/components/sample-portfolios/portfolio-manager";
 
 export function ConfigSidebar() {
     return (
@@ -43,6 +44,19 @@ export function ConfigSidebar() {
                         </CollapsibleTrigger>
                         <CollapsibleContent className="px-1 -mx-1 pt-1 -mt-1 pb-2 -mb-2">
                             <ParameterManager />
+                        </CollapsibleContent>
+                    </SidebarGroup>
+                </Collapsible>
+                <Collapsible defaultOpen={true} className="group/collapsible">
+                    <SidebarGroup>
+                        <CollapsibleTrigger>
+                            <div className="flex flex-row items-center space-between text-sm font-medium text-slate-900 group-data-[state=open]/collapsible:text-slate-600 group-data-[state=open]/collapsible:mb-4">
+                                <span className="font-bold uppercase">Vzorová portfolia</span>
+                                <ChevronDown className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-180" />
+                            </div>
+                        </CollapsibleTrigger>
+                        <CollapsibleContent className="px-1 -mx-1 pt-1 -mt-1 pb-2 -mb-2">
+                            <PortfolioManager />
                         </CollapsibleContent>
                     </SidebarGroup>
                 </Collapsible>
