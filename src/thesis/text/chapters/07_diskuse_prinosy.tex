@@ -1,6 +1,37 @@
 \chapter{Limitace a vyhodnocení přínosů modelu}
 \label{chap:diskuse_prinosy}
 
-limitace práce
+Závěrečná kapitola kriticky hodnotí dosažené výsledky, metodologii sběru dat a praktické přínosy socioekonomického modelu. Text rozebírá souvislosti mezi teoretickou rešerší a praktickou implementací, identifikuje hlavní překážky při získávání transparentních informací o infrastruktuře a shrnuje přidanou hodnotu práce pro odbornou i laickou veřejnost v kontextu rozvoje datových center v České republice.
 
-vyhodnocení přínosů práce
+\subsection{Diskuse výsledků modelu}
+\label{subsec:diskuse}
+
+Hlavním tématem diskuse je přenositelnost parametrů z rozvinutých trhů (především USA) do specifických podmínek České republiky. Zatímco ve Spojených státech jsou dopady výstavby hyper-scalerů (obřích datových center) dobře zdokumentovány, český trh se dosud orientoval primárně na menší až středně velká kolokační centra. Model však ukazuje, že s nástupem umělé inteligence a rostoucími nároky na výpočetní výkon bude muset i tuzemská energetická infrastruktura čelit podobným výzvám, jaké dnes řeší státy jako Irsko nebo USA.
+
+Důležitým aspektem je také rozlišení mezi trénovacími a inferenčními centry. Jak vyplynulo z dřívějších kapitol, tyto dva typy mají diametrálně odlišné požadavky na lokalitu a stabilitu sítě. Diskuse se proto zaměřuje na to, jak by měla být česká digitální strategie nastavena, aby maximalizovala ekonomické přínosy (daně, zaměstnanost) a zároveň minimalizovala rizika spojená s přetížením přenosové soustavy a spotřebou vody v suchých oblastech. Práce tak otevírá prostor pro debatu o nutnosti transparentnějšího přístupu provozovatelů k datům, která je v současnosti blokována obavami o bezpečnost a obchodní tajemství.
+
+\subsection{Limitace}
+\label{subsec:limitace}
+
+Za zásadní omezení této práce lze považovat nízkou úroveň transparentnosti v sektoru datových center, což se projevilo již při sběru primárních dat ze zahraničí. Data použitá pro definici základních technických parametrů v USA a dalších rozvinutých trzích pocházejí z různých studií a agregovaných zdrojů, které jsou samy o sobě v mnoha ohledech kvalifikovanými odhady. Poskytovatelé hyper-scalerů nezveřejňují přesné údaje o vytížení nebo energetické efektivitě konkrétních lokalit, což vnáší do výchozích hodnot modelu určitou míru neurčitosti.
+
+V českém kontextu byla situace ještě komplikovanější, neboť veřejně dostupný přehled o trhu byl v době začátku práce značně nekompletní a roztříštěný. Pro překonání této bariéry byl vytvořen specializovaný scraper (viz kapitola \ref{sec:model_scraper}), který musel parametry jako instalovaný příkon odhadovat nepřímo na základě velikosti budov z katastru nemovitostí a rejstříků. Je proto nutné mít na pameti, že zatímco matematické vztahy v modelu jsou exaktní, některé vstupní konstanty představují nejlepší možnou aproximaci reálného stavu.
+
+Další limitací je dynamická povaha trhu a složitá vlastnická struktura provozovatelů. V průběhu psaní práce docházelo k akvizicím a ohlášení nové výstavby (např. projekty v okolí Prahy), což může v krátkém čase změnit relevanci některých statických parametrů. Nedostatek přesných dat ze zahraničí také omezil možnosti validního testování (kapitola \ref{sec:testovani_metodika}), kdy bylo nutné spoléhat se na agregované studie namísto reálných měření konkrétních center. Model je proto nutné vnímat jako aproximaci trendů a řádovou předpověď dopadů, nikoli jako nástroj pro precizní finanční planning.
+
+V neposlední řadě představuje budoucí limitaci samotná aktuálnost modelu v čase. Trh datových center se pod vlivem překotného vývoje umělé inteligence mění extrémním tempem a neustále vznikají nové technologie chlazení či čipů, které mohou učinit výchozí parametry brzy neaktuálními. Tento problém je však v rámci práce systémově ošetřen architekturou webové aplikace, která umožňuje uživateli v reálném čase měnit téměř všechny vstupní koeficienty a upravovat výpočty podle nejmodernějších dostupných informací.
+
+\subsection{Zhodnocení přínosů práce}
+\label{subsec:vyhodnoceni_prinosu}
+
+Přínos práce spočívá především v unikátním a komplexním metodologickém postupu, který propojuje teoretickou rešerši s praktickým modelovacím nástrojem. Tento proces lze rozdělit do několika logických kroků, které společně tvoří ucelený rámec pro studium dopadů výpočetní infrastruktury.
+
+Prvním pilířem je srozumitelná rešerše datových center jako technologických celků. Práce definuje jejich fundamentální roli v moderní ekonomice nezávisle na geografickém umístění a rozebírá technické parametry (PUE a příkon výpočetní techniky), které určují jejich efektivitu. Tento technologický základ je následně konfrontován s analýzou trhu v USA. Spojené státy jakožto globální lídr poskytly neocenitelné vhledy do výzev, se kterými se potýkají vyspělé trhy – od energetické stability až po environmentální limity. Identifikace těchto klíčových parametrů v americkém kontextu sloužila jako odrazový můstek pro českou část výzkumu.
+
+Klíčovým a autorsky nejnáročnějším bodem práce bylo zjištění specifik České republiky. Samotná data ze zahraničí by bez lokálního ukotvení poskytovala pouze zkreslený obraz. Bylo proto nutné provést detailní průzkum české přenosové soustavy, specifické energetické politiky, legislativního rámce pro zdanění nemovitostí a mezd, stavu vodohospodářství a dalších faktorů. Právě mezioborovost je nejsilnější stránkou navrženého modelu; propojuje totiž v reálném čase znalosti z oblastí energetiky, financí, ekologie a softwarového inženýrství.
+
+Důležitým technickým přínosem, na který nesmí být zapomenuto, je vytvoření automatizovaného scraperu a s ním spojená analýza českého trhu. Vzhledem k neexistenci ucelené a veřejně přístupné databáze tuzemských datových center představuje tento nástroj a jím generovaný přehled (zahrnující odhadovaný příkon a plochu whitespace) unikátní datový podklad, který v takovém rozsahu dosud nebyl publikován. Tento artefakt tak doplňuje model o chybějící kvantitativní vrstvu o aktuálním stavu infrastruktury v ČR.
+
+Praktickým vyústěním je webová aplikace, která byla úspěšně nasazena na server a je tak přístupná široké veřejnosti bez nutnosti lokální instalace. Aplikace není pouhou kalkulačkou, ale komplexním informačním portálem. Je postavena na moderním technologickém stacku (React, Vite, Tailwind CSS), což zajišťuje vysokou rychlost a estetickou úroveň, která odpovídá současným standardům webového designu. Hlavním přínosem pro koncového uživatele je však kontext – aplikace interpretuje strohá čísla pomocí referenčních srovnání (např. spotřeba elektřiny přepočtená na spotřebu domácností nebo krajů), díky čemuž je tématika srozumitelná i pro neodbornou veřejnost.
+
+Funkčnost modelu a aplikace byla ověřena v rámci několika testovacích scénářů (kapitola \ref{chap:testovani}). Přestože se základní matematické výpočty ukázaly jako správné a konzistentní se vstupními daty, je nutné přiznat, že kvůli extrémní variabilitě parametrů a nedostupnosti některých reálných dat nelze zvalidovat všechny predikce s absolutní přesností. I přes tato omezení však práce nabízí robustní metodiku a nástroj, který výrazně snižuje bariéru pro porozumění dopadům výstavby datových center v České republice.
