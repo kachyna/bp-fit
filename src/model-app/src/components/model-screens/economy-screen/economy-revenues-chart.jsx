@@ -5,7 +5,7 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLe
 import { ChartCard } from "@/components/model-screens/components/chart-card"
 import { StyledYAxis } from "@/components/model-screens/components/styled-yaxis"
 import { SCENARIO_LABELS } from "@/constants/config"
-import { toMillions } from "@/logic/utility"
+import { toBillions } from "@/logic/utility"
 
 // Konfigurace barev a popisků pro graf
 const chartConfigRevenues = {
@@ -22,9 +22,9 @@ const prepareChartData = (data) => {
         chartPoints.push({
             key: key,
             name: label,
-            gva: toMillions(scenarioData.portfolioYearlyOperationsGva),
-            electricity: toMillions(scenarioData.portfolioElectricityCosts),
-            otherOpex: toMillions(scenarioData.portfolioOtherOpex),
+            gva: toBillions(scenarioData.portfolioYearlyOperationsGva),
+            electricity: toBillions(scenarioData.portfolioElectricityCosts),
+            otherOpex: toBillions(scenarioData.portfolioOtherOpex),
         })
     })
 
@@ -44,14 +44,14 @@ export const EconomyRevenuesChart = ({ data, chartCopy }) => {
             cardClass="border-emerald-100 bg-linear-to-br from-emerald-50/40 via-slate-50/20 to-cyan-50/30"
             hoverExplanation={chartCopy.hoverExplanation}
         >
-            <ChartContainer config={chartConfigRevenues} className="w-full mt-2 h-[350px] aspect-auto">
+            <ChartContainer config={chartConfigRevenues} className="w-full mt-2 h-87.5 aspect-auto">
                 <ComposedChart data={economyData} margin={{ top: 10, right: 10, bottom: 0, left: 10 }}>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
                     <XAxis dataKey="name" tickLine={false} axisLine={false} className="text-xs font-semibold fill-slate-500" />
                     <StyledYAxis
-                        tickFormatter={(value) => `${value.toLocaleString("cs-CZ")} mil. Kč`}
+                        tickFormatter={(value) => `${value.toLocaleString("cs-CZ")} mld. Kč`}
                     />
-                    <ChartTooltip content={<ChartTooltipContent className="w-[110%]" unit="mil. Kč" />} />
+                    <ChartTooltip content={<ChartTooltipContent className="w-[110%]" unit="mld. Kč" />} />
                     <ChartLegend content={<ChartLegendContent verticalAlign="top" />} />
 
                     <Bar

@@ -275,7 +275,7 @@ export const getEconomyCopy = (inputData) => {
         },
         chartRevenues: {
             title: "Dekompozice tržeb (pro modelování HPH)",
-            description: "Srovnání celkového výnosu a jeho rozdělení na přidanou hodnotu a hlavní provozní náklady napříč scénáři (mil. Kč).",
+            description: "Srovnání celkového výnosu a jeho rozdělení na přidanou hodnotu a hlavní provozní náklady napříč scénáři (mld. Kč).",
             hoverExplanation: `Tento graf ukazuje strukturu tržeb (produkce) za provoz portfolia.
                                  Výška celého sloupce ukazuje celkovou produkci portfolia datových center a rozkládá ji na HPH a mezispotřebu (elektřina + ostatní OPEX).
                                  Najetím na jednotlivé sloupce můžeš srovnat hodnoty napříč pesimistickým, realistickým a optimistickým scénářem.
