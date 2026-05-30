@@ -126,18 +126,29 @@ Celkově je aplikace navržena pro snadnou rozšiřitelnost a údržbu, přičem
 
 Tento přístup se při vývoji osvědčil, protože několikrát umožnil rychle přidat nové funkce a změnit vizuální styl bez nutnosti zásahu do logiky nebo naopak. Díky tomu bylo možné udržet kód čistý a dobře organizovaný, což je klíčové pro jeho úspěšný vývoj a údržbu.
 
-\section{Nasazení na server}
-\label{sec:app_nasazeni}
+\section{Dlouhodobá údržba a provoz aplikace}
+\label{sec:app_provoz}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SEKCE 4: NASAZENÍ NA SERVER
-% - Kontejnerizace aplikace pomocí Dockeru (Dockerfile, compose).
-% - Hosting (servery FIT ČVUT na doméně bp-kachyna.ksi.in.fit.cvut.cz).
-% - Způsob nasazování nové verze.
+% SEKCE 4: DLOUHODOBÁ ÚDRŽBA A PROVOZ APLIKACE
+% - Odůvodnění chybějící automatizace (testy, CI/CD).
+% - Způsob nasazení na Cloud FIT a kontejnerizace.
+% - Manuální testování správnosti výpočtů UI.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Testování aplikace}
-\label{sec:app_testovani}
+Vzhledem k tomu, že se jedná o projekt vytvořený pro účely bakalářské práce a nepředpokládá se jeho dlouhodobá údržba ani další rozšiřování, nebyly pro aplikaci vytvořeny automatizované testy ani automatizovaná CI/CD (Continuous Integration/Continuous Deployment) pipeline. Veškeré úkony spojené s nasazením a ověřováním funkčnosti tak probíhají manuálně, což je vzhledem k rozsahu a účelu projektu dostačující.
+
+\subsection{Nasazení na server}
+\label{subsec:app_nasazeni}
+
+Aplikace byla nasazena na serverech Fakulty informačních technologií ČVUT přes službu Cloud FIT. Na žádost byl autorovi práce vytvořen virtuální server s přístupem přes SSH, na který byla aplikace nahrána a nakonfigurována pro běh. Pro zajištění snadného nasazení a správy aplikace byl vytvořen Dockerfile, který umožňuje kontejnerizaci celé aplikace. Tento přístup usnadňuje nasazení nové verze, protože stačí sestavit nový Docker image a spustit ho na serveru.
+
+Aplikace byla už od počátku vyvíjena pomocí Dockeru, což umožnilo snadný vývoj, testování i nasazení. Zdrojový kód tak obsahuje vývojový Dockerfile Dockerfile.dev a docker-compose.dev.yaml, které kontejner spouští lokálně. Pro produkční nasazení byl vytvořen samostatný Dockerfile, který je optimalizovaný pro produkční prostředí a obsahuje pouze nezbytné závislosti a soubory. Tento Dockerfile umožňuje sestavit image, který je připraven pro nasazení na server a zajišťuje, že aplikace bude běžet stabilně a efektivně.
+
+Distribuce nejnovější verze aplikace probíhá přes vytvoření nového Docker image a jeho nahrání na Docker Hub. Na serveru je poté stažena nejnovější verze image a spuštěna jako kontejner v pozadí. Tento přístup umožňuje rychlé a efektivní nasazení nové verze aplikace bez nutnosti manuální konfigurace nebo zásahu do kódu na serveru. Díky Dockeru je také zajištěna konzistence prostředí, což minimalizuje riziko problémů způsobených rozdíly mezi vývojovým a produkčním prostředím.
+
+\subsection{Testování aplikace}
+\label{subsec:app_testovani}
 
 Pro aplikaci nejsou napsány žádné automatizované testy, protože se jedná o poměrně malý projekt, který je navíc určen pro prezentaci modelu a ne pro produkční použití. Během vývoje však byly prováděny manuální testy, které zahrnovaly zadávání různých hodnot do formulářů a ověřování, že výsledky odpovídají očekáváním na základě modelu popsaného v kapitole \ref{chap:model}. Testování se zaměřovalo na správnost výpočtů, konzistenci zobrazení a uživatelskou přívětivost rozhraní.
 
@@ -156,23 +167,80 @@ Dalším důvodem, proč nebyly napsány automatizované testy, je fakt, že se 
 
 Uživatelské rozhraní aplikace je navrženo tak, aby bylo intuitivní a snadno použitelné. Klíčovým prvkem je boční panel (Sidebar), který funguje jako správce portfolia datových center a parametrů modelu. V podstatě celé ovládání se tak shlukuje na jednom místě, což je pro uživatele snadné pochopitelné a přehledné. Ve středu obrazovky jsou pak kartičky, které zobrazují vypočtené hodnoty. Uživatel má možnost pozorovat, jak se tyto hodnoty mění v závislosti na zadaných parametrech. V horní části obrazovky je umístěna navigace, která umožňuje přepínat mezi jednotlivými záložkami (Přehled, Energetika, Ekonomika, ESG) nabízejícími detaily týkající se dané oblasti. V této sekci je popsán celý průchod aplikací a popis stěžejních komponent.
 
+Aplikace je optimalizovaná také pro mobilní zařízení, nicméně vzhledem k množství zobrazených dat a komplexnosti rozhraní je doporučováno používat ji na větších obrazovkách. V následujícím textu bude proto popsán především desktopový zážitek, ale všechny popsané funkce jsou dostupné i na mobilních zařízeních.
+
 \subsection{První pohled na model}
 \label{subsec:app_ui_uvod}
+
+Při prvotním načtení aplikace se uživateli zobrazí úvodní obrazovka se základním přehledem o zadaném portfoliu, které je zpočátku tvořeno jedním kolokačním datovým centrem. Uživatel má možnost se seznámit s hlavími metrikami, které jsou zobrazeny na kartičkách uprostřed obrazovky. Obrazovka po prvním načtení a bez jakýchkoli změn je uveden na obrázku \ref{fig:app_base}.
+
+Kompletní vysvětlení toho, jak se model použvá, se uživateli zobrazí po rozkliknutí sekce "Jak model používat?", který se nachází přímo pod hlavním přehledem portfolia. Po rozkliknutí se zobrazí několik kartiček, které lépe popisují model a dodávají kompletní návod na jeho použití. Na obrázku \ref{fig:app_help} jsou tyto kartičky zobrazeny, nicméně ty po najetí myší zobrazí další obsah s detailnějšími vysvěltením, který na snímku obrazovky není přítomen. 
 
 \subsection{Ovládací panel}
 \label{subsec:app_ui_panel}
 
+Veškeré ovládání modelu se odehrává v bočním panelu (Sidebar), který je umístěn na levé straně obrazovky. Tento panel slouží jako hlavní místo pro přidávání nových datových center. Uživatel klikne na tlačítko Přidat, načež se mu zobrazí formulář pro zadání základních parametrů datového centra (typ, příkon, PUE a jejich počet). Po zadání nebo úpravě těchto hodnot se model okamžitě přepočítá, díky čemuž může uživatel sledovat dopady svých změn v reálném čase. Hlavní obrazovka po přidání několika datových center je zobrazen na obrázku \ref{fig:app_added_dc}. Snímek obrazovky také ukazuje, jak se po rozkliknutí detailu jednotlivých datových center zobrazují dílčí výpočty. To je umožněno architekturou postupného obohacování popsanou v sekci \ref{sec:app_architektura}.
+
+Pro lepší pochopení zadávaných hodnot může uživatel kliknout na ikonu otazníku vedle tlačítka přidat, která mu zobrazí vysvětlení jednotlivých parametrů a dodá mu základní přehled o typech datových center. Část tohoto přehledu je zobrazena na obrázku \ref{fig:app_input_help}.
+
+Ovládací panel dále umožňuje nastavovat parametry modelu, které se netýkají konkrétního datového centra, ale mají dopad na všechny výpočty. Uživatel může rozkliknout položku Konfigurace parametrů, která mu zobrazí potřebné informace, tlačítko pro přepočítání, tlačítko pro resetování parametrů a několik sekcí, v nichž jsou parametry logicky rozděleny. Jednotlivé sekce ukazuje obrázek \ref{fig:app_parameters_setting} včetně rozbalené nápovědy u jednoho z parametrů. Tato nápověda existuje pro každý parametr a zobrazí se po najetí na jméno parametru.
+
+Pro změnu parametru modelu stačí přepsat hodnotu a kliknout na zelené tlačítko Přepočítat, načež se všechny hodnoty okamžitě aktualizují. Pro resetování všech parametrů do výchozího stavu slouží tlačítko Obnovit. Smazání vlastních paramterů je nicméně potřeba potvrdit ve vyskakovacím okně (obrázek \ref{fig:app_parameters_reset}), aby nedošlo k nechtěné ztrátě dat. Poslední nastavení parametrů se nachází v pravém horním rohu obrazovky, kde lze přepínat výchozí scénář (Pesimistický, Realistický, Optimistický). Tato možnost ovlivňuje zobrazení hodnot v KPI kartách, nicméně na grafy nemá vliv -- ty obecně ukazují srovnání všech scénářů najednou.
+
 \subsection{Záložka Přehled}
 \label{subsec:app_ui_prehled}
 
-\subsection{Záložka Energetika}
+První záložka, na kterou se uživatel dostane, je Přehled. Ta byla již ve zkratce popsána v podeskci \ref{subsec:app_ui_uvod}, kde se zaměřovala především na průchod aplikací krok za krokem. Samotná obrazovka však nabízí dobrý přehled o zadaném portfoliu a umožňuje uživateli rychle pochopit, jaké dopady mají jeho rozhodnutí napříč všemi oblastmi. Na kartičkách uprostřed obrazovky se zobrazují klíčové metriky, jako je celková spotřeba energie, produkce uhlíku, vytvořená HPH a další. Chybí zde srovnání a detailnější vysvětlení, neboť ty jsou dostupné v dalších záložkách. Vizualizace je na obrázku \ref{fig:app_added_dc}.
+
+Vpravo od KPI kartiček se nachází komponenta zobrazující složení portfolia podle typů datových center. Tato vizualizace umožňuje uživateli rychle pochopit, jaké typy datových center jsou v jeho portfoliu zastoupeny a jaký mají podíl na celkových dopadech. Uživatel tak může snadno identifikovat, které typy datových center přispívají nejvíce k určitým metrikám (např. spotřebě energie nebo produkci uhlíku) a případně upravit své portfolio pro dosažení lepších výsledků.
+
+\subsection{Záložka Elektřina}
 \label{subsec:app_ui_energetika}
+
+Po překliknutí na záložku Elektřina se uživateli zobrazí detailnější informace o spotřebě energie. Na obrázku \ref{fig:app_electricity} (s přidanými čísly jednotlivých komponent) je zobrazeno celkové rozložení obrazovky, nicméně jednotlivé kartičky lze po najetí myší rozbalit a zobrazit tak dodatečné komentáře vysvětlující konkrétní hodnoty a uvádějící kontext. Příklad pro KPI kartičky je ukázán na obrázku \ref{fig:app_electricity_expanded}. Obrazovka obsahuje komponenty odpovídající následujícím popisům:
+
+\begin{enumerate}
+	\item První kartička obsahuje obecný komentář o problematice datových center a jejich vysoké spotřebě energie. První věta je úvodní, po najetí myší se objeví dodatečný text s hlubšími myšlenkami a vysvětlením, proč je spotřeba datových center důležitá. 
+	\item Graf \textit{Rozpad spotřeby portfolia} ukazuje srovnávní spotřeby portfolia napříč všemi scénáří a efektivní využití energie. Celková výška sloupce je maximální spotřeba energie portfolia, šedá část je nevyužitá spotřeba, oranžová část ukazuje režjní spotřebu a modrá efektivní spotřebu výpočetními zařízeními.
+	\item Interaktivní komponetna \textit{Kapacity přenosové sítě ČR} ukazuje, zda by se zadané datové centrum dokázalo vmístit do přenosové sítě ČR. Po najetí myší se zobrazí posuvník, na kterém uživatel může nastavit aktuální zatížení přenosové soustavy. Aktuální zatížení se sečte s celkovým příkonem portfolia a ručička barometru ukáže, zda je v takové situaci portfolio provozovatelné.
+	\item \textit{KPI kartičky} zobrazují klíčové metriky týkající se spotřeby energie, jako je celková spotřeba, maximální spotřeba, průměrná spotřeba na DC a další. Tyto kartičky poskytují rychlý přehled o energetickém dopadu zadaného portfolia. Po najetí myší zobrazují srovnání s referenčními hodnotami, jako na obrázku \ref{fig:app_electricity_expanded}. Kliknutí na srovnání uživatele přesměruje na zdroj informace.
+	\item Komponenta \textit{Simulátor PUE} není napojena na portfolio datových center, ale umožňuje experimentovat s různými hodnotami PUE. Uživatel může nastavit hodnotu PUE a na poměrovém posuvníku okamžitě vidět, jak se mění efektivní spotřeba energie.
+	\item Poslední komponenta je \textit{Kontextová kartička} a obsahuje čistě textové informace o inovacích a trendech v oblasti energetické efektivity datových center. Uživatel může překlikávat mezi jednotlivými záložkami a zobrazit si tak dodatečné informace o různých oblastech.
+\end{enumerate}
+
+V rámci celé aplikace se tato obrazovka zaměřuje především na vysvětlení dopadů zadaného portfolia z pohledu spotřeby energie, což je asi nejdůležitější aspekt datových center. Kvůli tomu je obsahově poměrně bohatá a nabízí celou řadu interaktivních komponent. 
 
 \subsection{Záložka Ekonomika}
 \label{subsec:app_ui_ekonomika}
 
+Druhá obrazovka se zaměřuje na ekonomické dopady zadaného portfolia. Zobrazují se zde metriky týkající se investičních a provozních nákladů, počtu vytvořených pracovních míst nebo fiskálního přínosu pro veřejné rozpočty. Stejně jako v předchozí záložce i zde jsou jednotlivé komponenty interaktivní a po najetí myší zobrazují dodatečné informace a srovnání s referenčními hodnotami. Komponenty na obrázku \ref{fig:app_economy} odpovídají následujícím popisům:
+
+\begin{enumerate}
+	\item První kartička obsahuje obecný komentář o ekonomických dopadech datových center a o tom, komu se datová centra reálně vyplatí. Po najetí myší se zobrazí poměrně komplexní text popisující pozitivní i negativní ekonomické externality, jejich příčiny a strategické přínosy.
+	\item \textit{KPI kartičky} zobrazují klíčové metriky týkající se ekonomických dopadů, jako jsou roční investice, roční HPH, počet vytvořených pracovních míst (FTE) a odhadované daně a odvody. Po najetí myší zobrazují srovnání s referenčními hodnotami (km dálnic, srovnání s ostatními odvětvími, \dots{}).
+	\item \textit{Kontextová kartička} se zaměřuje na metodické vysvětlení a interpretaci přidané hodnoty (HPH) v kontextu datových center. Uživatel může překlikávat mezi záložkami pro pochopení vlivu odpisů hardwaru na celkové statistiky. Zároveň zdůrazňuje, že HPH není ekvivalentem zisku ani příjmu do veřejného rozpočtu -- naopak ukazuje, že velká část HPH se ztratí v odpisech. 
+	\item Graf \textit{Dekompozice tržeb} ukazuje srovnání celkové produkce a jejího rozdělení na přidanou hodnotu a hlavní provozní náklady (zejména elektřinu) napříč všemi scénáři. Výška sloupce představuje celkovou produkci.
+	\item Graf \textit{Kumulativní vývoj HPH} vizualizuje dlouhodobý pohled na to, jak se v čase sčítá přidaná hodnota vytvořená během výstavby a následného provozu portfolia v horizontu 25, 30 nebo 35 let (v závislosti na scénáři).
+\end{enumerate}
+
+U ekonomických údajů bylo poměrně obtížné vymyslet smysluplné srovnání kvůli časovému rozdělení nákladů (investice vs. provoz). Životnost budovy je totiž přes 25 let, zatímco IT vybavení morálně zastarává mnohem rychleji (cca 4 roky). Pro zachování konzistence je proto pro všechny záložky zvoleno referenční období jednoho roku, takže v případě ročních investic se zobrazují anualizované investiční náklady za celou dobu životnosti (vč. několika cyklů obměny IT vybavení). Tento přístup dává největší smysl vzhledem k ostatním metrikám, zejména HPH.
+
 \subsection{Záložka ESG}
 \label{subsec:app_ui_esg}
 
-\subsection{Debug}
-\label{subsec:app_ui_debug}
+Poslední tematickou záložkou je ESG, která se zaměřuje na environmentální, sociální a vládní dopady zadaného portfolia. Tato sekce je v dnešní době pro investory i veřejnost naprosto klíčová, neboť výstavba datových center má významnou ekologickou stopu, kterou je třeba monitorovat a minimalizovat. Na obrázku \ref{fig:app_esg} jsou ukázány komponenty odpovídající následujícím popisům:
+
+\begin{enumerate}
+	\item První kartička obsahuje obecný komentář o problematice ESG v kontextu datových center. Jako jediná nemá nastavený hover efekt -- její obsah je již zcela zobrazen. Text se zaměřuje na vysvětlení, proč je ESG důležité a jaké jsou hlavní environmentální a sociální dopady datových center. Uživatel tak získá základní přehled o tom, proč tyt aspekty stojí za pozornost.
+	\item Graf \textit{Srovnání spotřeby a emisí} ukazuje srovnání emisí skleníkových plynů napříč všemi scénáři a srovnává je se spotřebou. Po najetí myši se zobrazuje dodatčný komentář, který vysvětluje paradoxní pokles uhlíkové stopy při růstu spotřeby energie. Tento jev je způsoben návrhem modelových parametrů, které se však dají změnit pro vykreslení jiného průběhu.
+	\item \textit{KPI kartičky} zobrazují klíčové metriky týkající se ekologické a sociální stopy, jako jsou roční emise CO2, roční spotřeba vody, emise uhlíku a prostorovou náročnost. Kartičky po najetí myší zobrazují srovnání s referenčními hodnotami. Kartička o NIMBY neukazuje žádná data, jen popisuje tento fenomén a jeho rozsáhlost v České republice.
+\end{enumerate}
+
+Celkově je ESG nejméně obsáhlou obrazovkou -- zejména kvůli tomu, že environmentální a sociální dopady jsou již z velké části zobrazeny v předchozích záložkách (např. spotřeba energie nebo využití odpadního tepla). I přesto je nepostradatelnou součástí, protože vysvětluje metodologii výpočtů uhlíkové stopy a poskytuje srovnání s referenčními hodnotami (např provozem osobních aut nebo spotřebou vody v domácnosti).
+
+\subsection{Nastavení a debugování}
+\label{subsec:app_ui_settings}
+Hover efekty (efekt po najetí myší) jsou v celé aplikaci využívány pro zobrazení dodatečných informací, nicméně na mobilních zařízeních jsou nepoužitelné. Navíc pro některé uživatele může být nepohodlné neustále přejíždět myší. Kvůli tomu byla přidána funkce Rozbalit všechna karty dostupná z Nastavení v horní části obrazovky. Po jejím zapnutí se rozbalí všechny karty, díky čemuž se informace lépe čtou. Fungivání je ilustrováno na obrázku \ref{fig:app_settings_expand_all}.
+
+Pro potřeby odborné veřejnosti a pro ověření správnosti výpočtů aplikace obsahuje skrytou záložku Debug, kterou lze taktéž aktivovat v Nastavení. Záložka zpřístupňuje rozšiřující rozhraní se všemi vypočítanými hodnotami, které nejsou v běžném UI zobrazeny. Uživatel si tak může prohlédnout detailní rozpad všech metrik. Tato záložka je primárně určena pro kontrolu modelu a pro uživatele, kteří chtějí hlouběji porozumět tomu, jak aplikace dospěla k výsledným číslům. Ukázka je na obrázku \ref{fig:app_settings_debug}.
+
