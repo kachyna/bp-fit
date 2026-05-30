@@ -164,7 +164,7 @@ export const ElectricityBarometerChart = ({ value, chartCopy, className }) => {
             iconBgClass="bg-rose-100/70 text-rose-700"
             cardClass={`border-rose-100 bg-linear-to-br from-rose-50/40 via-slate-50/20 to-amber-50/30 ${className || ""}`}
         >
-            <div className="w-full mt-2 px-9 pb-4 flex flex-col gap-4">
+            <div className="w-full mt-2 pb-4 flex flex-col gap-4">
                 <div className="min-h-[220px] flex items-center justify-center">
                     <GridCapacityBarometer value={value} gridLoad={gridLoad} />
                 </div>
