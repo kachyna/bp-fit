@@ -1,0 +1,30 @@
+networks:
+  web_network:
+    driver: bridge
+
+services:
+  app:
+    # Místo buildu odkazuješ na svůj obraz v registru (např. na Docker Hubu)
+    image: kachyna/model-app:latest
+    restart: always
+    networks:
+      - web_network
+
+  proxy:
+    image: caddy:2-alpine
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - web_network
+    depends_on:
+      - app
+
+volumes:
+  caddy_data:
+  caddy_config:
