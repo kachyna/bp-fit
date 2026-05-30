@@ -11,9 +11,9 @@ const styles = {
     sectionTitle: "font-bold text-sm uppercase tracking-wider text-slate-400 mb-2",
     metricGroup: "space-y-2",
     metricHeader: "flex items-center gap-2 text-slate-900 font-semibold text-sm",
-    metricText: "text-xs text-slate-600 leading-relaxed pl-6",
-    metricTextExtra: "text-xs text-slate-600 leading-relaxed pl-6 mt-2",
-    indentedContainer: "pl-6 pt-1",
+    metricText: "text-xs text-slate-600 leading-relaxed",
+    metricTextExtra: "text-xs text-slate-600 leading-relaxed mt-2",
+    indentedContainer: "pt-1",
     cardLabel: "text-[10px] uppercase font-bold block mb-0.5",
     cardValue: "font-semibold",
 }
@@ -35,8 +35,8 @@ const DcTypeCard = ({
             <span className={`h-2 w-2 rounded-full ${dotColorClass}`} />
             <h3 className="font-bold text-sm text-slate-900">{title}</h3>
         </div>
-        <p className="text-xs text-slate-600 leading-relaxed pl-4">{description}</p>
-        <div className={`grid grid-cols-3 gap-2 p-2.5 rounded-lg border text-xs ml-4 ${cardBgClass}`}>
+        <p className="text-xs text-slate-600 leading-relaxed">{description}</p>
+        <div className={`grid grid-cols-3 gap-2 p-2.5 rounded-lg border text-xs ${cardBgClass}`}>
             <div>
                 <span className={`${styles.cardLabel} ${labelColorClass}`}>Příkon / Rack</span>
                 <span className={`${styles.cardValue} ${valueColorClass}`}>{stats.power}</span>
