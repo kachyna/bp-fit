@@ -12,7 +12,7 @@ function App() {
     <SidebarProvider>
       <ConfigSidebar />
       <SidebarInset className="min-h-screen bg-slate-50">
-        <header className="flex items-center justify-between h-14 px-4 border-b border-slate-200 bg-white">
+        <header className="flex items-center justify-between h-14 px-4 border-b border-slate-200 bg-white/80 backdrop-blur-sm sticky top-0 z-10">
           <div className="flex items-center">
             <SidebarTrigger />
             <h1 className="ml-4 text-lg font-semibold text-slate-800">Výstupy modelu</h1>
