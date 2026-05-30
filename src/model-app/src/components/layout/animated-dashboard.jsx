@@ -60,7 +60,7 @@ export function AnimatedDashboard() {
     <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
       <div className="w-full overflow-x-auto overflow-y-hidden no-scrollbar mb-6 rounded-lg">
         <div className="flex justify-start md:justify-center min-w-full">
-          <TabsList className="shrink-0 w-max">
+          <TabsList className="shrink-0 w-max md:gap-5">
             <TabsTrigger value="aggregate">Přehled</TabsTrigger>
             <TabsTrigger value="electricity">Elektřina</TabsTrigger>
             <TabsTrigger value="economy">Ekonomika</TabsTrigger>
