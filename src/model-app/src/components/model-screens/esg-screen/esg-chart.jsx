@@ -10,7 +10,7 @@ import { toThousands, toMillions } from "@/logic/utility"
 const chartConfig = {
   it_energyTWh: { label: "Spotřeba IT (TWh)", color: "#06b6d4" },
   energyTWh: { label: "Celková spotřeba (TWh)", color: "#2563eb" },
-  emissionsThousandTonnes: { label: "Emise CO₂ (tis. t)", color: "#f43f5e" },
+  emissionsMillionTonnes: { label: "Emise CO₂ (mil. t)", color: "#f43f5e" },
 }
 
 const prepareChartData = (data) => {
@@ -19,7 +19,7 @@ const prepareChartData = (data) => {
     const scenarioData = data[key]
     chartPoints.push({
       name: label,
-      emissionsThousandTonnes: toMillions(scenarioData.portfolioEmissionsTonnesCO2, 2),
+      emissionsMillionTonnes: toMillions(scenarioData.portfolioEmissionsTonnesCO2, 2),
       energyTWh: toMillions(scenarioData.portfolioRealEnergyConsumption, 2),
       it_energyTWh: toMillions(scenarioData.portfolioRealITConsumption, 2),
     })
@@ -42,7 +42,7 @@ export const ESGChart = ({ data, chartCopy }) => {
       hoverExplanation={chartCopy.hoverExplanation}
     >
       <ChartContainer config={chartConfig} className="w-full aspect-auto h-[350px] mt-2">
-        <ComposedChart data={esgData}>
+        <ComposedChart data={esgData} margin={{ top: 20 }}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
           <XAxis dataKey="name" tickLine={false} axisLine={false} className="text-xs font-semibold fill-slate-500" />
 
@@ -88,13 +88,13 @@ export const ESGChart = ({ data, chartCopy }) => {
           <Line
             yAxisId="right"
             type="monotone"
-            dataKey="emissionsThousandTonnes"
-            name="Roční emise CO₂ (tis. t)"
-            stroke="var(--color-emissionsThousandTonnes)"
+            dataKey="emissionsMillionTonnes"
+            name="Roční emise CO₂ (mil. t)"
+            stroke="var(--color-emissionsMillionTonnes)"
             strokeWidth={2.5}
             opacity={0.8}
-            dot={{ r: 4, strokeWidth: 1.5, stroke: "var(--color-emissionsThousandTonnes)", fill: "#fff" }}
-            activeDot={{ r: 6, strokeWidth: 2, stroke: "#fff", fill: "var(--color-emissionsThousandTonnes)" }}
+            dot={{ r: 4, strokeWidth: 1.5, stroke: "var(--color-emissionsMillionTonnes)", fill: "#fff" }}
+            activeDot={{ r: 6, strokeWidth: 2, stroke: "#fff", fill: "var(--color-emissionsMillionTonnes)" }}
           />
         </ComposedChart>
       </ChartContainer>
