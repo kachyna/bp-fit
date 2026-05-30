@@ -115,8 +115,8 @@ export const CALCULATION_DETAILS = {
         "label": "Celková produkce emisí CO₂",
         "description": "Odhadovaná celková roční uhlíková stopa provozu celého portfolia, kalkulovaná na základě reálné spotřeby elektřiny a aktuálního emisního faktoru energetického mixu ČR.",
         "unit": "t CO₂/rok",
-        "formattedUnit": "tun CO₂",
-        "decimals": 0
+        "formattedUnit": "mil. t CO₂",
+        "decimals": 1
     },
     "portfolioWaterConsumptionLiters": {
         "label": "Celková roční spotřeba vody",

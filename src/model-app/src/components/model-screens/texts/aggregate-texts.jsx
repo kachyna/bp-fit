@@ -118,7 +118,7 @@ export const getAggregateCopy = (inputData) => {
                         <div className="text-2xl font-bold text-emerald-950">
                             {data.portfolioEmissionsTonnesCO2.formatted}
                         </div>
-                        <p className="text-xs text-emerald-600/70 mt-2">roční emise (Scope II)</p>
+                        <p className="text-xs text-emerald-600/70 mt-2">roční emise v tunách (Scope II)</p>
                     </>
                 )
             }
