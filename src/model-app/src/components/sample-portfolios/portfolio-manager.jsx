@@ -22,8 +22,16 @@ export const PortfolioManager = () => {
                 <InfoIcon className="size-4" />
                 <AlertTitle className="text-sm font-semibold">Vzorová portfolia</AlertTitle>
                 <AlertDescription className="text-xs text-slate-500 leading-relaxed">
-                    Kliknutím na jednu z karet níže načteš předdefinované portfolio datacenter. Vzorová portfolia reprezentují reálné situace v různých zemích podle veřejných dat.
-                    <br/><span className="font-semibold text-slate-700">Pozor!</span> Dojde k přepsání tvého aktuálního nastavení.
+                    Kliknutím na jednu z karet níže načteš předdefinované portfolio datacenter.
+                    <br /><span className="font-semibold text-slate-700">Pozor!</span> Dojde k přepsání tvého aktuálního nastavení.
+                </AlertDescription>
+            </Alert>
+            <Alert className="mb-1 shadow-sm border-slate-200">
+                <InfoIcon className="size-4" />
+                <AlertTitle className="text-sm font-semibold">Jak portfolia interpretovat?</AlertTitle>
+                <AlertDescription className="text-xs text-slate-500 leading-relaxed">
+                    Vzorová portfolia reprezentují reálné situace v různých zemích podle veřejných dat.
+                    V kontextu modelu odpovídají na otázku &#8222;Co by se stalo, kdyby se v ČR postavila datová centra jako v zemi X?&#8220; Mění se tak <strong>pouze vstupní hodnoty</strong>, nikoliv parametry modelu.
                 </AlertDescription>
             </Alert>
 
