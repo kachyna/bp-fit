@@ -58,14 +58,16 @@ export function AnimatedDashboard() {
 
   return (
     <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-      <div className="flex justify-start md:justify-center w-full overflow-x-auto no-scrollbar mb-6 px-4 md:px-0">
-        <TabsList className="shrink-0 w-max md:w-fit">
-          <TabsTrigger value="aggregate">Přehled</TabsTrigger>
-          <TabsTrigger value="electricity">Elektřina</TabsTrigger>
-          <TabsTrigger value="economy">Ekonomika</TabsTrigger>
-          <TabsTrigger value="social">Udržitelnost / ESG</TabsTrigger>
-          {showDebug && <TabsTrigger value="debug">Debug</TabsTrigger>}
-        </TabsList>
+      <div className="w-full overflow-x-auto no-scrollbar mb-6 rounded-lg">
+        <div className="flex justify-start md:justify-center min-w-full">
+          <TabsList className="shrink-0 w-max">
+            <TabsTrigger value="aggregate">Přehled</TabsTrigger>
+            <TabsTrigger value="electricity">Elektřina</TabsTrigger>
+            <TabsTrigger value="economy">Ekonomika</TabsTrigger>
+            <TabsTrigger value="social">Udržitelnost / ESG</TabsTrigger>
+            {showDebug && <TabsTrigger value="debug">Debug</TabsTrigger>}
+          </TabsList>
+        </div>
       </div>
 
 
