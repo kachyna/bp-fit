@@ -2,9 +2,11 @@ import { useState } from "react"
 import { ArrowRightLeft } from "lucide-react"
 import { Slider } from "@/components/ui/slider"
 import { ChartCard } from "@/components/model-screens/components/chart-card"
+import { useIsMobile } from "#hooks/use-mobile"
 
 export const PueSimulator = ({ chartCopy, className }) => {
     const [pue, setPue] = useState(1.4)
+    const isMobile = useIsMobile()
 
     const pctEffective = ((1.0 / pue) * 100).toFixed(1)
     const pctOverhead = (((pue - 1.0) / pue) * 100).toFixed(1)
@@ -19,7 +21,7 @@ export const PueSimulator = ({ chartCopy, className }) => {
             iconBgClass="bg-indigo-100/70 text-indigo-700"
             cardClass={`border-indigo-100 bg-linear-to-br from-indigo-50/40 via-slate-50/20 to-emerald-50/30 ${className || ""}`}
         >
-            <div className="w-full mt-2 px-9 pb-4 pt-2 space-y-6 flex flex-col justify-center h-full">
+            <div className="w-full mt-2 pb-4 pt-2 space-y-6 flex flex-col justify-center h-full">
                 <div className="space-y-2">
                     <div className="flex justify-between items-center text-xs font-semibold text-slate-700">
                         <span>Hodnota PUE</span>
@@ -38,7 +40,7 @@ export const PueSimulator = ({ chartCopy, className }) => {
                     <div className="flex justify-between text-[9px] text-slate-400 font-mono">
                         <span>Ideál</span>
                         <span>Standardard</span>
-                        <span>Zastaralé</span>
+                        {!isMobile && <span>Zastaralé</span>}
                         <span>Neefektivní</span>
                     </div>
                 </div>
@@ -55,11 +57,11 @@ export const PueSimulator = ({ chartCopy, className }) => {
                     <div className="flex justify-between text-[11px] font-medium">
                         <span className="text-emerald-700 flex items-center gap-1">
                             <span className="h-2 w-2 rounded-full bg-emerald-500 inline-block" />
-                            Užitečná IT spotřeba
+                            IT spotřeba
                         </span>
                         <span className="text-amber-700 flex items-center gap-1">
                             <span className="h-2 w-2 rounded-full bg-amber-500 inline-block" />
-                            Režie chlazení a napájení
+                            Režijní spotřeba
                         </span>
                     </div>
                 </div>
