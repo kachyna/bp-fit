@@ -56,7 +56,8 @@ export const prepareData = (data, keys) => {
             throw new Error("Missing calculation detail for " + key)
         }
         if (data[key] === undefined) {
-            throw new Error("Missing calculation data for " + key)
+            data[key] = 0
+            console.warn("Missing calculation data for " + key)
         }
         ret[key] = {
             ...CALCULATION_DETAILS[key],
