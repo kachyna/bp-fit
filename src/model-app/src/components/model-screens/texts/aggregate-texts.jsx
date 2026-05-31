@@ -53,7 +53,7 @@ export const getAggregateCopy = (inputData) => {
             },
             {
                 key: "investment",
-                title: "Celková investice",
+                title: "Pravidelná investice",
                 color: "blue",
                 icon: <Coins className="h-4 w-4" />,
                 mainText: (
