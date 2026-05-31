@@ -15,6 +15,7 @@ const chartConfigGvaTimeline = {
 }
 
 const prepareChartData = (data, scenarioParams) => {
+    if (!data) return []
     const durationConstructionYrs = scenarioParams.durationConstructionYrs || 0
     const durationOperationsYrs = scenarioParams.durationOperationsYrs || 0
     const totalYears = Math.ceil(durationConstructionYrs + durationOperationsYrs)

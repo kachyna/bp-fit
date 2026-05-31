@@ -12,8 +12,13 @@ const CountryIcons = {
 };
 
 
-export const PortfolioManager = () => {
+export const PortfolioManager = ({ onPortfolioSelect }) => {
     const setPortfolio = useModelStore((state) => state.setPortfolio);
+
+    const handlePortfolioClick = (portfolio) => {
+        setPortfolio(portfolio);
+        onPortfolioSelect?.();
+    };
 
     return (
         <div className="flex flex-col gap-2 w-full">
@@ -40,7 +45,7 @@ export const PortfolioManager = () => {
                     <Card
                         key={country}
                         className="cursor-pointer shadow-sm border-slate-200 hover:shadow-md hover:border-slate-300 transition-all duration-200"
-                        onClick={() => setPortfolio(data.portfolio)}
+                        onClick={() => handlePortfolioClick(data.portfolio)}
                     >
                         <CardContent className="px-4 flex flex-col gap-1">
                             <div className="flex items-center gap-3">

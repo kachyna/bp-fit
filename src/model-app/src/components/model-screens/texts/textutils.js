@@ -51,17 +51,19 @@ export const formatData = (val, leading = 3, unit = "") => {
  */
 export const prepareData = (data, keys) => {
     const ret = {}
+    const isEmpty = !data || Object.keys(data).length === 0;
+
     keys.forEach(key => {
         if (!CALCULATION_DETAILS[key]) {
             throw new Error("Missing calculation detail for " + key)
         }
-        if (data[key] === undefined) {
-            throw new Error("Missing calculation data for " + key)
-        }
+
+        const value = isEmpty ? 0 : (data[key] ?? 0);
+
         ret[key] = {
             ...CALCULATION_DETAILS[key],
-            "formatted": formatData(data[key] || 0, CALCULATION_DETAILS[key]["decimals"], CALCULATION_DETAILS[key]["formattedUnit"]),
-            "value": data[key] || 0
+            "formatted": formatData(value, CALCULATION_DETAILS[key]["decimals"], CALCULATION_DETAILS[key]["formattedUnit"]),
+            "value": value
         }
         
         // If the formatted value does not contain any non-zero digit,
@@ -75,8 +77,8 @@ export const prepareData = (data, keys) => {
 
         // In this case, we will try to display more decimal places to show the value more accurately.
         // This is a common issue when dealing with very small numbers, especially in scientific calculations.
-        if (!containsDigit && data[key] !== 0) {
-            ret[key].formatted = formatData(data[key] || 0, 3, CALCULATION_DETAILS[key]["formattedUnit"]);
+        if (!containsDigit && value !== 0) {
+            ret[key].formatted = formatData(value, 3, CALCULATION_DETAILS[key]["formattedUnit"]);
         }
     })
     return ret

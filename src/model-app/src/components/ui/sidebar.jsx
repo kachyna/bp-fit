@@ -337,21 +337,23 @@ function SidebarSeparator({
   );
 }
 
-function SidebarContent({
+const SidebarContent = React.forwardRef(({
   className,
   ...props
-}) {
+}, ref) => {
   return (
     <div
+      ref={ref}
       data-slot="sidebar-content"
       data-sidebar="content"
       className={cn(
-        "no-scrollbar flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden",
+        "no-scrollbar flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden overscroll-contain [overflow-anchor:none]",
         className
       )}
       {...props} />
   );
-}
+})
+SidebarContent.displayName = "SidebarContent"
 
 function SidebarGroup({
   className,

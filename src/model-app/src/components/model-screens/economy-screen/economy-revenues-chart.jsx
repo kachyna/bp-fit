@@ -19,6 +19,8 @@ const prepareChartData = (data) => {
     const chartPoints = []
     Object.entries(SCENARIO_LABELS).forEach(([key, label]) => {
         const scenarioData = data[key]
+        if (!scenarioData) return
+        
         chartPoints.push({
             key: key,
             name: label,
