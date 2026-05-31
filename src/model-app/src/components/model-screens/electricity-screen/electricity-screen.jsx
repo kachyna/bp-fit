@@ -1,6 +1,5 @@
 
 import { Zap } from "lucide-react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { NumberHoverCard } from "@/components/model-screens/components/number-hover-card"
 import { useModelStore } from "@/store/useModelStore"
 import { getElectricityCopy } from "../texts/electricity-texts"
