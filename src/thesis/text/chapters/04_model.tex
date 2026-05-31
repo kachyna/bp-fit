@@ -217,6 +217,12 @@ $$\text{I}_\text{total} = \text{I}_\text{building} + \text{I}_\text{equipment},$
 
 kde $\text{I}_\text{equipment}$ jsou celkové náklady na pořízení IT vybavení, které se vypočítají z průměrné ceny vybavení na 1 MW instalovaného příkonu $\text{I}_\text{equipment per MW}$ (analogicky k $\text{I}_\text{building}$).
 
+Při srovnávní s jinými sektory a obecně dalšími metrikami je však problém, že náklady na IT vybavení se odepisují rychleji než samotná budova, kvůli čemuž se v průběhu času mění jejich váha v celkových nákladech. Z tohoto důvodu byl zaveden další parametr odpisů, které stanovují délku odpisování IT vybavení $\text{UL}_\text{equipment}$ a délku odpisování budovy $\text{UL}_\text{building}$. Celkové roční odpisy $\text{D}_\text{y}$ se pak vypočítají jako
+
+$$\text{D}_\text{y} = \frac{\text{I}_\text{equipment}}{\text{UL}_\text{equipment}} + \frac{\text{I}_\text{building}}{\text{UL}_\text{building}},$$
+
+kde $\text{D}_\text{y}$ jsou celkové roční odpisy, $\text{I}_\text{equipment}$ jsou náklady na IT vybavení, $\text{UL}_\text{equipment}$ je délka odpisování IT vybavení, $\text{I}_\text{building}$ jsou náklady na výstavbu budovy a $\text{UL}_\text{building}$ je délka odpisování budovy. Alternativní přístup by spočíval ve vypočtení celkových nákladů za životnost projektu a jejich následném rozdělení do jedntlivých let, čímž by se v tomto zjednodušeném modelu dospělo ke stejnému výsledku. Tato metrika se nazývá anualizovaná investice (anglicky annualized CAPEX).
+
 Literatura dále ukazuje vztah mezi instalovaným příkonem a průměrným OPEX, nicméně tento vztah je silně vázaný na americkou ekonomiku a její ceny (zejm. vyšší mzdy). OPEX jako takový navíc není relevantní pro modelování HPH, kvůli čemuž byl zvolen přístup pro výpočet mezispotřeby $\text{IC}$. Ta je v případě DC tvořena zejména elektřinou -- jejíž cenu lze ze vstupů vypočítat přesně -- a dalšími složkami jako úklid, ostraha, služby, pojištění a další. Pro svou obsáhlost a neurčitost byl namísto modelování těchto složek zvolen přístup výpočtu z celkového investovaného kapitálu $\text{I}$ pomocí stanoveného koeficientu $\text{k}_\text{OPEX}$ -- například výše pojištění se odvíjí od hodnoty vybavení, stejně jako nutnost ostrahy. Mezispotřebu tedy počítáme jako
 
 $$\text{IC} = \text{E}_\text{real} \cdot \text{Price}_\text{electricity}  + \text{k}_\text{OPEX} \cdot \text{I}_\text{total},$$
