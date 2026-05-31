@@ -42,7 +42,7 @@ export const ESGChart = ({ data, chartCopy }) => {
       cardClass="border-indigo-100 bg-linear-to-br from-indigo-50/40 via-slate-50/20 to-rose-50/30"
       hoverExplanation={chartCopy.hoverExplanation}
     >
-      <ChartContainer config={chartConfig} className="w-full aspect-auto h-[350px] mt-2">
+      <ChartContainer config={chartConfig} className="w-full aspect-auto h-87.5 mt-2">
         <ComposedChart data={esgData} margin={{ top: 20 }}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
           <XAxis dataKey="name" tickLine={false} axisLine={false} className="text-xs font-semibold fill-slate-500" />

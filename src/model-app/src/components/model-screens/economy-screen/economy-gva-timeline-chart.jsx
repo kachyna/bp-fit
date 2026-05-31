@@ -74,7 +74,7 @@ export const EconomyGvaTimelineChart = ({ data, activeScenario = "REALISTIC", ch
             cardClass="border-indigo-100 bg-linear-to-br from-indigo-50/40 via-slate-50/20 to-rose-50/30"
             hoverExplanation={chartCopy.hoverExplanation}
         >
-            <ChartContainer config={chartConfigGvaTimeline} className="w-full mt-2 h-[350px] aspect-auto">
+            <ChartContainer config={chartConfigGvaTimeline} className="w-full mt-2 h-87.5 aspect-auto">
                 <ComposedChart data={gvaTimelineData} margin={{ top: 10, right: 10, bottom: 0, left: 10 }}>
                     <defs>
                         <linearGradient id="colorConstruction" x1="0" y1="0" x2="0" y2="1">

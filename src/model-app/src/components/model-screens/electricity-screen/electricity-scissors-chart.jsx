@@ -52,7 +52,7 @@ export const ElectricityScissorsChart = ({ data, chartCopy, className }) => {
             iconBgClass="bg-emerald-100/70 text-emerald-700"
             cardClass={`border-emerald-100 bg-linear-to-br from-emerald-50/40 via-slate-50/20 to-cyan-50/30 ${className || ""}`}
         >
-            <ChartContainer config={chartConfigScissors} className="w-full mt-2 h-[280px] aspect-auto">
+            <ChartContainer config={chartConfigScissors} className="w-full mt-2 h-70 aspect-auto">
                 <ComposedChart data={scissorsData} margin={{ top: 10, right: 10, bottom: 0, left: 10 }}>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
                     <XAxis dataKey="name" tickLine={false} axisLine={false} className="text-xs font-semibold fill-slate-500" />

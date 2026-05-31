@@ -31,7 +31,7 @@ function SidebarTriggerWithTooltip() {
       {showTooltip && (
         <div 
           onClick={handleDismiss}
-          className="absolute top-[calc(100%+8px)] left-0 z-50 w-max max-w-[200px] cursor-pointer rounded-md bg-slate-900 border border-slate-800 px-3 py-1.5 text-xs text-slate-50 shadow-md select-none"
+          className="absolute top-[calc(100%+8px)] left-0 z-50 w-max max-w-50 cursor-pointer rounded-md bg-slate-900 border border-slate-800 px-3 py-1.5 text-xs text-slate-50 shadow-md select-none"
         >
           {/* Arrow pointing up */}
           <div className="absolute -top-1 left-3.5 w-2 h-2 bg-slate-900 rotate-45 border-t border-l border-slate-800" />
