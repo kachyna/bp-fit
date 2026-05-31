@@ -165,54 +165,54 @@ export const PARAM_DETAILS = {
   },
   // --- NÁKLADY NA IT VYBAVENÍ PODLE BUSINESS MODELŮ ---
   "costEquipmentPerMW-coloc": {
-    label: "Náklady na IT vybavení (Colocation)",
+    label: "Náklady na 1 MW IT vybavení (kolokační)",
     description: "Investiční náklady na základní síťovou infrastrukturu, rozvaděče a podpůrné IT prvky pro zákaznické servery jsou již zahrnuty v ceně výstavby budovy. Kolokační centra obvykle vlastní vybavení nemají.",
   },
   "costEquipmentPerMW-training": {
-    label: "Náklady na IT vybavení (AI Training)",
+    label: "Náklady na 1 MW IT vybavení (trénovací)",
     description: "Investiční náklady na nákup masivních AI akcelerátorů (GPU), specializovaných serverů a ultra-rychlé síťové architektury (InfiniBand) na 1 MW IT výkonu.",
   },
   "costEquipmentPerMW-inference": {
-    label: "Náklady na IT vybavení (AI Inference)",
+    label: "Náklady na 1 MW IT vybavení (inferenční)",
     description: "Investiční náklady na nákup produkčního hardwaru optimalizovaného pro rychlé generování odpovědí (vysoká propustnost, nižší latence) na 1 MW IT výkonu.",
   },
   // --- CENÍKY SLUŽEB PODLE BUSINESS MODELŮ ---
   "priceService-coloc": {
-    label: "Ceník služeb – Nájemné (Colocation)",
+    label: "Ceník služeb – Nájemné (kolokační)",
     description: "Jednotková prodejní cena vyjádřená jako roční nájemné za pronájem 1 MW kapacity (zahrnuje pronájem prostoru, garantované chlazení a napájení).",
   },
   "priceService-training": {
-    label: "Ceník služeb – Pronájem GPU (AI Training)",
+    label: "Ceník služeb – Pronájem GPU (trénovací)",
     description: "Jednotková prodejní cena za komerční pronájem výpočetního výkonu, vyjádřená jako roční poplatek za jeden aktivní AI akcelerátor (GPU).",
   },
   "priceService-inference": {
-    label: "Ceník služeb – Cena za tokeny (AI Inference)",
+    label: "Ceník služeb – Cena za tokeny (inferenční)",
     description: "Jednotková prodejní cena za provoz AI modelů přes API, účtovaná klientům jako fixní částka za 1 milion zpracovaných nebo vygenerovaných tokenů.",
   },
   // --- OBSAZENOST (BUSINESS HLEDISKO: KOLIK KAPACIT SE PRODÁ) ---
   "occupancy-coloc": {
-    label: "Cílová obsazenost (Colocation)",
+    label: "Cílová obsazenost (kolokační)",
     description: "Z pohledu byznysu vyjadřuje, kolik procent z celkové kapacity (prostoru a příkonu sálů) dokáže datacentrum komerčně pronajmout zákazníkům.",
   },
   "occupancy-training": {
-    label: "Cílová obsazenost (AI Training)",
+    label: "Cílová obsazenost (trénovací)",
     description: "Z pohledu byznysu vyjadřuje komerční vytížení trénovacího clusteru – jak velký podíl z celkového instalovaného počtu GPU je úspěšně pronajat klientům.",
   },
   "occupancy-inference": {
-    label: "Cílová obsazenost (AI Inference)",
+    label: "Cílová obsazenost (inferenční)",
     description: "Z pohledu byznysu vyjadřuje podíl dedikované serverové kapacity pro provoz hotových AI modelů, který se daří monetizovat přes klientská API.",
   },
   // --- VYUŽITÍ (ENERGETICKÉ HLEDISKO: REÁLNÁ SPOTŘEBA PRODANÝCH KAPACIT) ---
   "utilization-coloc": {
-    label: "Průměrné využití IT Load (Colocation)",
+    label: "Průměrné využití IT Load (kolokační)",
     description: "Z energetického hlediska určuje, jaký podíl z již prodaných (alokovaných) kapacit klienti v průměru skutečně spotřebovávají (servery málokdy běží na 100 % jmenovitého jističe).",
   },
   "utilization-training": {
-    label: "Průměrné využití IT Load (AI Training)",
+    label: "Průměrné využití IT Load (trénovací)",
     description: "Z energetického hlediska vyjadřuje průměrnou hardwarovou zátěž pronajatých GPU. Trénování AI modelů je extrémně výpočetně náročné, proto se reálná spotřeba blíží maximu.",
   },
   "utilization-inference": {
-    label: "Průměrné využití IT Load (AI Inference)",
+    label: "Průměrné využití IT Load (inferenční)",
     description: "Z energetického hlediska určuje průměrný reálný příkon infrastruktury v čase, který kolísá na základě aktuálního množství uživatelských dotazů (inference) přicházejících zvenčí.",
   },
   // Metadata a popisky scénářů / modelů

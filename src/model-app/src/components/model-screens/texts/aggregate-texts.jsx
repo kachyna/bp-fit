@@ -39,8 +39,8 @@ export const getAggregateCopy = (inputData) => {
         },
         kpis: [
             {
-                key: "installedPower",
-                title: "Instalovaný příkon",
+                key: "totalPower",
+                title: "Příkon datových center",
                 color: "rose",
                 icon: <Zap className="h-4 w-4" />,
                 mainText: (
@@ -118,7 +118,7 @@ export const getAggregateCopy = (inputData) => {
                         <div className="text-2xl font-bold text-emerald-950">
                             {data.portfolioEmissionsTonnesCO2.formatted}
                         </div>
-                        <p className="text-xs text-emerald-600/70 mt-2">roční emise (Scope II)</p>
+                        <p className="text-xs text-emerald-600/70 mt-2">roční emise v tunách (Scope II)</p>
                     </>
                 )
             }

@@ -63,6 +63,21 @@ export const prepareData = (data, keys) => {
             "formatted": formatData(data[key] || 0, CALCULATION_DETAILS[key]["decimals"], CALCULATION_DETAILS[key]["formattedUnit"]),
             "value": data[key] || 0
         }
+        
+        // If the formatted value does not contain any non-zero digit,
+        // it means that the value is very small and is displayed as 0 with the current formatting.
+        let containsDigit = false;
+        ["1", "2", "3", "4", "5", "6", "7", "8", "9"].forEach(cipher => {
+            if (ret[key].formatted.includes(cipher)) {
+                containsDigit = true;
+            }
+        });
+
+        // In this case, we will try to display more decimal places to show the value more accurately.
+        // This is a common issue when dealing with very small numbers, especially in scientific calculations.
+        if (!containsDigit && data[key] !== 0) {
+            ret[key].formatted = formatData(data[key] || 0, 3, CALCULATION_DETAILS[key]["formattedUnit"]);
+        }
     })
     return ret
 }
