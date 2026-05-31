@@ -1,5 +1,6 @@
 import { create } from 'zustand'
-import { SCENARIOS, COMMON_PARAMS } from '../constants/parameters'
+import { SCENARIOS, COMMON_PARAMS } from '@/constants/parameters'
+import { SCENARIO_KEYS } from '@/constants/config'
 import { enrichDatacenter } from '../logic/enrich'
 import { immer } from 'zustand/middleware/immer'
 
@@ -95,7 +96,7 @@ export const useModelStore = create(immer((set, get) => ({
     },
 
     setActiveScenario: (scenarioKey) => set((state) => {
-        if ( state.params.SCENARIOS[scenarioKey] ) {
+        if ( SCENARIO_KEYS.includes(scenarioKey) ) {
             state.activeScenarioKey = scenarioKey;
         } else state.activeScenarioKey = 'REALISTIC';
     })
