@@ -62,7 +62,7 @@ export function ConfigSidebar() {
                         </CollapsibleContent>
                     </SidebarGroup>
                 </Collapsible>
-                <Collapsible defaultOpen={true} className="group/collapsible">
+                <Collapsible defaultOpen={false} className="group/collapsible">
                     <SidebarGroup>
                         <CollapsibleTrigger>
                             <div className="flex flex-row items-center space-between text-sm font-medium text-slate-900 group-data-[state=open]/collapsible:text-slate-600 group-data-[state=open]/collapsible:mb-4">
