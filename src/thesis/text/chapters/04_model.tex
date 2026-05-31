@@ -205,23 +205,23 @@ Jak bylo popsáno v kapitole~\ref{subsec:prikon}, základní jednotkou příkonu
 \label{subsec:model_naklady}
 % Odhad Nákladů na výstavbu a OPEX na základě instalovaného výkonu a typu
 
-Z literatury plyne jednoznačný vztah mezi náklady na výstavbu datového centra (bez výpočetního vybavení) $\text{I}_\text{building}$ a jeho instalovaným příkonem v megawattech $\text{P}_\text{IT}$.  Celkový investovaný kapitál tak lze snadno vypočítat rovnicí:
+Z literatury plyne jednoznačný vztah mezi náklady na výstavbu datového centra (bez výpočetního vybavení) $\text{I}_\text{build}$ a jeho instalovaným příkonem v megawattech $\text{P}_\text{IT}$.  Celkový investovaný kapitál tak lze snadno vypočítat rovnicí:
 
-$$\text{I}_\text{building} = \text{P}_\text{IT} \cdot \text{I}_\text{building per MW},$$
+$$\text{I}_\text{build} = \text{P}_\text{IT} \cdot \text{I}_\text{build per MW},$$
 
-kde $\text{I}_\text{building per MW}$ jsou průměrné investiční náklady na výstavbu datového centra s 1~MW instalovaného příkonu.
+kde $\text{I}_\text{build per MW}$ jsou průměrné investiční náklady na výstavbu datového centra s 1~MW instalovaného příkonu.
 
 Pro výpočet celkových nákladů na výstavbu datového centra včetně vybavení $\text{I}_\text{total}$ se použije vzorec:
 
-$$\text{I}_\text{total} = \text{I}_\text{building} + \text{I}_\text{equipment},$$
+$$\text{I}_\text{total} = \text{I}_\text{build} + \text{I}_\text{equipment},$$
 
-kde $\text{I}_\text{equipment}$ jsou celkové náklady na pořízení IT vybavení, které se vypočítají z průměrné ceny vybavení na 1~MW instalovaného příkonu $\text{I}_\text{equipment per MW}$ (analogicky k $\text{I}_\text{building}$).
+kde $\text{I}_\text{equipment}$ jsou celkové náklady na pořízení IT vybavení, které se vypočítají z průměrné ceny vybavení na 1~MW instalovaného příkonu $\text{I}_\text{equipment per MW}$ (analogicky k $\text{I}_\text{build}$).
 
-Při srovnávání s jinými sektory a obecně dalšími metrikami je však problém, že náklady na IT vybavení se odepisují rychleji než samotná budova, kvůli čemuž se v průběhu času mění jejich váha v celkových nákladech. Z tohoto důvodu byl zaveden další parametr odpisů, které stanovují délku odpisování IT vybavení $\text{UL}_\text{equipment}$ a délku odpisování budovy $\text{UL}_\text{building}$. Celkové roční odpisy $\text{D}_\text{y}$ se pak vypočítají jako
+Při srovnávání s jinými sektory a obecně dalšími metrikami je však problém, že náklady na IT vybavení se odepisují rychleji než samotná budova, kvůli čemuž se v průběhu času mění jejich váha v celkových nákladech. Z tohoto důvodu byl zaveden další parametr odpisů, které stanovují délku odpisování IT vybavení $\text{UL}_\text{equipment}$ a délku odpisování budovy $\text{UL}_\text{build}$. Celkové roční odpisy $\text{D}_\text{y}$ se pak vypočítají jako
 
-$$\text{D}_\text{y} = \frac{\text{I}_\text{equipment}}{\text{UL}_\text{equipment}} + \frac{\text{I}_\text{building}}{\text{UL}_\text{building}},$$
+$$\text{D}_\text{y} = \frac{\text{I}_\text{equipment}}{\text{UL}_\text{equipment}} + \frac{\text{I}_\text{build}}{\text{UL}_\text{build}},$$
 
-kde $\text{D}_\text{y}$ jsou celkové roční odpisy, $\text{I}_\text{equipment}$ jsou náklady na IT vybavení, $\text{UL}_\text{equipment}$ je délka odpisování IT vybavení, $\text{I}_\text{building}$ jsou náklady na výstavbu budovy a $\text{UL}_\text{building}$ je délka odpisování budovy. Alternativní přístup by spočíval ve vypočtení celkových nákladů za životnost projektu a jejich následném rozdělení do jednotlivých let, čímž by se v tomto zjednodušeném modelu dospělo ke stejnému výsledku. Tato metrika se nazývá anualizovaná investice (anglicky annualized CAPEX).
+kde $\text{D}_\text{y}$ jsou celkové roční odpisy, $\text{I}_\text{equipment}$ jsou náklady na IT vybavení, $\text{UL}_\text{equipment}$ je délka odpisování IT vybavení, $\text{I}_\text{build}$ jsou náklady na výstavbu budovy a $\text{UL}_\text{build}$ je délka odpisování budovy. Alternativní přístup by spočíval ve vypočtení celkových nákladů za životnost projektu a jejich následném rozdělení do jednotlivých let, čímž by se v tomto zjednodušeném modelu dospělo ke stejnému výsledku. Tato metrika se nazývá anualizovaná investice (anglicky annualized CAPEX).
 
 Literatura dále ukazuje vztah mezi instalovaným příkonem a průměrným OPEX, nicméně tento vztah je silně vázaný na americkou ekonomiku a její ceny (zejm. vyšší mzdy). OPEX jako takový navíc není relevantní pro modelování HPH, kvůli čemuž byl zvolen přístup pro výpočet mezispotřeby $\text{IC}$. Ta je v případě DC tvořena zejména elektřinou -- jejíž cenu lze ze vstupů vypočítat přesně -- a dalšími složkami jako úklid, ostraha, služby, pojištění a další. Pro svou obsáhlost a neurčitost byl namísto modelování těchto složek zvolen přístup výpočtu z celkového investovaného kapitálu $\text{I}_\text{total}$ pomocí stanoveného koeficientu $\text{k}_\text{OPEX}$ -- například výše pojištění se odvíjí od hodnoty vybavení, stejně jako nutnost ostrahy. Mezispotřebu tedy počítáme jako:
 
@@ -266,13 +266,13 @@ kde $\text{T}_\text{ecology}$ je celková ekologická daň, $\text{E}_\text{real
 Daň z nemovitosti se odvíjí od velikosti pozemku a budovy, na kterých se datové centrum nachází, a od sazeb daně z nemovitosti, které jsou stanoveny pro danou lokalitu. Pro výpočet daně z nemovitosti $\text{T}_\text{property}$ se použijí následující vzorce:
 
 $$\text{T}_\text{land} = \text{A}_\text{land} \cdot \text{t}_\text{land} \cdot \text{k}_\text{location},$$
-$$\text{T}_\text{building} = \text{A}_\text{building} \cdot \text{t}_\text{building} \cdot \text{k}_\text{location},$$
+$$\text{T}_\text{build} = \text{A}_\text{build} \cdot \text{t}_\text{build} \cdot \text{k}_\text{location},$$
 
-kde $\text{T}_\text{land}$ je daň z pozemku, $\text{A}_\text{land}$ je plocha pozemku, $\text{t}_\text{land}$ je sazba daně z pozemku, $\text{k}_\text{location}$ je koeficient pro lokalitu (zohledňující faktory jako město vs. venkov), $\text{T}_\text{building}$ je daň z budovy, $\text{A}_\text{building}$ je zastavěná plocha budovy a $\text{t}_\text{building}$ je sazba daně z budovy. Znovu je nutné zajistit, že jednotky pro plochu a sazby daně jsou konzistentní (např. plocha v $m^2$ a sazby v $\text{Kč}/m^2$).
+kde $\text{T}_\text{land}$ je daň z pozemku, $\text{A}_\text{land}$ je plocha pozemku, $\text{t}_\text{land}$ je sazba daně z pozemku, $\text{k}_\text{location}$ je koeficient pro lokalitu (zohledňující faktory jako město vs. venkov), $\text{T}_\text{build}$ je daň z budovy, $\text{A}_\text{build}$ je zastavěná plocha budovy a $\text{t}_\text{build}$ je sazba daně z budovy. Znovu je nutné zajistit, že jednotky pro plochu a sazby daně jsou konzistentní (např. plocha v $m^2$ a sazby v $\text{Kč}/m^2$).
 
 Celková daň z nemovitosti $\text{T}_\text{property}$ se pak získá sečtením daně z pozemku a daně z budovy:
 
-$$\text{T}_\text{property} = \text{T}_\text{land} + \text{T}_\text{building}.$$
+$$\text{T}_\text{property} = \text{T}_\text{land} + \text{T}_\text{build}.$$
 
 \subsection{HPH (Hrubá přidaná hodnota)}
 \label{subsec:model_hph}
@@ -294,9 +294,9 @@ $$\text{GPU Count} = \text{P}_\text{IT} \div \text{GPU Power},$$
 
 kde $\text{P}_\text{IT}$ je instalovaný příkon datového centra a $\text{GPU Power}$ je průměrná spotřeba jednoho GPU. Tržby z trénovacího centra $\text{S}_\text{training}$ se pak vypočítají jako
 
-$$\text{S}_\text{training} = \text{P}_\text{training} \cdot \text{GPU Count} \cdot \text{k}_\text{utilization} \cdot \text{k}_\text{occupancy},$$
+$$\text{S}_\text{training} = \text{Price}_\text{training} \cdot \text{GPU Count} \cdot \text{k}_\text{utilization} \cdot \text{k}_\text{occupancy},$$
 
-kde $\text{P}_\text{training}$ je průměrná cena za pronájem GPU, $\text{GPU Count}$ je počet GPU a $\text{k}_\text{utilization}$ je koeficient využití. Je přitom potřeba vzít v potaz, že cena za pronájem GPU se často uvádí v GPU-hodinách -- pro modelování v rámci jednoho roku je proto nutné sazbu přepočítat na roky (vynásobit ji počtem hodin v roce 8~760). Koeficient $\text{k}_\text{occupancy}$ se použije pro zohlednění obsazenosti trénovacího centra. Následně se HPH pro trénovací centrum $\text{GVA}_\text{training}$ vypočítá jako rozdíl mezi tržbami a mezispotřebou:
+kde $\text{Price}_\text{training}$ je průměrná cena za pronájem GPU, $\text{GPU Count}$ je počet GPU a $\text{k}_\text{utilization}$ je koeficient využití. Je přitom potřeba vzít v potaz, že cena za pronájem GPU se často uvádí v GPU-hodinách -- pro modelování v rámci jednoho roku je proto nutné sazbu přepočítat na roky (vynásobit ji počtem hodin v roce 8~760). Koeficient $\text{k}_\text{occupancy}$ se použije pro zohlednění obsazenosti trénovacího centra. Následně se HPH pro trénovací centrum $\text{GVA}_\text{training}$ vypočítá jako rozdíl mezi tržbami a mezispotřebou:
 
 $$\text{GVA}_\text{training} = \text{S}_\text{training}  - \text{IC}.$$
 
@@ -306,9 +306,9 @@ $$\text{Max Tokens} = \text{E}_\text{IT} \div \text{E}_\text{token},$$
 
 kde $\text{E}_\text{IT}$ je maximální spotřeba IT vybavení a $\text{E}_\text{token}$ je průměrná spotřeba pro zpracování jednoho tokenu. Je nutné zajistit soulad mezi jednotkami spotřeby a spotřebou tokenů. Tržby z inferenčního centra $\text{S}_\text{inference}$ se pak vypočítají jako
 
-$$\text{S}_\text{inference} = \text{P}_\text{token} \cdot \text{Max Tokens} \cdot \text{k}_\text{utilization} \cdot \text{k}_\text{occupancy},$$
+$$\text{S}_\text{inference} = \text{Price}_\text{token} \cdot \text{Max Tokens} \cdot \text{k}_\text{utilization} \cdot \text{k}_\text{occupancy},$$
 
-kde $\text{P}_\text{token}$ je průměrná cena za zpracování jednoho tokenu, $\text{Max Tokens}$ je maximální počet zpracovatelných tokenů a $\text{k}_\text{utilization}$ je koeficient využití a $\text{k}_\text{occupancy}$ je koeficient obsazenosti. Následně se HPH pro inferenční centrum $\text{GVA}_\text{inference}$ vypočítá jako rozdíl mezi tržbami a mezispotřebou:
+kde $\text{Price}_\text{token}$ je průměrná cena za zpracování jednoho tokenu, $\text{Max Tokens}$ je maximální počet zpracovatelných tokenů a $\text{k}_\text{utilization}$ je koeficient využití a $\text{k}_\text{occupancy}$ je koeficient obsazenosti. Následně se HPH pro inferenční centrum $\text{GVA}_\text{inference}$ vypočítá jako rozdíl mezi tržbami a mezispotřebou:
 
 $$\text{GVA}_\text{inference} = \text{S}_\text{inference}  - \text{IC}.$$
 
@@ -336,9 +336,9 @@ Model byl rozdělen do fází výstavby a provozu datového centra, které se li
 
 Fáze výstavby se obvykle odehrává v prvních 1--2 letech od zahájení projektu, kdy jsou realizovány stavební práce, instalace vybavení a další přípravné činnosti. V této fázi jsou klíčové investiční náklady, které se promítají do HPH vygenerované stavební firmou. Na základě dat z ČSÚ byl zjištěn průměrný koeficient pro výpočet HPH z investovaných nákladů, který se pohybuje kolem 30~\%~\cite{csu_mezispotreba_2026,csu_produkce_2026}. HPH vygenerovaná ve fázi výstavby se tedy vypočítá jako:
 
-$$\text{HPH}_\text{construction} = \text{I}_\text{total} \cdot \text{k}_\text{GVA on Construction Investment},$$
+$$\text{HPH}_{\text{const}} = \text{I}_{\text{total}} \cdot \text{k}_{\text{GVA on I\_build}},$$
 
-kde $\text{HPH}_\text{construction}$ je hrubá přidaná hodnota z výstavby, $\text{I}_\text{total}$ je celkový investovaný kapitál pro výstavbu a $\text{k}_\text{GVA on Construction Investment}$ je koeficient pro výpočet HPH z investovaných nákladů.
+kde $\text{HPH}_{\text{const}}$ je hrubá přidaná hodnota z výstavby, $\text{I}_{\text{total}}$ je celkový investovaný kapitál pro výstavbu a $\text{k}_{\text{GVA on I\_build}}$ je koeficient pro výpočet HPH z investovaných nákladů.
 
 Druhou část fáze výstavby tvoří pracovní místa, která jsou vytvořena během výstavby datového centra. Počet FTE vytvořených ve fázi výstavby se vypočítá podle vzorce uvedeného v podsekci~\ref{subsec:model_prace_dane}, přičemž se použije koeficient pro výpočet FTE při výstavbě a průměrná mzda pracovníků na výstavbě.
 
@@ -352,6 +352,6 @@ Model je navržený tak, aby zachycoval dopady výstavby AI datových center na 
 
 Z uvedených vstupů tedy model vypočítá celkovou spotřebu datových center, od které odvozuje náklady na elektřinu, ekologickou daň a emise oxidu uhličitého do ovzduší. Vstupní parametry dále umožňují odhadnout celkovou produkci datových center, která se následně promítne do hrubé přidané hodnoty. Díky datům o počtu vytvořených pracovních míst a průměrné mzdě model vypočítá přínosy do veřejného rozpočtu z oblasti práce, které se spolu s ekologickou daní a daní z nemovitosti sečtou do celkových přínosů do veřejného rozpočtu. Celková přidaná hodnota a environmentální dopady pak slouží pro komplexní posouzení dopadů datových center v ČR.
 
-Finálním výstupem modelu jsou jednotlivé ukazatele (HPH, přínosy do veřejného rozpočtu) pro každý z modelovaných scénářů, vynásobené předpokládanou dobou výstavby $\tau_{construction}$ a sečtené se zbývajícími ukazateli (HPH, přínosy, emise $CO_2$ a spotřeba vody) vynásobenými dobou provozu $\tau_{operations}$ -- ty jsou dále agregovány do jedné očekávané hodnoty pro každý ukazatel. Tyto výsledky budou prezentovány v kapitole~\ref{chap:testovani} a slouží jako základ pro interpretaci dopadů datových center v ČR a pro informování rozhodování o jejich budoucím rozvoji. Jednotlivé parametry použité v modelu jsou uvedeny v příloze~\ref{appendix:parametry} včetně dodatečných komentářů k jejich získávání.
+Finálním výstupem modelu jsou jednotlivé ukazatele (HPH, přínosy do veřejného rozpočtu) pro každý z modelovaných scénářů, vynásobené předpokládanou dobou výstavby $\tau_{const}$ a sečtené se zbývajícími ukazateli (HPH, přínosy, emise $CO_2$ a spotřeba vody) vynásobenými dobou provozu $\tau_{ops}$ -- ty jsou dále agregovány do jedné očekávané hodnoty pro každý ukazatel. Tyto výsledky budou prezentovány v kapitole~\ref{chap:testovani} a slouží jako základ pro interpretaci dopadů datových center v ČR a pro informování rozhodování o jejich budoucím rozvoji. Jednotlivé parametry použité v modelu jsou uvedeny v příloze~\ref{appendix:parametry} včetně dodatečných komentářů k jejich získávání.
 
 Celkově tato kapitola tedy popisuje metodologii výpočtů a strukturu modelu, který bude následně použit pro vytvoření webové aplikace pro vizualizaci dopadů datových center v ČR. Model je navržen tak, aby byl flexibilní a umožňoval snadné úpravy vstupních parametrů a scénářů, což je klíčové vzhledem k rychlému vývoji technologií a trhu s AI datovými centry. Jeho funkčnost a použitelnost bude dále demonstrována v kapitole~\ref{chap:testovani}, kde budou prezentovány výsledky pro jednotlivé scénáře a jejich interpretace. Zároveň bude model použit pro vymodelování dopadů pro jiné země podobné České republice, což umožní zjistit jeho přesnost a robustnost na skutečných scénářích.

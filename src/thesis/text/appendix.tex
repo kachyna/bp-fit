@@ -67,22 +67,22 @@ V tabulce \ref{tab:parametry_komplet} jsou uvedeny hodnoty všech parametrů, kt
     % --------------------------
 
         \multicolumn{5}{l}{\textbf{Investiční náklady a výstavba}} \\
-        Náklady na 1~MW příkonu ($\text{I}_\text{building per~MW}$) & 148,2~mil.~Kč & 211,7~mil.~Kč & 275,2~mil.~Kč & \cite{barroso_data_2026, international_energy_agency_iea_energy_2025, roychoudhury_economic_2025} \\
-        FTE při výstavbě na 1~MW ($\text{FTE}_\text{building per~MW}$) & 4,0 & 5,0 & 6,0 & \cite{to_albertas_2025, lee_breaking_2025} \\
-        Roční prům. mzda výstavba ($\text{W}_\text{avg construction}$) & 660 000~Kč & 720 000~Kč & 780 000~Kč & příloha \ref{appendix:parametry} \\
-        HPH z nákladů na výstavbu ($\text{k}_\text{GVA on Donstruction Investment}$) & 28 \% & 30 \% & 32 \% & příloha \ref{appendix:parametry} \\
-        Doba výstavby v letech ($\tau_{\text{construction}}$) & 1,5 & 2,0 & 3,0 & \cite{to_albertas_2025, ginzburg-ganz_technical_2025, pham_data_2017, sheng_power_2026, lee_breaking_2025} \\
+        Náklady na 1~MW příkonu ($\text{I}_\text{build per~MW}$) & 148,2~mil.~Kč & 211,7~mil.~Kč & 275,2~mil.~Kč & \cite{barroso_data_2026, international_energy_agency_iea_energy_2025, roychoudhury_economic_2025} \\
+        FTE při výstavbě na 1~MW ($\text{FTE}_\text{build per~MW}$) & 4,0 & 5,0 & 6,0 & \cite{to_albertas_2025, lee_breaking_2025} \\
+        Roční prům. mzda výstavba ($\text{W}_\text{avg const}$) & 660 000~Kč & 720 000~Kč & 780 000~Kč & příloha \ref{appendix:parametry} \\
+        HPH z nákladů na výstavbu ($\text{k}_\text{GVA on I\_build}$) & 28 \% & 30 \% & 32 \% & příloha \ref{appendix:parametry} \\
+        Doba výstavby v letech ($\tau_{\text{const}}$) & 1,5 & 2,0 & 3,0 & \cite{to_albertas_2025, ginzburg-ganz_technical_2025, pham_data_2017, sheng_power_2026, lee_breaking_2025} \\
         
         \addlinespace
         \midrule
         \addlinespace
 
         \multicolumn{5}{l}{\textbf{Provozní parametry a lidské zdroje}} \\
-        Doba provozu v letech ($\tau_{\text{operations}}$) & 25 & 30 & 35 & \cite{barroso_data_2026} \\
-        Doba odpisu budovy ($\tau_{\text{operations}}$) & 25 & 30 & 35 & \cite{barroso_data_2026} \\
-        Doba odpisu IT vybavení ($\tau_{\text{operations}}$) & 3 & 4 & 5 & \cite{barroso_data_2026} \\
-        Přímí FTE v provozu na 1~MW ($\text{FTE}_\text{operations per~MW}$) & 0,3 & 0,4 & 0,5 & \cite{to_albertas_2025, lee_breaking_2025,  diao_economic_2025}  \\
-        Roční prům. mzda v provozu ($\text{W}_\text{avg operations}$) & 780 000~Kč & 900 000~Kč & 1 080 000~Kč & příloha \ref{appendix:parametry} \\
+        Doba provozu v letech ($\tau_{\text{ops}}$) & 25 & 30 & 35 & \cite{barroso_data_2026} \\
+        Doba odpisu budovy ($\text{UL}_\text{build}$) & 25 & 30 & 35 & \cite{barroso_data_2026} \\
+        Doba odpisu IT vybavení ($\text{UL}_\text{equipment}$) & 3 & 4 & 5 & \cite{barroso_data_2026} \\
+        Přímí FTE v provozu na 1~MW ($\text{FTE}_\text{ops per~MW}$) & 0,3 & 0,4 & 0,5 & \cite{to_albertas_2025, lee_breaking_2025,  diao_economic_2025}  \\
+        Roční prům. mzda v provozu ($\text{W}_\text{avg ops}$) & 780 000~Kč & 900 000~Kč & 1 080 000~Kč & příloha \ref{appendix:parametry} \\
         Cena elektřiny za~MWh ($\text{Price}_\text{electricity}$) & 1 768~Kč & 2 210~Kč & 2 652~Kč & \cite{ember_average_2026}, příloha \ref{appendix:parametry} \\
         Ostatní OPEX~\% z $I_\text{total}$ ($\text{k}_\text{OPEX}$) & 4,0~\% & 3,0~\% & 2,0~\% & \cite{pham_data_2017}, příloha \ref{appendix:parametry} \\
         
@@ -94,7 +94,7 @@ V tabulce \ref{tab:parametry_komplet} jsou uvedeny hodnoty všech parametrů, kt
         Emise $CO_2$ ($\text{EF}$) & 0,43 t/MWh & 0,33 t/MWh & 0,23 t/MWh & \cite{bufka_hodnota_2026} \\
         Spotřeba vody na 1~MWh ($\text{WF}$) & 1 800~l & 2 350~l & 2 900~l & \cite{pilz_compute_2023, de_roucy-rochegonde_ai_2025, sheng_power_2026, international_energy_agency_iea_energy_2025} \\
         Výměra pozemku na 1~MW ($\text{A}_\text{land}$) & 2400,0 $m^2$ & 2998,00 $m^2$ & 3600,0 $m^2$ & sekce \ref{sec:model_scraper} \\
-        Poměr zastavěné plochy ($\text{A}_\text{building}$ / $\text{A}_\text{land}$) & 58,19~\% & 72,74~\% & 87,28~\% & sekce \ref{sec:model_scraper} \\
+        Poměr zastavěné plochy ($\text{A}_\text{build}$ / $\text{A}_\text{land}$) & 58,19~\% & 72,74~\% & 87,28~\% & sekce \ref{sec:model_scraper} \\
 
         \addlinespace
         \midrule
@@ -104,15 +104,15 @@ V tabulce \ref{tab:parametry_komplet} jsou uvedeny hodnoty všech parametrů, kt
         DPFO ($\text{t}_{income}$ / $\text{Tax Discount}$) & \multicolumn{3}{c}{15,00~\% / 30 840~Kč} & \ref{subsec:cz_dane} \\
         Odvody (zaměstnavatel / prac.) ($\text{t}_{contributions}$) & \multicolumn{3}{c}{33,80~\% / 11,60~\%} & \ref{subsec:cz_dane} \\
         Sazba ekologické daně ($\text{t}_{ecology}$) & \multicolumn{3}{c}{28,30~Kč /~MWh} & \ref{subsec:cz_dane} \\
-        Sazba daně z nemovitosti (budova / poz., $\text{t}_\text{building}$ / $\text{t}_\text{land}$) & \multicolumn{3}{c}{18~Kč / 9~Kč (na $m^2$)} & \ref{subsec:cz_dane} \\
-        Součin koeficientů pro daň z nemovitosti ($\text{k}_\text{location}$) & \multicolumn{3}{c}{7} & příloha \ref{appendix:parametry} \\
+        Sazby daně z nemovitosti ($\text{t}_\text{build}$ / $\text{t}_\text{land}$) & \multicolumn{3}{c}{18~Kč / 9~Kč (na $m^2$)} & \ref{subsec:cz_dane} \\
+        Součin koef. daně z nemovitosti ($\text{k}_\text{location}$) & \multicolumn{3}{c}{7} & příloha \ref{appendix:parametry} \\
 
         \addlinespace
 
         \multicolumn{5}{l}{\textbf{Koeficient prodaných kapacit} ($\text{k}_\text{occupancy}$)} \\
         Colocation DC & 88,0~\% & 92,6~\% & 97,2~\% & \cite{cbre_global_2025}, odchylka 5~\% \\
-        AI DC -- Training & 100,00~\% & 100,00~\% & 100,00~\% & příloha \ref{appendix:parametry} \\
-        AI DC -- Inference & 100,00~\% & 100,00~\% & 100,00~\% & příloha \ref{appendix:parametry} \\
+        AI trénovací & 100,00~\% & 100,00~\% & 100,00~\% & příloha \ref{appendix:parametry} \\
+        AI inferenční & 100,00~\% & 100,00~\% & 100,00~\% & příloha \ref{appendix:parametry} \\
 
         \addlinespace
         \midrule
@@ -120,34 +120,34 @@ V tabulce \ref{tab:parametry_komplet} jsou uvedeny hodnoty všech parametrů, kt
 
         \multicolumn{5}{l}{\textbf{Koeficient reálné spotřeby z prodaných kapacit} ($\text{k}_\text{utilization}$)} \\
         Colocation DC & 40,00~\% & 50,00~\% & 60,00~\% & \cite{shehabi_united_2016} \\
-        AI DC -- Training & 80,00~\% & 90,00~\% & 100,00~\% & \cite{LBNL-2001637, ginzburg-ganz_technical_2025, sheng_power_2026, LBNL-2001637} \\
-        AI DC -- Inference & 40,00~\% & 50,00~\% & 60,00~\% & \cite{ginzburg-ganz_technical_2025, sheng_power_2026} \\
+        AI trénovací & 80,00~\% & 90,00~\% & 100,00~\% & \cite{LBNL-2001637, ginzburg-ganz_technical_2025, sheng_power_2026, LBNL-2001637} \\
+        AI inferenční & 40,00~\% & 50,00~\% & 60,00~\% & \cite{ginzburg-ganz_technical_2025, sheng_power_2026} \\
 
         \addlinespace
         \midrule
         \addlinespace
 
-        \multicolumn{5}{l}{\textbf{Investiční náklady na výpočetní vybavení na 1~MW $\text{I}_\text{equipment per~MW}$}} \\
+        \multicolumn{5}{l}{\textbf{Náklady na pořízení výpočetního vybavení na 1~MW} ($\text{I}_\text{equipment per~MW}$)} \\
         Colocation DC & 0,00~Kč & 0,00~Kč & 0,00~Kč & příloha \ref{appendix:parametry} \\
-        AI DC -- Training & 618,0~mil.~Kč~Kč & 721,0~mil.~Kč & 824,0~mil.~Kč & \cite{barroso_data_2026, pilz_compute_2023} \\
-        AI DC -- Inference & 319,0~mil.~Kč & 360,5~mil.~Kč & 412,0~mil.~Kč & \cite{barroso_data_2026}, příloha \ref{appendix:parametry} \\
+        AI trénovací & 618,0~mil.~Kč~Kč & 721,0~mil.~Kč & 824,0~mil.~Kč & \cite{barroso_data_2026, pilz_compute_2023} \\
+        AI inferenční & 319,0~mil.~Kč & 360,5~mil.~Kč & 412,0~mil.~Kč & \cite{barroso_data_2026}, příloha \ref{appendix:parametry} \\
         
         \addlinespace
         \midrule
         \addlinespace
 
         \multicolumn{5}{l}{\textbf{Cena za služby jednotlivých typů DC}} \\
-        Coloc -- Roční pronájem 1~MW kapacity ($\text{Price}_\text{coloc}$) & 44,49~mil.~Kč & 48,70~mil.~Kč & 53,15~mil.~Kč & \cite{cbre_global_2025} \\
-        Training -- Roční pronájem GPU ($\text{P}_\text{training}$) & 360 921~Kč & 541 368~Kč & 721 824~Kč & příloha \ref{appendix:parametry} \\
-        Inference -- Cena za 1~mil. tokenů ($\text{P}_\text{token}$) & 10,09~Kč & 10,09~Kč & 10,09~Kč & příloha \ref{appendix:parametry} \\
+        Roční pronájem 1~MW kapacity ($\text{Price}_\text{coloc}$) & 44,49~mil.~Kč & 48,70~mil.~Kč & 53,15~mil.~Kč & \cite{cbre_global_2025} \\
+        Roční pronájem GPU ($\text{Price}_\text{training}$) & 360 921~Kč & 541 368~Kč & 721 824~Kč & příloha \ref{appendix:parametry} \\
+        Cena za 1~mil. tokenů ($\text{Price}_\text{token}$) & 10,09~Kč & 10,09~Kč & 10,09~Kč & příloha \ref{appendix:parametry} \\
         
         \addlinespace
         \midrule
         \addlinespace
 
         \multicolumn{5}{l}{\textbf{Specifické parametry jednotlivých typů DC}} \\
-        Training -- Počet GPU na 1~MW kapacity ($\text{GPU Count}$) & 800 & 800 & 800 & \ref{sec:tdp} \\
-        Inference -- Energetická náročnost tokenů ($\text{E}_\text{token}$) & 1~790,00~Wh / 1M & 1~442,50 Wh / 1M & 1~095,00~Wh / 1M & \cite{jegham_how_2025}, model GPT-4o mini \\
+        Počet GPU na 1~MW kapacity ($\text{GPU Count}$) & 800 & 800 & 800 & \ref{sec:tdp} \\
+        Energetická náročnost tokenů ($\text{E}_\text{token}$) & 1~790,00~Wh / 1M & 1~442,50 Wh / 1M & 1~095,00~Wh / 1M & \cite{jegham_how_2025}, GPT-4o mini \\
         
 \end{longtable}
 \end{landscape}
