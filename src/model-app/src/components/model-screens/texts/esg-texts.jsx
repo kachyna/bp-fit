@@ -117,6 +117,7 @@ export const getEsgCopy = (inputData) => {
                     </ul>
 
                     <p>Datová centra využívají vodu pro chlazení, přičemž jejich spotřeba závisí na typu chlazení a efektivitě. Voda se často vrací zpět do přírody, ale může být znečištěná a její spotřeba může mít dopady na místní ekosystémy.</p>
+                    <p>Model měří tzv. <strong>Scope II spotřebu</strong>, která zahrnuje také vodu spotřebovanou při výrobě elektřiny, což tvoří většinu celkové spotřeby. Záleží však na energetickém mixu dané země.</p>
                     <p>Obzvláště v České republice, která dlouhodobě trpí nedostatkem vody, je téma vysoké spotřeby vody citlivé. V porovnání s jinými průmyslovými odvětvími je však spotřeba vody datových center relativně nízká.</p>
                 </>
             )
