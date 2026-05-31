@@ -11,8 +11,8 @@ import { ScreenHeader } from "../components/screen-header"
 import { TextHoverCard } from "../components/text-hover-card"
 
 export const ElectricityModelScreen = ({ data, activeScenario = "REALISTIC" }) => {
-    const params = useModelStore(state => state.params)
-
+    
+    if (!data) return null
     const electricityCopy = getElectricityCopy(
         {
             ...data[activeScenario],
@@ -21,8 +21,6 @@ export const ElectricityModelScreen = ({ data, activeScenario = "REALISTIC" }) =
             portfolioMaxITConsumption: data.portfolioMaxITConsumption
         }
     )
-
-    if (!data || !params || !electricityCopy) return null
 
     const totalPowerValue = data.portfolioTotalPower || 0
 

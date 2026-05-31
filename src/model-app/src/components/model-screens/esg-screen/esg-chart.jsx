@@ -17,6 +17,7 @@ const prepareChartData = (data) => {
   const chartPoints = []
   Object.entries(SCENARIO_LABELS).forEach(([key, label]) => {
     const scenarioData = data[key]
+    if (!scenarioData) return chartPoints
     chartPoints.push({
       name: label,
       emissionsMillionTonnes: toMillions(scenarioData.portfolioEmissionsTonnesCO2, 2),
