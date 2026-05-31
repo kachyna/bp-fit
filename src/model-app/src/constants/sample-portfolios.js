@@ -27,11 +27,11 @@ export const SAMPLE_PORTFOLIOS = {
         ]
     },
     'Německo': {
-        portfolio: [{ id: crypto.randomUUID(), type: 'coloc',     itPower: 1, pue: 1.5, count: 800 },
+        portfolio: [{ id: crypto.randomUUID(), type: 'coloc',     itPower: 1, pue: 1.6, count: 880 },
                     { id: crypto.randomUUID(), type: 'coloc',     itPower: 2, pue: 1.50, count: 400 },
-                    { id: crypto.randomUUID(), type: 'coloc',     itPower: 5, pue: 1.40, count: 200 },
-                    { id: crypto.randomUUID(), type: 'training',  itPower: 70, pue: 1.10, count: 6 },
-                    { id: crypto.randomUUID(), type: 'inference', itPower: 40, pue: 1.20, count: 9 },],
+                    { id: crypto.randomUUID(), type: 'coloc',     itPower: 5, pue: 1.40, count: 100 },
+                    { id: crypto.randomUUID(), type: 'training',  itPower: 70, pue: 1.25, count: 6 },
+                    { id: crypto.randomUUID(), type: 'inference', itPower: 40, pue: 1.35, count: 10 },],
         description: "Německý trh, zejména v okolí Frankfurtu, je jedním z největších na světě. Klade extrémní nároky na energetickou efektivitu a přísné ekologické standardy.",
         sources: [
             "https://www.mordorintelligence.com/industry-reports/germany-data-center-market"
@@ -48,7 +48,7 @@ export const SAMPLE_PORTFOLIOS = {
                     { id: crypto.randomUUID(), type: 'training',  itPower: 22,   pue: 1.45, count: 94 },
                     { id: crypto.randomUUID(), type: 'training',  itPower: 65,   pue: 1.35, count: 28 },
                     { id: crypto.randomUUID(), type: 'training',  itPower: 145,  pue: 1.25, count: 12 },],
-        description: "USA jsou globálním hráčem číslo jedna. Americká datová centra spotřebovávají téměř polovinu veškeré energie využívané tímto sektorem po celém světě.",
+        description: "USA jsou globálním hráčem číslo jedna. Americká datová centra spotřebovávají téměř polovinu veškeré energie využívané tímto sektorem po celém světě. Portfolio nezahrnuje datová cetnra pro těžbu kryptoměn.",
         sources: [
             "https://www.mordorintelligence.com/industry-reports/united-states-data-center-market",
             "https://cleanview.co/data-centers/us",
