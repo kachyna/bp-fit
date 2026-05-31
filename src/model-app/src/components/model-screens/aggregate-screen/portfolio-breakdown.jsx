@@ -51,12 +51,12 @@ export const PortfolioBreakdown = () => {
 
     if (breakdown.totalCount === 0) {
         return (
-            <Card className="border-slate-200/60 bg-linear-to-br from-slate-50/70 via-slate-50/30 to-indigo-50/15 shadow-xs p-6 flex flex-col items-center justify-center text-center h-full min-h-[300px]">
+            <Card className="border-slate-200/60 bg-linear-to-br from-slate-50/70 via-slate-50/30 to-indigo-50/15 shadow-xs p-6 flex flex-col items-center justify-center text-center h-full min-h-75">
                 <div className="p-3 bg-white/80 border border-slate-100 text-slate-400 rounded-full mb-3 shadow-2xs">
                     <Database className="h-5 w-5" />
                 </div>
                 <h3 className="font-semibold text-slate-800 text-sm mb-1">{staticTexts.emptyTitle}</h3>
-                <p className="text-xs text-slate-500 max-w-[200px] leading-relaxed">
+                <p className="text-xs text-slate-500 max-w-50 leading-relaxed">
                     {staticTexts.emptyDescription}
                 </p>
             </Card>
@@ -64,7 +64,7 @@ export const PortfolioBreakdown = () => {
     }
 
     return (
-        <Card className="border-slate-200/60 bg-linear-to-br from-slate-50/70 via-slate-50/30 to-indigo-50/15 shadow-xs p-6 flex flex-col justify-between h-full min-h-[410px]">
+        <Card className="border-slate-200/60 bg-linear-to-br from-slate-50/70 via-slate-50/30 to-indigo-50/15 shadow-xs p-6 flex flex-col justify-between h-full min-h-102.5">
             <div className="space-y-4">
                 <CardHeader className="p-0 pb-2">
                     <CardTitle className="text-base font-semibold text-slate-800 flex items-center gap-2">
