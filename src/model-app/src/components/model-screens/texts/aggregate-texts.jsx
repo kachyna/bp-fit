@@ -14,23 +14,8 @@ const aggregateKeys = [
     "portfolioTotalPublicIncome",
 ]
 
-const prepareAggregateData = (inputData) => {
-    const isMock = !inputData || Object.keys(inputData).length === 0;
-
-    let data;
-    if (isMock) {
-        data = {};
-        aggregateKeys.forEach(key => {
-            data[key] = { value: 0, formatted: "0" };
-        });
-    } else {
-        data = prepareData(inputData, aggregateKeys);
-    }
-    return data
-}
-
 export const getAggregateCopy = (inputData) => {
-    const data = prepareAggregateData(inputData)
+    const data = prepareData(inputData, aggregateKeys);
 
     return {
         header: {
