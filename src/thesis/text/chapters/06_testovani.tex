@@ -19,18 +19,22 @@ V druhé rovině se testuje samotný model z pohledu reálných dat, nikoli čis
 
 Tímto způsobem lze ověřit, zda model poskytuje realistické a přesné výsledky v kontextu reálných dat a informací o energetické infrastruktuře. Do zdrojového kódu byla nahrána 4 vzorová portfolia pro různé země, konkrétně Českou republiku, Irsko, Německo a USA. V následující sekci je popsáno, jak v uživatelském rohhraní testování zaponut a jaké jsou výsledky testování pro tyto země.
 
-\section{Testování v UI}
-\label{sec:testovani_ui}
-
 \section{Testovací scénáře}
 \label{sec:testovani_scenare}
 
-V následujících podsekcích jsou popsány jednotlivé testovací scénáře pro vybrané země. Každý scénář zahrnuje specifické parametry a očekávané výsledky, které jsou porovnány s reálnými daty a informacemi o energetické infrastruktuře dané země.
+V následujících podsekcích jsou popsány jednotlivé testovací scénáře pro vybrané země. Každý scénář zahrnuje specifické parametry a očekávané výsledky, které jsou porovnány s reálnými daty a informacemi o energetické infrastruktuře dané země. 
+
+\subection{Testování v uživatelském rozhraní}
+\label{subsec:testovani_uzivatelske_rozhrani}
+
+Do uživatelského rozhraní byla přidána další záložka v levém menu s názvem Vzorová portfolia. Ta obsahuje tlačítka s krátkým popiskem, přičemž každé tlačítko představuje jedno z testovacích portfolií. Po jeho rozkliknutí se dané portfolio načte do paměti aplikace a okamžitě se aktualizují všechny výstupy modelu. Tímto způsobem lze snadno a rychle otestovat model pro různé země a porovnat výsledky s reálnými daty. Vizualizace je na obrázku \ref{fig:app_portfolios}.
+
+Tento způsob umožňuje nejen ověřit správnost výpočtu modelu, ale také demonstrovat široké veřejnosti rozdíly mezi datovou infrastrukturou v České republice a v zahraničí. Uživatelé tak mohou získat lepší představu o tom, jak se liší energetická náročnost datových center v různých zemích a jaké faktory k tomu přispívají.
 
 \subsection{Testovací scénář 1: Česko}
 \label{subsec:testovani_cesko}
 
-Pro scénář České republiky bylo zvoleno portfolio, které odpovídá rozvíjejícímu se trhu ve střední Evropě. Portfolio obsahuje několik typů kolokačních center a trénovacích center pro AI (viz tabulka \ref{tab:portfolio_cesko}).
+Pro scénář České republiky bylo zvoleno portfolio, které odpovídá rozvíjejícímu se trhu ve střední Evropě. Portfolio obsahuje několik typů kolokačních center a trénovacích center pro AI. Data byla získána z veřejně dostupných zdrojů, jako je katastr nemovitsotí (viz sekci \ref{sec:model_scraper}) a z databází datových center. Složení portfolia je uvedeno v tabulce \ref{tab:portfolio_cesko}.
 
 \begin{table}[tbp]
     \centering
@@ -48,7 +52,7 @@ Pro scénář České republiky bylo zvoleno portfolio, které odpovídá rozví
     \label{tab:portfolio_cesko}
 \end{table}
 
-Celkový instalovaný IT příkon tohoto portfolia je 163,33 MW s váženým průměrem PUE 1,35.
+Celkový instalovaný IT příkon tohoto portfolia je 163,33 MW s váženým průměrem PUE 1,32. Odhadovaná roční spotřeba je tudíž 1,136 TWh. 
 
 \subsection{Testovací scénář 2: Irsko}
 \label{subsec:testovani_irsko}
