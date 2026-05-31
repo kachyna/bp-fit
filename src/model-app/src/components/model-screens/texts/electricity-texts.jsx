@@ -28,7 +28,7 @@ const prepareEquivalents = (data) => {
     const totalPowerVal = data.portfolioTotalPower.value
     const realEnergyVal = data.portfolioRealEnergyConsumption.value
     const realItVal = data.portfolioRealITConsumption.value
-    const czCapacity = 150
+    const czCapacity = 220
     const temelinCapacity = 2000
     const czConsumption = 67200000
     const czProduction = 73900000
@@ -104,7 +104,7 @@ export const getElectricityCopy = (inputData) => {
             comparisons: (
                 <>
                     <ComparisonData sources={electricitySources.czCapacity} className="text-rose-700 hover:text-rose-900 transition-colors">
-                        <p>DC v ČR teď mají kapacitu <span className="font-semibold text-rose-900">{equivalents.czCapacity} MW</span>,</p>
+                        <p>DC v ČR mají celkovou kapacitu <span className="font-semibold text-rose-900">{equivalents.czCapacity} MW</span>,</p>
                     </ComparisonData>
                     <ComparisonData sources={electricitySources.czCapacity} className="text-rose-700 hover:text-rose-900 transition-colors">
                         <p>takže by došlo k navýšení o <span className="font-semibold text-rose-900">{equivalents.pctOfCzPower} %</span>.</p>
