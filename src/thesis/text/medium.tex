@@ -3,11 +3,18 @@
 
 	\dirtree{%
 		.1 /.
-		.2 readme.txt\DTcomment{stručný popis obsahu média}.
-		.2 exe\DTcomment{adresář se spustitelnou formou implementace}.
-		.2 src.
-		.3 impl\DTcomment{zdrojové kódy implementace}.
+		.2 README.md\DTcomment{stručný popis obsahu média}.
+		.2 out\DTcomment{adresář s vygenerovanými výstupy}.
+		.3 text\DTcomment{text práce}.
+		.4 ctufit-thesis.pdf\DTcomment{text práce ve formátu PDF}.
+		.3 csv\DTcomment{datové exporty z analytické části}.
+		.4 scraped-data.csv\DTcomment{surová data a velikosti pozemků}.
+		.4 manually-enriched-data.csv\DTcomment{manuálně ověřená a doplněná data}.
+		.4 transformed-data.csv\DTcomment{data doplněná o odhadované hodnoty}.
+		.4 transformed-data-analyzed.csv\DTcomment{agregační statistiky}.
+		.2 src\DTcomment{zdrojové kódy}.
+		.3 model-app\DTcomment{zdrojové kódy webové aplikace (React)}.
+		.3 scraper\DTcomment{skripty pro sběr a zpracování dat (Python)}.
 		.3 thesis\DTcomment{zdrojová forma práce ve formátu \LaTeX{}}.
-		.2 text\DTcomment{text práce}.
-		.3 thesis.pdf\DTcomment{text práce ve formátu PDF}.
+		.2 LICENSE\DTcomment{licenční ujednání}.
 	}
