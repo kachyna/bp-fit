@@ -13,7 +13,7 @@ Tato kapitola představuje metodologii použitou při vytváření socioekonomic
 % - Čištění a validace (chybějící hodnoty, konzervativní odhady, manuální doplnění)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Jak bylo naznačeno v kapitole \ref{chap:cz}, veřejně dostupné informace o datových centrech v ČR jsou často neúplné a nesystematické. Pro získání co nejkomplexnějšího přehledu o trhu a pro parametrizaci modelu byl proto vytvořen scraper, který automaticky sbírá data z portálu Data Center Map, který disponuje největší databází datových center v ČR. Jeho informace jsou však často neúplné, kvůli čemuž scraper obohacuje informace o velikost budovy datacentra, podle které pak lze aproximovat instalovaný příkon a další parametry.
+Jak bylo naznačeno v kapitole~\ref{chap:cz}, veřejně dostupné informace o datových centrech v ČR jsou často neúplné a nesystematické. Pro získání co nejkomplexnějšího přehledu o trhu a pro parametrizaci modelu byl proto vytvořen scraper, který automaticky sbírá data z portálu Data Center Map, který disponuje největší databází datových center v ČR. Jeho informace jsou však často neúplné, kvůli čemuž scraper obohacuje informace o velikost budovy datacentra, podle které pak lze aproximovat instalovaný příkon a další parametry.
 
 Celý skript funguje v několika fázích:
 
@@ -29,7 +29,7 @@ Celý skript funguje v několika fázích:
 
 \end{enumerate}
 
-Scraper je plně ovladatelný z příkazové řádky, přičemž jednotlivé fáze lze spouštět samostatně, nebo pustit celý proces najednou (bez manuálního obohacování dat). Kromě obohacení z katastru nemovitostí je celý skript navržen tak, aby umožňoval snadné přizpůsobení pro jiné země, což by mohlo být užitečné pro případné rozšíření této práce o další geografické oblasti. V tabulce \ref{tab:model_top_poskytovatele} jsou uvedeny společnosti s největším instalovaným příkonem.
+Scraper je plně ovladatelný z příkazové řádky, přičemž jednotlivé fáze lze spouštět samostatně, nebo pustit celý proces najednou (bez manuálního obohacování dat). Kromě obohacení z katastru nemovitostí je celý skript navržen tak, aby umožňoval snadné přizpůsobení pro jiné země, což by mohlo být užitečné pro případné rozšíření této práce o další geografické oblasti. V tabulce~\ref{tab:model_top_poskytovatele} jsou uvedeny společnosti s největším instalovaným příkonem.
 
 \begin{table}[t]
 	\centering
@@ -61,7 +61,7 @@ Scraper je plně ovladatelný z příkazové řádky, přičemž jednotlivé fá
 	\label{tab:model_top_poskytovatele}
 \end{table}
 
-Analýza českých datových center dále ukázala poměry mezi velikostí budovy a pozemku (0,7274, n=10), velikostí whitespace a budovy (0,4698, n=6) a instalovaným příkonem a velikostí whitespace (0,0030 $\text{MW} / m^3$, n=17). Dále se ukázalo, že průměrná velikost pozemku pro datové centrum o instal. příkonu 1 MW je 2998,0 $m^2$ (n=26). Tyto hodnoty byly vypočítány pouze z neodhadovaných dat, aby nedošlo k jejich zkreslení. V modelu budou následně použity pro odhad velikost DC pro výpočet daně z nemovitosti. 
+Analýza českých datových center dále ukázala poměry mezi velikostí budovy a pozemku (0,7274, n=10), velikostí whitespace a budovy (0,4698, n=6) a instalovaným příkonem a velikostí whitespace (0,0030 $\text{MW} / m^3$, n=17). Dále se ukázalo, že průměrná velikost pozemku pro datové centrum o instal. příkonu ~\refMW je 2998,0 $m^2$ (n=26). Tyto hodnoty byly vypočítány pouze z neodhadovaných dat, aby nedošlo k jejich zkreslení. V modelu budou následně použity pro odhad velikost DC pro výpočet daně z nemovitosti. 
 
 \section{Vymezení modelu}
 \label{sec:model_vymezeni}
@@ -82,7 +82,7 @@ V této sekci budou detailněji vymezeny cíle modelu, jeho rozsah a hlavní př
 Cílem této práce je vymodelovat socioekonomické dopady výstavby a provozu datových center v České republice, přičemž takové vymezení je relativně obecné a umožňuje zahrnout širokou škálu dopadů. Pro zachování přehlednosti a srozumitelnosti byly vymezeny tři hlavní oblasti, které bude model kvantifikovat. Konkrétně jde o oblast ekonomickou, energetickou a environmentálně-sociální.
 
 \begin{description}
-	\item[Ekonomické výstupy] V ekonomické oblasti model kvantifikuje veřejné příjmy související s výstavbou a provozem datového centra. Jedná se zejména o celkové daně a odvody ze mzdy (DPFO a odvody) ve fázi výstavby i provozu. Dále model odhaduje daň z nemovitosti a daň ekologickou. Uvedené metriky lze snadno a s velkou přesností dopočítat na základě několika vstupů, neboť nejsou závislé na individuální účetní politice provozovatele. Model zároveň odhaduje hrubou přidanou hodnotu (HPH) vytvářenou výstavbou a provozem datového centra, což umožňuje interpretovat ekonomické dopady v širším kontextu ekonomické aktivity a srovnávat je s jinými sektory (vizte kap. \ref{subsec:model_ekonomika}).
+	\item[Ekonomické výstupy] V ekonomické oblasti model kvantifikuje veřejné příjmy související s výstavbou a provozem datového centra. Jedná se zejména o celkové daně a odvody ze mzdy (DPFO a odvody) ve fázi výstavby i provozu. Dále model odhaduje daň z nemovitosti a daň ekologickou. Uvedené metriky lze snadno a s velkou přesností dopočítat na základě několika vstupů, neboť nejsou závislé na individuální účetní politice provozovatele. Model zároveň odhaduje hrubou přidanou hodnotu (HPH) vytvářenou výstavbou a provozem datového centra, což umožňuje interpretovat ekonomické dopady v širším kontextu ekonomické aktivity a srovnávat je s jinými sektory (vizte kap.~\ref{subsec:model_ekonomika}).
 
 	\item[Energetické výstupy] V energetické oblasti model určuje celkovou spotřebu elektřiny v průběhu provozu a umožňuje její zasazení do kontextu české energetiky. Konkrétně poskytuje srovnání s celkovou spotřebou elektřiny v ČR a s vybranými sektory (např. průmysl, domácnosti) a rovněž srovnání se spotřebou jednotlivých krajů v ČR. Součástí výstupů je také agregovaný ukazatel, který sčítá spotřebu ČR a spotřebu nově postavených datových center při uvažované maximální kapacitě.
 
@@ -144,9 +144,9 @@ Data vycházející z amerického trhu (počet vytvořených míst, náklady na 
 
 Kvůli tomu byly do modelu implementovány tři scénáře: pesimistický, optimistický a realistický. Tyto scénáře jsou vztaženy k ekonomické části, tedy příjmů do veřejného rozpočtu a vytvořené hrubé přidané hodnotě. To se však může vůči ostatním oblastem projevit inverzně -- nižší spotřeba energie sice způsobí nižší přidanou hodnotu (protože přidaná hodnota DC je proměna energie na informace), ale na druhou stranu tím vyvolá méně emisí oxidu uhličitého do atmosféry a spotřebuje méně vody. Ekonomická oblast byla zvolena jako kotvicí kvůli tomu, že se obecně jedná o primární determinant rozhodovacího procesu jak soukromých investorů, tak státního aparátu.
 
-Pesimistický scénář v každém aspektu počítá s takovými hodnotami, které povedou k nejmenšímu příjmu do veřejného rozpočtu a nejnižší hrubé přidané hodnotě. Opak platí pro scénář optimistický, který naopak povede k nejvyšším příjmům do veřejného rozpočtu a nejvyšší hrubé přidané hodnotě. Realistický scénář používá střední hodnotu (pokud byla z literatury získána), nebo aritmetický průměr nejvyšší a nejnižší hodnoty. V případech, kdy odborná literatura neuvádí specifické rozpětí pro pesimistický a optimistický scénář, byla uplatněna uniformní odchylka 20 \% od realistické (středové) hodnoty. Toto rozpětí reflektuje běžnou míru nejistoty v raných fázích plánování technologických celků a umožňuje testovat robustnost modelu vůči variačnímu riziku.
+Pesimistický scénář v každém aspektu počítá s takovými hodnotami, které povedou k nejmenšímu příjmu do veřejného rozpočtu a nejnižší hrubé přidané hodnotě. Opak platí pro scénář optimistický, který naopak povede k nejvyšším příjmům do veřejného rozpočtu a nejvyšší hrubé přidané hodnotě. Realistický scénář používá střední hodnotu (pokud byla z literatury získána), nebo aritmetický průměr nejvyšší a nejnižší hodnoty. V případech, kdy odborná literatura neuvádí specifické rozpětí pro pesimistický a optimistický scénář, byla uplatněna uniformní odchylka 20~\% od realistické (středové) hodnoty. Toto rozpětí reflektuje běžnou míru nejistoty v raných fázích plánování technologických celků a umožňuje testovat robustnost modelu vůči variačnímu riziku.
 
-Model následně vypočítá konkrétní hodnoty pro jednotlivé scénáře a také jednu finální očekávanou hodnotu, která se bude řídit pravděpodobnostním rozdělením jednotlivých scénářů. Rozdělení bylo inspirováno běžně používanou metodikou PERT, která stanovuje váhy přibližně 17 \% pro optimistický, 66 \% pro realistický a 17 \% pro pesimistický scénář. V tomto modelu budou použity hodnoty 20 \% pro optimistický scénář, 60 \% pro realistický scénář a 20 \% pro pesimistický scénář. Mírné posílení vah okrajových scénářů reflektuje relativně vysokou volatilitu trhu s AI technologiemi a energiemi. Výsledná očekávaná hodnota se vypočítá podle vzorce
+Model následně vypočítá konkrétní hodnoty pro jednotlivé scénáře a také jednu finální očekávanou hodnotu, která se bude řídit pravděpodobnostním rozdělením jednotlivých scénářů. Rozdělení bylo inspirováno běžně používanou metodikou PERT, která stanovuje váhy přibližně 17~\% pro optimistický, 66~\% pro realistický a 17~\% pro pesimistický scénář. V tomto modelu budou použity hodnoty 20~\% pro optimistický scénář, 60~\% pro realistický scénář a 20~\% pro pesimistický scénář. Mírné posílení vah okrajových scénářů reflektuje relativně vysokou volatilitu trhu s AI technologiemi a energiemi. Výsledná očekávaná hodnota se vypočítá podle vzorce
 
 $$E(X) = 0,2 \cdot X_{opt} + 0,6 \cdot X_{real} + 0,2 \cdot X_{pes}$$.
 
@@ -154,9 +154,9 @@ $$E(X) = 0,2 \cdot X_{opt} + 0,6 \cdot X_{real} + 0,2 \cdot X_{pes}$$.
 \label{subsec:model_ekonomika}
 % Volba metrik (HPH) a proč je vhodnější než přímý odhad fiskálních přínosů.
 
-Ekonomická část modelu je metodologicky nejnáročnější, protože čisté zisky a navazující fiskální přínosy do značné míry závisí na účetní politice a daňové optimalizaci provozovatele, jak bylo ilustrováno v kapitole \ref{subsec:cz_dane}. Odhadování dopadů do veřejných rozpočtů na základě veřejně dostupných dat naráží na nedostatek informací o míře zadlužení provozovatelů, jejich skutečných provozních nákladech, sektorových maržích a především o reálných čistých ziscích generovaných na území jednoho státu. Právě tyto proměnné přitom zásadně ovlivňují výslednou daňovou povinnost (zejména DPPO).
+Ekonomická část modelu je metodologicky nejnáročnější, protože čisté zisky a navazující fiskální přínosy do značné míry závisí na účetní politice a daňové optimalizaci provozovatele, jak bylo ilustrováno v kapitole~\ref{subsec:cz_dane}. Odhadování dopadů do veřejných rozpočtů na základě veřejně dostupných dat naráží na nedostatek informací o míře zadlužení provozovatelů, jejich skutečných provozních nákladech, sektorových maržích a především o reálných čistých ziscích generovaných na území jednoho státu. Právě tyto proměnné přitom zásadně ovlivňují výslednou daňovou povinnost (zejména DPPO).
 
-Ani daň z přidané hodnoty (DPH) není pro interpretaci ekonomického přínosu vhodným ukazatelem, protože v převážně B2B prostředí zpravidla nevyjadřuje hodnotu zachycenou v tuzemsku a pro podniky funguje z velké části jako průtoková položka. Vhodnost výpočtu DPH za B2C provoz datových center pro inferenci AI modelů vyvrací podsekce \ref{subsec:cz_dph}.
+Ani daň z přidané hodnoty (DPH) není pro interpretaci ekonomického přínosu vhodným ukazatelem, protože v převážně B2B prostředí zpravidla nevyjadřuje hodnotu zachycenou v tuzemsku a pro podniky funguje z velké části jako průtoková položka. Vhodnost výpočtu DPH za B2C provoz datových center pro inferenci AI modelů vyvrací podsekce~\ref{subsec:cz_dph}.
 
 Ekonomický přínos je proto v modelu primárně vyjádřen pomocí hrubé přidané hodnoty (HPH). HPH je standardní makroekonomická veličina, která zachycuje nově vytvořenou hodnotu v rámci produkčního procesu: zjednodušeně vyjadřuje rozdíl mezi hodnotou vytvořeného výstupu (produkce) a hodnotou mezispotřeby, tj. vstupů nakoupených od jiných subjektů, které byly při tvorbě výstupu spotřebovány.~\cite{oecd_oecd_2008} Z hlediska interpretace lze HPH chápat jako část hodnoty, která v ekonomice vzniká uvnitř sledované činnosti.
 
@@ -195,11 +195,11 @@ Maximální spotřebu datového centra $\text{E}_\text{max}$ za čas $\tau$ zís
 
 $$\text{E}_\text{max} = \text{P} \cdot \tau.$$
 
-Datová centra však neběží celou dobu na 100 \% instalovaného příkonu (především kolokační a inferenční), kvůli čemuž je nutné vzít v potaz reálnou spotřebu $\text{E}_\text{real}$. Tu vypočítáme vynásobením maximální spotřeby $\text{E}_\text{Max}$ koeficientem využití $\text{k}_\text{utilization}$
+Datová centra však neběží celou dobu na 100~\% instalovaného příkonu (především kolokační a inferenční), kvůli čemuž je nutné vzít v potaz reálnou spotřebu $\text{E}_\text{real}$. Tu vypočítáme vynásobením maximální spotřeby $\text{E}_\text{Max}$ koeficientem využití $\text{k}_\text{utilization}$
 
 $$\text{E}_\text{real} = \text{E}_\text{Max} \cdot \text{k}_\text{utilization}.$$
 
-Jak bylo popsáno v kapitole \ref{subsec:prikon}, základní jednotkou příkonu $\text{P}$ jsou watty a jednotkou spotřeby $\text{E}$ jsou watthodiny.
+Jak bylo popsáno v kapitole~\ref{subsec:prikon}, základní jednotkou příkonu $\text{P}$ jsou watty a jednotkou spotřeby $\text{E}$ jsou watthodiny.
 
 \subsection{Náklady na výstavbu a provoz DC}
 \label{subsec:model_naklady}
@@ -209,13 +209,13 @@ Z literatury plyne jednoznačný vztah mezi náklady na výstavbu datového cent
 
 $$\text{I}_\text{building} = \text{P}_\text{IT} \cdot \text{I}_\text{building per MW},$$
 
-kde $\text{I}_\text{per MW}$ jsou průměrné investiční náklady na výstavbu datového centra s 1 MW instalovaného příkonu.
+kde $\text{I}_\text{per MW}$ jsou průměrné investiční náklady na výstavbu datového centra s 1~MW instalovaného příkonu.
 
 Pro výpočet celkových nákladů na výstavbu datového centra včetně vybavení $\text{I}_\text{building}$ se použije vzorec
 
 $$\text{I}_\text{total} = \text{I}_\text{building} + \text{I}_\text{equipment},$$
 
-kde $\text{I}_\text{equipment}$ jsou celkové náklady na pořízení IT vybavení, které se vypočítají z průměrné ceny vybavení na 1 MW instalovaného příkonu $\text{I}_\text{equipment per MW}$ (analogicky k $\text{I}_\text{building}$).
+kde $\text{I}_\text{equipment}$ jsou celkové náklady na pořízení IT vybavení, které se vypočítají z průměrné ceny vybavení na 1~MW instalovaného příkonu $\text{I}_\text{equipment per MW}$ (analogicky k $\text{I}_\text{building}$).
 
 Při srovnávní s jinými sektory a obecně dalšími metrikami je však problém, že náklady na IT vybavení se odepisují rychleji než samotná budova, kvůli čemuž se v průběhu času mění jejich váha v celkových nákladech. Z tohoto důvodu byl zaveden další parametr odpisů, které stanovují délku odpisování IT vybavení $\text{UL}_\text{equipment}$ a délku odpisování budovy $\text{UL}_\text{building}$. Celkové roční odpisy $\text{D}_\text{y}$ se pak vypočítají jako
 
@@ -237,7 +237,7 @@ Podobně jako v případě CAPEX, literatura nabízí údaje o průměrném poč
 
 $$\text{FTE}_\text{total} = \text{P}_\text{IT} \cdot \text{FTE}_\text{per MW},$$
 
-kde $\text{FTE}_\text{per MW}$ je průměrný počet FTE vytvořených na 1 MW instalovaného příkonu.
+kde $\text{FTE}_\text{per MW}$ je průměrný počet FTE vytvořených na 1~MW instalovaného příkonu.
 
 Přínosy do státního rozpočtu z oblasti práce se odvozují z celkových hrubých mezd. Pro výpočet celkových povinností vůči veřejným rozpočtům z oblasti práce (DPFO a odvody) se použijí následující vzorce:
 
@@ -257,11 +257,11 @@ kde $\text{T}_\text{labor}$ jsou celkové příjmy do veřejného rozpočtu ze z
 \label{subsec:model_eko_dan_nemovitost}
 % Daň z elektřiny a majetkové daně: předpoklady, sazby, citlivost na lokalitu.
 
-Ekologická daň se počítá poodle reálné spotřeby elektřiny, která je v podsekci \ref{subsec:model_spotreba} vypočítána jako $\text{E}_\text{real}$. Pro výpočet ekologické daně $\text{T}_\text{ecology}$ se použije vzorec	
+Ekologická daň se počítá poodle reálné spotřeby elektřiny, která je v podsekci~\ref{subsec:model_spotreba} vypočítána jako $\text{E}_\text{real}$. Pro výpočet ekologické daně $\text{T}_\text{ecology}$ se použije vzorec	
 
 $$\text{T}_\text{ecology} = \text{E}_\text{real} \cdot \text{t}_{ecology},$$
 
-kde $\text{T}_\text{ecology}$ je sazba ekologické daně (obecně uváděna v MWh), $\text{E}_\text{real}$ je skutečná spotřeba elektřiny a $\text{t}_{ecology}$ je sazba ekologické daně za jednotku spotřebované elektřiny. Při výpočtu je důležité zajistit, že jednotky pro spotřebu elektřiny a sazbu ekologické daně jsou konzistentní (např. obě v MWh).
+kde $\text{T}_\text{ecology}$ je sazba ekologické daně (obecně uváděna v~MWh), $\text{E}_\text{real}$ je skutečná spotřeba elektřiny a $\text{t}_{ecology}$ je sazba ekologické daně za jednotku spotřebované elektřiny. Při výpočtu je důležité zajistit, že jednotky pro spotřebu elektřiny a sazbu ekologické daně jsou konzistentní (např. obě v~MWh).
 
 Daň z nemovitosti se odvíjí od velikosti pozemku a budovy, na které se datové centrum nachází, a od sazeb daně z nemovitosti, které jsou stanoveny pro danou lokalitu. Pro výpočet daně z nemovitosti $\text{T}_\text{property}$ se použijí následující vzorce:
 
@@ -322,11 +322,11 @@ Poslední oblastí modelu jsou environmentální dopady, které jsou odvozeny od
 
 $$\text{CO}_2 = \text{E}_\text{real} \cdot \text{EF},$$
 
-kde $\text{CO}_2$ jsou celkové emise oxidu uhličitého, $\text{E}_\text{real}$ je skutečná spotřeba elektřiny a $\text{EF}$ je emisní faktor pro elektřinu (obvykle uváděný v tunách CO2 na vyrobenou MWh). Pro výpočet spotřeby vody $\text{Water}$ se použije vzorec
+kde $\text{CO}_2$ jsou celkové emise oxidu uhličitého, $\text{E}_\text{real}$ je skutečná spotřeba elektřiny a $\text{EF}$ je emisní faktor pro elektřinu (obvykle uváděný v tunách CO2 na vyrobenou~MWh). Pro výpočet spotřeby vody $\text{Water}$ se použije vzorec
 
 $$\text{Water} = \text{P}_\text{IT} \cdot \text{WF},$$
 
-kde $\text{Water}$ je celková spotřeba vody, $\text{P}_\text{IT}$ je instalovaný příkon datového centra a $\text{WF}$ je vodní faktor (obvykle uváděný v litrech vody na MW instalovaného příkonu). Je důležité zajistit, že jednotky pro spotřebu elektřiny a emisní faktor jsou konzistentní (např. spotřeba v MWh a emisní faktor v tunách CO2/MWh), stejně jako jednotky pro instalovaný příkon a vodní faktor (např. příkon v MW a vodní faktor v litrech/MW).
+kde $\text{Water}$ je celková spotřeba vody, $\text{P}_\text{IT}$ je instalovaný příkon datového centra a $\text{WF}$ je vodní faktor (obvykle uváděný v litrech vody na~MW instalovaného příkonu). Je důležité zajistit, že jednotky pro spotřebu elektřiny a emisní faktor jsou konzistentní (např. spotřeba v~MWh a emisní faktor v tunách CO2/MWh), stejně jako jednotky pro instalovaný příkon a vodní faktor (např. příkon v~MW a vodní faktor v litrech/MW).
 
 \subsection{Rozdělení výpočtů do fází výstavby a provozu}
 \label{subsec:model_faze}
@@ -334,15 +334,15 @@ kde $\text{Water}$ je celková spotřeba vody, $\text{P}_\text{IT}$ je instalova
 
 Model byl rozdělen do fáze výstavby a provozu datového centra, které se liší v charakteru vstupů, výpočtů a časovém horizontu. Fáze výstavby se zaměřuje na investiční náklady, tvorbu pracovních míst a související zdanění, zatímco fáze provozu se soustředí na tržby, HPH, zdanění práce, environmentální dopady a dlouhodobé přínosy do veřejného rozpočtu.
 
-Fáze výstavby se obvykle odehrává v prvních 1--2 letech od zahájení projektu, kdy jsou realizovány stavební práce, instalace vybavení a další přípravné činnosti. V této fázi jsou klíčové investiční náklady, které se promítají do HPH vygenerované stavební firmou. Na základě dat z ČSÚ byl zjištěn průměrný koeficient pro výpočet HPH z investovaných nákladů, který se pohybuje kolem 30 \% \cite{csu_mezispotreba_2026,csu_produkce_2026}. HPH vygenerovaná ve fázi výstavby se tedy vypočítá jako
+Fáze výstavby se obvykle odehrává v prvních 1--2 letech od zahájení projektu, kdy jsou realizovány stavební práce, instalace vybavení a další přípravné činnosti. V této fázi jsou klíčové investiční náklady, které se promítají do HPH vygenerované stavební firmou. Na základě dat z ČSÚ byl zjištěn průměrný koeficient pro výpočet HPH z investovaných nákladů, který se pohybuje kolem 30~\%~\cite{csu_mezispotreba_2026,csu_produkce_2026}. HPH vygenerovaná ve fázi výstavby se tedy vypočítá jako
 
 $$\text{HPH}_\text{construction} = \text{I}_\text{total} \cdot \text{k}_\text{GVA on Construction Invesment},$$
 
 kde $\text{HPH}_\text{construction}$ je hrubá přidaná hodnota z výstavby, $\text{I}_\text{total}$ je celkový investovaný kapitál pro výstavbu a $\text{k}_\text{GVA on Construction Invesment}$ je koeficient pro výpočet HPH z investovaných nákladů.
 
-Druhou část fáze výstavby tvoří pracovní místa, která jsou vytvořena během výstavby datového centra. Počet FTE vytvořených ve fázi výstavby se vypočítá podle vzorce uvedeného v podsekci \ref{subsec:model_prace_dane}, přičemž se použije koeficient pro výpočet FTE při výstavbě a průměrná mzda pracovníků na výstavbě.
+Druhou část fáze výstavby tvoří pracovní místa, která jsou vytvořena během výstavby datového centra. Počet FTE vytvořených ve fázi výstavby se vypočítá podle vzorce uvedeného v podsekci~\ref{subsec:model_prace_dane}, přičemž se použije koeficient pro výpočet FTE při výstavbě a průměrná mzda pracovníků na výstavbě.
 
-Ve fázi provozu datového centra se pak pro modelování HPH použíjí vzorce uvedené v podsekci \ref{subsec:model_hph}, které zohledňují tržby z provozu datového centra a mezispotřebu. Pro výpočet přínosů do veřejného rozpočtu z oblasti práce se použijí vzorce z podsekce \ref{subsec:model_prace_dane}, přičemž se použije koeficient pro výpočet FTE při provozu a průměrná mzda pracovníků v provozu. Environmentální dopady se vypočítají podle vzorců z podsekce \ref{subsec:model_enviro}.
+Ve fázi provozu datového centra se pak pro modelování HPH použíjí vzorce uvedené v podsekci~\ref{subsec:model_hph}, které zohledňují tržby z provozu datového centra a mezispotřebu. Pro výpočet přínosů do veřejného rozpočtu z oblasti práce se použijí vzorce z podsekce~\ref{subsec:model_prace_dane}, přičemž se použije koeficient pro výpočet FTE při provozu a průměrná mzda pracovníků v provozu. Environmentální dopady se vypočítají podle vzorců z podsekce~\ref{subsec:model_enviro}.
 
 \section{Finální struktura modelu}
 \label{sec:model_struktura}
@@ -352,6 +352,6 @@ Model je navržený tak, aby zachycoval dopady výstavby AI datových center na 
 
 Z uvedených vstupů tedy model vypočítá celkovou spotřebu datových center, od které odvozuje náklady na elektřinu, ekologickou daň a emise oxidu uhličitého do ovzduší. Vstupní parametry dále umožňují odhadnout celkovou produkci datových center, která se následně promítne do hrubé přidané hodnoty. Díky datům o počtu vytvořených pracovních míst a průměrné mzdě model vypočítá přínosy do veřejného rozpočtu z oblasti práce, které se spolu s ekologickou daní a daní z nemovitosti sečtou do celkových přínosů do veřejného rozpočtu. Celková přidaná hodnota a environmentální dopady pak slouží pro komplexní posouzení dopadů datových center v ČR.
 
-Finálním výstupem modelu jsou jednotlivé ukazatele (HPH, přinosy do veřejného rozpočtu) pro každý z modelovaných scénářů vynásobené předpokládanou dobou provozu $\tau_{construction}$ sečteny se zbývajícími ukazateli (HPH, přínosy, emise $CO_2$ a spotřeba vody) vynásobené dobou provozu $\tau_{operations}$ -- ty jsou dále agregovány do jedné očekávané hodnoty pro každý ukazatel. Tyto výsledky budou prezentovány v kapitole \ref{chap:testovani} a slouží jako základ pro interpretaci dopadů datových center v ČR a pro informování rozhodování o jejich budoucím rozvoji. Jednotlivé parametry použité v modelu jsou uvedeny v příloze \ref{appendix:parametry} včetně dodatečných komentářů k jejich získávání.
+Finálním výstupem modelu jsou jednotlivé ukazatele (HPH, přinosy do veřejného rozpočtu) pro každý z modelovaných scénářů vynásobené předpokládanou dobou provozu $\tau_{construction}$ sečteny se zbývajícími ukazateli (HPH, přínosy, emise $CO_2$ a spotřeba vody) vynásobené dobou provozu $\tau_{operations}$ -- ty jsou dále agregovány do jedné očekávané hodnoty pro každý ukazatel. Tyto výsledky budou prezentovány v kapitole~\ref{chap:testovani} a slouží jako základ pro interpretaci dopadů datových center v ČR a pro informování rozhodování o jejich budoucím rozvoji. Jednotlivé parametry použité v modelu jsou uvedeny v příloze~\ref{appendix:parametry} včetně dodatečných komentářů k jejich získávání.
 
-Celkově tato kapitola tedy popisuje metologii výpočtů a strukturu modelu, který bude následně použit pro vytvoření webové aplikace pro vizualizaci dopadů datových center v ČR. Model je navržen tak, aby byl flexibilní a umožňoval snadné úpravy vstupních parametrů a scénářů, což je klíčové vzhledem k rychlému vývoji technologií a trhu s AI datovými centry. Jeho funkčnost a použitelnost bude dále demonstrována v kapitole \ref{chap:testovani}, kde budou prezentovány výsledky pro jednotlivé scénáře a jejich interpretace. Zároveň bude model použit pro vymodelování dopadů pro jiné země podobné České republice, což umožní zjistit jeho přesnost a robustnost na skutečných scénářích.
+Celkově tato kapitola tedy popisuje metologii výpočtů a strukturu modelu, který bude následně použit pro vytvoření webové aplikace pro vizualizaci dopadů datových center v ČR. Model je navržen tak, aby byl flexibilní a umožňoval snadné úpravy vstupních parametrů a scénářů, což je klíčové vzhledem k rychlému vývoji technologií a trhu s AI datovými centry. Jeho funkčnost a použitelnost bude dále demonstrována v kapitole~\ref{chap:testovani}, kde budou prezentovány výsledky pro jednotlivé scénáře a jejich interpretace. Zároveň bude model použit pro vymodelování dopadů pro jiné země podobné České republice, což umožní zjistit jeho přesnost a robustnost na skutečných scénářích.
