@@ -16,15 +16,15 @@ Následuje slovní popis požadavků v klasifikaci Tier, podle které se určuje
 \chapter{Vstupní data pro model}
 \label{appendix:parametry}
 
-V tabulce \ref{tab:parametry_komplet} jsou uvedeny hodnoty všech parametrů, které model používá k výpočtu výstupů. Většina z nich vychází z literatury a jsou detailně popsané v kapitolách \ref{chap:historie}, \ref{chap:dopady_usa} a\ref{chap:cz}. Některé však musely být pro nedostatek dat odhadnuty. Pro plnou transparentnost je v této příloze uvedeno několik komentářů, které chybějící hodnoty popisují a opodstatňují jejich zvolení:
+V tabulce \ref{tab:parametry_komplet} jsou uvedeny hodnoty všech použitých parametrů. Obecně vycházejí z literatury a jsou detailně popsané v kapitolách \ref{chap:historie}, \ref{chap:dopady_usa} a\ref{chap:cz}, nicméně některé musely být kvůli nedostatku dat odhadnuty. Pro plnou transparentnost jsou v této příloze uvedeny komentáře, které odhadnuté parametry opodstatňují:
 
 \begin{description}
     
     \item[Průměrné mzdy] Mzdy na výstavbě vycházejí z předpokladu, že průměrný pracovník pobírá asi 60~000~Kč hrubého za měsíc práce. V tom jsou zahrnuty jak mzdy řemeslníků, tak lépe ohodnocených architektů a projektantů elektrických rozvodů a chlazení. Mzdy v provozu pak vycházejí z průměrné mzdy 75 000~Kč, do čehož jsou zahrnuty jak vysoce nadprůměrné mzdy IT techniků, tak nižší mzdy ostrahy a případného úklidu.
 
-    \item[Cena elektřiny] Průměrná cena elektřiny byla vypočítána z dat společnosti Ember. Realistický scénář obsahuje průměr ceny elektřiny za poměrně stabilní dvouleté období leden 2024 -- prosinec 2025, přičemž pesimistický a optimistický scénář představují 20\% odchylku od této ceny. V realitě mohou být výkyvy vyšší, ale velcí odběratelé si obvykle nasmlouvají odběry na roky dopředu.
+    \item[Cena elektřiny] Průměrná cena elektřiny byla vypočítána z dat společnosti Ember \cite{ember_average_2026}. Realistický scénář obsahuje průměr ceny elektřiny za poměrně stabilní dvouleté období leden 2024 -- prosinec 2025, přičemž pesimistický a optimistický scénář představují 20\% odchylku od této ceny. V realitě mohou být výkyvy vyšší, ale velcí odběratelé si obvykle nasmlouvají odběry na roky dopředu.
 
-    \item[Ostatní OPEX] Ostatní provozní náklady (nezahrnující energie) jsou modelovány jako fixní podíl z celkových investičních nákladů na výstavbu a vybavení. Realistický scénář uvažuje s hodnotou 2,5~\%, která odpovídá oborovým standardům. Scénáře 3~\% (pesimistický) a 2~\% (optimistický) pak reflektují variační rozpětí nákladů na údržbu, bezpečnost a správu v závislosti na dosažené provozní efektivitě a úsporách z rozsahu. Tento koeficient vyhází z díla Pham \cite{pham_data_2017}, které OPEX uvádí jako 8,6~\% investičních nákladů, z čehož 39,5~\% jde právě na údržbu, administraci a další. 
+    \item[Ostatní OPEX] Ostatní provozní náklady (nezahrnující energie) jsou modelovány jako fixní podíl z celkových investičních nákladů na výstavbu a vybavení. Realistický scénář uvažuje s hodnotou 2,5~\%. Pesimistický (3~\%) a optimistický (2~\%) scénář pak reflektují variační rozpětí těchto nákladů nákladů. Koeficient vyhází z díla Pham \cite{pham_data_2017}, ve kterém je OPEX uveden jako 8,6~\% investičních nákladů, z čehož 39,5~\% jde právě na údržbu, administraci a další. 
 
     \item[Spotřeba vody] Literatura se zde trochu liší, resp. některé studie přesněji neuvádí, zda se jedná o Scope I, Scope II nebo kombinovanou spotřebu. Uvedené hodnoty se však veskrze shodují, kvůli čemuž byl zaveden předpoklad, že ji lze interpretovat jako Scope I + Scope II spotřebu -- tedy vodu spotřebovanou jak samotným datovým centrem, tak vodu spotřebovanou při výrobě elektřiny pro datové centrum. 
 
