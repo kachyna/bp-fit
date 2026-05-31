@@ -27,6 +27,12 @@ export const enrichDatacenter = (dc, params) => {
     const results = {}
 
     config.SCENARIO_KEYS.forEach(scenario => {
+
+        if ( scenario === "EXPECTED" ) {
+            results[scenario] = calculateExpected(results, params, scenario)
+            return;
+        }
+
         const scenarioParams = params.SCENARIOS[scenario]
 
         let acc = {}
@@ -40,6 +46,8 @@ export const enrichDatacenter = (dc, params) => {
 
         results[scenario] = acc
     })
+
+
 
     return {
         ...dcWithMetrics,
@@ -322,6 +330,27 @@ const finalize = (results, scenarioParams, commonParams) => {
     return ret;
 }
 
+// ====== EXPECTED SCENARIO CALCULATION =======
+
+const calculateExpected = (results, params, expectedScenarioKey) => {
+    const expectedResults = {}
+
+    config.SCENARIO_KEYS.forEach(scenario => {
+        if (scenario === expectedScenarioKey) {
+            return;
+        }
+        
+        const probability = params.SCENARIOS[scenario].scenarioProbability;
+        
+        Object.entries(results[scenario]).forEach(([key, value]) => {
+            if (typeof value === 'number') {
+                expectedResults[key] = (expectedResults[key] || 0) + (value * probability);
+            }
+        });
+    });
+
+    return expectedResults;
+}
 
 
 
