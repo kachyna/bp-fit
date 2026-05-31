@@ -16,7 +16,16 @@
 
 ## Přehled o projektu
 
+Tento repozitář obsahuje jak zdrojové kódy pro samotný text práce (LaTeX), tak pro doprovodnou webovou aplikaci (React). Spojení do jednoho repozitáře bylo zvoleno kvůli zachování konzistence a provázanosti obou částí v rámci odevzdání bakalářské práce, ačkoliv za standardních okolností by bylo vhodnější rozdělit projekty do dvou samostatných repozitářů.
+
 ### Text a literární část
+
+Zdrojové soubory bakalářské práce se nacházejí v adresáři [src/thesis/](src/thesis/). Text je pro lepší přehlednost a modularitu rozdělen do více částí:
+
+- **Hlavní soubor:** [ctufit-thesis.tex](src/thesis/ctufit-thesis.tex) (hlavní dokument, metadata a importy).
+- **Kapitoly:** Jednotlivé kapitoly práce jsou uloženy v adresáři [src/thesis/text/chapters/](src/thesis/text/chapters/).
+- **Přílohy a metadata:** Soubory jako reference ([references.bib](src/thesis/text/references.bib)) nebo přílohy se nacházejí v [src/thesis/text/](src/thesis/text/).
+- **Build:** Výsledné PDF se po kompilaci generuje do cesty [out/text/ctufit-thesis.pdf](out/text/ctufit-thesis.pdf). (Pozn.: Složka `out/` je v repozitáři ignorována, kromě finálních exportů).
 
 ### Kód a praktická část
 
