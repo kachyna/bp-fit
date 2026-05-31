@@ -1,9 +1,9 @@
 \chapter{Limitace a vyhodnocení přínosů modelu}
 \label{chap:diskuse_prinosy}
 
-Závěrečná kapitola kriticky hodnotí dosažené výsledky, metodologii sběru dat a praktické přínosy socioekonomického modelu. Text rozebírá souvislosti mezi teoretickou rešerší a praktickou implementací, identifikuje hlavní překážky při získávání transparentních informací o infrastruktuře a shrnuje přidanou hodnotu práce pro odbornou i laickou veřejnost v kontextu rozvoje datových center v České republice.
+Závěrečná kapitola kriticky hodnotí dosažené výsledky, metodologii sběru dat a praktické přínosy socioekonomického modelu. Text rozebírá souvislosti mezi teoretickou rešerší a praktické implementací, identifikuje hlavní překážky při získávání transparentních informací o infrastruktuře a shrnuje přidanou hodnotu práce pro odbornou i laickou veřejnost v kontextu rozvoje datových center v České republice.
 
-\subsection{Diskuse výsledků modelu}
+\section{Diskuse výsledků modelu}
 \label{subsec:diskuse}
 
 Výsledky modelu poskytují ucelený pohled na socioekonomické dopady výstavby datových center v České republice a otevírají několik kritických témat pro budoucí digitální strategii státu. Z energetického hlediska model potvrzuje, že ČR směřuje k pozici čistého importéra elektřiny, neboť exportní přebytky v blízké budoucnosti zaniknou i bez vlivu nové výstavby DC. Samotný dovoz elektřiny ze zahraničí není principiálním problémem, kritickým úzkým hrdlem se však ukazuje být kapacita přenosové soustavy. Zatímco při běžném zatížení sítě je k dispozici přibližně 2\,000~MW dodatečné kapacity, v energetických špičkách tato rezerva prakticky mizí. Rozvoj velkých AI center by tak vyžadoval buď masivní investice do posílení infrastruktury, nebo precizní koordinaci spotřeby s provozovateli tak, aby DC omezovala výkon v době špičkového zatížení sítě.
@@ -16,7 +16,7 @@ Důležitým faktorem je také environmentální profil ČR. Kvůli vysokému em
 
 Z čistě ekonomického pohledu, bez uvažování sekundárních efektů, tedy samostatná výstavba datových center pro globální korporace jako Amazon, Google nebo Meta nedává smysl – dopad na národní hospodářství by byl srovnatelný, i kdyby centra stála v sousední zemi. Rozhodnutí o podpoře výstavby by proto mělo být vedeno strategickými a bezpečnostními zájmy. Výpočetní výkon je novodobou komoditou podobnou ropě nebo plynu. Smysl dává pouze taková výstavba, kde investor garantuje zpřístupnění kapacit pro domácí výzkum a vývoj nebo zvýšení kompetencí širšího spektra lokálních firem. Pokud stát nepodmíní výstavbu těmito strategickými přínosy, zůstane ČR pouze v roli pasivního hostitele prázdných budov s minimálním přínosem pro obyvatelstvo.
 
-\subsection{Limitace}
+\section{Limitace}
 \label{subsec:limitace}
 
 Za zásadní omezení této práce lze považovat nízkou úroveň transparentnosti v sektoru datových center, což se projevilo již při sběru primárních dat ze zahraničí. Data použitá pro definici základních technických parametrů v USA a dalších rozvinutých trzích pocházejí z různých studií a agregovaných zdrojů, které jsou samy o sobě v mnoha ohledech kvalifikovanými odhady. Poskytovatelé hyper-scalerů nezveřejňují přesné údaje o vytížení nebo energetické efektivitě konkrétních lokalit, což vnáší do výchozích hodnot modelu určitou míru neurčitosti.
@@ -35,7 +35,7 @@ Za limitaci by mohlo být považováno také nezahrnutí pozitivních dopadů sa
 
 
 
-\subsection{Zhodnocení přínosů práce}
+\section{Zhodnocení přínosů práce}
 \label{subsec:vyhodnoceni_prinosu}
 
 Přínos práce spočívá především v unikátním a komplexním metodologickém postupu, který propojuje teoretickou rešerši s praktickým modelovacím nástrojem. Tento proces lze rozdělit do několika logických kroků, které společně tvoří ucelený rámec pro studium dopadů výpočetní infrastruktury.
@@ -50,13 +50,13 @@ Praktickým vyústěním je webová aplikace, která byla úspěšně nasazena n
 
 Funkčnost modelu a aplikace byla ověřena v rámci několika testovacích scénářů (kapitola \ref{chap:testovani}). Přestože se základní matematické výpočty ukázaly jako správné a konzistentní se vstupními daty, je nutné přiznat, že kvůli extrémní variabilitě parametrů a nedostupnosti některých reálných dat nelze zvalidovat všechny predikce s absolutní přesností. I přes tato omezení však práce nabízí robustní metodiku a nástroj, který výrazně snižuje bariéru pro porozumění dopadům výstavby datových center v České republice.
 
-\subsection{Pokračování v dalším výzkumu}
+\section{Možnosti dalšího rozvoje}
 \label{subsec:budouci_vyzkum}
 
 Předložený model a webová aplikace tvoří robustní základ, který však lze dále rozšiřovat a zpřesňovat. Následující body definují klíčové směry, kterými by se mohl ubírat budoucí výzkum nebo praktický vývoj nástroje:
 
 \begin{description}
-    \item[Zahrnutí indukovaných efektů a multiplikátorů.] Současná verze modelu se soustředí na přímé dopady. Pro komplexnější ekonomický obraz by bylo vhodné integrovat analýzu indukovaných efektů (založenou na spotřebě zaměstnanců v regionu) a nepřímých efektů (poptávka v dodavatelském řetězci). Implementace ekonomických multiplikátorů specifických pro sektor IT a energetiku by umožnila lépe odhadnout celkový přínos DC pro HDP České republiky.
+    \item[Zahrnutí indukovaných efektů a multiplikátorů.] Současná verze mo\-de\-lu se soustředí na přímé dopady. Pro komplexnější ekonomický obraz by bylo vhodné integrovat analýzu indukovaných efektů (založenou na spotřebě zaměstnanců v regionu) a nepřímých efektů (poptávka v dodavatelském řetězci). Implementace ekonomických multiplikátorů specifických pro sektor IT a energetiku by umožnila lépe odhadnout celkový přínos DC pro HDP České republiky.
     
     \item[Pokročilá legislativní a daňová analýza.] Velkým tématem pro další zkoumání je problematika převodních cen (transfer pricing) a uznatelnosti nákladů u nadnárodních technologických korporací. Budoucí rozšíření modelu by mohlo zahrnovat detailní simulaci zdanění zisků v závislosti na tom, kde je hodnota fyzicky generována versus kde je deklarována. Stejně tak by bylo přínosné hlouběji analyzovat mechanismy DPH v kontextu digitálních služeb poskytovaných z infrastruktury v ČR do celého světa. Navazujícím krokem by pak měla být hloubková analýza dostupné české infrastruktury s cílem vytipovat konkrétní ideální lokality pro výstavbu, které by minimalizovaly negativní dopady na síť a maximalizovaly socioekonomický přínos pro daný region.
     
