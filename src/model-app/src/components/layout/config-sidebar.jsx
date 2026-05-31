@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import {
     Sidebar,
     SidebarContent,
@@ -13,6 +14,20 @@ import { ParameterManager } from "@/components/parameter-manager/parameter-manag
 import { PortfolioManager } from "@/components/sample-portfolios/portfolio-manager";
 
 export function ConfigSidebar() {
+    const sidebarRef = useRef(null);
+
+    const handlePortfolioSelect = () => {
+        const scrollToTop = () => {
+            if (sidebarRef.current) {
+                sidebarRef.current.scrollTo({ 
+                    top: 0, 
+                    behavior: 'smooth' 
+                });
+            }
+        };
+        setTimeout(scrollToTop, 100);
+    };
+
     return (
         <Sidebar className="border-r border-slate-200">
             <SidebarHeader className="p-4 border-b border-slate-100">
@@ -20,7 +35,7 @@ export function ConfigSidebar() {
                     Portfolio a parametry
                 </h2>
             </SidebarHeader>
-            <SidebarContent className="p-4">
+            <SidebarContent ref={sidebarRef} className="p-4">
                 <Collapsible defaultOpen className="group/collapsible">
                     <SidebarGroup>
                         <CollapsibleTrigger>
@@ -56,7 +71,7 @@ export function ConfigSidebar() {
                             </div>
                         </CollapsibleTrigger>
                         <CollapsibleContent className="px-1 -mx-1 pt-1 -mt-1 pb-2 -mb-2">
-                            <PortfolioManager />
+                            <PortfolioManager onPortfolioSelect={handlePortfolioSelect} />
                         </CollapsibleContent>
                     </SidebarGroup>
                 </Collapsible>
