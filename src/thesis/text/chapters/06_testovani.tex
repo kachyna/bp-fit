@@ -1,163 +1,223 @@
 \chapter{Testovací scénáře pro model}
 \label{chap:testovani}
 
-Pro ověření funkčnosti modelu bylo vytvořeno několik testovacích scénářů v podobě předpřipravených portfolií datových center. Tato portfolia lze v uživatelském rozhraní načíst a spustit, čímž se provede výpočet modelu pro danou vzorovou zemi. Testování spočívá v tom, že se porovnají výsledky modelu s očekávanými hodnotami podle veřejně dostupných dat a informací o energetické infrastruktuře dané země. Nicméně se ukázalo, že tento přístup je značně problematický kvůli nedostupnosti dat a nutnosti změn parametrů modelu. Kvůli tomu lze otestovat pouze základní parametry, které nejsou závislé na specificky českých parametrech. V tomto ohledu pak testovací scénáře uspěly.
+Pro ověření výsledků modelu byla vytvořena vzorová portfolia odpovídající mixu datových center jiných evropských zemí. Tato portfolia lze v uživatelském rozhraní načíst a následně porovnat výsledky modelu s veřejně dostupnými daty o infrastruktuře dané země. Ukázalo se, že tento přístup je problematický kvůli nedostupnosti specifických parametrů a výsledných hodnot. Bez jejich znalosti tak lze spolehlivě otestovat pouze výstupy nezávislé na parametrech specifických pro danou zemi, v čemž model uspěl s vysokou přesností.
 
-\section{Metodika testování}
+\section{Metodologie testování}
 \label{sec:testovani_metodika}
 
-Testování modelu může probíhat ve dvou rovinách: testování správnosti výpočtů z matematického hlediska a testování správnosti výpočtů z hlediska reálných dat. V první rovině se ověřuje, zda model správně implementuje matematické vzorce a algoritmy, které jsou základem jeho funkčnosti. Jak již bylo zmíněno v kapitole~\ref{subsec:app_testovani}, tento typ testů prováděn nebyl. Výpočty logického enginu byly ověřeny ručně na několika scénářích, ale automatizované testy kvůli časové náročnosti vytvořeny nebyly.
-
-Ve druhé rovině se testuje samotný model z pohledu reálných dat, nikoli čistě jeho implementace. To znamená, že se porovnávají výsledky modelu s reálnými daty a informacemi o energetické infrastruktuře dané země na základě reálných parametrů. Celá metodologie testování se tedy dá shrnout do následujících kroků:
+Proces testování spočívá v porovnávání výsledků modelu (vypočtených na základě reálných parametrů) se skutečnými údaji o energetické infrastruktuře vybrané země. Metodologie se dá shrnout do následujících kroků:
 
 \begin{enumerate}
-    \item Zjištění složení portfolia datových center pro danou zemi, včetně jejich kapacity a energetické efektivity. Tato data jsou však často nedostupná, proto může být zapotřebí odhadnout složení portfolia na základě agregovaných informací o infrastruktuře datových center v dané zemi.
-    \item Získaná data se zadají do modelu a vypočítají se výsledné hodnoty. Import je možný buď ručně, nebo zadáním přímo do zdrojového kódu modelu (k tomu je potřeba stáhnout repozitář a spustit aplikaci lokálně). Jediný rozdíl v uvedených přístupech je, že zadáním dat do zdrojového kódu se portfolio DC uloží.
-    \item Dalším krokem je srovnání výsledků modelu s reálnými daty a informacemi o energetické infrastruktuře dané země. To zahrnuje porovnání vypočítaných hodnot s veřejně dostupnými daty o spotřebě energie, kapacitě datových center a dalších relevantních parametrech.
+
+    \item Zjištění složení portfolia datových center pro danou zemi, včetně jejich kapacity a energetické efektivity. Případně je možné složení portfolia odhadnout na základě agregovaných informací.
+    
+    \item Získaná data se zadají do modelu a vypočítají se výsledné hodnoty. Import je možný buď ručně, nebo zadáním přímo do zdrojového kódu modelu (k tomu je potřeba stáhnout repozitář). Jediný rozdíl v uvedených přístupech je, že zadáním dat do zdrojového kódu se portfolio datových center uloží.
+    
+    \item Dalším krokem je srovnání výsledků modelu s reálnými daty a informacemi o energetické infrastruktuře dané země. To zahrnuje porovnání vypočítaných hodnot s veřejně dostupnými daty o spotřebě energie, kapacitě datových center a dalšími relevantními parametry.
+    
     \item Nakonec dojde k vyhodnocení úspěšnosti testů a identifikaci případných odchylek nebo nesrovnalostí.
+    
 \end{enumerate}
 
-Tímto způsobem lze ověřit, zda model poskytuje realistické a přesné výsledky v kontextu reálných dat a informací o energetické infrastruktuře. Do zdrojového kódu byla nahrána 4 vzorová portfolia pro různé země, konkrétně Českou republiku, Irsko, Německo a USA. V následující sekci je popsáno, jak v uživatelském rozhraní testování zapnout a jaké jsou výsledky testování pro tyto země.
+Tímto způsobem lze ověřit, zda model poskytuje realistické výsledky. Do zdrojového kódu byla nahrána 4 vzorová portfolia pro různé země: Českou republiku, Irsko, Německo a USA.
 
 \section{Testovací scénáře}
 \label{sec:testovani_scenare}
 
-V následujících podsekcích jsou popsány jednotlivé testovací scénáře pro vybrané země. Každý scénář zahrnuje specifické parametry a očekávané výsledky, které jsou porovnány s reálnými daty a informacemi o energetické infrastruktuře dané země. 
+V následujících podsekcích jsou popsány jednotlivé testovací scénáře pro vybrané země. Každý scénář zahrnuje použité portfolio a výsledky modelu, které jsou porovnány s reálnými daty o energetické infrastruktuře dané země. 
 
 \subsection{Testování v uživatelském rozhraní}
 \label{subsec:testovani_uzivatelske_rozhrani}
 
-Do uživatelského rozhraní byla přidána další záložka v levém menu s názvem Vzorová portfolia. Ta obsahuje tlačítka s krátkým popiskem, přičemž každé tlačítko představuje jedno z testovacích portfolií. Po jeho rozkliknutí se dané portfolio načte do paměti aplikace a okamžitě se aktualizují všechny výstupy modelu. Tímto způsobem lze snadno a rychle otestovat model pro různé země a porovnat výsledky s reálnými daty. Vizualizace je na obrázku~\ref{fig:app_portfolios}.
+Do levého menu UI byla přidána záložka s názvem Vzorová portfolia. Ta obsahuje tlačítka s popiskem, přičemž každé tlačítko představuje jedno z testovacích portfolií. Po jeho rozkliknutí se portfolio načte do paměti aplikace a okamžitě se aktualizují výstupy modelu. Vizualizace je na obrázku~\ref{fig:app_portfolios}.
 
-Tento způsob umožňuje nejen ověřit správnost výpočtu modelu, ale také demonstrovat široké veřejnosti rozdíly mezi datovou infrastrukturou v České republice a v zahraničí. Uživatelé tak mohou získat lepší představu o tom, jak se liší energetická náročnost datových center v různých zemích a jaké faktory k tomu přispívají.
+Tento způsob umožňuje nejen ověřit správnost výpočtů modelu, ale také demonstrovat rozdíly mezi datovou infrastrukturou v České republice a v zahraničí. Uživatelé tak mohou získat lepší představu o tom, jak se liší energetická náročnost datových center v různých zemích.
 
-\subsection{Testovací scénář 1: Česko}
+\subsection{Testovací scénář 1: Česká republika}
 \label{subsec:testovani_cesko}
 
-Pro scénář České republiky bylo zvoleno portfolio, které odpovídá rozvíjejícímu se trhu ve střední Evropě. Portfolio obsahuje několik typů kolokačních center a trénovacích center pro AI. Data byla získána z veřejně dostupných zdrojů, jako je katastr nemovitostí (viz sekci~\ref{sec:model_scraper}) a z databází datových center. Složení portfolia je uvedeno v tabulce~\ref{tab:portfolio_cesko}.
+Pro scénář ČR bylo vytvořeno portfolio, které odpovídá datům získaným při autorském mapování domácího trhu (viz sekci~\ref{sec:model_scraper}). Údaje byly odvozeny z katastru nemovitostí a Data Center Map. Mix je tvořen několika typy kolokačních a dvěma plánovanými AI trénovacími centry (viz tabulku~\ref{tab:portfolio_cesko}).
 
-\begin{table}[tbp]
+\begin{table}[b]
     \centering
-    \caption{Složení portfolia pro testovací scénář Česko.}
-    \begin{tabular}{|l|r|c|r|}
-        \hline
-        Typ centra & IT příkon [MW] & PUE~& Počet \\ \hline
-        Kolokační & 0,45 & 1,70 & 22 \\ \hline
-        Kolokační & 1,33 & 1,50 & 11 \\ \hline
-        Kolokační & 3,16 & 1,40 & 15 \\ \hline
-        Kolokační & 9,75 & 1,35 & 4 \\ \hline
-        Trénovací & 0,20 & 1,30 & 2 \\ \hline
-        Trénovací & 26,00 & 1,20 & 2 \\ \hline
-    \end{tabular}
+    \setlength{\tabcolsep}{6pt}
+
+    \caption{Složení portfolia pro testovací scénář Česko}
     \label{tab:portfolio_cesko}
+
+    \begin{tabular}{p{4cm}ccc}
+        \toprule
+        \addlinespace
+
+        \textbf{Typ centra} & \textbf{IT příkon [MW]} & \textbf{PUE} & \textbf{Počet} \\
+
+        \addlinespace
+        \midrule
+        \addlinespace
+
+        Kolokační & 0,45 & 1,70 & 22 \\
+        Kolokační & 1,33 & 1,50 & 11 \\
+        Kolokační & 3,16 & 1,40 & 15 \\
+        Kolokační & 9,75 & 1,35 & 4 \\
+        Trénovací & 0,20 & 1,30 & 2 \\
+        Trénovací & 26,00 & 1,20 & 2 \\
+
+        \addlinespace
+        \bottomrule
+    \end{tabular}
 \end{table}
 
-Protože je cílem této práce modelovat stav České republiky (jelikož momentálně nejsou k dispozici dostatečná data), tento testovací scénář nelze ověřit. Jedná se tak spíše o zhmotnění literární rešerše a sběru dat, které byly prováděny v dřívějších částech práce. Nicméně i tento scénář je důležitý pro ověření funkčnosti modelu, protože umožňuje zkontrolovat, zda model správně počítá spotřebu energie a další parametry na základě zadaných dat.
+Jelikož doposud nebyla k dispozici ucelená data o stavu DC v ČR (jejich získání bylo cílem této práce), tento scénář nelze přímo ověřit. I přesto je z uživatelského pohledu důležitý -- umožňuje pochopit strukturu českého trhu, porovnat ji se zahraničím a sledovat dopady, které DC v ČR už teď způsobují.
 
-Celkový instalovaný IT příkon tohoto portfolia je 163,33~MW s váženým průměrem PUE~1,32. Odhadovaná roční spotřeba je tudíž 1,136 TWh. To odpovídá přibližně 3/4 spotřeby Karlovarského kraje, včetně veškerého průmyslu. 70~\% výkonu portfolia tvoří kolokační datová centra, zbytek jsou trénovací centra pro AI. Je však nutno poznamenat, že tato DC jsou právě ve výstavbě a reálně zatím nefungují (Prague Gateway DC a DC Kanice). Ke květnu 2026 je teď české portfolio tvořeno téměř výhradně kolokačními centry.
+Celkový IT příkon tohoto portfolia je 163,33~MW s váženým průměrem PUE~1,32. Odhadovaná roční spotřeba je 1,136 TWh. To odpovídá přibližně 3/4 spotřeby Karlovarského kraje (včetně průmyslu). 70~\% výkonu portfolia tvoří kolokační datová centra, zbytek jsou plánovaná AI trénovací centra (Prague Gateway DC a DC Kanice). K dubnu 2026 je české portfolio tvořeno téměř výhradně kolokačními centry.
 
-Co se týče dopadů na ekonomiku, datová centra v ČR budou zaměstnávat přibližně 105 lidí, nicméně tento údaj je s největší pravděpodobností podhodnocený kvůli velkému podílu kolokačních datových center. Ta totiž nedosahují tak vysoké míry automatizace jako AI centra, na která je tento model primárně zaměřen. Ročně česká datová centra budou generovat HPH asi 20~miliard~Kč -- v tuto chvíli (bez DC ve výstavbě) je to asi 3~miliardy~Kč.
+Co se týče dopadů na ekonomiku, datová centra v ČR budou zaměstnávat přibližně 105 lidí. Tento údaj je však s největší pravděpodobností podhodnocený kvůli velkému podílu kolokačních center v portfoliu. Ta totiž nedosahují tak vysoké míry automatizace jako AI centra, na něž se model primárně zaměřuje. V budoucnu česká datová centra vygenerují HPH 20~miliard~Kč ročně -- momentálně (bez DC ve výstavbě) je to asi 3~miliardy~Kč.
 
-Ani spotřeba vody není v českém scénáři vyjádřená přesně, protože je stejně jako v případě počtu zaměstnanců dimenzovaná především na AI datová centra. Kolokační centra totiž často využívají vzduchové chlazení, které pro jejich účely plně postačuje. Ročně datová centra teď produkují asi 200~000~tun~$\text{CO}_2$ (Scope~II) a po přidání nových DC to bude asi dvakrát tolik. Pro srovnání to odpovídá ročnímu provozu asi 150~000 osobních automobilů.
+Ani spotřeba vody není v českém scénáři vyjádřená přesně, protože je stejně jako v případě počtu zaměstnanců dimenzovaná především na AI datová centra. Kolokační centra často využívají vzduchového chlazení, které tak vysokou vodní stopu nezpůsobuje. Portfolio teď produkuje asi 200~000~tun~$\text{CO}_2$ ročně (Scope~II) a po přidání plánovaných DC to bude asi dvakrát tolik (odpovídá ročnímu provozu asi 150~000 osobních automobilů).
 
 \subsection{Testovací scénář 2: Irsko}
 \label{subsec:testovani_irsko}
 
-Irsko je evropským lídrem v oblasti datových center. Testovací portfolio pro tuto zemi zahrnuje velká kolokační centra i specializovaná centra pro AI (viz tabulka~\ref{tab:portfolio_irsko}). Specificky u Irska byla data zapsána ve formě klastrů (shluků center) namísto jednotlivých budov, což vysvětluje nižší absolutní počet položek, ale pro účely testování modelu tato agregace není překážkou.
+Irsko je evropským lídrem v oblasti hyperscale datových center. Jeho portfolio zahrnuje velká kolokační i specializovaná AI centra společností Google, Meta či Amazon (viz tabulku~\ref{tab:portfolio_irsko}). Specificky u Irska byla data zapsána ve formě klastrů (shluků center) namísto jednotlivých budov, což vysvětluje nižší absolutní počet položek, ale pro účely testování modelu tato agregace nevadí.
 
-\begin{table}[tbp]
+\begin{table}[b]
     \centering
-    \caption{Složení portfolia pro testovací scénář Irsko.}
-    \begin{tabular}{|l|r|c|r|}
-        \hline
-        Typ centra & IT příkon [MW] & PUE~& Počet \\ \hline
-        Kolokační & 20,00 & 1,35 & 30 \\ \hline
-        Kolokační & 10,00 & 1,60 & 10 \\ \hline
-        Trénovací & 50,00 & 1,20 & 3 \\ \hline
-        Inferenční & 40,00 & 1,25 & 5 \\ \hline
-    \end{tabular}
+    \setlength{\tabcolsep}{6pt}
+
+    \caption{Složení portfolia pro testovací scénář Irsko}
     \label{tab:portfolio_irsko}
+
+    \begin{tabular}{p{4cm}ccc}
+        \toprule
+        \addlinespace
+
+        \textbf{Typ centra} & \textbf{IT příkon [MW]} & \textbf{PUE} & \textbf{Počet} \\
+
+        \addlinespace
+        \midrule
+        \addlinespace
+
+        Kolokační & 20,00 & 1,35 & 30 \\
+        Kolokační & 10,00 & 1,60 & 10 \\
+        Trénovací & 50,00 & 1,20 & 3 \\
+        Inferenční & 40,00 & 1,25 & 5 \\
+
+        \addlinespace
+        \bottomrule
+    \end{tabular}
 \end{table}
 
-Celkový instalovaný IT příkon portfolia činí 1~050~MW s průměrnou hodnotou PUE~1,33. Portfolio je tvořeno ze dvou třetin kolokačními centry, což je trend potvrzený i v literatuře~\cite{testing_dc_byte_2023}. Odhadovaná roční spotřeba modelu je 6,45 TWh, což také odpovídá odhadům z veřejně dostupných dat~\cite{testing_bitpower_2024}. Z reportů jsou dostupné také informace o produkci CO$_2$, kterou agentura Bitpower odhaduje na 1,52~milionu tun ročně. Model uvádí odhad 2,1~milionu tun -- to je způsobeno tím, že model počítá s českým emisním faktorem. Pokud do parametrů nahrajeme irský emisní faktor 0,2241 tuny CO$_2$/MWh~\cite{testing_emission_factors_2025}, pak model správně vypočítá 1,44 milionu tun CO$_2$, což je velmi blízko odhadu z reportu.
+Celkový instalovaný IT příkon portfolia činí 1~050~MW s průměrnou hodnotou PUE~1,33. Portfolio je tvořeno ze dvou třetin kolokačními centry, což je trend potvrzený i v literatuře~\cite{testing_dc_byte_2023}. Roční spotřeba predikovaná modelem je 6,45~TWh, což také odpovídá veřejně dostupným datům~\cite{testing_bitpower_2024}. Reporty uvádějí také emise CO$_2$, které agentura Bitpower odhaduje na 1,52~milionu tun ročně. Model uvádí odhad 2,1~milionu tun, protože počítá s českým emisním faktorem. Pokud do parametrů nahrajeme irský faktor 0,2241 tuny CO$_2$/MWh~\cite{testing_emission_factors_2025}, model vypočítá 1,44 milionu tun CO$_2$, což je blízko hodnotě z reportu.
 
-Je zajímavé, že Irsko má poměrně nízké PUE~-- průměr celého portfolia činí 1,32 oproti globálnímu průměru cca 1,50. To je dáno zejména tím, že má Irsko dostatek vody pro chlazení, což umožňuje energeticky efektivnější chlazení. Roční spotřeba vody je modelem odhadována na 15~miliard litrů, nicméně to zdaleka neodpovídá dostupným datům z roku 2021, která uvádějí roční spotřebu vody datovými centry 810~milionů litrů~\cite{testing_water_ireland_2022}. To však není chyba modelu, ale spíše samotných vládních dat:
+Je zajímavé, že Irsko má poměrně nízké PUE~-- průměr celého portfolia činí 1,32 oproti globálnímu průměru cca 1,50. To je dáno zejména tím, že v Irsku je dostatek vody pro vodní chlazení, které je energeticky efektivnější. Roční spotřebu vody model odhaduje na 15~miliard litrů. To zdaleka neodpovídá vládním datům z roku 2021, která uvádějí hodnotu 810~milionů litrů~\cite{testing_water_ireland_2022}. Nejedná se ale o chybu modelu nýbrž o zmiňovanou netransparentnost dat:
 
 \begin{itemize}
-    \item Jak poukazuje McGrathová~\cite{testing_mcgarth_2024}, mezi vládními statistikami a realitou existuje velký rozpor. Oficiální dokumentace společnosti Facebook ukazuje, že její jedno velké datové centrum v Irsku údajnou roční spotřebu všech DC v Irsku překračuje, což naznačuje, že vládní data jsou velmi podhodnocená. To je nejspíš dáno tím, že vláda do svých statistik zahrnuje pouze spotřebu přes vodoměry, ale mnoho datových center využívá vodu z veřejného vodovodu bez měření, což vede k podhodnocení skutečné spotřeby vody. Navíc některá datová centra využívají vodu z přírodních zdrojů, jako jsou řeky, což se do vládních statistik vůbec nezapočítává.
-    \item Dalším důležitým faktorem je, že statistika nezapočítává vodu spotřebovanou pro výrobu elektřiny. Podle studie Lohrmannové~\cite{lohrmann_assessment_2021} je pro výrobu 1~MWh elektřiny v Irsku potřeba v průměru 1~300 litrů vody. Pokud číslo vynásobíme odhadovanou roční spotřebou 6,45 TWh, dostaneme dalších 8,4~miliardy litrů vody, což je desetkrát vyšší než oficiální odhad pro spotřebu vody datovými centry.
-    \item Přestože vládní data hovoří specificky o přímé spotřebě vody, jejich přístup je značně netransparentní. To jen dále poukazuje na to, že se okolo spotřeby vody nejen v Irsku vyskytuje velká nejistota a že je potřeba k těmto datům přistupovat s velkou opatrností.
-    \item Je nutno podotknout, že i tak model spotřebu vody s výchozími parametry nejspíš nadhodnocuje asi o 5~miliard litrů vody. To je dáno tím, že spotřeba vody pro chlazení je odhadována podle dat z USA, která mají průměrně vyšší spotřebu vody na 1~MWh vyrobené energie.
+
+    \item Jak poukazuje McGrathová~\cite{testing_mcgarth_2024}, mezi vládními statistikami a realitou existuje velký rozpor: oficiální dokumentace společnosti Facebook ukazuje, že údajnou roční spotřebu všech DC překračuje dokonce jediné její datové centrum v Clonee. To naznačuje, že vládní data jsou podhodnocená.
+    
+    \item Vláda do svých statistik totiž zahrnuje pouze spotřebu přes vodoměry, ale mnoho datových center využívá vodu z veřejného vodovodu bez měření nebo vodu z přírodních zdrojů, což se v datech neprojeví.
+
+    \item Dalším důležitým faktorem je, že statistika nezapočítává vodu spotřebovanou pro výrobu elektřiny (Scope II). Podle studie Lohrmannové~\cite{lohrmann_assessment_2021} se pro výrobu 1~MWh elektřiny v Irsku spotřebuje asi 1~300 litrů vody. Pokud číslo vynásobíme odhadovanou roční spotřebou 6,45~TWh, dostaneme dalších 8,4~miliardy litrů vody -- desetinásobek oficiálního odhadu.
+
+    \item Přestože vláda hovoří specificky o přímé spotřebě vody, její přístup je netransparentní. To jen dále poukazuje na to, že údaje o spotřebě vody datovými centry jsou citlivé a že stojí za to se jimi zabývat.
+
+    \item Je nutno podotknout, že i tak model spotřebu vody s výchozími parametry nejspíš nadhodnocuje asi o 5~miliard litrů. To je dáno tím, že spotřeba vody pro chlazení je odhadována podle dat z USA, které mají průměrně vyšší spotřebu vody na 1~MWh vyrobené energie. Při zadání irských parametrů by odpovídala realitě mnohem více.
+
 \end{itemize}
 
-Posledním aspektem, který stojí za zmínku, je celková investice. Bit\-poy-wer~\cite{testing_bitpower_2024} odhaduje, že celková investice na výstavbu a vybavení irských datových center činila asi 45~miliard eur (přibližně jeden bilion~Kč). Model odhaduje 1,5 bilionu~Kč, nicméně tento údaj vypovídá o investicích za celou dobu životnosti datových center -- včetně několikrát opakovaného odpisového cyklu IT vybavení. Pokud bychom tedy zvážili pouze 2,5 odpisového cyklu (odpovídá asi 10 letům provozu DC), získali bychom částku blížící se 800~miliardám~Kč, což je mnohem blíže odhadu z reportu. Je však nutno poznamenat, že odhad z reportu je velmi hrubý a pravděpodobně podhodnocený, protože nezahrnuje náklady na výstavbu infrastruktury a náklady na pořízení pozemků, které v USA tvoří asi 6~\% nákladů na výstavbu (viz sekci~\ref{subsec:vydaje}).
+Bitpower~\cite{testing_bitpower_2024} dále uvádí, že celková investice na výstavbu a vybavení irských datových center činila asi jeden bilion~Kč. Model projektuje 1,5 bilionu~Kč, nicméně tento údaj vypovídá o investicích za celou dobu životnosti datových center. Pokud uvážíme pouze polovinu této částky (průměrně odpovídá 15 letům provozu DC), získáme 800~miliard~Kč, což je mnohem blíže částce stanovené Bitpower. Je však nutno poznamenat, že odhad z reportu je pravděpodobně podhodnocený, protože nezahrnuje náklady na pořízení pozemků, které v USA tvoří asi 6~\% nákladů na výstavbu (viz sekci~\ref{subsec:vydaje}).
 
-Ostatní výstupy modelu jsou již velice závislé na specifických parametrech pro Českou republiku, takže jejich srovnávání s reálnými daty pro Irsko nedává smysl. Navíc je tyto údaje velmi obtížné získat, například není možné získat počet zaměstnanců v irských datových centrech -- informace jsou obvykle agregované na IT sektor a samotní poskytovatelé je nezveřejňují. Stejně tak odhady o HPH jsou dostupné pouze pro celý IT sektor, nikoli specificky pro datová centra. 
+Ostatní výstupy modelu jsou již velice závislé na specifických parametrech pro Českou republiku, takže jejich srovnávání s reálnými daty pro Irsko nedává smysl. Navíc jsou údaje jako počet zaměstnanců v irských datových centrech velmi obtížné získat -- informace se obvykle agregují na celý IT sektor a samotní poskytovatelé je nezveřejňují. To stejné platí pro data o HPH.
 
 \subsection{Testovací scénář 3: Německo}
 \label{subsec:testovani_nemecko}
 
-Německý trh, soustředěný zejména v okolí Frankfurtu, patří k největším na světě. Portfolio reflektuje vysoký počet menších i středně velkých center (viz tabulka~\ref{tab:portfolio_nemecko}).
+Německý trh patří k největším v Evropě. Portfolio reflektuje vysoký počet menších i středně velkých center (viz tabulku~\ref{tab:portfolio_nemecko}), přičemž jejich mix byl vybrán podle studie Mordor Intelligence~\cite{mordor_intelligence_germany_2026}. Německo se momentálně potýká s nedostatkem kapacit přenosové sítě, což způsobuje výraznou stagnaci růstu trhu. Investice by se tak mohly přesunout do okolních zemí -- včetně ČR.
 
-\begin{table}[tbp]
+\begin{table}[t]
     \centering
-    \caption{Složení portfolia pro testovací scénář Německo.}
-    \begin{tabular}{|l|r|c|r|}
-        \hline
-        Typ centra & IT příkon [MW] & PUE~& Počet \\ \hline
-        Kolokační & 1,00 & 1,60 & 880 \\ \hline
-        Kolokační & 2,00 & 1,50 & 400 \\ \hline
-        Kolokační & 5,00 & 1,40 & 100 \\ \hline
-        Trénovací & 70,00 & 1,25 & 6 \\ \hline
-        Inferenční & 40,00 & 1,35 & 10 \\ \hline
-    \end{tabular}
+    \setlength{\tabcolsep}{6pt}
+
+    \caption{Složení portfolia pro testovací scénář Německo}
     \label{tab:portfolio_nemecko}
+
+    \begin{tabular}{p{4cm}ccc}
+        \toprule
+        \addlinespace
+
+        \textbf{Typ centra} & \textbf{IT příkon [MW]} & \textbf{PUE} & \textbf{Počet} \\
+
+        \addlinespace
+        \midrule
+        \addlinespace
+
+        Kolokační & 1,00 & 1,60 & 880 \\
+        Kolokační & 2,00 & 1,50 & 400 \\
+        Kolokační & 5,00 & 1,40 & 100 \\
+        Trénovací & 70,00 & 1,25 & 6 \\
+        Inferenční & 40,00 & 1,35 & 10 \\
+
+        \addlinespace
+        \bottomrule
+    \end{tabular}
 \end{table}
 
-Mix portfolia datových center pro Německo byl vybrán podle~\cite{mordor_intelligence_germany_2026}. Celkový IT příkon pro německý scénář je 3 000~MW s váženým průměrem PUE~1,43, tudíž předpokládaná spotřeba je 19,921 TWh ročně. Tyto údaje potvrzuje report Ministerstva ekonomických věcí a klimatu Německa z roku 2025~\cite{testing_berlin_2025}. Zajímavá jsou data od Německé agentury pro obchod a investice (GTAI), která odhadují, že příspěvek kolokačních a hyperscale datových center k německému HDP činí 10,4~miliardy eur ročně (asi 250~miliard~Kč)~\cite{gtai_landscape_2025}. Model v realistickém scénáři předpovídá 210~miliard~Kč, což je relativně blízko odhadu GTAI.
+Celkový IT příkon německého portfolia je 3~000~MW s váženým průměrem PUE~1,43. Model předpokládá roční spotřebu 19,921~TWh, což potvrzuje report německého Ministerstva ekonomických věcí a klimatu z roku 2025~\cite{testing_berlin_2025} (projektuje 20~TWh). Zajímavá jsou data od Německé agentury pro obchod a investice (GTAI)~\cite{gtai_landscape_2025}, která odhadují příspěvek DC k německému HDP na 10,4~miliardy eur ročně (asi 250~miliard~Kč). Model v realistickém scénáři předpovídá 210~miliard~Kč, což je relativně blízko odhadu GTAI.
 
-Podle údajů z~\cite{testing_berlin_2025} velmi dobře sedí také odhad vyprodukovaného oxidu uhličitého. Model předpovídá 6,6~milionu tun, zatímco ministerstvo předpovídá 6,5~milionu tun. Přesnost tohoto výpočtu je dána tím, že ČR a Německo mají podobný emisní faktor. Údaje o zaměstnancích je opět velmi obtížné získat, stejně jako odhady o spotřebě vody. 
+Velmi dobře odpovídá také odhad emisí CO$_2$ -- model predikuje 6,6~milionu tun, zatímco ministerstvo \cite{testing_berlin_2025} uvádí 6,5~milionu tun. Přesnost tohoto výpočtu je dána tím, že ČR a Německo mají podobný emisní faktor. Údaje o počtu zaměstnanců a o spotřebě vody se opět nepodařilo získat. 
 
 \subsection{Testovací scénář 4: USA}
 \label{subsec:testovani_usa}
 
-USA jako globální lídr disponují největším a nejrozmanitějším portfoliem, které zahrnuje tisíce menších i desítky obřích center (viz tabulka~\ref{tab:portfolio_usa}).
+USA jako globální lídr disponují největším a nejrozmanitějším portfoliem, které zahrnuje tisíce menších i desítky obřích center (viz tabulku~\ref{tab:portfolio_usa}).
 
-\begin{table}[tbp]
+\begin{table}[bth]
     \centering
-    \caption{Složení portfolia pro testovací scénář USA.}
-    \begin{tabular}{|l|r|c|r|}
-        \hline
-        Typ centra & IT příkon [MW] & PUE~& Počet \\ \hline
-        Kolokační & 0,85 & 2,10 & 2545 \\ \hline
-        Kolokační & 3,20 & 1,85 & 1440 \\ \hline
-        Kolokační & 18,50 & 1,55 & 182 \\ \hline
-        Kolokační & 92,00 & 1,45 & 11 \\ \hline
-        Inferenční & 12,00 & 1,50 & 156 \\ \hline
-        Inferenční & 35,00 & 1,40 & 72 \\ \hline
-        Inferenční & 110,00 & 1,30 & 8 \\ \hline
-        Trénovací & 22,00 & 1,45 & 94 \\ \hline
-        Trénovací & 65,00 & 1,35 & 28 \\ \hline
-        Trénovací & 145,00 & 1,25 & 12 \\ \hline
-    \end{tabular}
+    \setlength{\tabcolsep}{6pt}
+
+    \caption{Složení portfolia pro testovací scénář USA}
     \label{tab:portfolio_usa}
+
+    \begin{tabular}{p{4cm}ccc}
+        \toprule
+        \addlinespace
+
+        \textbf{Typ centra} & \textbf{IT příkon [MW]} & \textbf{PUE} & \textbf{Počet} \\
+
+        \addlinespace
+        \midrule
+        \addlinespace
+
+        Kolokační & 0,85 & 2,10 & 2545 \\
+        Kolokační & 3,20 & 1,85 & 1440 \\
+        Kolokační & 18,50 & 1,55 & 182 \\
+        Kolokační & 92,00 & 1,45 & 11 \\
+        Inferenční & 12,00 & 1,50 & 156 \\
+        Inferenční & 35,00 & 1,40 & 72 \\
+        Inferenční & 110,00 & 1,30 & 8 \\
+        Trénovací & 22,00 & 1,45 & 94 \\
+        Trénovací & 65,00 & 1,35 & 28 \\
+        Trénovací & 145,00 & 1,25 & 12 \\
+
+        \addlinespace
+        \bottomrule
+    \end{tabular}
 \end{table}
 
-Celkový instalovaný IT příkon pro tento rozsáhlý scénář je 22~050,25~MW při váženém průměru PUE~1,54. Toto vysoké PUE~je dáno relativně vysokým podílem menších kolokačních center nevyužívajících moderní technologie chlazení. Mnohdy navíc mohou být umístěna v nehostinných krajinách bez dostatku vody, což energetickou efektivitu dále snižuje. Odhadovaná roční spotřeba v realistickém scénáři je 173~TWh, což odpovídá údajům z literární části~\cite{LBNL-2001637}.
+Celkový instalovaný IT příkon pro tento rozsáhlý scénář je 22~050,25~MW při váženém průměru PUE~1,54. Toto vysoké PUE~je dáno stářím trhu s vysokým podílem menších kolokačních center, která nevyužívají moderní technologie chlazení. Mnohdy navíc bývají umístěna v nehostinných oblastech bez dostatku vody, což energetickou efektivitu dále snižuje. Odhadovaná roční spotřeba v realistickém scénáři je 173~TWh, což odpovídá literatuře~\cite{LBNL-2001637}.
 
-V případě Spojených států existuje více dat, protože se jedná o největší a relativně zralý trh. Tato data však byla použita k vytvoření modelu, který některé parametry (zejména spotřebu vody) přejímá. Nedává proto dobrý smysl srovnávat výstupy modelu s reálnými daty z USA, protože by se de facto jednalo o srovnání se vstupními parametry. Scénář proto slouží spíše k poskytnutí orientačního pohledu na to, jak by model mohl fungovat pro zemi s velmi rozsáhlým a rozmanitým portfoliem datových center.
+Původní data z USA byla použita pro vytvoření modelu, kvůli čemuž je nedává smysl srovnávat s jeho výstupy -- jednalo by se de facto o srovnání stejných hodnot. Scénář proto slouží spíše k poskytnutí pohledu na to, jak model funguje pro zemi s rozmanitým portfoliem datových center.
 
-\section{Vyhodnocení testů}
+\section{Vyhodnocení testování modelu}
 \label{sec:testovani_vyhodnoceni}
 
-Z výsledků testů plyne, že neparametrizované výpočty v modelu fungují velmi dobře. Například maximální spotřeba je u všech scénářů vypočítána správně, stejně jako průměrné PUE, maximální IT příkon, složení portfolia a další. To však svědčí spíše o správnosti matematické implementace modelu než o jeho validitě.
+Z testování plyne, že neparametrizované výpočty modelu fungují dobře. Maximální spotřeba, IT příkon nebo průměrné PUE jsou u všech scénářů vypočítány správně. Výpočty používající parametry nezávislé na českých specifikách model počítá také s vysokou přesností, zejména reálnou spotřebu elektřiny. To je klíčové, protože od této hodnoty se odvíjí další výpočty modelu.
 
-Výpočty používající parametry nezávislé na českých specifikách jsou v modelu počítány také s vysokou přesností. Například výpočet reálné spotřeby energie se shoduje s hodnotami z veřejně dostupných dat pro všechny testované země. To je klíčová informace, protože od této hodnoty se odvíjí další výpočty a závěry modelu. Pokud by tento výpočet nebyl správný, pak by byly nepřesné i všechny další výpočty, které z něj vycházejí.
+Výpočty závislé na parametrech specifických pro ČR pak nedává smysl srovnávat s daty z jiných zemí, neboť by musely být použity jiné parametry. Při nastavení správných parametrů model odpovídá realitě, což se potvrdilo například u irské produkce oxidu uhličitého. V rámci této práce však nebylo realistické stihnout získat a ověřit všechny parametry pro další země.
 
-Další výpočty, které jsou závislé na specifických parametrech pro Českou republiku, pak nedává smysl srovnávat s daty z jiných zemí, neboť by pro výpočet musely být použity jiné parametry. To se u některých parametrů potvrdilo (například u irské produkce oxidu uhličitého), ale v rámci této práce nebylo realistické stihnout ověřit všechny parametry. Samotný sběr dat jen pro Českou republiku byl velmi časově náročný, takže hledání a ověřování parametrů pro další státy by výrazně prodloužilo termín dokončení práce.
+Předpoklad je tedy takový, že model správně počítá reálnou spotřebu portfolia datových center, což je klíčový vstup pro další výpočty. Z toho plyne, že i navazující výpočty vypovídají o realitě. Například emise CO$_2$, které jsou odvozeny z reálné spotřeby, jsou zajisté správné, neboť závisí pouze na spotřebě a emisním faktoru, který je pro Českou republiku známý.
 
-Předpoklad je tedy takový, že model správně počítá reálnou spotřebu portfolia datových center, což je klíčový výstup pro další analýzy a závěry. A vzhledem k tomu, že ostatní parametry jsou na celkové spotřebě závislé, lze předpokládat, že i tyto výpočty jsou správné. Například emise CO$_2$, které jsou odvozeny z reálné spotřeby, jsou zajisté správné, neboť závisí pouze na spotřebě a emisním faktoru, který je pro Českou republiku známý.
+V případě spotřeby vody je situace složitější, protože je složená ze spotřeby samotných DC a spotřeby vody při výrobě elektřiny (Scope II). Model také chybně předpokládá stejnou spotřebu vody pro chlazení u všech typů DC. Predikce tak mohou systematicky vycházet nadhodnocené, zejména pro portfolia s vysokým podílem kolokačních center.
 
-V případě spotřeby vody je situace složitější, protože k tomuto výpočtu je potřeba více parametrů, a to jak spotřeby samotného portfolia datových center, tak i spotřeby vody pro výrobu elektřiny. Navíc model chybně předpokládá, že spotřeba vody pro chlazení je stejná pro všechny typy datových center, což není pravda. Predikce spotřeby vody tak mohou systematicky vycházet nadhodnocené, zejména pro portfolia s vysokým podílem kolokačních center, která často využívají vzduchové chlazení. Přestože tento výpočet není zcela přesný, stále poskytuje užitečný odhad pro porovnání různých scénářů a pro pochopení relativní spotřeby vody v kontextu datových center.
-
-Velkou výhodou vytvořené aplikace je však skutečnost, že umožňuje parametry snadno změnit. V případě, že někdo bude chtít model otestovat pro jinou zemi, stačí v uživatelském rozhraní nastavit specifické parametry a spustit výpočet. Přestože jsou tedy výsledky pro jiné země pouze orientační, při doplnění správných parametrů může model univerzálně vypovídat o různých zemích po celém světě.
+Velkou výhodou vytvořené aplikace je však skutečnost, že umožňuje parametry snadno změnit. Pokud bude model testován pro jinou zemi, stačí v UI nastavit odpovídající parametry a spustit výpočet. Momentálně jsou tedy výsledky pro jiné země pouze orientační, ale při doplnění specifických parametrů může model správně vypovídat o různých ekonomikách po celém světě.
