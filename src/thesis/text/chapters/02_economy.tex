@@ -12,30 +12,30 @@ Kolem roku 2018 však efektivita narazila na své technologické limity a křivk
 % Prodleva mezi žádostí a připojením
 % Získat koeficienty (náklady na posílení sítě)
 
-Ve Spojených státech amerických výstavba datových center prokazatelně způsobuje růst cen za dodávky elektrických energií pro běžné domácnosti. Příčinou je jak zdražování silové elektřiny, tak vznikající náklady na vývoj infrastruktury. Cílem této kapitoly je zmapovat mechanismy zdražování energií na území USA a nastínit komplikace s připojováním DC do elektrizační soustavy.
+Ve Spojených státech amerických výstavba datových center prokazatelně způsobuje růst cen za dodávky elektrických energií pro běžné domácnosti. Příčinou je jak zdražování silové elektřiny, tak vznikající náklady na vývoj infrastruktury. Cílem této sekce je zmapovat mechanismy zdražování energií na území USA a nastínit komplikace s připojováním DC do elektrizační soustavy.
 
 \subsection{Přímé dopady připojení AI centra do sítě}
 \label{subsec:energie_dopady_prime}
 
-Datová centra jsou zdrojem velké a nestabilní zátěže, která se může v krátkém čase změnit až o desítky megawattů. Kvůli tomu je často zapotřebí modernizovat elektrizační soustavu, což s sebou přináší vysoké náklady. Mnohé z těchto efektů se však projeví až při výstavbě většího počtu DC ve stejné lokalitě.
+Datová centra jsou zdrojem velké a nestabilní zátěže, která se může v krátkém čase změnit až o desítky megawattů. Kvůli tomu je zapotřebí pečlivěji řídit elektrizační soustavu, což s sebou přináší vysoké náklady. Mnohé z těchto efektů se však projeví až při výstavbě většího počtu DC ve stejné lokalitě.
 
 Prvním a nejviditelnějším dopadem jsou extrémní nároky na kapacitu sítě. Moderní AI kampusy vyžadují připojení v řádech stovek~MW, přičemž v budoucnu se plánují stavět centra s připojením až 1~GW~\cite[s.~5]{chen_electricity_2025}. Existující infrastruktura však na takovou zátěž zpravidla není připravená, kvůli čemuž vzniká časový nesoulad -- zatímco DC lze postavit za 1 až 2 roky, celý proces od plánování až po zprovoznění vysokonapěťové přenosové soustavy trvá 5 až 10 let
 \cites[s. 11]{ginzburg-ganz_technical_2025}[s. 13]{sheng_power_2026}. To vede k přetěžování existujících sítí, frontám na připojení a v extrémních případech (v Irsku) i k plošným moratoriím na připojování nových DC, aby nedošlo ke kolapsu dodávek elektřiny~\cite[s.~14]{sheng_power_2026}.
 
-Druhým problémem je nestabilita odběru, která je pro AI datová centra charakterisitcká~\cite[s.~8--9]{sheng_power_2026}. Jejich příkon totiž dokáže během několika sekund klesnout nebo stoupnout o stovky megawattů, obvykle kvůli střídání fáze intenzivního trénování a méně intenzivního zálohování (v praxi exsitují záznamy o změně 400~MW za 36 sekund). Tyto extrémní a rychlé skoky vyčerpávají rezervy sítě pro primární regulaci frekvence, způsobují lokální kolísání napětí a zvyšují náklady provozovatelů sítě na udržování rychlých záloh.~\cite[s.~13]{ginzburg-ganz_technical_2025}
+Druhým problémem je nestabilita odběru, která je pro AI datová centra charakteristická~\cite[s.~8--9]{sheng_power_2026}. Jejich příkon totiž dokáže během několika sekund klesnout nebo stoupnout o stovky megawattů, obvykle kvůli střídání fáze intenzivního trénování a méně intenzivního zálohování (v praxi existují záznamy o změně 400~MW za 36 sekund). Tyto extrémní a rychlé skoky vyčerpávají rezervy sítě pro primární regulaci frekvence, způsobují lokální kolísání napětí a zvyšují náklady provozovatelů sítě na udržování rychlých záloh.~\cite[s.~13]{ginzburg-ganz_technical_2025}
 
-Mnohem nebezpečnější scénář představuje tzv. sympathetic tripping. Při významnějším poklesu napětí v síti by mohlo dojít k poškození drahého HW, kvůli čemuž jsou systémy UPS a měniče v DC navrženy tak, aby byly schopny okamžitě přejít na vlastní záložní generátory. Pokud však dojde k běžné poruše a v reakci na ni se odpojí celé AI centrum, zmizí ze sítě během několika vtěřin obrovská zátěž. Frekvence v síti tak vzroste, což se stane podnětem pro odpojení dalších datových center a nastane řetězová reakce.~\cite[s.~11]{sheng_power_2026}
+Mnohem nebezpečnější scénář představuje tzv. sympathetic tripping. Při významnějším poklesu napětí v síti by mohlo dojít k poškození drahého HW, kvůli čemuž jsou systémy UPS a měniče v DC navrženy tak, aby byly schopny okamžitě přejít na vlastní záložní generátory. Pokud však dojde k běžné poruše a v reakci na ni se odpojí celé AI centrum, zmizí ze sítě během několika vteřin obrovská zátěž. Frekvence v síti tak vzroste, což se stane podnětem pro odpojení dalších datových center a nastane řetězová reakce.~\cite[s.~11]{sheng_power_2026}
 
 Reálný příklad se odehrál v červenci 2024, kdy drobný pokles napětí v síti vyvolal ochranné odpojení 60 datových center najednou, čímž síť okamžitě ztratila 1 500~MW zátěže a frekvence vzrostla na kritickou úroveň.~\cite[s.~13]{ginzburg-ganz_technical_2025}.
 
 \subsection{Socializace nákladů na výstavbu infrastruktury}
 \label{subsec:energie_socializace}
 
-Nová zátěž v stíti se rychle promítá do peněženek běžných spotřebitelů. Výstavba nutné infrastruktury a zvýšená poptávka po energii mění tržní dynamiku, což má následující dopady na obyvatele a důsledky pro místní ekonomiku.
+Nová zátěž v síti se rychle promítá do peněženek běžných spotřebitelů. Výstavba nutné infrastruktury a zvýšená poptávka po energii mění tržní dynamiku, což má následující dopady na obyvatele a důsledky pro místní ekonomiku.
 
 K pokrytí spotřeby datových center je nutné investovat do nových elektráren, rozvoden a přenosových soustav -- jen v USA se tyto náklady do roku 2030 odhadují na zhruba 720 miliard dolarů. Historicky se prostředky vynaložené na rozvoj sítě socializovaly, tj. provozovatel sítě je jednoduše rozpočítal do účtů za elektřinu všem svým zákazníkům v dané oblasti.~\cite[s.~18--19]{ginzburg-ganz_technical_2025}
 
-V praxi tato socializace znamená, že běžní občané a místní podniky dotují průmysl datových center. Například v roce 2024 v síti PJM (sahající přes 7 východních států) bylo na běžné a komerční zákazníky přeneseno 4,4 miliardy dolarů v poplatcích za moderizaci sítě, kterou vyvolala nová DC~\cite[s.~19]{ginzburg-ganz_technical_2025}.
+V praxi tato socializace znamená, že běžní občané a místní podniky dotují průmysl datových center. Například v roce 2024 v síti PJM (sahající přes 7 východních států) bylo na běžné a komerční zákazníky přeneseno 4,4 miliardy dolarů v poplatcích za modernizaci sítě, kterou vyvolala nová DC~\cite[s.~19]{ginzburg-ganz_technical_2025}.
 
 Pro vyvážení tohoto nesouladu se dnes v USA používá jiný přístup: Datová centra si mohou zažádat o rezervaci určité kapacity, která jim bude po schválení přidělena. Ponesou tak větší část nákladů na modernizaci infrastruktury, ale omezí tím možnost vzniku nových projektů. Kapacita je totiž smluvně vyhrazena pouze pro jejich použití, i když zrovna není naplněna.~\cite[s.~106--107]{international_energy_agency_iea_energy_2025}
 
@@ -44,7 +44,7 @@ Pro vyvážení tohoto nesouladu se dnes v USA používá jiný přístup: Datov
 
 Charakter odběru DC ovlivňuje i samotné trhy s elektřinou. Aby bylo možné pokrýt špičky ve spotřebě AI datových center, operátoři sítí musí častěji spouštět dražší elektrárny pro pokrytí kolísavé poptávky, což plošně zvedá mezní náklady na výrobu energie. Vysoký nárůst ceny lze pozorovat také v kapacitních aukcích, kde si síť zajišťuje zálohy do budoucna. V regionu PJM pro období 2026--2027 stoupla cena více než desetinásobně z cca 28,9 USD/MW na 329,17 USD/MW, a to primárně kvůli očekávanému růstu datových center.~\cite[s.~9]{chen_electricity_2025}
 
-V Nebrasce se očekává, že náklady na výrobu elektřiny pro DC společností Google a Meta způsobí místním obvytelům nárůst cen elektřiny o 2,5 až 3~\% ročně~\cite[s.~23]{de_roucy-rochegonde_ai_2025}. Celonárodní odhady pro USA hovoří o tom, že by kvůli datovým centrům mohly účty za elektřinu stoupnout v průměru o 8~\% do roku 2030~\cite[s.~19]{ginzburg-ganz_technical_2025}. Tento trend je viditelný i v Evropě -- například v Irsku, kde více než pětinu elektřiny odebírají datová centra, byly velkoobchodní ceny elektřiny v průměru o třetinu vyšší než ve zbytku kontinentu~\cite[s.~23]{de_roucy-rochegonde_ai_2025}.
+V Nebrasce se očekává, že náklady na výrobu elektřiny pro DC společností Google a Meta způsobí místním obyvatelům nárůst cen elektřiny o 2,5 až 3~\% ročně~\cite[s.~23]{de_roucy-rochegonde_ai_2025}. Celonárodní odhady pro USA hovoří o tom, že by kvůli datovým centrům mohly účty za elektřinu stoupnout v průměru o 8~\% do roku 2030~\cite[s.~19]{ginzburg-ganz_technical_2025}. Tento trend je viditelný i v Evropě -- například v Irsku, kde více než pětinu elektřiny odebírají datová centra, byly velkoobchodní ceny elektřiny v průměru o třetinu vyšší než ve zbytku kontinentu~\cite[s.~23]{de_roucy-rochegonde_ai_2025}.
 
 \section{Odběr a spotřeba vody z okolí}
 \label{sec:voda_dopady}
@@ -58,7 +58,7 @@ Výstavba a provoz datových center představují zátěž pro lokální vodní 
 
 Přítomnost datového centra dokáže radikálně změnit hydrologickou bilanci celých oblastí. Typické 100MW hyperscale datové centrum spotřebuje kolem 2 milionů litrů vody denně (Scope 2), což odpovídá spotřebě zhruba 6 500 domácností. 60~\% z této spotřeby je nepřímá, čili plynoucí z výroby elektřiny~\cite{international_energy_agency_iea_energy_2025}. Prakticky to znamená, že většina vody může být odpařena v jiné oblasti, nicméně zbylých 40~\% je nenávratně odebráno z bezprostředního okolí DC.
 
-Vodní spotřebu datových center nejlépe ilustrují reálné příklady amerických měst. V oblasti The Dalles (Oregon) tvořil v roce 2024 odběr vody pro datová centra společnosti Google 461,1 milionu galonů ročně (cca 1,74 miliardy litrů), což představovalo 30~\% denního odběru celého města. Od roku 2012 zde vodní spotřeba datových center vzrostla o 342~\%. Dalším příkladem je Newton County (Georgia), kde DC firmy Meta využívají kolem 71,5 milionu galonů ročně (asi 268 milionů litrů). Do roku 2030 se však očekává nárůst tohoto odběru až na 365 milionů galonů ročně. Pokud nedojde ke zvýšení kapacity infrastruktury, obě města budou do roku 2035 čelit deficitu vodních zásob.~\cite[s.~4--5]{shah_four_2026}
+Vodní spotřebu datových center nejlépe ilustrují reálné příklady amerických měst. V oblasti The Dalles (Oregon) tvořil v roce 2024 odběr vody pro datová centra společnosti Google 461,1 milionu galonů ročně (cca 1,74 miliardy litrů), což představovalo 30~\% odběru celého města. Od roku 2012 zde vodní spotřeba datových center vzrostla o 342~\%. Dalším příkladem je Newton County (Georgia), kde DC firmy Meta využívají kolem 71,5 milionu galonů ročně (asi 268 milionů litrů). Do roku 2030 se však očekává nárůst tohoto odběru až na 365 milionů galonů ročně. Pokud nedojde ke zvýšení kapacity infrastruktury, obě města budou do roku 2035 čelit deficitu vodních zásob.~\cite[s.~4--5]{shah_four_2026}
 
 \subsection{Srovnání charakteru spotřeby vody a elektřiny}
 \label{sec:voda_elektrina_srovnani}
@@ -75,21 +75,19 @@ Rozvoj infrastruktury pro AI DC s sebou nese specifickou ekonomickou dynamiku, k
 \subsection{Provozní a kapitálové výdaje DC}
 \label{subsec:vydaje}
 
-Výstavba moderního datového centra vyžaduje vysoké počáteční investice (CAPEX), které se standardně přepočítávají na kapacitu (v MW). Průměrné náklady na vybudování 1~MW výkonu se pohybují kolem 10 až 11 milionů dolarů~\cites[s. 7]{to_albertas_2025}[s. 25]{gargano_subsidizing_2025} (bez IT vybavení). Pokud vezmeme jako modelový příklad 100MW datové centrum, jeho výstavba (trvající typicky 18 až 24 měsíců) vyžaduje kapitálovou investici ve výši přibližně 1 miliardy dolarů. Tyto náklady lze rozdělit do tří hlavních kategorií~\cite[s.~9]{pham_data_2017}:
+Výstavba moderního datového centra vyžaduje vysoké kapitálové investice, které se standardně přepočítávají na kapacitu (v MW). Průměrné náklady na vybudování DC o 1~MW IT příkonu se pohybují kolem 10 až 11 milionů dolarů~\cites[s. 7]{to_albertas_2025}[s. 25]{gargano_subsidizing_2025} (bez nákladů na IT vybavení). Pokud vezmeme jako modelový příklad 100MW datové centrum, jeho výstavba (trvající typicky 18 až 24 měsíců) vyžaduje kapitálovou investici ve výši přibližně 1 miliardy dolarů. Tyto náklady lze rozdělit do tří hlavních kategorií~\cite[s.~9]{pham_data_2017}:
 
 \begin{itemize}
     \item \textbf{Pozemky (cca 6,2~\%):} Jde zpravidla o nejmenší položku (cca 13,4 milionu USD), ale ceny pozemků se mohou lišit podle lokality.
     
     \item \textbf{Hrubá stavba a budova (cca 20,9~\%):} Výstavba samotné budovy, příjezdových cest a rozvodů spotřebuje přibližně pětinu rozpočtu.
     
-    \item \textbf{Vybavení (cca 72,9~\%):} Nejdražší složkou jsou servery, chladicí věže, generátory, UPS systémy a optické sítě.
+    \item \textbf{Vybavení (cca 72,9~\%):} Nejdražší složkou jsou chladicí věže, generátory, UPS systémy a optické sítě.
 \end{itemize}
 
-Je však nutné poznamenat, že část dat použitých pro určení výše uvedených podílů pro kapitálové výdaje pochází z roku 2016, a proto nemusí být přesné pro moderní AI centra. To naznačuje také Ginzburg~\cite[s.~18]{ginzburg-ganz_technical_2025}, podle něhož se náklady na hardware použitý k trénování modelu GPT-4 odhadují na 800 milionů USD. To znamená, že v moderním DC by IT vybavení tvořilo větší část nákladů než uvedených 72,9~\%.
+Je však nutné poznamenat, že část dat použitých pro určení výše uvedených podílů pro kapitálové výdaje pochází z roku 2016, a proto nemusí být přesné pro moderní AI centra.
 
-Dále je důležité zmínit, jakou část OPEX tvoří mzdové náklady. Pham~\cite[s.~11]{pham_data_2017} pro svůj model předpokládá, že náklady na vybavení jsou tvořeny z 50 \% mzdami na jeho instalaci. Jiné studie nabízejí odhady relativní vůči celkovému CAPEX -- podle dat To \cite[s.~6]{to_albertas_2025} tvoří mzdové náklady asi 27,6 \% celkových kapitálových výdajů, zatímco studie RECG \cite[s.~14]{diao_economic_2025} odhaduje asi 45,8\% podíl.
-
-Jakmile je datové centrum spuštěno, jeho provozní rozpočet (OPEX) typicky představuje zhruba 8,6~\% původních kapitálových výdajů~\cite[s.~9]{pham_data_2017}. U modelového 100MW centra by se tedy roční provozní náklady odhadovaly na 86 milionů dolarů. Podobnou částku ve své práci uvádí také Serena Thi To~\cite[s.~9]{to_albertas_2025}. Rozdělení nákladů je následující~\cite[s.~9]{pham_data_2017}:
+Jakmile je datové centrum spuštěno, jeho provozní náklady (OPEX) typicky představují zhruba 8,6~\% původních kapitálových výdajů~\cite[s.~9]{pham_data_2017}. U modelového 100MW centra by se tedy roční provozní náklady odhadovaly na 86 milionů dolarů. Podobnou částku ve své práci uvádí také Serena Thi To~\cite[s.~9]{to_albertas_2025}. Rozdělení nákladů je následující~\cite[s.~9]{pham_data_2017}:
 
 \begin{itemize}
     \item \textbf{Elektřina (40~\% -- 80~\%):} Jednoznačně největší položkou je spotřeba energie. Při průměrném konzervativním využití kapacity (60~\%) zaplatí 100MW centrum jen za elektřinu přes 50 milionů dolarů ročně.
@@ -107,18 +105,18 @@ Přestože Pham~\cite{pham_data_2017} používá vzorek dat obsahující předev
 % Popisování dlouhosáhlých studií, daňových úlev a specifických ekonomických dat by tak pro BP asi nemělo velký přínos.
 % Kapitola tak slouží hlavně pro ilustraci statu quo v USA a princip fungování daňových pobídek, které jsou v USA běžné a které se už objevují i v Evropě.
 
-Výstavba a provoz datových center generují pro státní a lokální rozpočty příjmy ve formě majetkových daní, daní z z příjmu zaměstnanců a daní z prodeje (Sales Tax). Je poměrně obtížné určit přesnou částku, ale existuje řada studií, které vypracovávají modelové scénáře ekonomických přínosů výstavby DC v určitých lokalitách. Poměrně detailní analýzu nabízí studie Johnson Economics~\cite{johnson_economics_economic_2025} pro výstavbu 16 až 20 datacenter o celkové kapacitě 1~GW v oregonském Morrow County, která potrvá přibližně 8 let. Samotná výstavba by měla do ekonomiky přinést 10 miliard dolarů a po deseti letech provozu (při postupném zprovoznění datových center, tedy kumulativně) další 4 miliardy dolarů. 
+Výstavba a provoz datových center generují pro státní a lokální rozpočty příjmy ve formě majetkových daní, daní z příjmu zaměstnanců a daní z prodeje (Sales Tax). Poměrně detailní analýzu nabízí studie Johnson Economics~\cite{johnson_economics_economic_2025} pro výstavbu 16 až 20 datacenter o celkové kapacitě 1~GW v oregonském Morrow County, která potrvá přibližně 8 let. Samotná výstavba by měla do ekonomiky přinést 10 miliard dolarů a po deseti letech provozu (při postupném zprovoznění datových center, tedy kumulativně) další 4 miliardy dolarů. 
 
-Stejná studie uvádí, že od roku 2025, kdy měla výstavba započít, by za dvacet let do místního rozpočtu přinesla asi 1,25 miliardy dolarů a nad to další peníze do federální pokladny. Problém nicméně představují daňové pobídky, které stát poskytuje, aby investici vůbec přilákal. V tomto případě by se kvůli nim do místního rozpočtu dostalo pouze 300 milionů dolarů, což je jen čtvrtina původního odhadu. Tyto ekonomické odhady ilustrují trend, který se vyskytuje po celých Spojených státech.
+Stejná studie uvádí, že by datová centra za dvacet let provozu do místního rozpočtu přinesla asi 1,25 miliardy dolarů a nad to další peníze do federální pokladny. Problém nicméně představují daňové pobídky, které stát poskytuje, aby investici vůbec přilákal. V tomto případě by se kvůli nim do místního rozpočtu dostalo pouze 300 milionů dolarů -- jen čtvrtina původního odhadu.
 
-Hlavním důvodem těchto pobídek je ostrá globální i mezistátní konkurence. Politici jejich povolování obhajují očekáváním, že datová centra zafungují jako magnet pro další technologické firmy, podpoří lokální trh práce a urychlí modernizaci veřejné infrastruktury~\cite{gargano_subsidizing_2025}. Pro provozovatele DC je to výhodné, protože odpuštění daně z prodeje na drahé servery nebo poskytnutí úlevy na majetkových daních mohou snížit OPEX i o vyšší desítky tisíc dolarů na jeden megawatt kapacity ročně~\cite[s.~27]{gargano_subsidizing_2025}.
+Hlavním důvodem těchto pobídek je ostrá globální i mezistátní konkurence. Politici jejich povolování obhajují očekáváním, že datová centra zafungují jako magnet pro další technologické firmy, podpoří lokální trh práce a urychlí modernizaci veřejné infrastruktury~\cite{gargano_subsidizing_2025}. Pro provozovatele DC je to výhodné, protože odpuštění daně na drahé servery nebo poskytnutí úlevy na majetkových daních mohou snížit OPEX i o vyšší desítky tisíc dolarů na jeden megawatt kapacity ročně~\cite[s.~27]{gargano_subsidizing_2025}. Empirické výzkumy ale ukazují, že pro místní rozpočet to tak výhodné není -- datová centra rozvoj technologií nepodporují a jejich přínos pro zaměstnanost je omezený~\cite{gargano_subsidizing_2025,green_what_2025}.
 
 \subsection{Tvorba pracovních míst}
 \label{subsec:zamestnanost}
 
-Vliv datových center na zaměstnanost je charakteristický nepoměrem mezi fází výstavby a fází samotného provozu. Během 18 až 24 měsíců trvající fáze výstavby jednoho DC vzniká obrovské množství dočasných pracovních míst napříč celým dodavatelským řetězcem. Výstavba menšího (asi 20MW) datového centra podpoří lokálně přibližně 1 688 přímých a nepřímých pracovních míst~\cite[s.]{pham_data_2017}. Výstavba větších 100MW komplexů pak může vytvořit 5700~\cite[6]{to_albertas_2025} dočasných pracovních míst. Studie RECG~\cite[s.~1]{diao_economic_2025} pak uvádí, že výstavba 1GW datového centra vytvoří 34 000 přímých pracovních míst a dalších 11 000 nepřímých pracovních míst, zejména pro vytvoření dostatečné infrastruktury. Celkově se tedy ukazuje trend, že každých 100~MW kapacity DC může do regionu skutečně přinést zhruba 5 700 dočasných pracovních míst.
+Vliv datových center na zaměstnanost je charakteristický nepoměrem mezi fází výstavby a fází samotného provozu. Během 18 až 24 měsíců trvající fáze výstavby jednoho DC vzniká obrovské množství dočasných pracovních míst napříč celým dodavatelským řetězcem. Výstavba menšího (asi 20MW) datového centra podpoří lokálně přibližně 1 688 přímých a nepřímých pracovních míst~\cite{pham_data_2017}. Výstavba větších 100MW komplexů pak může vytvořit 5~700~\cite[s.~6]{to_albertas_2025} dočasných pracovních míst. Studie RECG~\cite[s.~1]{diao_economic_2025} uvádí, že výstavba 1GW datového centra vytvoří 34 000 přímých pracovních míst a dalších 11 000 nepřímých pracovních míst, zejména pro vytvoření dostatečné infrastruktury. Celkově se tedy ukazuje trend, že každých 100~MW kapacity DC může do regionu skutečně přinést zhruba 5 700 dočasných pracovních míst.
 
-Interpretace těchto dat je však problematická kvůli odlišným metodikám výpočtu. Rozdíl spočívá v rozlišení mezi počtem dočasných pozic a počtem odpracovaných hodin -- zatímco optimistické modely (např. RECG~\cite{diao_economic_2025}) sčítají počet všech úvazků, analýza Johnson Economics pro oregonské Morrow County~\cite{johnson_economics_economic_2025} volí přepočet na plné pracovní úvazky (FTE, Full Time Employees). Pro srovnatelný 1GW projekt (tvořený z 20 menších DC) odhaduje Oregon pouze 6 400 přímých FTE pozic rozprostřených do osmi let výstavby, což odpovídá stabilnímu vytížení pro zhruba 800 pracovníků ročně (asi 640 FTE na 100~MW výkonu). Podobné údaje uvádí také analýza BCG, která stanovuje průměrně 500 FTE při výstavbě 100~MW kapacity~\cite[s.~10]{lee_breaking_2025}.
+Interpretace těchto dat je však problematická kvůli odlišným metodikám výpočtu. Rozdíl spočívá v rozlišení mezi počtem dočasných pozic a počtem odpracovaných hodin -- zatímco optimistické modely (např. RECG~\cite{diao_economic_2025}) sčítají počet všech úvazků, analýza Johnson Economics pro oregonské Morrow County~\cite{johnson_economics_economic_2025} volí přepočet na plné pracovní úvazky (FTE, Full Time Employees). Pro srovnatelný 1GW projekt (tvořený z 20 menších DC) odhaduje Oregon pouze 6 400 přímých FTE pozic rozprostřených do osmi let výstavby, což odpovídá stabilnímu vytížení pro zhruba 800 pracovníků ročně (640 FTE na 100~MW výkonu). Podobné údaje uvádí také analýza BCG, která stanovuje průměrně 500 FTE při výstavbě 100~MW kapacity~\cite[s.~10]{lee_breaking_2025}.
 
 Zaměstnanost ve fázi prvovozu datového centra je napříč nalezenými studiemi velmi dobře zdokumentovaná a v zásadě se neliší. Všechny ukazují, že potřeba lidské práce po spuštění operací DC klesá -- To~\cite[s.~7]{to_albertas_2025} uvádí, že přímo ve 100MW datovém centru celoročně pracuje pouze 30 až 50 FTE. Podobné údaje plynou z analýzy Johnson Economics~\cite[s.~15]{johnson_economics_economic_2025}, která uvádí 560 FTE na 16 až 20 datových center. Počet zaměstnanců potvrzují také studie Economic Consulting Group~\cite[s.~14]{diao_economic_2025} pro 1GW datové centrum, které odhaduje 430 FTE pozic. Analýza BCG~\cite[s.~10]{lee_breaking_2025} pak ukazuje 50 FTE. V průměru tedy můžeme říci, že na každých 100~MW kapacity datového centra skutečně připadá zhruba 30 až 50 trvalých pracovních míst.
 
@@ -127,11 +125,10 @@ Tyto pozice nabízejí vysoce nadprůměrné mzdové ohodnocení. Například ve
 \section{Sociální dopady}
 \label{sec:socialni_dopady}
 
-Poslední sekce této kapitoly je věnovaná dopadům na místní komunity. Jedním z nejvýraznějších problémů DC je nepřetržitý hluk generovaný chladicími ventilátory a pravidelným testováním záložních dieselových generátorů. Tento neustálý hukot je v některých oblastech tak rušivý, že donutil místní obyvatele k přestěhování. K hluku se navíc přidává zhoršená kvalita ovzduší ze spalin, neestetické obří haly, a obrovská zátěž pro veřejnou infrastrukturu.~\cite{kshetri_data_2024, ngata_cloud_2025}
+Poslední sekce této kapitoly je věnovaná dopadům na místní komunity. Jedním z nejvýraznějších problémů DC je nepřetržitý hluk generovaný chladicími ventilátory a pravidelným testováním záložních dieselových generátorů. Tento neustálý hukot je v některých oblastech tak rušivý, že donutil místní obyvatele k přestěhování. K hluku se navíc přidává zhoršená kvalita ovzduší ze spalin, neestetické obří haly a zátěž pro veřejnou infrastrukturu.~\cite{kshetri_data_2024, ngata_cloud_2025}
 
-Tyto skutečnosti daly v zasažených regionech vzniknout silnému občanskému odporu, který se označuje jako NIMBY (Not In My Backyard, česky \uv{ne na mém dvorku}). Tento termín vystihuje postoj, kdy veřejnost sice obecně uznává nezbytnost fyzické infrastruktury pro technologický pokrok, ale kategoricky odmítá snášet jejich negativní dopady ve svém sousedství, nebo alespoň v okolí přírodních parků a historicky významných míst~\cite{kshetri_data_2024}. Tito občané bojují za zachování své kvality života a ochranu lokálních zdrojů na úkor technologického pokroku, kvůli čemuž bývá jejich postoj vnímán jako sobecký a krátkozraký.
+Tyto skutečnosti daly v zasažených regionech vzniknout silnému občanskému odporu, který se označuje jako NIMBY (Not In My Backyard, česky \uv{ne na mém dvorku}). Tento termín vystihuje postoj, kdy veřejnost sice obecně uznává nezbytnost fyzické infrastruktury pro technologický pokrok, ale kategoricky odmítá snášet její negativní dopady ve svém sousedství, nebo alespoň v okolí přírodních parků a historicky významných míst~\cite{kshetri_data_2024}. Tito občané bojují za zachování své kvality života a ochranu lokálních zdrojů na úkor technologického pokroku, kvůli čemuž bývá jejich postoj vnímán jako sobecký a krátkozraký.
 
-\pagebreak
 \section{Shrnutí dat důležitých pro model ČR}
 % Uvést velkou tabulku dat, které budou použity v modelu, a jejich zdrojů
 
@@ -139,19 +136,19 @@ Tato kapitola představila komplexní přehled dopadů výstavby a provozu datov
 
 Pro tuzemský model tak nejsou přímo relevantní údaje o kritických čekacích dobách na připojení nebo o řetězových reakcích v síti (sympathetic tripping ze sekce \ref{subsec:energie_dopady_prime}). Stejně tak konkrétní predikce nárůstu cen elektřiny pro domácnosti jsou v ČR ovlivněny odlišným energetickým mixem, jinou strukturou velkoobchodního trhu a silnější regulací.
 
-Ačkoli je tedy nutné vnímat americká data v jejich specifickém kontextu, tato kapitola tvoří nezbytný základ pro pochopení univerzálních mechanismů, které rozvoj AI infrastruktury doprovázejí. Zároveň slouží analýza amerického trhu jako benchmark pro scénáře maximálního dopadu, který v České republice zatím neexistuje, ale představuje technologický cíl pro příští dekádu.
+Ačkoli je tedy nutné vnímat americká data v jejich specifickém kontextu, tato kapitola tvoří nezbytný základ pro pochopení univerzálních mechanismů, které rozvoj AI infrastruktury doprovázejí. Zároveň slouží analýza amerického trhu jako benchmark pro scénáře maximálního rozvoje infrastruktury, která v ČR zatím neexistuje, ale představuje technologický cíl pro příští dekády.
 
-Některé údaje jsou pro modelování dopadů v ČR přesto relevantní, neboť se odvíjí především od výkonu daného DC. Tyto klíčové parametry jsou přehledně popsány v tabulce \ref{tab:parametry_modelu_usa}. Slouží jako vstupní data pro modelování dopadů výstavby datových center v České republice, kterému je věnována kapitola \ref{chap:cz}.
+Některé údaje jsou pro modelování tuzemských dopadů přesto relevantní, neboť se odvíjí od příkonu daného DC. Tyto klíčové parametry jsou přehledně popsány v tabulce \ref{tab:parametry_modelu_usa} a slouží jako vstupní data pro upřesnění dopadů výstavby datových center v České republice, kterému se věnuje kapitola \ref{chap:cz}.
 
 \begin{landscape} \begin{table}[p] \centering \setlength{\tabcolsep}{26pt}
 
-    \caption{Praktické vstupy pro model ČR vztažené k typickému 100MW datovému centru}
+    \caption[Údaje získané z amerického trhu]{Údaje pro americký trh vztažené k typickému 100MW datovému centru}
     \label{tab:parametry_modelu_usa}
 
     \begin{tabular}{llc}
         \toprule
         \addlinespace
-        \textbf{Parametr} & \textbf{Hodnota pro 1~MW} & \textbf{Zdroj} \\
+        \textbf{Parametr} & \textbf{Hodnota na 1~MW} & \textbf{Zdroj} \\
         
         \addlinespace
         \midrule
@@ -176,7 +173,7 @@ Některé údaje jsou pro modelování dopadů v ČR přesto relevantní, neboť
         \addlinespace
 
         Pracovní místa při výstavbě & 57 míst &~\cite{to_albertas_2025} \\
-        \quad Převod na FTE (Full Time Equivalent) & 0,50 až 0,64 FTE &~\cite{johnson_economics_economic_2025, lee_breaking_2025} \\
+        \quad Převod na FTE (Full Time Equivalent) & 5,50 až 6,40 FTE &~\cite{johnson_economics_economic_2025, lee_breaking_2025} \\
         \quad Náklady na mzdy při výstavbě & 27,6 až 45,8~\% nákl. na stavbu &~\cite{to_albertas_2025,diao_economic_2025} \\
         Pracovní místa při provozu & 0,30 až 0,50 &~\cite{to_albertas_2025,diao_economic_2025,lee_breaking_2025} \\
         Mzdová hladina zaměstnanců DC & 2x průměr soukromého sektoru &~\cite{kshetri_data_2024} \\
