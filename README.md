@@ -18,7 +18,7 @@ Zdrojové soubory bakalářské práce se nacházejí v adresáři [src/thesis/]
 - **Hlavní soubor:** [ctufit-thesis.tex](src/thesis/ctufit-thesis.tex) (hlavní dokument, metadata a importy).
 - **Kapitoly:** Jednotlivé kapitoly práce jsou uloženy v adresáři [src/thesis/text/chapters/](src/thesis/text/chapters/).
 - **Přílohy a metadata:** Soubory jako reference ([references.bib](src/thesis/text/references.bib)) nebo přílohy se nacházejí v [src/thesis/text/](src/thesis/text/).
-- **Build:** Výsledné PDF se po kompilaci generuje do cesty [out/text/ctufit-thesis.pdf](out/text/ctufit-thesis.pdf). (Pozn.: Složka `out/` je v repozitáři ignorována, kromě finálních exportů).
+- **Build:** Výsledné PDF se po kompilaci generuje do cesty [out/text/ctufit-thesis.pdf](out/text/ctufit-thesis.pdf).
 
 ### Kód a praktická část
 
