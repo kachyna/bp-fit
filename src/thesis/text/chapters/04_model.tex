@@ -29,7 +29,7 @@ Jak bylo naznačeno v kapitole~\ref{chap:cz}, veřejně dostupné informace o da
 
 Scraper je plně ovladatelný z příkazové řádky, přičemž jednotlivé fáze lze spouštět samostatně, nebo spustit celý proces najednou (bez manuálního zásahu do dat). Kromě obohacení z katastru nemovitostí je celý skript navržen tak, aby umožňoval snadné přizpůsobení pro jiné země, což by mohlo být užitečné pro případné rozšíření této práce o další geografické oblasti. V tabulce~\ref{tab:model_top_poskytovatele} jsou uvedeny společnosti s největším IT příkonem.
 
-Analýza českých datových center ukázala poměry velikosti budovy na pozemku (0,7274, n=10), velikosti whitespace na budově (0,4698, n=6) a poměr instalovaného příkonu na velikosti whitespace (0,0030 $\text{MW} / m^2$, n=17). Nezávisle na těchto dílčích poměrech činí průměrná velikost pozemku pro datové centrum o IT příkonu 1~MW 2998,0 $m^2$ (n=26). Tyto hodnoty byly vypočítány z netransformovaných dat, aby nedošlo k jejich zkreslení. V modelu budou následně použity k odhadu velikosti DC pro výpočet daně z nemovitosti.
+Analýza českých datových center ukázala poměry velikosti budovy na pozemku (0,7274, n=10), velikosti whitespace na budově (0,4698, n=6) a poměr instalovaného příkonu k velikosti whitespace (0,0030 $\text{MW} / m^2$, n=17). Nezávisle na těchto dílčích poměrech činí průměrná velikost pozemku pro datové centrum o IT příkonu 1~MW 2998,0 $m^2$ (n=26). Tyto hodnoty byly vypočítány z netransformovaných dat, aby nedošlo k jejich zkreslení. V modelu budou následně použity k odhadu velikosti DC pro výpočet daně z nemovitosti.
 
 \begin{table}[bt]
 	\centering
@@ -47,7 +47,7 @@ Analýza českých datových center ukázala poměry velikosti budovy na pozemku
 		\midrule
 		\addlinespace
 
-		TTC TELEPORT, s.r.o & 20,000 & 5~600 \\
+		TTC TELEPORT, s.r.o. & 20,000 & 5~600 \\
 		CE Colo & 15,000 & 6~200 \\
 		O2 Czech Republic a.s. & 12,033 & 5~359,2 \\
 		T-Mobile Czech Republic a.s. & 11,550 & 624,6 \\
@@ -86,9 +86,9 @@ Cílem je vymodelovat socioekonomické dopady výstavby a provozu datových cent
 
 	\item[Ekonomické výstupy] V ekonomické oblasti model kvantifikuje příjmy související s výstavbou a provozem datového centra. Jedná se zejména o zdanění práce (DPFO a odvody) ve fázi výstavby i provozu. Dále odhadne daň z nemovitosti a daň ekologickou. Model také vypočítá hrubou přidanou hodnotu (HPH) vytvořenou výstavbou a provozem datového centra.
 
-	\item[Energetické výstupy] V energetické rovině model určí celkovou spotřebu elektřiny v průběhu provozu a umožní její zasazení do kontextu české energetiky. Součástí výstupů bude také ukazatel, srovná spotřebu nově postavených datových center s kapacitou elektrizační soustavy.
+	\item[Energetické výstupy] V energetické rovině model určí celkovou spotřebu elektřiny v průběhu provozu a umožní její zasazení do kontextu české energetiky. Součástí výstupů bude také ukazatel, který srovná spotřebu nově postavených datových center s kapacitou elektrizační soustavy.
 
-	\item[ESG] Model shrne dopady DC na okolí a vyčíslí celkovou spotřebu vody v průběhu provozu. V neposlední řadě model vypočítá emise oxidu uhličitého ze spotřebované elektřiny (Scope~II) a umožní jejich srovnání s referenčními hodnotami (např. provoz aut nebo domácnostmi).
+	\item[ESG] Model shrne dopady DC na okolí a vyčíslí celkovou spotřebu vody v průběhu provozu. V neposlední řadě model vypočítá emise oxidu uhličitého ze spotřebované elektřiny (Scope~II) a umožní jejich srovnání s referenčními hodnotami (např. s provozem aut nebo s domácnostmi).
 	
 \end{description}
 
@@ -222,7 +222,7 @@ Při srovnávání investic s dalšími metrikami je však problém, že se IT v
 $$\text{D}_\text{y} = \frac{\text{I}_\text{equipment}}{\text{UL}_\text{equipment}} + \frac{\text{I}_\text{build}}{\text{UL}_\text{build}},$$
 kde $\text{UL}_\text{equipment}$ (Useful Life) je délka odepisování IT vybavení a $\text{UL}_\text{build}$ je délka odepisování budovy. V tomto zjednodušeném modelu by se ke stejnému výsledku došlo sečtením kapitálových nákladů za životnost projektu a jejich vydělením počtem let, čímž získáme anualizované kapitálové náklady (ACC).
 
-Literatura dále ukazuje vztah mezi instalovaným příkonem a průměrným OPEX. Tento vztah však není relevantní pro modelování HPH, kvůli čemuž byl zvolen přístup výpočtu mezispotřeby $\text{IC}$. Ta je v případě DC tvořena zejména elektřinou -- jejíž cenu lze ze vstupů vypočítat přesně -- a dalšími složkami jako úklid, ostraha, služby nebo pojištění. Pro svou obsáhlost a neurčitost byl namísto modelování těchto složek zvolen přístup výpočtu z ACC, resp. odpisů $\text{D}_\text{y}$, pomocí stanoveného koeficientu $\text{k}_\text{IC}$: například výše pojištění se odvíjí od hodnoty vybavení, stejně jako nutnost ostrahy. Mezispotřebu počítáme jako
+Literatura dále ukazuje vztah mezi instalovaným příkonem a průměrným OPEX. Tento vztah však není relevantní pro modelování HPH, kvůli čemuž byl zvolen přístup výpočtu mezispotřeby $\text{IC}$. Ta je v případě DC tvořena zejména elektřinou -- jejíž cenu lze ze vstupů vypočítat přesně -- a dalšími složkami jako úklid, ostraha, služby nebo pojištění. Pro jejich obsáhlost a neurčitost byl namísto modelování těchto složek zvolen přístup výpočtu z ACC, resp. odpisů $\text{D}_\text{y}$, pomocí stanoveného koeficientu $\text{k}_\text{IC}$: například výše pojištění se odvíjí od hodnoty vybavení, stejně jako nutnost ostrahy. Mezispotřebu počítáme jako
 $$\text{IC} = \text{E}_\text{real} \cdot \text{Price}_\text{electricity}  + \text{k}_\text{IC} \cdot \text{D}_\text{y},$$
 kde $\text{E}_\text{real}$ je skutečná spotřeba elektřiny, $\text{Price}_\text{electricity}$ je cena elektřiny a $\text{k}_\text{IC}$ je koeficient pro výpočet zbývající mezispotřeby na základě ročních odpisů (potažmo anualizovaných kapitálových nákladů) $\text{D}_\text{y}$.
 
@@ -327,7 +327,7 @@ Ve fázi provozu datového centra se pro modelování HPH použijí vzorce uvede
 
 Model je navržený tak, aby zachycoval dopady výstavby AI datových center ve třech oblastech: energetika, ekonomika a životní prostředí. Pro každou z těchto oblastí jsou definovány klíčové výpočetní bloky, které se vzájemně propojují a umožňují komplexní analýzu dopadů datových center v ČR. Je však nutno zmínit, že model je záměrně zjednodušený a nezohledňuje všechny možné faktory -- přestože jsou instalovaný příkon a PUE stěžejní pro určení spotřeby a rámcově i produkce datového centra, důležitou roli hrají také konkrétní lokalita stavby, vlastnická struktura provozující firmy, architektura chlazení a další. Model tyto nuance zohledňuje pouze prostřednictvím scénářů, které představují vývoj různých variant, avšak nedokáží plně zachytit všechny možnosti.
 
-Z uvedených vstupů tedy model vypočítá celkovou spotřebu datových center, od které odvozuje náklady na elektřinu, ekologickou daň a emise $CO_2$ do ovzduší. Vstupní parametry dále umožňují odhadnout celkovou produkci datových center, která se následně promítne do hrubé přidané hodnoty. Díky datům o počtu vytvořených pracovních míst a průměrné mzdě model vypočítá zdanění práce, které se spolu s ekologickou daní a daní z nemovitosti sečtou do celkových přínosů do veřejného rozpočtu. HPH a environmentální dopady pak slouží pro komplexní posouzení dopadů výstavby a provozu.
+Z uvedených vstupů tedy model vypočítá celkovou spotřebu datových center, od které odvozuje náklady na elektřinu, ekologickou daň a emise $CO_2$ do ovzduší. Vstupní parametry dále umožňují odhadnout celkovou produkci datových center, která se následně promítne do hrubé přidané hodnoty. Díky datům o počtu vytvořených pracovních míst a průměrné mzdě model vypočítá zdanění práce, které se spolu s ekologickou daní a daní z nemovitosti sečte do celkových přínosů do veřejného rozpočtu. HPH a environmentální dopady pak slouží pro komplexní posouzení dopadů výstavby a provozu.
 
 Finálním výstupem modelu jsou jednotlivé ukazatele (HPH, přínosy do veřejného rozpočtu) pro každý z modelovaných scénářů, vynásobené předpokládanou dobou výstavby $\tau_{const}$ a sečtené se zbývajícími ukazateli (HPH, přínosy, emise $CO_2$ a spotřeba vody) vynásobenými dobou provozu $\tau_{ops}$ -- ty jsou dále agregovány do jedné očekávané hodnoty pro každý ukazatel. Jednotlivé parametry použité v modelu jsou uvedeny v příloze~\ref{appendix:parametry} včetně dodatečných komentářů k jejich získávání.
 

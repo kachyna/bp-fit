@@ -12,7 +12,7 @@ Proces testování spočívá v porovnávání výsledků modelu (vypočtených 
 
     \item Zjištění složení portfolia datových center pro danou zemi, včetně jejich kapacity a energetické efektivity. Případně je možné složení portfolia odhadnout na základě agregovaných informací.
     
-    \item Získaná data se zadají do modelu a vypočítají se výsledné hodnoty. Import je možný buď ručně, nebo zadáním přímo do zdrojového kódu modelu (k tomu je potřeba stáhnout repozitář). Jediný rozdíl v uvedených přístupech je, že zadáním dat do zdrojového kódu se portfolio datových center uloží.
+    \item Získaná data se zadají do modelu a vypočítají se výsledné hodnoty. Import je možný buď ručně, nebo zadáním přímo do zdrojového kódu modelu (k tomu je potřeba stáhnout repozitář). Jediný rozdíl mezi uvedenými přístupy je, že zadáním dat do zdrojového kódu se portfolio datových center uloží.
     
     \item Dalším krokem je srovnání výsledků modelu s reálnými daty a informacemi o energetické infrastruktuře dané země. To zahrnuje porovnání vypočítaných hodnot s veřejně dostupnými daty o spotřebě energie, kapacitě datových center a dalšími relevantními parametry.
     
@@ -74,7 +74,7 @@ Celkový IT příkon tohoto portfolia je 163,33~MW s váženým průměrem PUE~1
 
 Co se týče dopadů na ekonomiku, datová centra v ČR budou zaměstnávat přibližně 105 lidí. Tento údaj je však s největší pravděpodobností podhodnocený kvůli velkému podílu kolokačních center v portfoliu. Ta totiž nedosahují tak vysoké míry automatizace jako AI centra, na něž se model primárně zaměřuje. V budoucnu česká datová centra vygenerují HPH 20~miliard~Kč ročně -- momentálně (bez DC ve výstavbě) je to asi 3~miliardy~Kč.
 
-Ani spotřeba vody není v českém scénáři vyjádřená přesně, protože je stejně jako v případě počtu zaměstnanců dimenzovaná především na AI datová centra. Kolokační centra často využívají vzduchového chlazení, které tak vysokou vodní stopu nezpůsobuje. Portfolio teď produkuje asi 200~000~tun~$\text{CO}_2$ ročně (Scope~II) a po přidání plánovaných DC to bude asi dvakrát tolik (odpovídá ročnímu provozu asi 150~000 osobních automobilů).
+Ani spotřeba vody není v českém scénáři vyjádřená přesně, protože je stejně jako v případě počtu zaměstnanců dimenzovaná především na AI datová centra. Kolokační centra často využívají vzduchové chlazení, které tak vysokou vodní stopu nezpůsobuje. Portfolio teď produkuje asi 200~000~tun~$\text{CO}_2$ ročně (Scope~II) a po přidání plánovaných DC to bude asi dvakrát tolik (odpovídá ročnímu provozu asi 150~000 osobních automobilů).
 
 \subsection{Testovací scénář 2: Irsko}
 \label{subsec:testovani_irsko}
@@ -110,7 +110,7 @@ Irsko je evropským lídrem v oblasti hyperscale datových center. Jeho portfoli
 
 Celkový instalovaný IT příkon portfolia činí 1~050~MW s průměrnou hodnotou PUE~1,33. Portfolio je tvořeno ze dvou třetin kolokačními centry, což je trend potvrzený i v literatuře~\cite{testing_dc_byte_2023}. Roční spotřeba predikovaná modelem je 6,45~TWh, což také odpovídá veřejně dostupným datům~\cite{testing_bitpower_2024}. Reporty uvádějí také emise CO$_2$, které agentura Bitpower odhaduje na 1,52~milionu tun ročně. Model uvádí odhad 2,1~milionu tun, protože počítá s českým emisním faktorem. Pokud do parametrů nahrajeme irský faktor 0,2241 tuny CO$_2$/MWh~\cite{testing_emission_factors_2025}, model vypočítá 1,44 milionu tun CO$_2$, což je blízko hodnotě z reportu.
 
-Je zajímavé, že Irsko má poměrně nízké PUE~-- průměr celého portfolia činí 1,32 oproti globálnímu průměru cca 1,50. To je dáno zejména tím, že v Irsku je dostatek vody pro vodní chlazení, které je energeticky efektivnější. Roční spotřebu vody model odhaduje na 15~miliard litrů. To zdaleka neodpovídá vládním datům z roku 2021, která uvádějí hodnotu 810~milionů litrů~\cite{testing_water_ireland_2022}. Nejedná se ale o chybu modelu nýbrž o zmiňovanou netransparentnost dat:
+Je zajímavé, že Irsko má poměrně nízké PUE -- průměr celého portfolia činí 1,32 oproti globálnímu průměru cca 1,50. To je dáno zejména tím, že v Irsku je dostatek vody pro vodní chlazení, které je energeticky efektivnější. Roční spotřebu vody model odhaduje na 15~miliard litrů. To zdaleka neodpovídá vládním datům z roku 2021, která uvádějí hodnotu 810~milionů litrů~\cite{testing_water_ireland_2022}. Nejedná se ale o chybu modelu, nýbrž o zmiňovanou netransparentnost dat:
 
 \begin{itemize}
 
@@ -126,9 +126,9 @@ Je zajímavé, že Irsko má poměrně nízké PUE~-- průměr celého portfolia
 
 \end{itemize}
 
-Bitpower~\cite{testing_bitpower_2024} dále uvádí, že celková investice na výstavbu a vybavení irských datových center činila asi jeden bilion~Kč. Model projektuje 1,5 bilionu~Kč, nicméně tento údaj vypovídá o investicích za celou dobu životnosti datových center. Pokud uvážíme pouze polovinu této částky (průměrně odpovídá 15 letům provozu DC), získáme 800~miliard~Kč, což je mnohem blíže částce stanovené Bitpower. Je však nutno poznamenat, že odhad z reportu je pravděpodobně podhodnocený, protože nezahrnuje náklady na pořízení pozemků, které v USA tvoří asi 6~\% nákladů na výstavbu (viz sekci~\ref{subsec:vydaje}).
+Bitpower~\cite{testing_bitpower_2024} dále uvádí, že celková investice do výstavby a vybavení irských datových center činila asi jeden bilion~Kč. Model projektuje 1,5 bilionu~Kč, nicméně tento údaj vypovídá o investicích za celou dobu životnosti datových center. Pokud uvážíme pouze polovinu této částky (průměrně odpovídá 15 letům provozu DC), získáme 800~miliard~Kč, což je mnohem blíže částce stanovené Bitpower. Je však nutno poznamenat, že odhad z reportu je pravděpodobně podhodnocený, protože nezahrnuje náklady na pořízení pozemků, které v USA tvoří asi 6~\% nákladů na výstavbu (viz sekci~\ref{subsec:vydaje}).
 
-Ostatní výstupy modelu jsou již velice závislé na specifických parametrech pro Českou republiku, takže jejich srovnávání s reálnými daty pro Irsko nedává smysl. Navíc jsou údaje jako počet zaměstnanců v irských datových centrech velmi obtížné získat -- informace se obvykle agregují na celý IT sektor a samotní poskytovatelé je nezveřejňují. To stejné platí pro data o HPH.
+Ostatní výstupy modelu jsou již velice závislé na specifických parametrech pro Českou republiku, takže jejich srovnávání s reálnými daty pro Irsko nedává smysl. Navíc je údaje jako počet zaměstnanců v irských datových centrech velmi obtížné získat -- informace se obvykle agregují na celý IT sektor a samotní poskytovatelé je nezveřejňují. To stejné platí pro data o HPH.
 
 \subsection{Testovací scénář 3: Německo}
 \label{subsec:testovani_nemecko}
@@ -207,12 +207,12 @@ USA jako globální lídr disponují největším a nejrozmanitějším portfoli
 
 Celkový instalovaný IT příkon pro tento rozsáhlý scénář je 22~050,25~MW při váženém průměru PUE~1,54. Toto vysoké PUE~je dáno stářím trhu s vysokým podílem menších kolokačních center, která nevyužívají moderní technologie chlazení. Mnohdy navíc bývají umístěna v nehostinných oblastech bez dostatku vody, což energetickou efektivitu dále snižuje. Odhadovaná roční spotřeba v realistickém scénáři je 173~TWh, což odpovídá literatuře~\cite{LBNL-2001637}.
 
-Původní data z USA byla použita pro vytvoření modelu, kvůli čemuž je nedává smysl srovnávat s jeho výstupy -- jednalo by se de facto o srovnání stejných hodnot. Scénář proto slouží spíše k poskytnutí pohledu na to, jak model funguje pro zemi s rozmanitým portfoliem datových center.
+Původní data z USA byla použita pro vytvoření modelu, kvůli čemuž nemá smysl je srovnávat s jeho výstupy -- jednalo by se de facto o srovnání stejných hodnot. Scénář proto slouží spíše k poskytnutí pohledu na to, jak model funguje pro zemi s rozmanitým portfoliem datových center.
 
 \section{Vyhodnocení testování modelu}
 \label{sec:testovani_vyhodnoceni}
 
-Z testování plyne, že neparametrizované výpočty modelu fungují dobře. Maximální spotřeba, IT příkon nebo průměrné PUE jsou u všech scénářů vypočítány správně. Výpočty používající parametry nezávislé na českých specifikách model počítá také s vysokou přesností, zejména reálnou spotřebu elektřiny. To je klíčové, protože od této hodnoty se odvíjí další výpočty modelu.
+Z testování plyne, že neparametrizované výpočty modelu fungují dobře. Maximální spotřeba, IT příkon nebo průměrné PUE jsou u všech scénářů vypočítány správně. Výpočty používající parametry nezávislé na českých specifikách model provádí také s vysokou přesností, zejména výpočet reálné spotřeby elektřiny. To je klíčové, protože od této hodnoty se odvíjejí další výpočty modelu.
 
 Výpočty závislé na parametrech specifických pro ČR pak nedává smysl srovnávat s daty z jiných zemí, neboť by musely být použity jiné parametry. Při nastavení správných parametrů model odpovídá realitě, což se potvrdilo například u irské produkce oxidu uhličitého. V rámci této práce však nebylo realistické stihnout získat a ověřit všechny parametry pro další země.
 

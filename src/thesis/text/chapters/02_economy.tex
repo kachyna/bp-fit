@@ -19,14 +19,14 @@ Ve Spojených státech amerických výstavba datových center prokazatelně způ
 
 Datová centra jsou zdrojem velké a nestabilní zátěže, která se může v krátkém čase změnit až o desítky megawattů. Kvůli tomu je zapotřebí pečlivěji řídit elektrizační soustavu, což s sebou přináší vysoké náklady. Mnohé z těchto efektů se však projeví až při výstavbě většího počtu DC ve stejné lokalitě.
 
-Prvním a nejviditelnějším dopadem jsou extrémní nároky na kapacitu sítě. Moderní AI kampusy vyžadují připojení v řádech stovek~MW, přičemž v budoucnu se plánují stavět centra s připojením až 1~GW~\cite[s.~5]{chen_electricity_2025}. Existující infrastruktura však na takovou zátěž zpravidla není připravená, kvůli čemuž vzniká časový nesoulad -- zatímco DC lze postavit za 1 až 2 roky, celý proces od plánování až po zprovoznění vysokonapěťové přenosové soustavy trvá 5 až 10 let
+Prvním a nejviditelnějším dopadem jsou extrémní nároky na kapacitu sítě. Moderní AI kampusy vyžadují připojení v řádu stovek~MW, přičemž v budoucnu se plánují stavět centra s připojením až 1~GW~\cite[s.~5]{chen_electricity_2025}. Existující infrastruktura však na takovou zátěž zpravidla není připravená, kvůli čemuž vzniká časový nesoulad -- zatímco DC lze postavit za 1 až 2 roky, celý proces od plánování až po zprovoznění vysokonapěťové přenosové soustavy trvá 5 až 10 let
 \cites[s. 11]{ginzburg-ganz_technical_2025}[s. 13]{sheng_power_2026}. To vede k přetěžování existujících sítí, frontám na připojení a v extrémních případech (v Irsku) i k plošným moratoriím na připojování nových DC, aby nedošlo ke kolapsu dodávek elektřiny~\cite[s.~14]{sheng_power_2026}.
 
 Druhým problémem je nestabilita odběru, která je pro AI datová centra charakteristická~\cite[s.~8--9]{sheng_power_2026}. Jejich příkon totiž dokáže během několika sekund klesnout nebo stoupnout o stovky megawattů, obvykle kvůli střídání fáze intenzivního trénování a méně intenzivního zálohování (v praxi existují záznamy o změně 400~MW za 36 sekund). Tyto extrémní a rychlé skoky vyčerpávají rezervy sítě pro primární regulaci frekvence, způsobují lokální kolísání napětí a zvyšují náklady provozovatelů sítě na udržování rychlých záloh.~\cite[s.~13]{ginzburg-ganz_technical_2025}
 
 Mnohem nebezpečnější scénář představuje tzv. sympathetic tripping. Při významnějším poklesu napětí v síti by mohlo dojít k poškození drahého HW, kvůli čemuž jsou systémy UPS a měniče v DC navrženy tak, aby byly schopny okamžitě přejít na vlastní záložní generátory. Pokud však dojde k běžné poruše a v reakci na ni se odpojí celé AI centrum, zmizí ze sítě během několika vteřin obrovská zátěž. Frekvence v síti tak vzroste, což se stane podnětem pro odpojení dalších datových center a nastane řetězová reakce.~\cite[s.~11]{sheng_power_2026}
 
-Reálný příklad se odehrál v červenci 2024, kdy drobný pokles napětí v síti vyvolal ochranné odpojení 60 datových center najednou, čímž síť okamžitě ztratila 1 500~MW zátěže a frekvence vzrostla na kritickou úroveň.~\cite[s.~13]{ginzburg-ganz_technical_2025}.
+Reálný příklad se odehrál v červenci 2024, kdy drobný pokles napětí v síti vyvolal ochranné odpojení 60 datových center najednou, čímž síť okamžitě ztratila 1 500~MW zátěže a frekvence vzrostla na kritickou úroveň.~\cite[s.~13]{ginzburg-ganz_technical_2025}
 
 \subsection{Socializace nákladů na výstavbu infrastruktury}
 \label{subsec:energie_socializace}
@@ -63,7 +63,7 @@ Vodní spotřebu datových center nejlépe ilustrují reálné příklady americ
 \subsection{Srovnání charakteru spotřeby vody a elektřiny}
 \label{sec:voda_elektrina_srovnani}
 
-Přestože jsou problémy s odběrem elektřiny a vody docela podobné, je důležité ilustrovat několik rozdílů. Elektřinu je možné (leč za cenu ztrát a nákladů na vedení) přenášet na dlouhé vzdálenosti, takže se náklady rozprostřou do širšího regionu. Voda je naopak lokalizovaný zdroj a její nedostatek v oblasti se obtížně kompenzuje. Příkladem může být období sucha v roce 2021, kdy byl Taipeiským výrobcům čipů omezen přístup k vodě~\cite[s.~243]{international_energy_agency_iea_energy_2025}. Ve Spojených státech ale existují obavy, že kvůli smluvním závazkům by v případech nedostatku vody šla spotřeba na úkor obyvatel, nikoli datových center~\cite{shah_four_2026}.
+Přestože jsou problémy s odběrem elektřiny a vody docela podobné, je důležité ilustrovat několik rozdílů. Elektřinu je možné (leč za cenu ztrát a nákladů na vedení) přenášet na dlouhé vzdálenosti, takže se náklady rozprostřou do širšího regionu. Voda je naopak lokalizovaný zdroj a její nedostatek v oblasti se obtížně kompenzuje. Příkladem může být období sucha v roce 2021, kdy byl taipejským výrobcům čipů omezen přístup k vodě~\cite[s.~243]{international_energy_agency_iea_energy_2025}. Ve Spojených státech ale existují obavy, že kvůli smluvním závazkům by v případech nedostatku vody šla spotřeba na úkor obyvatel, nikoli datových center~\cite{shah_four_2026}.
 
 Dalším aspektem je možnost reagovat na krizi v infrastruktuře. Pokud hrozí blackout z nedostatku elektřiny, lze u datových center v kritickou chvíli dočasně odložit výpočetní zátěž do jiné oblasti nebo omezit výkon, aby se síti odlehčilo~\cite[s.~586]{geng_data_2014}. U vody toto neplatí. Pokud nastane vlna veder, chladicí systémy spotřebují vody ještě mnohem více~\cite[s.~3]{li_making_2025}. A protože u chlazení nelze nastavovat intenzitu tak snadno jako u spotřeby, datová centra by z lokálního systému vodu odčerpávala neustále.
 
@@ -85,7 +85,7 @@ Výstavba moderního datového centra vyžaduje vysoké kapitálové investice, 
     \item \textbf{Vybavení (cca 72,9~\%):} Nejdražší složkou jsou chladicí věže, generátory, UPS systémy a optické sítě.
 \end{itemize}
 
-Je však nutné poznamenat, že část dat použitých pro určení výše uvedených podílů pro kapitálové výdaje pochází z roku 2016, a proto nemusí být přesné pro moderní AI centra.
+Je však nutné poznamenat, že část dat použitých pro určení výše uvedených podílů pro kapitálové výdaje pochází z roku 2016, a proto nemusí být přesná pro moderní AI centra.
 
 Jakmile je datové centrum spuštěno, jeho provozní náklady (OPEX) typicky představují zhruba 8,6~\% původních kapitálových výdajů~\cite[s.~9]{pham_data_2017}. U modelového 100MW centra by se tedy roční provozní náklady odhadovaly na 86 milionů dolarů. Podobnou částku ve své práci uvádí také Serena Thi To~\cite[s.~9]{to_albertas_2025}. Rozdělení nákladů je následující~\cite[s.~9]{pham_data_2017}:
 
@@ -118,7 +118,7 @@ Vliv datových center na zaměstnanost je charakteristický nepoměrem mezi fáz
 
 Interpretace těchto dat je však problematická kvůli odlišným metodikám výpočtu. Rozdíl spočívá v rozlišení mezi počtem dočasných pozic a počtem odpracovaných hodin -- zatímco optimistické modely (např. RECG~\cite{diao_economic_2025}) sčítají počet všech úvazků, analýza Johnson Economics pro oregonské Morrow County~\cite{johnson_economics_economic_2025} volí přepočet na plné pracovní úvazky (FTE, Full Time Employees). Pro srovnatelný 1GW projekt (tvořený z 20 menších DC) odhaduje Oregon pouze 6 400 přímých FTE pozic rozprostřených do osmi let výstavby, což odpovídá stabilnímu vytížení pro zhruba 800 pracovníků ročně (640 FTE na 100~MW výkonu). Podobné údaje uvádí také analýza BCG, která stanovuje průměrně 500 FTE při výstavbě 100~MW kapacity~\cite[s.~10]{lee_breaking_2025}.
 
-Zaměstnanost ve fázi prvovozu datového centra je napříč nalezenými studiemi velmi dobře zdokumentovaná a v zásadě se neliší. Všechny ukazují, že potřeba lidské práce po spuštění operací DC klesá -- To~\cite[s.~7]{to_albertas_2025} uvádí, že přímo ve 100MW datovém centru celoročně pracuje pouze 30 až 50 FTE. Podobné údaje plynou z analýzy Johnson Economics~\cite[s.~15]{johnson_economics_economic_2025}, která uvádí 560 FTE na 16 až 20 datových center. Počet zaměstnanců potvrzují také studie Economic Consulting Group~\cite[s.~14]{diao_economic_2025} pro 1GW datové centrum, které odhaduje 430 FTE pozic. Analýza BCG~\cite[s.~10]{lee_breaking_2025} pak ukazuje 50 FTE. V průměru tedy můžeme říci, že na každých 100~MW kapacity datového centra skutečně připadá zhruba 30 až 50 trvalých pracovních míst.
+Zaměstnanost ve fázi provozu datového centra je napříč nalezenými studiemi velmi dobře zdokumentovaná a v zásadě se neliší. Všechny ukazují, že potřeba lidské práce po spuštění operací DC klesá -- To~\cite[s.~7]{to_albertas_2025} uvádí, že přímo ve 100MW datovém centru celoročně pracuje pouze 30 až 50 FTE. Podobné údaje plynou z analýzy Johnson Economics~\cite[s.~15]{johnson_economics_economic_2025}, která uvádí 560 FTE na 16 až 20 datových center. Počet zaměstnanců potvrzují také studie Economic Consulting Group~\cite[s.~14]{diao_economic_2025} pro 1GW datové centrum, které odhaduje 430 FTE pozic. Analýza BCG~\cite[s.~10]{lee_breaking_2025} pak ukazuje 50 FTE. V průměru tedy můžeme říci, že na každých 100~MW kapacity datového centra skutečně připadá zhruba 30 až 50 trvalých pracovních míst.
 
 Tyto pozice nabízejí vysoce nadprůměrné mzdové ohodnocení. Například ve Virginii dosahoval v roce 2020 průměrný plat pracovníka datového centra přes 134 000 dolarů, což je víc než dvojnásobek průměru v tamním soukromém sektoru~\cite[s.~83]{kshetri_data_2024}. V absolutních číslech jde ale pro celkovou zaměstnanost v regionu o zanedbatelné množství. Některé z těchto pracovních rolí, jako je ostraha či úklid, navíc bývají obsazovány externími dodavateli a nenabízejí stejné benefity a jistoty jako přímé úvazky~\cite[s.~7]{green_what_2025}. Rozsáhlé výzkumy navíc rozporují, že by přítomnost datového centra automaticky stimulovala vznik dalších navázaných pracovních míst~\cite{gargano_subsidizing_2025}.
 
@@ -156,8 +156,8 @@ Některé údaje jsou pro modelování tuzemských dopadů přesto relevantní, 
 
         Náklady na výstavbu & 10 až 11 mil. USD &~\cite{to_albertas_2025,gargano_subsidizing_2025} \\
         \quad Náklady: pozemky (6,2~\%) & 0,62 až 0,68 mil. USD &~\cite{pham_data_2017} \\
-        \quad Náklady: hrubá stavba a budova (20,9~\%) & 0,21 až 0,2299 mil. USD &~\cite{pham_data_2017} \\
-        \quad Náklady: infrastruktura (72,9~\%) & 0,73 až 0,80 mil. USD &~\cite{pham_data_2017,ginzburg-ganz_technical_2025} \\
+        \quad Náklady: hrubá stavba a budova (20,9~\%) & 2,09 až 2,299 mil. USD &~\cite{pham_data_2017} \\
+        \quad Náklady: infrastruktura (72,9~\%) & 7,29 až 8,02 mil. USD &~\cite{pham_data_2017,ginzburg-ganz_technical_2025} \\
 
         \addlinespace
         \midrule

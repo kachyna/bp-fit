@@ -16,7 +16,7 @@ Tato kapitola se věnuje druhé polovině praktické části práce -- návrhu a
 
 Samotný model datových center popsaný v kapitole~\ref{chap:model} je pouze abstraktní matematickou konstrukcí, kterou je bez konkrétních hodnot těžké si představit. Formální zápis modelu může být navíc hůře pochopitelný, kvůli čemuž je jeho praktická aplikace obtížná.
 
-Model byl nejprve testován v Excelovém souboru, který sice umožňoval rychlé zadávání hodnot a okamžité zobrazení výsledků, ale tento přístup není ideální pro prezentaci širšímu publiku. Webová aplikace nabízí lepší možnosti pro vizualizaci složitých dat a umožňuje uživatelům snadno manipulovat s parametry v přívětivém prostředí s dodatečným vysvětlením.
+Model byl nejprve testován v excelovém souboru, který sice umožňoval rychlé zadávání hodnot a okamžité zobrazení výsledků, ale tento přístup není ideální pro prezentaci širšímu publiku. Webová aplikace nabízí lepší možnosti pro vizualizaci složitých dat a umožňuje uživatelům snadno manipulovat s parametry v přívětivém prostředí s dodatečným vysvětlením.
 
 Důležité je zmínit, že výstavba datových center působí na širokou veřejnost, takže je klíčové, aby informace o nich byly snadno dostupné a srozumitelné. Stejně tak je důležité zvýšit povědomí o hlučnosti, emisích a spotřebě vody datových center, které často nejsou zohledňovány v diskuzích o ekonomických přínosech těchto projektů -- zejména kvůli tomu, že jde obvykle o PR články placené jejich investory. K tomu je ale potřeba chápat jisté souvislosti.
 
@@ -38,7 +38,7 @@ Pro vývoj aplikace byl vybrán moderní technologický stack založený na Java
 \subsection{Jádro aplikace a správa stavu}
 \label{subsec:app_stack_jadro}
 
-Prvním krokem při výběru technologického stacku bylo rozhodnutí o platformě, na které bude aplikace postavena. Vzhledem k tomu, že cílem bylo vytvořit interaktivní webovou aplikaci, se nabízela volba JavaScriptu a Reactu. \textit{JavaScript} je pro webový vývoj standardem, zatímco \textit{React} nabízí efektivní správu stavu a možnost okamžitě aktualizovat UI v reakci na změny dat.
+Prvním krokem při výběru technologického stacku bylo rozhodnutí o platformě, na které bude aplikace postavena. Vzhledem k tomu, že cílem bylo vytvořit interaktivní webovou aplikaci, nabízela se volba JavaScriptu a Reactu. \textit{JavaScript} je pro webový vývoj standardem, zatímco \textit{React} nabízí efektivní správu stavu a možnost okamžitě aktualizovat UI v reakci na změny dat.
 
 Mimo to byl React zvolen kvůli vysoké dostupnosti dodatečných knihoven a nástrojů, které usnadňují vývoj a zlepšují zkušenost vývojářů. Díky tomu bylo možné rychle implementovat složité funkce a vizualizace, které by jinak vyžadovaly mnohem více času a úsilí. Dodatečný komentář je v podsekci~\ref{subsec:app_stack_ui}.
 
@@ -86,7 +86,7 @@ Zde je shrnující přehled použitých knihoven pro uživatelské rozhraní:
 % - Oddělení výpočetní logiky (engine.js) od vizuálních komponent (views).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Protože aplikace nemusí komunikovat serverem, byla zvolena čistě frontendová architektura. To znamená, že veškerá logika, správa stavu a vizualizace jsou implementovány na straně klienta -- odehrávají se v prohlížeči uživatele. Tento přístup umožňuje rychlé načítání a okamžité zobrazení výsledků bez potřeby čekat na odpověď ze serveru, což je klíčové pro zamýšlenou interaktivitu.
+Protože aplikace nemusí komunikovat se serverem, byla zvolena čistě frontendová architektura. To znamená, že veškerá logika, správa stavu a vizualizace jsou implementovány na straně klienta -- odehrávají se v prohlížeči uživatele. Tento přístup umožňuje rychlé načítání a okamžité zobrazení výsledků bez potřeby čekat na odpověď ze serveru, což je klíčové pro zamýšlenou interaktivitu.
 
 \subsection{Datový tok a správa stavu}
 \label{subsec:app_architektura_data}

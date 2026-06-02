@@ -6,7 +6,7 @@ Následuje slovní popis požadavků v klasifikaci Tier, podle které se určuje
 \begin{description}
     \item[Tier I: Základní infrastruktura] Představuje nejnižší úroveň, která disponuje pouze jednou cestou pro napájení a chlazení bez jakýchkoli redundantních komponent. Tato třída je náchylná k přerušením způsobeným jak plánovanou údržbou, tak neplánovanými poruchami, přičemž očekávaná roční dostupnost dosahuje 99,671~\%. Infrastruktura tohoto typu je vhodná pro úlohy, u nichž není kritická kontinuita provozu.
     
-    \item[Tier II: Redundantní komponenty] Zvyšuje spolehlivost přidáním záložních komponent -- stále však využívají jedinou distribuční cestu. Ačkoli redundantní komponenty umožňují snazší údržbu vybraných částí, plánované odstávky distribučních cest stále vyžadují vypnutí systému. Očekávaná dostupnost u této třídy činí 99,741~\%.
+    \item[Tier II: Redundantní komponenty] Zvyšuje spolehlivost přidáním záložních komponent -- stále však využívá jedinou distribuční cestu. Ačkoli redundantní komponenty umožňují snazší údržbu vybraných částí, plánované odstávky distribučních cest stále vyžadují vypnutí systému. Očekávaná dostupnost u této třídy činí 99,741~\%.
     
     \item[Tier III: Souběžně udržovatelná infrastruktura] Představuje skok v robustnosti, neboť disponuje více distribučními cestami pro napájení a chlazení, ale aktivní je vždy jen jedna. Hlavní výhodou je možnost provádět jakoukoli plánovanou údržbu libovolné části infrastruktury bez nutnosti přerušit provoz systému. Tato úroveň garantuje dostupnost 99,982~\% a je odolná vůči většině incidentů.
 
@@ -20,13 +20,13 @@ V tabulce~\ref{tab:parametry_komplet} jsou uvedeny hodnoty všech použitých pa
 
 \begin{description}
     
-    \item[Průměrné mzdy] Mzdy na výstavbě vycházejí z předpokladu, že průměrný pracovník pobírá asi 60~000~Kč hrubého za měsíc práce. V tom jsou zahrnuty jak mzdy řemeslníků, tak lépe ohodnocených architektů a projektantů elektrických rozvodů a chlazení. Mzdy v provozu pak vycházejí z průměrné mzdy na 75 000~Kč, do čehož jsou zahrnuty jak vysoce nadprůměrné mzdy IT techniků, tak nižší mzdy ostrahy a případného úklidu.
+    \item[Průměrné mzdy] Mzdy na výstavbě vycházejí z předpokladu, že průměrný pracovník pobírá asi 60~000~Kč hrubého za měsíc práce. V tom jsou zahrnuty jak mzdy řemeslníků, tak lépe ohodnocených architektů a projektantů elektrických rozvodů a chlazení. Mzdy v provozu pak vycházejí z průměrné mzdy ve výši 75 000~Kč, do čehož jsou zahrnuty jak vysoce nadprůměrné mzdy IT techniků, tak nižší mzdy ostrahy a případného úklidu.
 
     \item[Cena elektřiny] Průměrná cena elektřiny byla vypočítána z dat společnosti Ember~\cite{ember_average_2026}. Realistický scénář obsahuje průměr ceny elektřiny za poměrně stabilní dvouleté období leden 2024 -- prosinec 2025, přičemž pesimistický a optimistický scénář představují 20\% odchylku od této ceny. V realitě mohou být výkyvy vyšší, ale velcí odběratelé si obvykle nasmlouvají odběry na roky dopředu.
 
-    \item[Ostatní OPEX] Ostatní provozní náklady (nezahrnující energie) jsou modelovány jako fixní podíl z celkových investičních nákladů na výstavbu a vybavení. Realistický scénář uvažuje s hodnotou 2,5~\%. Pesimistický (3~\%) a optimistický (2~\%) scénář pak reflektují variační rozpětí těchto nákladů nákladů. Koeficient vyhází z díla Pham~\cite{pham_data_2017}, ve kterém je OPEX uveden jako 8,6~\% investičních nákladů, z čehož 39,5~\% jde právě na údržbu, administraci a další ($8{,}6\,\% \cdot 39{,}5\,\% \approx 3{,}40\,\%$). 
+    \item[Ostatní OPEX] Ostatní provozní náklady (nezahrnující energie) jsou modelovány jako fixní podíl z celkových investičních nákladů na výstavbu a vybavení. Realistický scénář uvažuje s hodnotou 2,5~\%. Pesimistický (3~\%) a optimistický (2~\%) scénář pak reflektují variační rozpětí těchto nákladů. Koeficient vychází z díla Pham~\cite{pham_data_2017}, ve kterém je OPEX uveden jako 8,6~\% investičních nákladů, z čehož 39,5~\% jde právě na údržbu, administraci a další ($8{,}6\,\% \cdot 39{,}5\,\% \approx 3{,}40\,\%$). 
 
-    \item[Spotřeba vody] Literatura se zde trochu liší, resp. některé studie přesněji neuvádí, zda se jedná o Scope I, Scope II nebo kombinovanou spotřebu. Uvedené hodnoty se však veskrze shodují, kvůli čemuž byl zaveden předpoklad, že ji lze interpretovat jako Scope I + Scope II spotřebu -- tedy vodu spotřebovanou jak samotným datovým centrem, tak vodu spotřebovanou při výrobě elektřiny pro datové centrum. 
+    \item[Spotřeba vody] Literatura se zde trochu liší, resp. některé studie přesněji neuvádějí, zda se jedná o Scope I, Scope II nebo kombinovanou spotřebu. Uvedené hodnoty se však veskrze shodují, kvůli čemuž byl zaveden předpoklad, že ji lze interpretovat jako Scope I + Scope II spotřebu -- tedy vodu spotřebovanou jak samotným datovým centrem, tak vodu spotřebovanou při výrobě elektřiny pro datové centrum. 
 
     \item[Koeficienty pro daň z nemovitosti] Model předpokládá, že DC bude postaveno ve středně velkém městě (České Budějovice, Ústí nad Labem, Brno, Olomouc, Zlín, Ostrava), pro která platí koeficient 3,5. Místní koeficient mají tato města také podobný, obvykle 2. Jejich součin tedy činí 7. 
 
@@ -38,7 +38,7 @@ V tabulce~\ref{tab:parametry_komplet} jsou uvedeny hodnoty všech použitých pa
 
     \item[Pronájem jednoho GPU] Ceny za pronájem GPU se v čase výrazně mění -- zatímco před dvěma lety se pohybovaly okolo 7~USD / hodina (NVIDIA H100 80 GB), dnes jsou ceny díky vyšší nabídce nižší. Hyperscale firmy je dnes pronajímají asi za 2,5~USD na hodinu, což odpovídá také českému prostředí. K dubnu 2026 tyto grafické čipy k pronájmu nabízejí 2 společnosti, ZonerCloud (3,77~USD/hod pro NVIDIA H200 NVL 141~GB) a WRDatacentrum (2,12~EUR/hod NVIDIA H100 80~GB).
 
-    \item[Cena a energetická náročnost tokenů] Pro oba parametry je nutné zvolit jeden výchozí jakový model, protože cena tokenu se odvíjí od jeho energetické náročnosti. Jegham et al.~\cite{jegham_how_2025} ve své práci ukazují průměrné energetické nároky třiceti modelů napříč různými délkami vstupu včetně odchylek, které jsou použity pro modelování pesimistického a optimistického scénáře. Do parametrů byl vybrán model GPT-4o mini firmy Open AI, který na 100 vstupních a 300 výstupních tokenů (odpovídá běžné inferenci modelu) spotřebuje 0,577~Wh, průměrně tedy 0,0014~Wh na token. Cena za milion vstupních tokenů je k dubnu 2026 0,15~USD a za milion výstupních 0,60~USD. Pro zjednodušení uvažujeme průměrnou cenu za milion tokenů 0,49~USD (vážený průměr).
+    \item[Cena a energetická náročnost tokenů] Pro oba parametry je nutné zvolit jeden výchozí jazykový model, protože cena tokenu se odvíjí od jeho energetické náročnosti. Jegham et al.~\cite{jegham_how_2025} ve své práci ukazují průměrné energetické nároky třiceti modelů napříč různými délkami vstupu včetně odchylek, které jsou použity pro modelování pesimistického a optimistického scénáře. Do parametrů byl vybrán model GPT-4o mini firmy Open AI, který na 100 vstupních a 300 výstupních tokenů (odpovídá běžné inferenci modelu) spotřebuje 0,577~Wh, průměrně tedy 0,0014~Wh na token. Cena za milion vstupních tokenů je k dubnu 2026 0,15~USD a za milion výstupních 0,60~USD. Pro zjednodušení uvažujeme průměrnou cenu za milion tokenů 0,49~USD (vážený průměr).
 
 \end{description}
 
@@ -129,7 +129,7 @@ V tabulce~\ref{tab:parametry_komplet} jsou uvedeny hodnoty všech použitých pa
 
         \multicolumn{5}{l}{\textbf{Náklady na pořízení výpočetního vybavení na 1~MW} ($\text{I}_\text{equipment per~MW}$)} \\
         Colocation DC & 0,00~Kč & 0,00~Kč & 0,00~Kč & příloha~\ref{appendix:parametry} \\
-        AI trénovací & 618,0~mil.~Kč~Kč & 721,0~mil.~Kč & 824,0~mil.~Kč &~\cite{barroso_data_2026, pilz_compute_2023} \\
+        AI trénovací & 618,0~mil.~Kč & 721,0~mil.~Kč & 824,0~mil.~Kč &~\cite{barroso_data_2026, pilz_compute_2023} \\
         AI inferenční & 319,0~mil.~Kč & 360,5~mil.~Kč & 412,0~mil.~Kč &~\cite{barroso_data_2026}, příloha~\ref{appendix:parametry} \\
         
         \addlinespace

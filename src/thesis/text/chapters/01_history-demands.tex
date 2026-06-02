@@ -73,7 +73,7 @@ Barroso rozdíl mezi WSC a tradičním DC ilustruje v pěti dimenzích hardwarov
     \item[Měřítko] WSC bývají o jeden až dva řády větší než běžná podniková datová centra, přičemž veškeré prostředky (dodávky energie, chlazení) jsou sdíleny v rámci společné infrastruktury pro správu zdrojů.
 \end{description}
 
-Technologický vývoj se mezi lety 2004 až 2008 soustředil na optimalizaci provozu. Důležitou inovací bylo zavedení metriky PUE, která je popsána v podsekci~\ref{subsec:pue}. Později se začaly objevovat první úlohy zaměřené na hluboké učení (např. projekt Google Brain)~\cite{ranganathan_twenty_2024}, což předznamenalo přerod univerzálních WSC v úzce specializovaná AI centra.
+Technologický vývoj se mezi lety 2004 a 2008 soustředil na optimalizaci provozu. Důležitou inovací bylo zavedení metriky PUE, která je popsána v podsekci~\ref{subsec:pue}. Později se začaly objevovat první úlohy zaměřené na hluboké učení (např. projekt Google Brain)~\cite{ranganathan_twenty_2024}, což předznamenalo přerod univerzálních WSC v úzce specializovaná AI centra.
 
 \subsection{Architektura moderních AI továren}
 \label{subsec:ai_factory}
@@ -184,7 +184,7 @@ K měření celkové efektivity se používá metrika PUE (Power Usage Effective
 
 $$\text{PUE} = \frac{\text{Total Facility Electricity Consumption}}{\text{IT Equipment Electricity Consumption}} \geq 1.$$
 
-Zatímco v roce 2010 byla průměrná hodnota PUE datových center po celém světě kolem 2,5 (tzn. na každý 1 watt pro server připadlo 1,5 wattu na chlazení a ztráty), průměr se dnes podařil snížit na 1,55~\cite{de_roucy-rochegonde_ai_2025}. Moderní AI továrny však míří k vyšší efektivitě -- Google a Meta uvádějí, že jejich vybraná DC mají PUE pod 1,1~\cite{chen_electricity_2025, sheng_power_2026}, pravděpodobně díky efektivnímu chlazení vodou.
+Zatímco v roce 2010 byla průměrná hodnota PUE datových center po celém světě kolem 2,5 (tzn. na každý 1 watt pro server připadlo 1,5 wattu na chlazení a ztráty), průměr se dnes podařilo snížit na 1,55~\cite{de_roucy-rochegonde_ai_2025}. Moderní AI továrny však míří k vyšší efektivitě -- Google a Meta uvádějí, že jejich vybraná DC mají PUE pod 1,1~\cite{chen_electricity_2025, sheng_power_2026}, pravděpodobně díky efektivnímu chlazení vodou.
 
 \subsection{Odkud datová centra berou energii}
 \label{subsec:odkud_energie}
@@ -259,7 +259,7 @@ Přechod od vzduchového chlazení k pokročilým kapalinovým systémům dramat
 
 Datová centra přímo odebírají vodu pro své chladicí systémy (Scope 1). Teplo ze serverů se přenáší do vodního okruhu a v chladicí věži se část této vody cíleně odpaří, čímž se teplo uvolní do okolí. V okruhu by se nicméně mohly koncentrovat minerály, soli a bakterie, takže i nevypařená voda se musí pravidelně vypouštět a neustále doplňovat novou sladkou vodou. Z toho důvodu vyžadují některá vodou chlazená DC neustálý přítok vody, mnohdy pitné.~\cite{li_making_2025}
 
-Mnohem větší zátěž na vodní zdroje však představuje tzv. nepřímý odběr (Scope 2). Jde o vodu odebíranou v elektrárnách, které pokrývají energetickou spotřebu datových center -- zejména tepelné či jaderné elektrárny potřebují k výrobě elektřiny masivní chlazení a vodní elektrárny zase ztrácejí vodu odparem z nádrží~\cite{li_making_2025, LBNL-2001637}. V USA je průměrný odběr vody pro výrobu elektřiny odhadován na 43,8 litrů na každou spotřebovanou kilowatthodinu~\cite{li_making_2025}.
+Mnohem větší zátěž na vodní zdroje však představuje tzv. nepřímý odběr (Scope 2). Jde o vodu odebíranou v elektrárnách, které pokrývají energetickou spotřebu datových center -- zejména tepelné či jaderné elektrárny potřebují k výrobě elektřiny masivní chlazení a vodní elektrárny zase ztrácejí vodu odparem z nádrží~\cite{li_making_2025, LBNL-2001637}. V USA je průměrný odběr vody pro výrobu elektřiny odhadován na 43,8 litru na každou spotřebovanou kilowatthodinu~\cite{li_making_2025}.
 
 Pro představu, typické 100MW hyperscale datové centrum může spotřebovat kolem 2 milionů litrů vody denně (Scope 2), což odpovídá spotřebě zhruba 6 500 domácností. 60~\% z této spotřeby je nepřímá.~\cite{international_energy_agency_iea_energy_2025}
 
@@ -284,8 +284,8 @@ Ken Baudry~\cite{geng_data_2014} uvádí, že výběr lokality funguje vylučova
 
     \item[Technologické faktory] Dostupnost spolehlivé a levné elektřiny je dnes hlavním faktorem. Protože výstavba nových přenosových soustav trvá 4 až 10 let, datová centra narážejí na přetížené sítě a dlouhé pořadníky pro připojení (fronty mohou trvat i roky).~\cite{ginzburg-ganz_technical_2025, international_energy_agency_iea_energy_2025} Z tohoto důvodu se nová DC často umisťují ke zdrojům energií, jak je popsáno v kap.~\ref{subsec:odkud_energie}. Pro inferenční centra je pak důležitá také konektivita (kap. \ref{subsec:ai_factory}), kvůli čemuž by měla být stavěna v blízkosti páteřní optické sítě. 
 
-    \item[Legislativní faktory] % TODO: Přidat odkaz na kapitolu
-    Z pohledu legislativy je důležité, jakým způsobem bude výstavba datového centra regulována. V současnosti se již objevují specifické zákony, které se jejich výstavby a provozu přímo týkají. Například v Oregonu byl prosazen zákon, který datová centra zavazuje k alespoň 10letému provozu a zakazuje socializaci nákladů na infrastrukturu.~\cite[s.~19]{ginzburg-ganz_technical_2025}
+    \item[Legislativní faktory]
+    Z pohledu legislativy je důležité, jakým způsobem je výstavba datových center regulována. V současnosti se již objevují specifické zákony, které se jejich výstavby a provozu přímo týkají. Například v Oregonu byl prosazen zákon, který datová centra zavazuje k alespoň 10letému provozu a zakazuje socializaci nákladů na infrastrukturu.~\cite[s.~19]{ginzburg-ganz_technical_2025}
 
     \item[Environmentální faktory] Kvůli chlazení se preferují lokality s chladnějším podnebím, které umožňují využívat venkovní vzduch po většinu roku~\cite{barroso_data_2026, geng_data_2014}. Pro odpařovací systémy je důležitá i dostupnost vody. Druhým environmentálním faktorem je stabilita a bezpečnost prostředí -- lokality se zkoumají z hlediska rizika zemětřesení, záplav, hurikánů, tornád či tsunami.~\cite{tatnall_reflections_2012,geng_data_2014}
 \end{description}
@@ -305,8 +305,8 @@ Datová centra prošla za posledních 30 let radikální proměnou. Od sálovýc
 
 Tradiční servery postavené na univerzálních procesorech (CPU) přestaly pro AI stačit. Výpočetní zátěž převzaly specializované akcelerátory (jako GPU a TPU), které jsou optimalizované pro trénování AI. S tím však vzrostl tepelný výkon a energetická spotřeba samotných čipů (TDP) a nutnost umisťovat je fyzicky co nejblíže k sobě kvůli komunikační latenci. To vedlo k nárůstu výkonové hustoty racků (z tradičních 5--10~kW na 30--100+~kW).~\cite{barroso_data_2026, sheng_power_2026,chen_electricity_2025}
 
-Kvůli tomu spotřeba energie datových center výrazně roste. AI datová centra vstupují do \uv{gigawattové éry} a zvyšují nároky na svou efektivitu (PUE). Zásadním problémem pro elektrickou síť ale není jen celkový objem, nýbrž pulzní chování AI zátěže -- synchronizované výpočty tisíců GPU generují obrovské výkyvy spotřeby v řádech desítek megawattů během milisekund, což ohrožuje frekvenční stabilitu sítě a zhoršuje kvalitu dodávek (harmonické zkreslení, problikávání). Jedno 200MW DC může ročně spotřebovat přibližně 1,4~TWh elektřiny, což je podobně jako spotřeba Karlovarského kraje.~\cite{sheng_power_2026,chen_electricity_2025, energeticky_regulacni_urad_spotreba_2024}
+Kvůli tomu spotřeba energie datových center výrazně roste. AI datová centra vstupují do \uv{gigawattové éry} a zvyšují nároky na svou efektivitu (PUE). Zásadním problémem pro elektrickou síť ale není jen celkový objem, nýbrž pulzní chování AI zátěže -- synchronizované výpočty tisíců GPU generují obrovské výkyvy spotřeby v řádu desítek megawattů během milisekund, což ohrožuje frekvenční stabilitu sítě a zhoršuje kvalitu dodávek (harmonické zkreslení, problikávání). Jedno 200MW DC může ročně spotřebovat přibližně 1,4~TWh elektřiny, což je podobně jako spotřeba Karlovarského kraje.~\cite{sheng_power_2026,chen_electricity_2025, energeticky_regulacni_urad_spotreba_2024}
 
 AI racky kvůli vysoké hustotě výkonu nelze spolehlivě chladit vzduchem. Nastupuje proto kapalinové chlazení, které je jak výkonnější, tak energeticky efektivnější. Na druhou stranu vyžaduje vysoké počáteční investice a spotřebuje obrovské množství vody (odpařuje se v chladicích věžích). Do spotřeby vody datovým centrem lze zahrnout také vodu, která byla spotřebována pro výrobu jím odebrané elektřiny. Běžné hyperscale centrum tak může denně spotřebovat až 2 miliony litrů vody, což je podobně jako 6 500 domácností.~\cite{jegham_how_2025,cruzes_data_2025,international_energy_agency_iea_energy_2025,shah_four_2026}
 
-Při vybírání lokality pro výstavbu AI datového centra je hlavní prioritou kapacita a propustnost elektrické sítě (často se čeká roky na připojení). Hledají se místa s levnou a stabilní bezuhlíkovou energií (blízkost větrných, solárních či jaderných elektráren), dostatečným zdrojem vody pro chlazení, páteřní optickou sítí a příznivým legislativním i daňovým prostředím.~\cite{ geng_data_2014, chen_electricity_2025, pilz_compute_2023, lin_exploding_2024}
+Při vybírání lokality pro výstavbu AI datového centra je hlavní prioritou kapacita a propustnost elektrické sítě (často se čeká roky na připojení). Hledají se místa s levnou a stabilní bezuhlíkovou energií (blízkost větrných, solárních či jaderných elektráren), dostatečným zdrojem vody pro chlazení, páteřní optickou sítí a příznivým legislativním i daňovým prostředím.~\cite{geng_data_2014, chen_electricity_2025, pilz_compute_2023, lin_exploding_2024}
