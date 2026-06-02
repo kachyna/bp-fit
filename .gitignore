@@ -26,5 +26,3 @@ _minted/
 .vscode
 .DS_Store
 *venv
-
-/out
