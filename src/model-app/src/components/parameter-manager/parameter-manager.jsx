@@ -15,6 +15,7 @@ export function ParameterManager() {
 
     const params = useModelStore((state) => state.params);
     const updateParameterByPath = useModelStore((state) => state.updateParameterByPath);
+    const scenarioKeys = SCENARIO_KEYS.filter(key => key !== "EXPECTED")
 
     const paramInputs = {}
 
@@ -41,8 +42,9 @@ export function ParameterManager() {
                     label: PARAM_DETAILS[paramKey]?.label || paramKey,
                     description: PARAM_DETAILS[paramKey]?.description || "",
                 }
-                SCENARIO_KEYS.forEach(scenario => {
+                scenarioKeys.forEach(scenario => {
                     paramInputs[paramKey]["values"][scenario] = params.SCENARIOS[scenario][paramKey]
+
                 })
             }
 
@@ -58,7 +60,7 @@ export function ParameterManager() {
                         description: PARAM_DETAILS[paramKey]?.description || "",
                         unmodifiedParamKey: paramKey
                     }
-                    SCENARIO_KEYS.forEach(scenario => {
+                    scenarioKeys.forEach(scenario => {
                         paramInputs[`${paramKey}-${dcType}`]["values"][scenario] = params.SCENARIOS[scenario][paramKey][dcType]
                     })
                 })
@@ -68,7 +70,7 @@ export function ParameterManager() {
 
     const scenarioParamKeys = new Set()
 
-    SCENARIO_KEYS.forEach(scenario => {
+    scenarioKeys.forEach(scenario => {
         const scenarioParams = params.SCENARIOS[scenario] || {}
         Object.keys(scenarioParams).forEach(paramKey => {
             const value = scenarioParams[paramKey]
