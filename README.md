@@ -1,6 +1,9 @@
 
 # BP FIT ČVUT: Investice do AI infrastruktury
 
+> [!NOTE]
+> Repozitář byl v den odevzdání práce 15. 6. 2026 uveden do archivního režimu.
+
 **Abstrakt**
 
 Přestože se uživatelům může umělá inteligence jevit jako nehmotná entita existující v cloudu, její trénování a inference vyžadují rozsáhlou fyzickou infrastrukturu. Výstavba a následný provoz těchto výpočetních center představují jak příležitost pro ekonomiku, tak významnou zátěž pro životní prostředí a elektrizační soustavu. Pro posouzení jejich dopadů v České republice byly na základě empirických dat z USA identifikovány proměnné s největším vlivem na ekonomiku, energetiku a oblast ESG. Tyto poznatky byly následně upraveny s ohledem na specifika České republiky a integrovány do prediktivního matematického modelu.
